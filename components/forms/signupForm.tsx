@@ -47,21 +47,26 @@ const SignupForm = () => {
         className="form-control"
       />
       <div id="emailHelp" className="form-text text-secondary">
-        We&apos;ll never share your email with anyone.
-        <div className="invalid-feedback">This field is required.</div>
-        <div className="invalid-feedback">
-          Please ensure email is of form johnsmith@email.com
-        </div>
+        We will never share your email.
       </div>
-      <label htmlFor="employeePhoneNumber" className="form-label pt-3">
+      <div className="invalid-feedback">This field is required.</div>
+      <div className="invalid-feedback">
+        Please ensure email is of form johnsmith@email.com
+      </div>
+      <label htmlFor="password" className="form-label pt-3">
         Password
       </label>
       <input
-        id="employeePhoneNumber"
-        type="text"
-        autoComplete="tel-national"
+        id="password"
+        type="password"
+        required
         className="form-control"
+        minLength={8}
       />
+      <div id="emailHelp" className="form-text text-secondary">
+        Must be at least 8 characters long.
+      </div>
+      <div className="invalid-feedback">This field is required.</div>
       <div className="row text-center ms-4 me-4">
         <button type="submit" className="btn btn-warning mt-4">
           Submit Info
