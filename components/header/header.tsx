@@ -2,11 +2,11 @@ import Link from 'next/link';
 
 const Header = () => {
   return (
-    <header className="container-fluid bg-light ps-3 pe-3">
+    <header className="container-fluid ps-3 pe-3 bg-dark">
       <div className="row d-flex align-items-center">
-        <nav className="navbar navbar-expand-sm navbar-light">
+        <nav className="navbar navbar-expand-sm navbar-dark">
           <a className="navbar-brand" href="#">
-            <p className="display-3">RetailAlgoTrader</p>
+            <p className="display-3 text-white">RetailAlgoTrader</p>
           </a>
           <button
             className="navbar-toggler"
@@ -26,51 +26,29 @@ const Header = () => {
             <ul className="navbar-nav">
               <li className="nav-item">
                 <Link href="/">
-                  <a
-                    className="nav-link text-secondary active"
-                    aria-current="page"
-                  >
+                  <a className="nav-link text-white active" aria-current="page">
                     Home
                   </a>
                 </Link>
               </li>
               <li className="nav-item">
                 <Link href="/about">
-                  <a
-                    className="nav-link text-secondary active"
-                    aria-current="page"
-                  >
+                  <a className="nav-link text-white active" aria-current="page">
                     About
                   </a>
                 </Link>
               </li>
               <li className="nav-item">
                 <Link href="/blog">
-                  <a
-                    className="nav-link text-secondary active"
-                    aria-current="page"
-                  >
+                  <a className="nav-link text-white active" aria-current="page">
                     Blog
                   </a>
                 </Link>
               </li>
               <li className="nav-item">
-                <Link href="/resources">
-                  <a
-                    className="nav-link text-secondary active"
-                    aria-current="page"
-                  >
-                    Resources
-                  </a>
-                </Link>
-              </li>
-              <li className="nav-item d-none d-lg-block">
-                <Link href="/newsletterSignup">
-                  <a
-                    className="nav-link text-secondary active"
-                    aria-current="page"
-                  >
-                    Join our Weekly Newsletter
+                <Link href="/login">
+                  <a className="nav-link text-white active" aria-current="page">
+                    Login
                   </a>
                 </Link>
               </li>
