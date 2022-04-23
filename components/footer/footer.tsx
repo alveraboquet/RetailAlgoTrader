@@ -1,9 +1,7 @@
 /**
- *
- * TODOs:
- *  1. Set up reddit account and add link
+ * Footer component for non-logged in users
+ * Contains: CTA, about us section, contact section, social media links, and top blog posts
  */
-
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -17,70 +15,17 @@ const Footer = () => {
         <div className="d-md-none d-flex justify-content-center">
           <button className="btn btn-warning">
             <Link href="/signup">
-              <a className="text-decoration-none text-white">
-                Join Our Weekly Newsletter
+              <a className="text-decoration-none text-dark">
+                Get Started for Free
               </a>
             </Link>
           </button>
         </div>
-        <p className="fs-5 text-light mt-3">ABOUT US</p>
-        <p className="text-light">
-          RetailAlgoTrading is a resource and community dedicated to retail
-          traders. We aim to provide the tools and education for individual
-          traders to profitably trade.
-        </p>
-        <Link href="https://www.facebook.com/RetailAlgoTrading" passHref>
-          <Image
-            src="/images/svgs/facebook.svg"
-            alt="Facebook Logo"
-            width={72}
-            height={16}
-          />
-        </Link>
-        <Link href="https://twitter.com/RetailAlgoTrade" passHref>
-          <Image
-            src="/images/svgs/twitter.svg"
-            alt="Twitter Logo"
-            width={72}
-            height={16}
-          />
-        </Link>
-        <Link href="https://www.instagram.com/retailalgotrader/" passHref>
-          <Image
-            src="/images/svgs/instagram.svg"
-            alt="Instagram Logo"
-            width={72}
-            height={16}
-          />
-        </Link>
-        <Link href="https://www.instagram.com/retailalgotrader/" passHref>
-          <Image
-            src="/images/svgs/reddit.svg"
-            alt="Reddit Logo"
-            width={72}
-            height={16}
-          />
-        </Link>
-        <p className="fs-5 text-light mt-3">Contact Us</p>
-        <figure className="d-flex">
-          <Image
-            src="/images/svgs/envelope.svg"
-            alt=""
-            width={72}
-            height={16}
-          />
-          <p className="text-light pt-2">contact@retailalgotrader.com</p>
-        </figure>
-        <figure className="d-flex">
-          <Image src="/images/svgs/home.svg" alt="" width={72} height={16} />
-          <p className="text-light pt-2">https://retailalgotrader.com</p>
-        </figure>
-        <p className="fs-5 text-light mt-3">Top Blog Posts</p>
         <div className="d-none d-md-flex justify-content-center">
-          <p className="fs-4">
-            Enroll in a free trial!
+          <p className="fs-4 bg-light text-center p-md-3 rounded mt-md-3">
+            Get started with algorithmic trading today with our free courses!
             <span>
-              <button className="btn btn-primary ms-3">
+              <button className="btn btn-warning ms-3">
                 <Link href="/signup">
                   <a className="text-decoration-none text-white">Click Here</a>
                 </Link>
@@ -88,8 +33,162 @@ const Footer = () => {
             </span>
           </p>
         </div>
+        <div className="row">
+          <div className="col-md-6">
+            <h2 className="fs-5 text-light mt-3">ABOUT US</h2>
+            <p className="text-light">
+              RetailAlgoTrading is a resource and community dedicated to retail
+              traders. We aim to provide the tools and education for individual
+              traders to profitably trade.
+            </p>
+          </div>
+          <div className="col-md-6">
+            <div className="d-none d-md-block">
+              <h2 className="fs-5 text-light mt-3">Contact Us</h2>
+              <figure className="d-flex">
+                <Image
+                  src="/images/svgs/envelope.svg"
+                  alt=""
+                  width={72}
+                  height={16}
+                />
+                <p className="text-light pt-2">contact@retailalgotrader.com</p>
+              </figure>
+              <figure className="d-flex">
+                <Image
+                  src="/images/svgs/home.svg"
+                  alt=""
+                  width={72}
+                  height={16}
+                />
+                <p className="text-light pt-2">https://retailalgotrader.com</p>
+              </figure>
+            </div>
+          </div>
+        </div>
+        <div className="row mt-md-3 mb-md-3">
+          <div className="col-3 p-0 d-flex justify-content-center">
+            <Link href="https://www.facebook.com/RetailAlgoTrading" passHref>
+              <a>
+                <Image
+                  src="/images/svgs/facebook.svg"
+                  alt="Facebook Logo"
+                  width={144}
+                  height={32}
+                />
+              </a>
+            </Link>
+          </div>
+          <div className="col-3 p-0 d-flex justify-content-center">
+            <Link href="https://twitter.com/RetailAlgoTrade" passHref>
+              <a>
+                <Image
+                  src="/images/svgs/twitter.svg"
+                  alt="Twitter Logo"
+                  width={144}
+                  height={32}
+                />
+              </a>
+            </Link>
+          </div>
+          <div className="col-3 p-0 d-flex justify-content-center">
+            <Link href="https://www.instagram.com/retailalgotrader/" passHref>
+              <a>
+                <Image
+                  src="/images/svgs/instagram.svg"
+                  alt="Instagram Logo"
+                  width={144}
+                  height={32}
+                />
+              </a>
+            </Link>
+          </div>
+          <div className="col-3 p-0 d-flex justify-content-center">
+            <Link href="https://www.quora.com/profile/Matt-Laux" passHref>
+              <a>
+                <Image
+                  src="/images/svgs/quora.svg"
+                  alt="Quora Logo"
+                  width={144}
+                  height={32}
+                />
+              </a>
+            </Link>
+          </div>
+        </div>
+        <div className="d-md-none">
+          <h2 className="fs-5 text-light mt-3">Contact Us</h2>
+          <figure className="d-flex">
+            <Image
+              src="/images/svgs/envelope.svg"
+              alt="Email icon"
+              width={72}
+              height={16}
+            />
+            <p className="text-light pt-2">contact@retailalgotrader.com</p>
+          </figure>
+          <figure className="d-flex">
+            <Image
+              src="/images/svgs/home.svg"
+              alt="Home icon"
+              width={72}
+              height={16}
+            />
+            <Link href="/">
+              <a className="text-light pt-2">https://retailalgotrader.com</a>
+            </Link>
+          </figure>
+        </div>
       </div>
-      <nav className="nav pb-5 justify-content-center">
+      <h2 className="fs-5 text-light mt-3">Top Blog Posts</h2>
+      <article className="card">
+        <div className="card-header">Article</div>
+        <div className="card-body">
+          <h5 className="card-title">
+            What are market makers and how do they work?
+          </h5>
+          <p className="card-text d-none d-md-block">
+            There is a lot of confusion and inaccurate beliefs around market
+            makers and their roles in the market.
+          </p>
+          <button className="btn btn-warning">
+            <Link href="/posts/whatAreMarketMakersAndHowDoTheyWork">
+              <a className="text-decoration-none text-dark">Read More</a>
+            </Link>
+          </button>
+        </div>
+      </article>
+      <article className="card mt-3">
+        <div className="card-header">Article</div>
+        <div className="card-body">
+          <h5 className="card-title">Article2</h5>
+          <p className="card-text d-none d-md-block">
+            There is a lot of confusion and inaccurate beliefs around market
+            makers and their roles in the market.
+          </p>
+          <button className="btn btn-warning">
+            <Link href="/posts/whatAreMarketMakersAndHowDoTheyWork">
+              <a className="text-decoration-none text-dark">Read More</a>
+            </Link>
+          </button>
+        </div>
+      </article>
+      <article className="card mt-3">
+        <div className="card-header">Article</div>
+        <div className="card-body">
+          <h5 className="card-title">Article3</h5>
+          <p className="card-text d-none d-md-block">
+            There is a lot of confusion and inaccurate beliefs around market
+            makers and their roles in the market.
+          </p>
+          <button className="btn btn-warning">
+            <Link href="/posts/whatAreMarketMakersAndHowDoTheyWork">
+              <a className="text-decoration-none text-dark">Read More</a>
+            </Link>
+          </button>
+        </div>
+      </article>
+      <nav className="nav pb-5 mt-3 justify-content-center">
         <Link href="/">
           <a className="nav-link text-light" aria-current="page">
             Home
@@ -100,14 +199,14 @@ const Footer = () => {
             About
           </a>
         </Link>
-        <Link href="/contact">
+        <Link href="/blog">
           <a className="nav-link text-light" aria-current="page">
             Blog
           </a>
         </Link>
-        <Link href="/privacyPolicy">
+        <Link href="/login">
           <a className="nav-link text-light" aria-current="page">
-            Resources
+            Login
           </a>
         </Link>
       </nav>
