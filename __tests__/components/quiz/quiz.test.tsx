@@ -1,5 +1,5 @@
 import { screen, render } from '@testing-library/react';
-import Quiz from '../../components/quiz/quiz';
+import Quiz from '../../../components/quiz/quiz';
 import userEvent from '@testing-library/user-event';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import mockRouter from 'next-router-mock';

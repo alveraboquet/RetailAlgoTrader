@@ -65,39 +65,24 @@ const Quiz = () => {
   };
 
   return (
-    <div className="text-center">
-      <section className="text-center ps-3 pe-3">
-        <p>
-          There are thousands of resources and techniques out there for trading.
-        </p>
-        <p>
-          We understand that trying to figure out how to get started is one of
-          the most difficult steps in the process.{' '}
-        </p>
-        <p>
-          Answer all of the questions below to determine what strategies,
-          resources, and trading platforms are right for your unique situation.
-        </p>
-      </section>
-      <div className="bg-warning pb-3 pt-3">
-        <div>
-          <div className="fs-3">
-            <span>Question {currentQuestion + 1}</span>/{questions.length}
+    <div className="text-center bg-warning pb-3 pt-3">
+      <div>
+        <div className="fs-3">
+          <span>Question {currentQuestion + 1}</span>/{questions.length}
+        </div>
+        <div>{questions[currentQuestion].questionText}</div>
+      </div>
+      <div>
+        {questions[currentQuestion].answerOptions.map((answerOption) => (
+          <div className="m-3" key={answerOption.answerText}>
+            <button
+              className="btn btn-dark w-100"
+              onClick={() => handleQuestionClick(answerOption.answerCategory)}
+            >
+              {answerOption.answerText}
+            </button>
           </div>
-          <div>{questions[currentQuestion].questionText}</div>
-        </div>
-        <div>
-          {questions[currentQuestion].answerOptions.map((answerOption) => (
-            <div className="m-3" key={answerOption.answerText}>
-              <button
-                className="btn btn-dark w-100"
-                onClick={() => handleQuestionClick(answerOption.answerCategory)}
-              >
-                {answerOption.answerText}
-              </button>
-            </div>
-          ))}
-        </div>
+        ))}
       </div>
     </div>
   );
