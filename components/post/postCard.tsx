@@ -21,7 +21,7 @@ const PostCard = ({
   postPath,
 }: Props) => {
   return (
-    <article className="card h-100 m-3">
+    <article className="card h-100 m-3 bg-light">
       <figure>
         <Image
           src={imagePath}

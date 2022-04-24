@@ -1,0 +1,5 @@
+.homeBanner {
+  background-image: url('../public/images/bullTrader.webp');
+  background-size: cover;
+  background-position: 40% 50%;
+}
