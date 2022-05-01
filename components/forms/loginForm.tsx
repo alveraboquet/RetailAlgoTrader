@@ -37,8 +37,10 @@ const LoginForm = (props: deviceType) => {
           email: target.email.value,
           password: target.password.value,
         }),
+        credentials: 'same-origin',
         headers: {
           'Content-Type': 'application/json',
+          'CSRF-Token': //add csrf token somehow,
         },
         method: 'POST',
       });
