@@ -1,9 +1,56 @@
+/**
+ * Renders the Signup Form and handles submission
+ *
+ * @returns signup form with inputs: first name, last name, email, and password
+ *
+ * If data validation is successful user is redirected to the login page
+ *
+ */
+
+import React from 'react';
+import { useRouter } from 'next/router';
+
 const SignupForm = () => {
+  const router = useRouter();
+
   const handleSignupInfo = async (event: React.FormEvent) => {
     event.preventDefault();
     const formValidation = (await import('../../lib/formValidation')).default;
     const validated = formValidation(event);
-    if (validated) (event.target as HTMLFormElement).reset();
+    if (validated) {
+      const getCookieValue = (await import('../../lib/getCookieValue')).default;
+      const csrfCookieValue = getCookieValue('_csrf');
+      console.log(csrfCookieValue);
+      if (typeof csrfCookieValue !== 'string') return;
+      type SignupDetails = EventTarget & {
+        firstname: HTMLInputElement;
+        lastname: HTMLInputElement;
+        email: HTMLInputElement;
+        password: HTMLInputElement;
+      };
+      const target = event.target as SignupDetails;
+      // add error / timeout for fetch
+      const res = await fetch('http://localhost:4000/api/auth/register', {
+        body: JSON.stringify({
+          firstname: target.firstname.value,
+          lastname: target.lastname.value,
+          email: target.email.value,
+          password: target.password.value,
+        }),
+        credentials: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json',
+          'CSRF-Token': csrfCookieValue,
+          'X-Custom-Header': 'lollipop',
+        },
+        method: 'POST',
+      });
+      console.log('test');
+      (event.target as HTMLFormElement).reset();
+      const result = await res.json();
+      console.log(result);
+      router.push('/login');
+    }
   };
 
   return (
