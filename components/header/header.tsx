@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { signIn } from 'next-auth/react';
 
 const Header = () => {
   return (
@@ -45,9 +46,16 @@ const Header = () => {
                   </a>
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link href="/login">
-                  <a className="nav-link text-white active" aria-current="page">
+              <li className="nav-item btn btn-warning">
+                <Link href="/api/auth/signin">
+                  <a
+                    className="nav-link text-white active"
+                    aria-current="page"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      signIn(undefined, { callbackUrl: '/app/dashboard' });
+                    }}
+                  >
                     Login
                   </a>
                 </Link>
