@@ -47,7 +47,6 @@ const LoginForm = (props: deviceType) => {
       });
       (event.target as HTMLFormElement).reset();
       const result = await res.json();
-      console.log(result);
       router.push('/');
     }
   };
