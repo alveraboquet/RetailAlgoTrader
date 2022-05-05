@@ -1,7 +1,9 @@
 import Link from 'next/link';
-import { signIn } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 
-const Header = () => {
+const HeaderApp = () => {
+  const { data: session } = useSession();
+
   return (
     <header className="container-fluid ps-3 pe-3 bg-dark">
       <div className="row d-flex align-items-center">
@@ -9,6 +11,9 @@ const Header = () => {
           <a className="navbar-brand" href="#">
             <p className="display-3 text-white">RetailAlgoTrader</p>
           </a>
+          {session?.user && (
+            <p>Signed in as {session.user?.name ?? session.user.email}</p>
+          )}
           <button
             className="navbar-toggler"
             type="button"
@@ -26,37 +31,30 @@ const Header = () => {
           >
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link href="/">
+                <Link href="/app/dashboard">
                   <a className="nav-link text-white active" aria-current="page">
-                    Home
+                    Dashboard
                   </a>
                 </Link>
               </li>
               <li className="nav-item">
-                <Link href="/about">
+                <Link href="/app/courses/testCourse">
                   <a className="nav-link text-white active" aria-current="page">
-                    About
-                  </a>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/blog">
-                  <a className="nav-link text-white active" aria-current="page">
-                    Blog
+                    Test Course
                   </a>
                 </Link>
               </li>
               <li className="nav-item btn btn-warning">
-                <Link href="/api/auth/signin">
+                <Link href="/api/auth/signout">
                   <a
                     className="nav-link text-white active"
                     aria-current="page"
                     onClick={(e) => {
                       e.preventDefault();
-                      signIn(undefined, { callbackUrl: '/app/dashboard' });
+                      signOut({ callbackUrl: '/' });
                     }}
                   >
-                    Login
+                    Logout
                   </a>
                 </Link>
               </li>
@@ -68,4 +66,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderApp;

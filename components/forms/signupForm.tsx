@@ -20,7 +20,6 @@ const SignupForm = () => {
     if (validated) {
       const getCookieValue = (await import('../../lib/getCookieValue')).default;
       const csrfCookieValue = getCookieValue('_csrf');
-      console.log(csrfCookieValue);
       if (typeof csrfCookieValue !== 'string') return;
       type SignupDetails = EventTarget & {
         firstname: HTMLInputElement;
@@ -45,10 +44,8 @@ const SignupForm = () => {
         },
         method: 'POST',
       });
-      console.log('test');
       (event.target as HTMLFormElement).reset();
       const result = await res.json();
-      console.log(result);
       router.push('/login');
     }
   };
