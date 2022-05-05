@@ -4,22 +4,22 @@ datasource db {
 }
 
 generator client {
-  provider        = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  @db.Text
-  access_token       String?  @db.Text
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?  @db.Text
-  session_state      String?
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -35,13 +35,16 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String         @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?        @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
+  User_Chapter  User_Chapter[]
+  User_Lesson   User_Lesson[]
+  User_Course   User_Course[]
 }
 
 model VerificationToken {
@@ -50,4 +53,68 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Chapter {
+  id             Int              @id @default(autoincrement())
+  name           String           @unique
+  Lesson         Lesson[]
+  User_Chapter   User_Chapter[]
+  Course_Chapter Course_Chapter[]
+}
+
+model Lesson {
+  id          Int           @id @default(autoincrement())
+  name        String        @unique
+  chapter_id  Int
+  chapter     Chapter       @relation(fields: [chapter_id], references: [id])
+  User_Lesson User_Lesson[]
+}
+
+model User_Chapter {
+  user_id    String
+  chapter_id Int
+  completed  Boolean
+  user       User    @relation(fields: [user_id], references: [id])
+  chapter    Chapter @relation(fields: [chapter_id], references: [id])
+
+  @@id([user_id, chapter_id])
+}
+
+model User_Lesson {
+  user_id   String
+  lesson_id Int
+  completed Boolean
+  user      User    @relation(fields: [user_id], references: [id])
+  lesson    Lesson  @relation(fields: [lesson_id], references: [id])
+
+  @@id([user_id, lesson_id])
+}
+
+model Course {
+  id             Int              @id @default(autoincrement())
+  name           String           @unique
+  pro_course     Boolean
+  User_Course    User_Course[]
+  Course_Chapter Course_Chapter[]
+}
+
+model User_Course {
+  user_id   String
+  course_id Int
+  enrolled  Boolean
+  completed Boolean
+  user      User    @relation(fields: [user_id], references: [id])
+  course    Course  @relation(fields: [course_id], references: [id])
+
+  @@id([user_id, course_id])
+}
+
+model Course_Chapter {
+  course_id  Int
+  chapter_id Int
+  course     Course  @relation(fields: [course_id], references: [id])
+  chapter    Chapter @relation(fields: [chapter_id], references: [id])
+
+  @@id([course_id, chapter_id])
 }
