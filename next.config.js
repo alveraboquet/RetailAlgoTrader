@@ -73,6 +73,7 @@ const securityHeaders = [
 
 module.exports = {
   nextConfig,
+  poweredByHeader: false,
   async headers() {
     return [
       {
