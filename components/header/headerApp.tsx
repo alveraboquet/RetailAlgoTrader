@@ -44,20 +44,15 @@ const HeaderApp = () => {
                   </a>
                 </Link>
               </li>
-              <li className="nav-item btn btn-warning">
-                <Link href="/api/auth/signout">
-                  <a
-                    className="nav-link text-white active"
-                    aria-current="page"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      signOut({ callbackUrl: '/' });
-                    }}
-                  >
-                    Logout
-                  </a>
-                </Link>
-              </li>
+              <button
+                className="nav-item btn btn-warning"
+                onClick={(e) => {
+                  e.preventDefault();
+                  signOut({ callbackUrl: '/' });
+                }}
+              >
+                Logout
+              </button>
             </ul>
           </div>
         </nav>

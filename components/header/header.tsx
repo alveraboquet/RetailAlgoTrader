@@ -46,20 +46,15 @@ const Header = () => {
                   </a>
                 </Link>
               </li>
-              <li className="nav-item btn btn-warning">
-                <Link href="/api/auth/signin">
-                  <a
-                    className="nav-link text-white active"
-                    aria-current="page"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      signIn(undefined, { callbackUrl: '/app/dashboard' });
-                    }}
-                  >
-                    Login
-                  </a>
-                </Link>
-              </li>
+              <button
+                className="nav-item btn btn-warning"
+                onClick={(e) => {
+                  e.preventDefault();
+                  signIn(undefined, { callbackUrl: '/app/dashboard' });
+                }}
+              >
+                Login
+              </button>
             </ul>
           </div>
         </nav>

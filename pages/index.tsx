@@ -4,7 +4,6 @@ import Layout from '../components/layout/layout';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import Image from 'next/image';
-import SignupForm from '../components/forms/signupForm';
 import Quiz from '../components/quiz/quiz';
 import StrategyChart from '../components/charts/strategyChartContainer';
 import PostCard from '../components/post/postCard';
@@ -21,85 +20,58 @@ const Home: NextPage = () => {
         image="https://retailalgotrader.com/images/bullTraderSocial.webp"
       />
       <Layout>
-        <div className="container-fluid">
-          <div className="row">
-            <div
-              className={`${styles.homeBanner} jumbotron jumbotron-fluid bg-image col-md-6`}
-            >
-              <div className="pt-5 pb-5">
-                <div className="text-center pt-md-5 pb-5">
-                  <h1 className="text-white fs-1 text mt-5">
-                    Increase your Profitability through Algorithmic Trading
-                  </h1>
-                  <p className="text-white mt-3">
-                    Discover how to trade intelligently and sustainably
-                  </p>
-                  <button className="btn btn-warning mt-3">
-                    <Link href="/signup">
-                      <a className="text-decoration-none text-dark">
-                        Sign Up Today! No Credit Card Required
-                      </a>
-                    </Link>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="bg-light col-md-6">
-              <h2 className="text-center m-0 fs-5 p-3">
-                Begin learning how Algorithmic Trading can increase your
-                profitability and efficiency{' '}
-              </h2>
-              <div className="ps-5 pe-5 pb-3 bg-light">
-                <SignupForm></SignupForm>
-              </div>
-              <p className="text-center bg-light ps-3 pe-3 pb-3">
-                By signing up for RetailAlgoTrader, you agree to
-                RetailAlgoTrader&apos;s{' '}
-                <Link href="/termsOfService">
-                  <a>Terms of Service</a>
-                </Link>{' '}
-                &{' '}
-                <Link href="/privacyPolicy">
-                  <a>Privacy Policy</a>
+        <div className="container-fluid fs-5">
+          <div
+            className={`${styles.homeBanner} jumbotron jumbotron-fluid row vh-100 text-center`}
+          >
+            <div className="mt-md-5 pt-md-5 pt-3">
+              <h1 className="text-white fs-1 mt-md-5 pt-md-3">
+                Increase your Profitability through Algorithmic Trading
+              </h1>
+              <p className="text-white mt-3 fs-5">
+                Discover how to trade intelligently and sustainably
+              </p>
+              <button className="btn btn-warning p-md-3">
+                <Link href="/signup">
+                  <a className="text-decoration-none text-dark fs-3">
+                    Sign Up Today! No Credit Card Required
+                  </a>
                 </Link>
-                .
-              </p>
-            </div>
-          </div>
-          <div className="row text-center mt-3 mt-md-0 pt-md-5 pb-md-5 ps-md-3 pe-md-3">
-            <div className="d-none d-md-block fs-5">
-              <h2 className="fw-bold">Our Trading Philosophy</h2>
-              <p>
-                Profitable trading is not limited to Hedge Funds and Market
-                Makers. There are an infinite number of opportunities everyday
-                to extract money from the markets.
-              </p>
-              <p>
-                We focus on educating retail traders on how they can
-                intelligently and profitably trade the markets. Our specialty is
-                creating systems and algorithms to assist one&apos;s trading
-                strategies. This can range from fully automated technical
-                analysis strategies that fire their own trades to web scrapping
-                bots that text trade alerts.
-              </p>
-            </div>
-            <div className="d-md-none">
-              <h2 className="fw-bold">Our Trading Philosophy</h2>
-              <p>Profitable trading is not limited to Hedge Funds.</p>
-              <p>There are opportunities everyday for retail traders.</p>
-              <p>
-                Our team focuses on educating retail traders on how they can
-                intelligently and profitably trade the markets.
-              </p>
-              <p>
-                Our specialty is creating systems and algorithms to assist
-                one&apos;s trading strategies.
-              </p>
-              <p>
-                This can range from fully automated technical analysis
-                strategies that fire their own trades to web scrapping bots that
-                text trade alerts.
-              </p>
+              </button>
+              <div className="text-white d-none d-md-block fs-5 mt-5">
+                <h2>Our Trading Philosophy</h2>
+                <p>
+                  Profitable trading is not limited to Hedge Funds and Market
+                  Makers. There are an infinite number of opportunities everyday
+                  to extract money from the markets.
+                </p>
+                <p>
+                  We focus on educating retail traders on how they can
+                  intelligently and profitably trade the markets. Our specialty
+                  is creating systems and algorithms to assist one&apos;s
+                  trading strategies. This can range from fully automated
+                  technical analysis strategies that fire their own trades to
+                  web scrapping bots that text trade alerts.
+                </p>
+              </div>
+              <div className="d-md-none text-white mt-3">
+                <h2>Our Trading Philosophy</h2>
+                <p>Profitable trading is not limited to Hedge Funds.</p>
+                <p>There are opportunities everyday for retail traders.</p>
+                <p>
+                  Our team focuses on educating retail traders on how they can
+                  intelligently and profitably trade the markets.
+                </p>
+                <p>
+                  Our specialty is creating systems and algorithms to assist
+                  one&apos;s trading strategies.
+                </p>
+                <p>
+                  This can range from fully automated technical analysis
+                  strategies that fire their own trades to web scrapping bots
+                  that text trade alerts.
+                </p>
+              </div>
             </div>
           </div>
           <div className="row bg-light pt-md-4 pb-md-4 d-md-flex align-items-center">
