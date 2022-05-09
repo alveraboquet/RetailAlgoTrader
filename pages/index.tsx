@@ -25,7 +25,7 @@ const Home: NextPage = () => {
             className={`${styles.homeBanner} jumbotron jumbotron-fluid row vh-100 text-center`}
           >
             <div className="mt-md-5 pt-md-5 pt-3">
-              <h1 className="text-white fs-1 mt-md-5 pt-md-3">
+              <h1 className="text-white fs-1 mt-md-5 pt-md-3 fw-bold">
                 Increase your Profitability through Algorithmic Trading
               </h1>
               <p className="text-white mt-3 fs-5">
@@ -39,7 +39,7 @@ const Home: NextPage = () => {
                 </Link>
               </button>
               <div className="text-white d-none d-md-block fs-5 mt-5">
-                <h2>Our Trading Philosophy</h2>
+                <h2 className="fw-bold">Our Trading Philosophy</h2>
                 <p>
                   Profitable trading is not limited to Hedge Funds and Market
                   Makers. There are an infinite number of opportunities everyday
@@ -55,7 +55,7 @@ const Home: NextPage = () => {
                 </p>
               </div>
               <div className="d-md-none text-white mt-3">
-                <h2>Our Trading Philosophy</h2>
+                <h2 className="fw-bold">Our Trading Philosophy</h2>
                 <p>Profitable trading is not limited to Hedge Funds.</p>
                 <p>There are opportunities everyday for retail traders.</p>
                 <p>
@@ -182,8 +182,11 @@ const Home: NextPage = () => {
               </button>
             </div>
           </div>
-          <div className="text-center ps-md-3 pe-md-3 fs-5">
-            <h2 className="m-3 fw-bold">
+          <div
+            className="text-center ps-md-3 pe-md-3 fs-5"
+            style={{ color: '#3c484e' }}
+          >
+            <h2 className="m-3 fw-bold text-dark">
               See how various strategies performed in recent markets
             </h2>
             <p>
