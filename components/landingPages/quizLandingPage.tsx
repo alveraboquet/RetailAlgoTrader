@@ -1,3 +1,4 @@
+/* eslint-disable security/detect-object-injection */
 /**
  * This is a general template for the quiz landing pages
  * Information specific to each landing page is passed in as props
@@ -10,7 +11,7 @@ interface Props {
   title: string;
   description: string;
   imagePath: string;
-  curriculum: object;
+  curriculum: string[];
   similar1Course: string;
   similar2Course: string;
 }
@@ -23,15 +24,7 @@ const QuizLandingPage = ({
   similar1Course,
   similar2Course,
 }: Props) => {
-  const chapters = [];
-
-  for (const chapter in curriculum) {
-    chapters.push(
-      <p key={chapter} className="bg-secondary rounded">
-        {chapter}
-      </p>
-    );
-  }
+  const chapters = curriculum;
 
   return (
     <div className="p-3">
@@ -47,7 +40,14 @@ const QuizLandingPage = ({
         />
       </figure>
       <p>Check out the curriculum for {title}</p>
-      <div className="ps-4 pe-4">{chapters}</div>
+      {chapters.map((chapter) => (
+        <div
+          key={chapter}
+          className="ps-4 pe-4 mb-3 bg-secondary rounded text-white w-75 mx-auto"
+        >
+          {chapter}
+        </div>
+      ))}
       <div className="p-3">
         <SimilarCourseCard
           title={coursesData[similar1Course].title}

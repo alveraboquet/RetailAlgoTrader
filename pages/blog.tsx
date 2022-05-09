@@ -14,13 +14,13 @@ const Blog: NextPage = () => {
         description="A comprehensive library of guides and articles created by the RetailAlgoTrader team. 
         Explore in-depth guides that cover topics ranging from basic trading algorithms in Pinescript to webscrapping 
         bots with Python"
-        image="https://retailalgotrader.com/images/bulltrader.webp"
+        image="https://retailalgotrader.com/images/website/bulltrader.webp"
       />
       <Layout>
         <div className="row">
           <div className="col-md-4 mb-3">
             <PostCard
-              imagePath="/images/genericStock.webp"
+              imagePath="/images/website/genericStock.webp"
               imageHeight={1306}
               imageWidth={2295}
               imageAlt="Picture of market candles"
@@ -32,7 +32,7 @@ const Blog: NextPage = () => {
           </div>
           <div className="col-md-4 mb-3">
             <PostCard
-              imagePath="/images/genericStock.webp"
+              imagePath="/images/website/genericStock.webp"
               imageHeight={1306}
               imageWidth={2295}
               imageAlt="Picture of market candles"
@@ -44,7 +44,7 @@ const Blog: NextPage = () => {
           </div>
           <div className="col-md-4 mb-3">
             <PostCard
-              imagePath="/images/genericStock.webp"
+              imagePath="/images/website/genericStock.webp"
               imageHeight={1306}
               imageWidth={2295}
               imageAlt="Picture of market candles"
@@ -58,7 +58,7 @@ const Blog: NextPage = () => {
         <div className="row mb-5 ">
           <div className="col-md-4 mb-3">
             <PostCard
-              imagePath="/images/genericStock.webp"
+              imagePath="/images/website/genericStock.webp"
               imageHeight={1306}
               imageWidth={2295}
               imageAlt="Picture of market candles"
@@ -70,7 +70,7 @@ const Blog: NextPage = () => {
           </div>
           <div className="col-md-4 mb-3">
             <PostCard
-              imagePath="/images/genericStock.webp"
+              imagePath="/images/website/genericStock.webp"
               imageHeight={1306}
               imageWidth={2295}
               imageAlt="Picture of market candles"
@@ -82,7 +82,7 @@ const Blog: NextPage = () => {
           </div>
           <div className="col-md-4 mb-3">
             <PostCard
-              imagePath="/images/genericStock.webp"
+              imagePath="/images/website/genericStock.webp"
               imageHeight={1306}
               imageWidth={2295}
               imageAlt="Picture of market candles"

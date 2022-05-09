@@ -1,9 +1,22 @@
-const FuturesWithQuantconnect = () => {
+import QuizLandingPage from '../../components/landingPages/quizLandingPage';
+import Layout from '../../components/layout/layout';
+import coursesData from '../../components/landingPages/coursesData';
+
+const FuturesWithQuantconnectLandingPage = () => {
   return (
-    <div>
-      <p>Futures with Quantconnect</p>
+    <div className="text-center">
+      <Layout>
+        <QuizLandingPage
+          title={coursesData.futuresWithQuantconnect.title}
+          description={coursesData.futuresWithQuantconnect.longDescription}
+          imagePath={coursesData.futuresWithQuantconnect.imagePath}
+          curriculum={coursesData.futuresWithQuantconnect.curriculum}
+          similar1Course="algorithmicTradingAcademy"
+          similar2Course="marketResearchWithPython"
+        />
+      </Layout>
     </div>
   );
 };
 
-export default FuturesWithQuantconnect;
+export default FuturesWithQuantconnectLandingPage;

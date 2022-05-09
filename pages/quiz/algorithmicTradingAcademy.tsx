@@ -1,19 +1,22 @@
+import coursesData from '../../components/landingPages/coursesData';
 import QuizLandingPage from '../../components/landingPages/quizLandingPage';
 import Layout from '../../components/layout/layout';
 
-const TradingAcademyLandingPage = () => {
+const AlgorithmicTradingAcademyLandingPage = () => {
   return (
     <div className="text-center">
       <Layout>
         <QuizLandingPage
-          title="Algorithmic Trading Academy"
-          description="Algorithmic Trading Academy Description"
-          similar1Course="algorithmicTradingAcademy"
-          similar2Course="equitiesAndCryptoWithTradingview"
+          title={coursesData.algorithmicTradingAcademy.title}
+          description={coursesData.algorithmicTradingAcademy.longDescription}
+          imagePath={coursesData.algorithmicTradingAcademy.imagePath}
+          curriculum={coursesData.algorithmicTradingAcademy.curriculum}
+          similar1Course="forexTradingWithMT4"
+          similar2Course="futuresWithQuantconnect"
         />
       </Layout>
     </div>
   );
 };
 
-export default TradingAcademyLandingPage;
+export default AlgorithmicTradingAcademyLandingPage;
