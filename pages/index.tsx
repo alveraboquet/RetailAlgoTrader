@@ -17,7 +17,7 @@ const Home: NextPage = () => {
         schemaType="website"
         title="Algorithmic Trading for Retail Traders"
         description="Discover how to intelligently and profitably trade as a retail algorithmic trader."
-        image="https://retailalgotrader.com/images/bullTraderSocial.webp"
+        image="https://retailalgotrader.com/images/website/bullTraderSocial.webp"
       />
       <Layout>
         <div className="container-fluid fs-5">
@@ -105,7 +105,7 @@ const Home: NextPage = () => {
               <article className="card h-100 ms-3 me-3 bg-dark text-white">
                 <figure>
                   <Image
-                    src="/images/natureInvesting.webp"
+                    src="/images/website/natureInvesting.webp"
                     className="card-img-top"
                     height={1306}
                     width={2295}
@@ -125,7 +125,7 @@ const Home: NextPage = () => {
               <article className="card h-100 ms-3 me-3 bg-dark text-white">
                 <figure>
                   <Image
-                    src="/images/daytrading.webp"
+                    src="/images/website/daytrading.webp"
                     className="card-img-top"
                     height={1306}
                     width={2295}
@@ -146,7 +146,7 @@ const Home: NextPage = () => {
               <article className="card h-100 ms-3 me-3 bg-dark text-white">
                 <figure>
                   <Image
-                    src="/images/businessPlanning.webp"
+                    src="/images/website/businessPlanning.webp"
                     className="card-img-top"
                     height={1306}
                     width={2295}
@@ -277,7 +277,7 @@ const Home: NextPage = () => {
           </h2>
           <div className="col-md-4">
             <PostCard
-              imagePath="/images/genericStock.webp"
+              imagePath="/images/website/genericStock.webp"
               imageHeight={1306}
               imageWidth={2295}
               imageAlt="Picture of market candles"
@@ -289,7 +289,7 @@ const Home: NextPage = () => {
           </div>
           <div className="col-md-4 mt-3 mt-md-0">
             <PostCard
-              imagePath="/images/genericStock.webp"
+              imagePath="/images/website/genericStock.webp"
               imageHeight={1306}
               imageWidth={2295}
               imageAlt="Picture of market candles"
@@ -301,7 +301,7 @@ const Home: NextPage = () => {
           </div>
           <div className="col-md-4 mt-3 mt-md-0">
             <PostCard
-              imagePath="/images/genericStock.webp"
+              imagePath="/images/website/genericStock.webp"
               imageHeight={1306}
               imageWidth={2295}
               imageAlt="Picture of market candles"

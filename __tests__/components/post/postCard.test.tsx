@@ -5,7 +5,7 @@ describe('<PostCard />', () => {
   test('renders correctly', () => {
     render(
       <PostCard
-        imagePath="/images/genericStock.webp"
+        imagePath="/images/website/genericStock.webp"
         imageHeight={1306}
         imageWidth={2295}
         imageAlt="Picture of market candles"

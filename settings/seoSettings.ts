@@ -20,7 +20,7 @@ const settings = {
     description:
       'Discover how to intelligently and profitably trade as a retail algorithmic trader',
     social: {
-      graphic: 'https://ezmto.com/images/bullTraderSocial.webp',
+      graphic: 'https://ezmto.com/images/website/bullTraderSocial.webp',
       twitter: 'RetailAlgoTrade',
     },
   },
