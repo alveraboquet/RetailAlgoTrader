@@ -1,48 +1,193 @@
 import { useState, useEffect } from 'react';
 import { useSession, getSession } from 'next-auth/react';
 import LayoutApp from '../../components/layout/layoutApp';
-import AccessDenied from '../../components/auth/accessDenied';
 import { NextPageContext } from 'next';
+import CourseCard from '../../components/course/courseCard';
+import coursesData from '../../components/landingPages/coursesData';
 
 const Dashboard = () => {
   const { data: session } = useSession();
-  const [data, setData] = useState('');
-  console.log(session?.user?.email);
+  const [enrolledCourses, setEnrolledCourses] = useState([
+    { course_id: 0, enrolled: false },
+  ]);
+  const [completedChapters, setCompletedChapters] = useState([
+    { chapter_id: 0, completed: false, course_id: 0 },
+  ]);
+  const [coursesPercentComplete, setCoursesPercentComplete] = useState([
+    { courseID: 0, percentComplete: 0 },
+  ]);
 
-  // Fetch content from protected route
+  // Fetch content from protected routes with custom header
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchEnrolledCourses = async () => {
       try {
-        const res = await fetch('/api/app/user/cl2tdnnv30071db0ayrgj9ts0', {
+        const res = await fetch('/api/app/courses/enrolledCourses', {
           headers: {
             'X-Custom-Header': 'lollipop',
           },
         });
         const data = await res.json();
-        if (data.name) {
-          setData(data.name);
+        if (data) {
+          setEnrolledCourses(data);
           return;
         }
-        setData('Failed to load data');
+        setEnrolledCourses([]);
       } catch (err) {
-        setData('Failed to load data');
+        setEnrolledCourses([]);
       }
     };
-    fetchData();
+    const fetchCompletedChapters = async () => {
+      try {
+        const res = await fetch('/api/app/chapters/completedChapters', {
+          headers: {
+            'X-Custom-Header': 'lollipop',
+          },
+        });
+        const data = await res.json();
+        if (data) {
+          setCompletedChapters(data);
+          return;
+        }
+        setCompletedChapters([]);
+      } catch (err) {
+        setCompletedChapters([]);
+      }
+    };
+    fetchEnrolledCourses();
+    fetchCompletedChapters();
   }, [session]);
 
-  /*
-  // If no session exists, display access denied message
-  if (!session) {
-    return <AccessDenied />;
-  }
-  */
+  // Calculate percent complete for each course
+  useEffect(() => {
+    // fetchCompletedChapters returns array of objects ordered by descending course_id
+    // Max course_id will be in first object
+    const numCourses = completedChapters[0].course_id;
+    setCoursesPercentComplete([]);
+    for (let i = 1; i <= numCourses; i++) {
+      const totalChaptersByCourse = completedChapters
+        .filter((chapter) => chapter.course_id === i)
+        .map((chapter) => chapter.chapter_id);
+      const completedChaptersByCourse = completedChapters
+        .filter((chapter) => chapter.course_id === i)
+        .filter((chapter) => chapter.completed)
+        .map((chapter) => chapter.chapter_id);
+      const coursePercentComplete =
+        (completedChaptersByCourse.length / totalChaptersByCourse.length) * 100;
+      setCoursesPercentComplete((percentComplete) => [
+        ...percentComplete,
+        { courseID: i, percentComplete: coursePercentComplete },
+      ]);
+    }
+  }, [completedChapters]);
 
-  // If session exists, display content
+  const getPercentComplete = (courseID: number) => {
+    const coursePercentComplete = coursesPercentComplete.find(
+      (course) => course.courseID === courseID
+    );
+    if (coursePercentComplete) return coursePercentComplete.percentComplete;
+    else return 0;
+  };
+
+  const getCourseEnrolled = (courseID: number) => {
+    const courseEnrolled = enrolledCourses.find(
+      (course) => course.course_id === courseID
+    );
+    if (courseEnrolled) return courseEnrolled.enrolled;
+    else return false;
+  };
+
   return (
     <LayoutApp>
-      <h1>Protected Page</h1>
-      <p>{data}</p>
+      {session?.user && (
+        <p className="text-end">
+          Signed in as {session.user?.name ?? session.user.email}
+        </p>
+      )}
+      <h1>Course Catalog</h1>
+      <div className="row">
+        <div className="col-4">
+          <CourseCard
+            imagePath={coursesData.tradingAcademy.imagePath}
+            imageHeight={1414}
+            imageWidth={2121}
+            imageAlt=""
+            cardTitle={coursesData.tradingAcademy.title}
+            cardText={coursesData.tradingAcademy.shortDescription}
+            postPath="/app/courses/tradingAcademy"
+            enrolled={getCourseEnrolled(1)}
+            percentComplete={getPercentComplete(1)}
+          ></CourseCard>
+        </div>
+        <div className="col-4">
+          <CourseCard
+            imagePath={coursesData.algorithmicTradingAcademy.imagePath}
+            imageHeight={1055}
+            imageWidth={1920}
+            imageAlt=""
+            cardTitle={coursesData.algorithmicTradingAcademy.title}
+            cardText={coursesData.algorithmicTradingAcademy.shortDescription}
+            postPath="/app/courses/tradingAcademy"
+            enrolled={getCourseEnrolled(2)}
+            percentComplete={getPercentComplete(2)}
+          ></CourseCard>
+        </div>
+        <div className="col-4">
+          <CourseCard
+            imagePath={coursesData.equitiesAndCryptoWithTradingview.imagePath}
+            imageHeight={358}
+            imageWidth={1304}
+            imageAlt=""
+            cardTitle={coursesData.equitiesAndCryptoWithTradingview.title}
+            cardText={
+              coursesData.equitiesAndCryptoWithTradingview.shortDescription
+            }
+            postPath="/app/courses/tradingAcademy"
+            enrolled={getCourseEnrolled(3)}
+            percentComplete={getPercentComplete(3)}
+          ></CourseCard>
+        </div>
+      </div>
+      <div className="row mt-5 mb-5">
+        <div className="col-4">
+          <CourseCard
+            imagePath={coursesData.forexTradingWithMT4.imagePath}
+            imageHeight={1414}
+            imageWidth={2121}
+            imageAlt=""
+            cardTitle={coursesData.forexTradingWithMT4.title}
+            cardText={coursesData.forexTradingWithMT4.shortDescription}
+            postPath="/app/courses/tradingAcademy"
+            enrolled={getCourseEnrolled(4)}
+            percentComplete={getPercentComplete(4)}
+          ></CourseCard>
+        </div>
+        <div className="col-4">
+          <CourseCard
+            imagePath={coursesData.futuresWithQuantconnect.imagePath}
+            imageHeight={1414}
+            imageWidth={2121}
+            imageAlt=""
+            cardTitle={coursesData.futuresWithQuantconnect.title}
+            cardText={coursesData.futuresWithQuantconnect.shortDescription}
+            postPath="/app/courses/tradingAcademy"
+            enrolled={getCourseEnrolled(5)}
+            percentComplete={getPercentComplete(5)}
+          ></CourseCard>
+        </div>
+        <div className="col-4">
+          <CourseCard
+            imagePath={coursesData.marketResearchWithPython.imagePath}
+            imageHeight={1414}
+            imageWidth={2121}
+            imageAlt=""
+            cardTitle={coursesData.marketResearchWithPython.title}
+            cardText={coursesData.marketResearchWithPython.shortDescription}
+            postPath="/app/courses/tradingAcademy"
+            enrolled={getCourseEnrolled(6)}
+            percentComplete={getPercentComplete(6)}
+          ></CourseCard>
+        </div>
+      </div>
     </LayoutApp>
   );
 };
