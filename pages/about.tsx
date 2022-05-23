@@ -4,11 +4,11 @@ import Image from 'next/image';
 const About = () => {
   return (
     <Layout>
-      <div className="container fs-5" style={{ color: '#3c484e' }}>
+      <article className="container fs-5" style={{ color: '#3c484e' }}>
         <h1 className="mt-3 fw-bold text-dark text-center">
           About RetailAlgoTrading
         </h1>
-        <div className="row d-flex align-items-center text-center">
+        <section className="row d-flex align-items-center text-center">
           <div className="col-md-6">
             <h2 className="mt-3 fw-bold text-dark">
               Why was RetailAlgoTrading created?
@@ -45,8 +45,8 @@ const About = () => {
               />
             </figure>
           </div>
-        </div>
-        <div className="row d-flex align-items-center text-center">
+        </section>
+        <section className="row d-flex align-items-center text-center">
           <div className="d-none d-md-block col-md-6">
             <figure>
               <Image
@@ -87,8 +87,8 @@ const About = () => {
               />
             </figure>
           </div>
-        </div>
-        <div className="row">
+        </section>
+        <section className="row">
           <h2 className="fw-bold text-dark">Our Mission</h2>
           <p>
             We aim to be your go-to partner for anything related to trading. We
@@ -99,8 +99,8 @@ const About = () => {
             We will generate value for our clients by providing significant time
             savings and increased knowledge.
           </p>
-        </div>
-        <div className="row">
+        </section>
+        <section className="row">
           <h2 className="fw-bold text-dark">Our Values</h2>
           <p>
             We have three primary values our business is built around in order
@@ -109,8 +109,8 @@ const About = () => {
           <p>1. Inform about Risks and Rewards</p>
           <p>2. Sustain Client Capital</p>
           <p>3. Generate Client Profitability</p>
-        </div>
-        <div className="row">
+        </section>
+        <section className="row">
           <h2 className="fw-bold text-dark">Our Long-Term Goals</h2>
           <h3 className="fw-bold text-dark">Increase Content</h3>
           <p>
@@ -141,8 +141,8 @@ const About = () => {
             This will ensure we can always provide accurate and up-to-date
             resources to our users.
           </p>
-        </div>
-      </div>
+        </section>
+      </article>
     </Layout>
   );
 };

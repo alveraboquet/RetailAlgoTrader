@@ -9,7 +9,7 @@ const Layout = ({ children }: Props) => {
   return (
     <>
       <HeaderApp />
-      <main>{children}</main>
+      <main className="container fs-5">{children}</main>
       <FooterApp />
     </>
   );
