@@ -8,7 +8,7 @@ interface Props {
   imageAlt: string;
   cardTitle: string;
   cardText: string;
-  postPath: string;
+  coursePath: string;
   enrolled: boolean;
   percentComplete: number;
 }
@@ -20,7 +20,7 @@ const CourseCard = ({
   imageAlt,
   cardTitle,
   cardText,
-  postPath,
+  coursePath,
   enrolled,
   percentComplete,
 }: Props) => {
@@ -39,7 +39,7 @@ const CourseCard = ({
         <h3 className="card-title">{cardTitle}</h3>
         <p className="card-text">{cardText}</p>
         <button className="btn btn-warning w-100">
-          <Link href={postPath}>
+          <Link href={coursePath}>
             <a className="text-decoration-none text-dark">
               {enrolled ? 'Continue Course' : 'Begin Course'}
             </a>
