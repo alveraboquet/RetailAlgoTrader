@@ -75,7 +75,10 @@ const Dashboard = () => {
         (completedChaptersByCourse.length / totalChaptersByCourse.length) * 100;
       setCoursesPercentComplete((percentComplete) => [
         ...percentComplete,
-        { courseID: i, percentComplete: coursePercentComplete },
+        {
+          courseID: i,
+          percentComplete: coursePercentComplete ? coursePercentComplete : 0,
+        },
       ]);
     }
   }, [completedChapters]);
@@ -113,7 +116,7 @@ const Dashboard = () => {
             imageAlt=""
             cardTitle={coursesData.tradingAcademy.title}
             cardText={coursesData.tradingAcademy.shortDescription}
-            postPath="/app/courses/tradingAcademy"
+            coursePath="/app/courses/tradingAcademy"
             enrolled={getCourseEnrolled(1)}
             percentComplete={getPercentComplete(1)}
           ></CourseCard>
@@ -126,7 +129,7 @@ const Dashboard = () => {
             imageAlt=""
             cardTitle={coursesData.algorithmicTradingAcademy.title}
             cardText={coursesData.algorithmicTradingAcademy.shortDescription}
-            postPath="/app/courses/tradingAcademy"
+            coursePath="/app/courses/tradingAcademy"
             enrolled={getCourseEnrolled(2)}
             percentComplete={getPercentComplete(2)}
           ></CourseCard>
@@ -141,7 +144,7 @@ const Dashboard = () => {
             cardText={
               coursesData.equitiesAndCryptoWithTradingview.shortDescription
             }
-            postPath="/app/courses/tradingAcademy"
+            coursePath="/app/courses/tradingAcademy"
             enrolled={getCourseEnrolled(3)}
             percentComplete={getPercentComplete(3)}
           ></CourseCard>
@@ -156,7 +159,7 @@ const Dashboard = () => {
             imageAlt=""
             cardTitle={coursesData.forexTradingWithMT4.title}
             cardText={coursesData.forexTradingWithMT4.shortDescription}
-            postPath="/app/courses/tradingAcademy"
+            coursePath="/app/courses/tradingAcademy"
             enrolled={getCourseEnrolled(4)}
             percentComplete={getPercentComplete(4)}
           ></CourseCard>
@@ -169,7 +172,7 @@ const Dashboard = () => {
             imageAlt=""
             cardTitle={coursesData.futuresWithQuantconnect.title}
             cardText={coursesData.futuresWithQuantconnect.shortDescription}
-            postPath="/app/courses/tradingAcademy"
+            coursePath="/app/courses/tradingAcademy"
             enrolled={getCourseEnrolled(5)}
             percentComplete={getPercentComplete(5)}
           ></CourseCard>
@@ -182,7 +185,7 @@ const Dashboard = () => {
             imageAlt=""
             cardTitle={coursesData.marketResearchWithPython.title}
             cardText={coursesData.marketResearchWithPython.shortDescription}
-            postPath="/app/courses/tradingAcademy"
+            coursePath="/app/courses/tradingAcademy"
             enrolled={getCourseEnrolled(6)}
             percentComplete={getPercentComplete(6)}
           ></CourseCard>
