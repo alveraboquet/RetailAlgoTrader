@@ -16,6 +16,7 @@
     "bootstrap-icons": "^1.8.1",
     "chart.js": "^3.7.1",
     "isomorphic-dompurify": "^0.18.0",
+    "msw": "^0.41.0",
     "next": "12.1.5",
     "next-auth": "^4.3.4",
     "next-router-mock": "^0.6.7",
@@ -23,7 +24,8 @@
     "pg-promise": "^10.11.1",
     "react": "18.0.0",
     "react-chartjs-2": "^4.1.0",
-    "react-dom": "18.0.0"
+    "react-dom": "18.0.0",
+    "whatwg-fetch": "^3.6.2"
   },
   "devDependencies": {
     "@testing-library/dom": "^8.13.0",
@@ -50,5 +52,8 @@
     "ts-jest": "^27.1.4",
     "ts-node": "^10.7.0",
     "typescript": "4.6.3"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
