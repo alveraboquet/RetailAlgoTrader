@@ -1,0 +1,162 @@
+import LessonLayout from '../../lessonLayout';
+import Image from 'next/image';
+
+export const meta = {
+  author: 'Rich Haines',
+};
+
+# Trading the COT Report
+
+The Commitment of Traders Report is put out by the (Commodity Futures Trading Commission)
+[https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm] every Friday at 2:30 pm EST. It records the net long and
+short positions in Futures taken by speculative traders (retail traders and hedge funds) and commercial traders (banks) from
+the previous week.
+
+Trading the COT report is a medium-term to long-term strategy. While the report is based upon futures it can be used to
+trade other assets such as spot Forex or market index ETFs such as SPY. In this example we will be using the report
+to trade SPY.
+
+## Acquiring the COT Report
+
+The COT report can be found on (Commodity Futures Trading Commission's website)
+[https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm]. Scroll down to 'Current Legacy Reports' and click
+on 'Short Format' under 'Futures Only' for the 'Chicago Board Options Exchange' row.
+
+This opens the most recent COT report. Past COT reports can be found (here)
+[https://www.cftc.gov/MarketReports/CommitmentsofTraders/HistoricalViewable/index.htm]. This is useful for backtesting.
+This will contain data for all kinds of different futures ranging from butter to the Australian Dollar. We are interested
+in the "S&P 500 Consolidated (CFTC ID 13874+). This table is the aggregate of positions in the “CME S&P 500 Stock Index
+(CFTC ID 138741)” and the “CME E-Mini S&P 500 Stock Index (CFTC ID 13874A)” contracts.
+
+The "S&P 500 Consolidated" numbers are a great summary of the positions in the S&P500 taken by different market players.
+
+## Understanding the COT Report
+
+There is a lot of information included in the COT report but once you understand what you are looking at it is actually
+fairly simple.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/fundamentalAnalysisStrategies/cotReport.webp"
+    height={614}
+    width={1292}
+    alt=""
+  />
+  <figcaption>Example S&P 500 Consolidated COT</figcaption>
+</figure>
+
+- Commercial: Large corporations that use futures to hedge themselves from market fluctuations
+- Non-Commercial: Large retail traders, hedge funds, and financial institutions that speculativly trade
+- Nonreportable Positions: Number of open contracts that are not required to be reported to CFTC (typically small retail traders)
+- Long: Number of long contracts reported to the CFTC
+- Short: Number of short contracts reported to the CFTC
+- Open Interest: Number of open contracts
+
+## How to trade the COT report
+
+When trading the COT report there are two categories you really want to pay attention to. One is the Commercial long vs short
+numbers and the other is the Non-Commercial long vs short numbers.
+
+### Commercial Institutions
+
+Commerical institutions are historically bullish at market bottoms and bearish at market tops. They are not interested in
+making a profit but rather prefer to protect their investments from market fluctuations.
+
+### Non-Commercial Institutions
+
+Non-Commercial institutions are purely interested in making a profit and therefore they tend to trend follow. If price is
+trending upwards they will continue to buy until the uptrend reverses direction and vice versa for a downtrend. This means
+that non-commercial institutions are historically very bullish at market tops and very bearish at market bottoms.
+
+### Charting the COT Report
+
+(barchart.com)[https://www.barchart.com/futures/commitment-of-traders] containes a very useful feature for plotting the
+COT data. This allows quick and easy identification of long and short extremes. We will be using the S&P 500 E-Mini (ES)
+chart to identify extreme longs and shorts.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/fundamentalAnalysisStrategies/cotChart.webp"
+    height={2034}
+    width={2134}
+    alt=""
+  />
+  <figcaption>Example ES COT Chart</figcaption>
+</figure>
+
+The primary chart shows the trading price of S&P 500 E-Mini futures. At the bottom of the chart are two smaller charts.
+The top one is labeled COTLC. This is the graph for the Commitments of Traders Report and is what we are interested in.
+The other graph labeled COTFTR can be closed.
+
+The red line represents the Commercials. The green line represents the Non-Commercials. The blue line represents the
+Small Speculators. We are not too interested in the blue line as this is commonly referred to as the dumb money. It is
+small retail traders that frequently do not know what they are doing.
+
+### Entry Conditions
+
+The ideal time to enter a trade is when the Commercials and the Non-Commercials are at an extreme. If the majority of the
+Commercials are long and the majority of the Non-Commercials are short this is a good indication that the market is at a
+bottom and poised for a reversal. This would be a great time to enter a long trade.
+
+If the majority of the Commercials are short and the majority of the Non-Commercials are long this is a good indication that
+the market is at a top and poised for a reversal. This would be a great time to enter a short trade.
+
+### Exit Conditions
+
+There are a couple of potential exit conditions you can use. One is to hold the trade until Commercials and Non-Commercials
+return to a state where their net long and short positions are roughly equal. This option will result in more winning trades
+but the trades will not be as profitable.
+
+The other option is hold the trade until Commercials and Non-Commercials swap extremes. So if you entered a trade because
+the Commercials were net long and the Non-Commercials were net short you would hold the trade until the Commercials were
+net short and the non-commercials were net long. This method will have fewer winning trades as sometimes the Commercials
+and Non-Commercials will not always swing to the opposite extreme. But the winning trades are typically much larger.
+
+### Example
+
+In our example we will be looking at two potential trades that occurred over the past two years on the S&P 500 E-Mini
+chart. Remember that the red line = Commercials and the blue line = Non-Commercials. Also while our chart shows the S&P500
+500 E-Mini Future we will actually be trading the SPY ETF. If you compare the 2-year SPY ETF chart on TradingView with
+this S&P 500 E-Mini you will see that they closely resemble each other. (Unrelated but this behavior where similar assets
+tend to follow each other can lead to cointegration opportunities).
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/fundamentalAnalysisStrategies/cotChartTrades.webp"
+    height={1219}
+    width={2418}
+    alt=""
+  />
+  <figcaption>Example ES COT Chart</figcaption>
+</figure>
+
+The first example is demonstrated by the vertical orange lines. We can see that from the period 07/07/2020 to 09/03/2020
+Commercials were significantly net long while Non-Commercials were net short. This is the perfect time to take a
+short trade on SPY. You can see that after 09/03/2020 the markets took a month-long downturn. At 09/24/2020 both the Commercials
+and the Non-Commercials returned to the center. This is where we would exit our trade for some nice profit (indicated by
+the first green line).
+
+The second example is demonstrated by the vertical purple lines. We can see that from the period 11/01/2021 to 01/04/2021
+the Commercials become more and more short while the Non-Commercials became more and more long. This would indicate it
+is a good opportunity to take a short trade on SPY. At 01/04/2022 the market began a significant two-month downturn. We would
+hold this trade until 03/22/2022 when the Commercials and Non-Commercials returned to the center. This trade would result
+in some decent profit.
+
+One of the downsides of using the COT to trade is that the info from the report lags behind the markets by a week. We can see
+this with our second trade. Starting on 03/15/2022 the market begins a sharp upturn. Unfortunately this is not reflected in
+our COT data until the following week. Almost half of our potential gains were wiped out by this lag. This is why many traders
+use other exit methods such as trailing stops and RSI.
+
+## Conclusion
+
+A great longer-term strategy if you do not have the time to watch the charts during the day or have not taken our algorithmic
+trading courses yet. Working with this strategy will help develop your understanding of the market and how different players
+perceive different market conditions.
+
+Developing a web-scrapping bot with Python is a fantastic way to automate this strategy so that you do not need to read
+through a lengthy report every Friday afternoon. Some traders have even created their own indicators based on the COT
+report to minimize the effort required on their part.
+
+export default ({ children }) => (
+  <LessonLayout meta={meta}>{children}</LessonLayout>
+);

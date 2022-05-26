@@ -1,0 +1,56 @@
+import LessonLayout from '../../lessonLayout';
+
+export const meta = {
+  author: 'Rich Haines',
+};
+
+# Overview of Backtesting
+
+## What is Backtesting
+
+Backtesting is one of the most important concepts in trading.
+
+It is the method used to determine if your strategy will be profitable over the long term,
+in what market conditions it performs well, and when the strategy has become unprofitable and needs to be shut down.
+
+Learning how to properly backtest will be one of the most important lessons in this course. Backtesting is vital to ensuring
+that you understand your strategy and have the confidence to trust your strategy.
+
+Backtesting is a fairly straight-forward procedure that is unfortunately very difficult to perform correctly.
+Before you can begin backtesting you must have a full trading strategy developed. This trading strategy must have entry rules,
+exit rules, and risk-management rules.
+
+These rules must be very clear and rigid rules. When backtesting you want to eliminate as much subjectivity as possible. There should
+not be instances where you are asking yourself "Would I take this trade or not?". It should be very evident based on your
+trading system's rules whether or not you would enter the trade.
+
+We will use the Bollinger Band with Engulfing Bar mean reversion strategy discussed previously.
+
+Entry Rules:
+
+- Price reaches outside of the upper or lower Bollinger Band (It does not need to close outside of the band)
+- The following candlestick is an engulfing bar that is at least twice as large as the previous candlestick that
+  broke outside of the band.
+- The close of the engulfing bar is at least 3/4 of the way up the candlestick if it is a bullish signal and at
+  least 3/4 of the way down the candlestick if it is a bearish signal.
+- The entry price is not within 1 STD of the moving average.
+
+Exit Rules:
+
+- The stoploss will be placed at 0.25 ATR (Average True Range) from the high of the candlestick that broke the band (if a bearish signal)
+  or the low of the candlestick that broke the band (if a bullish signal)
+- There will be one take profit that dynamically follows the moving average. Sell 50% of your position at this point.
+- There will be second take profit that dynamically follows the opposite bollinger band. Sell the other 50% of you position at
+  this point.
+- After hitting the first take profit move your stoploss to your entry price
+
+Risk Managment Rules:
+
+- Every trade will risk 2% of your capital.
+- Max allowed drawdown will be 20%.
+
+## Who needs to perform Backtesting?
+
+export default ({ children }) => (
+  <LessonLayout meta={meta}>{children}</LessonLayout>
+);
