@@ -52,5 +52,14 @@ Risk Managment Rules:
 ## Who needs to perform Backtesting?
 
 export default ({ children }) => (
-  <LayoutLesson meta={meta}>{children}</LayoutLesson>
+  <LayoutLesson
+    meta={meta}
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="backtesting"
+    prevLesson="syllabus"
+    nextLesson="overviewOfBacktesting"
+  >
+    {children}
+  </LayoutLesson>
 );

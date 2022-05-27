@@ -8,7 +8,7 @@ import coursesData from '../../components/landingPages/coursesData';
 const Dashboard = () => {
   const { data: session } = useSession();
   const [enrolledCourses, setEnrolledCourses] = useState([
-    { course_id: 0, enrolled: false },
+    { course_id: 0, enrolled: false, current_chapter: 0, current_lesson: 0 },
   ]);
   const [completedChapters, setCompletedChapters] = useState([
     { chapter_id: 0, completed: false, course_id: 0 },
@@ -99,6 +99,20 @@ const Dashboard = () => {
     else return false;
   };
 
+  const getCourseObject = (courseID: number) => {
+    const courseObject = enrolledCourses.find(
+      (course) => course.course_id === courseID
+    );
+    if (courseObject) return courseObject;
+    else
+      return {
+        course_id: 0,
+        enrolled: false,
+        current_chapter: 0,
+        current_lesson: 0,
+      };
+  };
+
   return (
     <LayoutApp>
       {session?.user && (
@@ -116,7 +130,9 @@ const Dashboard = () => {
             imageAlt=""
             cardTitle={coursesData.tradingAcademy.title}
             cardText={coursesData.tradingAcademy.shortDescription}
-            coursePath="/app/courses/tradingAcademy"
+            coursePath={`/app/courses/tradingAcademy/${
+              getCourseObject(1).current_chapter
+            }/${getCourseObject(1).current_lesson}`}
             enrolled={getCourseEnrolled(1)}
             percentComplete={getPercentComplete(1)}
           ></CourseCard>
@@ -129,7 +145,9 @@ const Dashboard = () => {
             imageAlt=""
             cardTitle={coursesData.algorithmicTradingAcademy.title}
             cardText={coursesData.algorithmicTradingAcademy.shortDescription}
-            coursePath="/app/courses/tradingAcademy"
+            coursePath={`/app/courses/tradingAcademy/${
+              getCourseObject(2).current_chapter
+            }/${getCourseObject(2).current_lesson}`}
             enrolled={getCourseEnrolled(2)}
             percentComplete={getPercentComplete(2)}
           ></CourseCard>

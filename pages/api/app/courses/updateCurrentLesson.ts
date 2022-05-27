@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import pool from '../../../../db/index';
 import { getSession } from 'next-auth/react';
 
-const findEnrolledCoursesByUser = async (
+const updateCurrentLesson = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
@@ -10,17 +10,18 @@ const findEnrolledCoursesByUser = async (
   if (session) {
     try {
       const { userId } = session;
+      const lessonData = JSON.parse(req.body);
       // Generate SQL statement
-      const statement = `SELECT course_id, enrolled, current_chapter, current_lesson
-                           FROM "User_Course"
-                           WHERE user_id = $1`;
-      const values = [userId];
+      const statement = `UPDATE "User_Course"
+                          SET current_lesson = $1, current_chapter = $2
+                          WHERE user_id = $3`;
+      const values = [lessonData.nextLesson, lessonData.nextChapter, userId];
 
       // Execute SQL statement
       const result = await pool.query(statement, values);
 
-      if (result.rows?.length) {
-        res.status(200).json(result.rows);
+      if (result) {
+        res.status(200).json({ success: 'Current Lesson Updated' });
       }
 
       return null;
@@ -36,4 +37,4 @@ const findEnrolledCoursesByUser = async (
   }
 };
 
-export default findEnrolledCoursesByUser;
+export default updateCurrentLesson;
