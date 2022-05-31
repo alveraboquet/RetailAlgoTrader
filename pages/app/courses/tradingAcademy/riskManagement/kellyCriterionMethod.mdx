@@ -1,0 +1,90 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Kelly Criterion Method
+
+The Kelly Criterion method is another risk management strategy that has seen a surge in popularity recently. This method
+aims to determine the best risk percentage based on your odds of a winning trade. The goal of Kelly Criterion is pure capital
+growth. While this seems great it can actually raise many issues.
+
+Frequently a portfolio using Kelly Criterion will have long drawdowns. This can be an issue if you are planning on using
+the money from your portfolio anytime soon. In addition, it is very difficult psychological to watch a long drawdown.
+
+Kelly Criterion frequently fails because traders are not prepared for a long drawdown. The drawdown occurs and they lose faith
+in the system. Kelly Criterion requires traders to stick with the system through long drawdowns and eventually grow their
+capital.
+
+We do NOT recommend using Kelly Criterion. While it is better than Martingale, it still has the issue of risking too much
+capital on individual trades.
+
+## Kelly Criterion Formula
+
+The Kelly Criterion formula is as follows.
+
+Kelly % = W - [(1 - W) / R]
+
+- W: Historical win percentage of strategy
+- R: Historical win/loss ratio of strategy
+
+W is simply the percentage of trades won. R is the size of the average winning trade divided by the size of the average
+losing trade.
+
+## Kelly Criterion Example 1
+
+Let's assume that you have a historical win percentage of 60% and a historical win/loss ratio of 2:1.
+
+Kelly % = .6 - [(1 - .6) / 2] = .4 = 40%
+
+In this situation the Kelly Criterion is recommending that how risk 40% of your capital. This is because your strategy has
+a good win percentage and a good win/loss ratio. With the primary goal of capital growth Kelly Criterion recommends a very
+large risk percentage to try and maximize profits.
+
+However, 40% risk per trade is a ton. If this trade is a loss you will lose almost half of your capital. If you have
+backtested properly and calculated your metrics correctly then in theory over the long term risking 40% of your capital per
+trade should maximize gains. It is evident though how a small mistake in backtesting or calculations could cause you to lose
+significant money very quickly. It may not even be a mistake on your part. The market conditions may just shift and now your
+calculated win percantage and win/loss ratio are no longer accurate.
+
+## Kelly Criterion Example 2
+
+Let's assume that you have a historical win percentage of 45% and a historical win/loss ratio of 1.25:1.
+
+Kelly % = .45 - [(1 - .45) / 1.25] = .01 = 1%
+
+In this situation the Kelly Criterion is recommending that how risk 1% of your capital. This is because your strategy has
+a poor win percentage and a poor win/loss ratio.
+
+## How to Calculate W and R
+
+In order to determine W and R for the formula you need a significant history of trades. This is where backtesting is used.
+Traders will step back through days, months, or even years to test their strategy on past markets. They see where they would
+have entered a trade and how the trade would have performed. All of this info is recorded and then analyzed. Backtesting has
+an entire chapter dedicated to it later in this course.
+
+Using all of this past data traders can calculate an expected win percentage and expected win/loss ratio to be used in
+the Kelly Criterion formula. However, the issue with this method is that the markets are constantly changing. While historically
+your strategy may have a win percentage of 60% and a win/loss ratio of 2:1, in current market conditions it may actually
+have a win percentage of 45% and a win/loss ration of 1.25:1.
+
+This is always a risk with backtesting. Historical performance does not guarantee future performance. With a good backtesting
+methodology and proper risk management you can recognize when your strategy is not performing as expected before losing
+significant capital. However, with Kelly Criterion it is possible to lose a lot of money before you realize that your
+strategy is not performing as expected.
+
+## Conclusion
+
+We do NOT recommend the Kelly Criterion method when trading. While some advanced traders are able to use it successfully,
+it is very risky for beginner or intermediate traders to use. Small mistakes or changes in market conditions can be
+disastrous.
+
+export default ({ children }) => (
+  <LayoutLesson
+    meta={meta}
+    course="tradingAcademy"
+    prevChapter="riskManagement"
+    nextChapter="riskManagement"
+    prevLesson="martingaleMethod"
+    nextLesson="correlation"
+  >
+    {children}
+  </LayoutLesson>
+);
