@@ -1,3 +1,8 @@
+/**
+ * Handles GET requests for Stripe
+ * @param url
+ * @returns data from API or error
+ */
 export async function fetchGetJSON(url: string) {
   try {
     const data = await fetch(url).then((res) => res.json());
@@ -10,6 +15,12 @@ export async function fetchGetJSON(url: string) {
   }
 }
 
+/**
+ * Handles POST requests for Stripe
+ * @param url
+ * @param data Optional data. Transaction amount when used with Stripe
+ * @returns JSON response from API or error
+ */
 export async function fetchPostJSON(
   url: string,
   data?: Record<string, unknown>

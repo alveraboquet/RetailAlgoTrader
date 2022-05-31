@@ -6,6 +6,11 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2020-08-27',
 });
 
+/**
+ * Retrieves checkout session details from Stripe API
+ * @param req
+ * @param res
+ */
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse

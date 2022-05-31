@@ -1,3 +1,9 @@
+/**
+ * Function to handle JSON responses
+ * @param content - JSON response
+ * @returns Formatted stringified JSON response
+ */
+
 import React from 'react';
 
 type Props = {

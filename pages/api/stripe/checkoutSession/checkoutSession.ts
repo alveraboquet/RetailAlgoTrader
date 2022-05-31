@@ -8,6 +8,11 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2020-08-27',
 });
 
+/**
+ * Next API path to connect with Stripe API
+ * @param req
+ * @param res
+ */
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
