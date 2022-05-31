@@ -1,0 +1,68 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Why is Risk Management Important?
+
+So far in this course we have learned about a variety of topics:
+
+- Types of markets
+- Margin TradingView
+- Reading a Chart
+- Indicators and Chart Patterns
+- Types of Analysis
+
+However, this next topic is perhaps the most important.
+
+Proper risk management is the key to long-term profitability. Risk management is the technique to determining how much capital
+to risk per trade. Nothing will blow up your account quicker than lack of a solid risk management strategy.
+
+Hopefully you have caught on by now that trading is difficult and far from an exact science. No matter how good of a trader
+you are you will have many losing trades. Your risk management strategy is in place to ensure that these losing trades
+do not wipe out the profits from your winning trades.
+
+## Preserve Capital
+
+When you enter the market your goal should not be to make lots of profit. Your goal should be to not lose the capital
+you are starting out with. If you are able to trade and just breakeven you are already doing better than the majority
+of traders.
+
+Once you have reached the ability to trade for any length of time while preserving your capital, taking the extra step
+to consistent profitability is easy. Remember that if you focus on protecting your trading capital the profits will come
+on their own.
+
+### Example
+
+The reason that preserving capital is so important is because saving money is so much easier than making back money
+that you have lost. Many traders do not grasp the concept that if they lose 10% of their capital they need to then
+make back more than 10% of their capital just to get back to where they started.
+
+Lets look at the example below. You have developed your own trading signal. All of the indicators line up and Reddit is
+telling you it is a sure trade. So you decide to make a big trade to maximize profits. You risk 20% of your capital ($100,000)
+in this example.
+
+But you were not paying attention to your economic calendar and the company released a below expectations earnings report. The
+stock drops and you sure winner turns into a loser. As you risked 20% of your $100,000 you now have $80,000.
+
+Once again your trading system provides an entry signal. You decide to risk 20% to get your money back. This time your trade
+is a winner but when you check your account balance it is only at $96,000. Because you now only have $80,000 in capital you
+only profited $16,000.
+
+| Starting Capital | Percent Risked | P/L       | Remaining Capital |
+| ---------------- | -------------- | --------- | ----------------- |
+| $100,000         | 20%            | -$20,0000 | $80,0000          |
+| $80,000          | 20%            | $16,000   | $96,000           |
+
+If you wanted to get back to your starting capital of $100,000 you would have to risk 25%. Preserving capital is always
+easier than making it back.
+
+export default ({ children }) => (
+  <LayoutLesson
+    meta={meta}
+    course="tradingAcademy"
+    prevChapter="alternativeData"
+    nextChapter="riskManagement"
+    prevLesson="prosAndConsAlternativeData"
+    nextLesson="theSlowDeath"
+  >
+    {children}
+  </LayoutLesson>
+);

@@ -1,0 +1,93 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+# What is Correlation?
+
+There are thousands of different assets out there to trade. However, that does not mean there are thousands of unique trades
+to be made. Many assets move almost identically to each other. For example, Gold and Silver tend to move in the same direction
+at the same time. AUDUSD and NZDUSD tend to move together. BTC and ETH usually move together. Large tech stocks will frequently
+all move together.
+
+These are all examples of correlation. If two different assets move very similarly then they are correlated. Correlation is
+calculated on a scale of -1.0 to 1.0. -1.0 means the two assets will always move opposite of each other. 1.0 means the two
+assets will always move the exact same. 0 means there is no correlation between assets.
+
+If a correlation value is between -0.5 and 0.5 it is safe to consider these assets as non-correlated. When calculating correlation
+coefficients you should use a timeframe that is representative of the timeframe you are trading. If you are a day trader then
+you should check the daily or even hourly correlation of the assets. If you hold trades for a week then you should check the
+monthly correlation of the assets.
+
+For example AUDUSD and NZDUSD have a correlation value of 0.99 when looking at the past year. Trading AUDUSD is essentially
+the same as trading NZDUSD and vice versa.
+
+## How does Correlation affect your Risk Management Strategy?
+
+Correlation can have a huge impact on your risk management strategy and many traders fail to realize this. As we have emphasized
+throughout this chapter it is important to set a percent risked per trade. Let's say that you have chosen 2%. A freak storm
+has hit Saudi Arabia's refinery facilities wiping out their production long-term. This causes the stock prices of US-based
+oil companies Shell, BP, and Exxon to jump upward.
+
+Your trading system issues three buy signals: one for Shell, one for BP, and one for Exxon. Per your risk management strategy
+you issue buy orders for each stock with each order risking 2% of your capital. However right after you issue your buy orders,
+the US president issues an executive order banning all offshore oil rigs. The stock prices of Shell, BP, and Exxon all
+immediately drop.
+
+All three of your orders end up hitting the stop loss. Instead of losing 2% you end up losing 6%. This is how correlation
+can affect your risk management strategy. By opening three orders of 2% on three heavily correlated stocks you might as well
+have risked 6% on just one of these stocks.
+
+If your trading strategy issues trade signals for correlated assets it is best to just trade one asset at a time. This ensures
+that you are not risking too much on assets that move very similarly.
+
+## Correlation Example
+
+In the image below we can see the stock prices for Shell, BP, and Exxon-Mobil all on the same chart.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/riskManagement/correlationExample.webp"
+    height={2160}
+    width={3840}
+    alt=""
+  />
+  <figcaption>SHEL vs BP vs XOM Correlation</figcaption>
+</figure>
+
+It is very evident that over the past month these stocks have moved almost identically. The purple lines on the chart
+demonstrate how all three stocks peak and bottom at exactly the same time. These stocks are highly correlated.
+
+## Correlation Calculator
+
+Calculating correlation values is difficult and unnecessary. There are multiple calculators online that automate this
+process for you.
+
+### Stock Correlation Calculator
+
+For stocks our favorite correlation calculator is (PortfolioVisualizer)[https://www.portfoliovisualizer.com/asset-correlations].
+You can input a list of tickers separated by commas and it will return the correlation values. For example inputting SHEL, BP,
+and TSLA reveals that SHEL and BP have a 0.89 correlation value over the past month. SHEL and TSLA have a 0.36 correlation
+which indicates you can trade both SHEL and TSLA without worrying about correlation.
+
+### Forex Correlation Calculator
+
+For forex our favorite correlation calculator is (myfxbook)[https://www.myfxbook.com/forex-market/correlation]. It allows
+you to save your most frequently traded pairs and select a timeframe for calculating the correlation coefficient.
+
+## Conclusion
+
+When trading multiple assets at the same time it is important to doublecheck the correlation between the assets. In this lesson
+we focused on the risks of trading correlated assets. However, correlation also provides many trading opportunities that we
+will explore in later chapters.
+
+export default ({ children }) => (
+  <LayoutLesson
+    meta={meta}
+    course="tradingAcademy"
+    prevChapter="riskManagement"
+    nextChapter="tradingPlan"
+    prevLesson="kellyCriterionMethod"
+    nextLesson="typesOfTraders"
+  >
+    {children}
+  </LayoutLesson>
+);

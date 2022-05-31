@@ -1,0 +1,71 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Equities Position Sizing Formula
+
+Determining the proper position size with equities is fairly straightforward.
+
+## Calculating Position Size in Equities
+
+Before being able to properly determine your trade's position size you just need to decide your risk percentage and your trade
+risk per share. Your trade risk per share comes from your stoploss.
+
+If you want to enter the trade at $50 and place your stoploss at $45 your trade risk per share is $5.
+
+The formula for calculating proper position size in stocks is as follows:
+
+Account Risk ($) / Trade Risk ($)
+
+Let's assume you have a $100,000 account and are risking 1% per trade. According to your risk management trade you can risk
+$1,000 per trade. Your trade risk per share is $5.
+
+$1,000 / $5 = 200 shares
+
+By only risking 1% of your account your position size will be 200 shares. Now keep in mind that at $50 per share and a trade
+size of 200 shares this trade will cost you $10,000 to open without margin. With your stoploss at $45 you can only lose $1,000
+of that $10,000 but you need to ensure that you have sufficient capital to actually open this trade.
+
+Trading in a margin account (required for day traders) allows you to purchase more shares with less capital. In the US most
+margin accounts offer 2:1 leverage. Meaning that to open our previous example you would only need $5,000 in available capital
+to open the trade. Your broker would provide the other $5,000.
+
+## Position Size Calculator
+
+We absolutely do not recommend that you attempt to hand calculate your position size everytime you make a trade. It is much too
+easy to make an error and end up losing more than you intended.
+
+Instead you should use a position size calculator. One of our favorites is the (ChartYourTrade.com)
+[https://chartyourtrade.com/position-size-calculator/].
+
+## Multiple Trades Open at Once
+
+Depending on your strategy you may have multiple trades open at once. For the most part this does not affect the position
+size strategy. You should still calculate your percent risked based on your account value which will include all cash
+and all open trade values.
+
+Here are a couple of instances where it could affect your position size strategy:
+
+1. You are trading on a margin account
+
+- In a margin account if you have too much of your capital tied up in open trades you can receive a margin call
+- This is not an issue with a cash account; however, you still want to ensure you have enough capital not tied up in
+  trades to allow your trades to breath.
+
+2. You are trading similar assets
+
+- Assets that trade similarly are considered to be correlated
+- We will discuss correlation in-depth in a couple of lessons
+- For now just understand that risking 2% each on two correlated assets is essentially the same as risking 4% on one
+  asset. This is because the correlated assets move the same. If one is a losing trade the other will also be a losing trade.
+
+export default ({ children }) => (
+  <LayoutLesson
+    meta={meta}
+    course="tradingAcademy"
+    prevChapter="riskManagement"
+    nextChapter="riskManagement"
+    prevLesson="theSlowDeath"
+    nextLesson="forexLotSizingForumla"
+  >
+    {children}
+  </LayoutLesson>
+);

@@ -1,0 +1,86 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Forex Lot Sizing Formula
+
+This lesson is optional for those who have no interest in trading Forex. We include this lesson as many people prefer to trade
+forex. Through leverage Forex allows people with little capital to begin trading. However, forex trades in pairs which can
+make risk management and price changes difficult to calculate. Unlike stocks which trade in number of shares, Forex trades
+in lots. A lot is 1 unit of a currency pair.
+
+There will be some other terms in this lesson such as pips that you may not understand. If you have no interest in trading
+Forex feel free to just skip this lesson. If you are interested in learning more about Forex check out our Forex with MT4
+course.
+
+## Calculating Lot Size in Forex
+
+Before being able to properly determine your trade's lot size you will need to decide the entry price for your trade
+and the stoploss for your trade. Without first determining the location of your stoploss the formula will be unable to
+calculate the proper lot size.
+
+The formula for calculating proper lot size in Forex is as follows:
+
+Account Risk ($) / (Trade Risk in pips x Pip Value)
+
+Let's assume you have a $100,000 account and are risking 1% per trade. According to your risk management trade you can risk
+$1,000 per trade. Lets assume that you are going long on EURUSD. You want to enter the trade at 1.1300 and you want to place
+your stoploss at 1.1200. You are risking 100 pips.
+
+The last value you need to determine is pip value. Calculating pip value is difficult and confusing. For EURUSD the pip value
+is $0.10 for a micro lot, $1 for a mini lot, and $10 for a standard lot.
+
+### Lot Size with Micro Lots
+
+If you choose to trade micro lots here is what your formula would look like:
+
+$1,000 / (100 pips x $0.10) = 100 micro lots
+
+Micro lots are typically the smallest lot unit that brokers offer. They are equivalent to 1,000 units of currency. They are
+designed for traders with less capital such as $10,000 or less. In this case with $100,000 in capital it makes more sense
+to trade mini lots.
+
+### Lot Size with Mini Lots
+
+If you choose to trade mini lots here is what your formula would look like:
+
+$1,000 / (100 pips x $1) = 10 mini lots
+
+10 mini lots is the same as 100 micro lots. It really does not matter which size you choose to trade; however, most traders
+try to keep their lot size under 100 whether that be micro, mini, or standard lots. Mini lots are equivalent to 10,000 units
+of currency. They are designed for traders with capital ranging from $100,000 to $10,000.
+
+### Lot Size with Standard Lots
+
+If you choose to trade standard lots here is what your formula would look like:
+
+$1,000 / (100 pips x $10) = 1 standard lot
+
+Standard lots are typically the largest lot size available to trade. These are designed for heavily-funded and professional
+traders.
+
+## Lot Size Calculator
+
+We absolutely do not recommend that you attempt to hand calculate your lot size everytime you make a trade. It is much too
+easy to make an error and end up losing more than you intended.
+
+Instead you should use a position size calculator. One of our favorites is the (BabyPips Calculator)
+[https://www.babypips.com/tools/position-size-calculator]. Account Currency is simple the currency you hold in your account.
+For US citizens this would be USD.
+
+## Conclusion
+
+This is just a brief dive into Forex. If you would look to learn more about how to trade Forex check out our Forex with MT4
+course. In that course we use MT4 to manage trades and we teach you how to program your own lot sizing algorithm that
+handles all of this automatically.
+
+export default ({ children }) => (
+  <LayoutLesson
+    meta={meta}
+    course="tradingAcademy"
+    prevChapter="riskManagement"
+    nextChapter="riskManagement"
+    prevLesson="stocksPositionSizingFormula"
+    nextLesson="martingaleMethod"
+  >
+    {children}
+  </LayoutLesson>
+);

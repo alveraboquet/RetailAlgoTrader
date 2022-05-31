@@ -1,0 +1,130 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+export const meta = {
+  author: 'Rich Haines',
+};
+
+# What is Alternative Data?
+
+Alternative data is a less well-known category of trading. It focuses on the use of datasets that are either private
+or not widely available. With technical analysis price action
+data is accessible by all traders. With fundamental analysis economic reports and company financials are available to the
+public. With alternative data the datasets used to make trading decisions are not publicly available.
+
+Major algorithmic trading firms such as Citadel and Two Sigma generate their own datasets for the purpose of trading. By
+doing so they aim to give themselves an edge over their competitors in the market.
+
+Creating these datasets typically takes two forms:
+
+1. Unique datasets that are gathered and created by the hedge fund trading them
+2. Datasets gathered by third-parties that can then be purchased
+
+These trading firms employ massive teams of data scientists and programmers whose sole job is not to trade but rather
+to gather and organize data. The number of programmers at these trading firms who actually get to trade the markets
+is fairly small.
+
+In recent years consumers have begun to realize that companies are collecting all of their data and then selling it to
+the highest bidder. Well trading firms are frequently the higher bidder. They can use the data from millions of consumers
+to fuel their trading decisions.
+
+## Examples of Alternative Data Strategies
+
+These are just a couple of the possible methods used by alogrithmic trading firms that are also possible to use by
+retail traders.
+
+### Google Search Data
+
+It is now widely-known that Google's primary product they are selling is their users. They collect any data about their
+users they possibly can, package it up, and sell it. While this certainly is the cause of many privacy concerns, as a trader
+this presents an opportunity.
+
+Using (Google Trends)[https://trends.google.com/trends/?geo=US] people can see the most popular search terms all across
+the world. With this data you can see which companies or products are trending.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/alternativeData/googleTrends.webp"
+    height={1370}
+    width={2420}
+    alt=""
+  />
+  <figcaption>Example of Google Trends</figcaption>
+</figure>
+
+For example on this day we can see that Nvidia stock is one of the top searches in Google. When clicked on it pulls up some
+news articles about the poor Nvidia Earnings report. In addition you can see interest over time, interest by subregion,
+related topics, and related queries. All of this data can be downloaded and manipulated as you see fit.
+
+By itself this data on Nvidia might not be too useful. However, by downloading and combining multiple datasets you can
+give yourself an edge.
+
+This is one of the most basic methods to using Google's data to form trading decisions. Most of Google's datasets are not
+publicly available. As a retail trader we will not have the resources to afford or make use of these datasets.
+
+### Web Scrapping Social Media
+
+One of the strategies frequently used by retail traders is trading small cap or penny stocks that gap up in the early
+trading hours. These are small companies typically with a big news catalyst that causes their stock price to sky-rocket.
+Because they have such a small number of shares available for trading this immense buying pressure can easily cause
+them to double or triple in just a single trading day.
+
+However the key to this strategy is discovering these small stocks before they gap up. There are two primary techniques that
+traders use to discover these stocks:
+
+1. Using a scanner such as the (TradingView Stock Scanner)[https://www.tradingview.com/screener/]
+2. Scouring different forums and trading groups
+
+While the first method is great at discovering a handful of stocks that are primed for gapping up, it does not provide
+the detailed information necessary to determine which stock will actually gap up.
+
+This is where the forums and trading groups come into play. People congregate in these groups and share news stories
+and trading theories. Remember that these companies being traded are very small so finding information about them
+can be difficult.
+
+However, scrolling through forums and trading groups every morning is a tedious and length process. One of the best
+forums is Reddit's r/pennystocks A strategy that has worked extremely well in the past is using a Web Scrapping bot to
+gather a list of the most commonly mentioned stock tickers. Every morning the bot scraps through the posts and produces
+a list of the most popular tickers and what is being said about them.
+
+This is an alternative dataset. It is a unique dataset that is only available to you.
+
+### Consumer Location Data
+
+The big tech companies all use your phones to constantly track your location. They will then aggregate this data to
+determine consumer trends. Hedge funds can purchase this location data from a number of data brokers.
+
+Hedge funds can then use this data to determine changes in consumer spending. For example if the location data
+shows an increase in foot traffic through all Targets in the US then the hedge fund could take a long position
+based on the assumption that Target will beat their expected earnings reports. Hedge funds even use credit card
+transation data to cross-reference the location data.
+
+The following (Article from unacast)[https://www.unacast.com/post/hedge-fund-location-data] goes into detail about
+how hedge funds use your location data.
+
+If you want to learn more about how location data is used check out this (Article from The Markup)
+[https://themarkup.org/privacy/2021/09/30/theres-a-multibillion-dollar-market-for-your-phones-location-data].
+
+### Satellite Images
+
+Another dataset that is used to trade is satellite images. Hedge funds will purchase recent satellite images for a
+variety of reasons. They can evaluate shipping traffic through places like the Suez Canal. Or analyze the amount of
+new construction occuring in Houston chemical plants. Or evaluate the quality and quantity of the wheat harvest both
+domestically and internationally. All this data gives them an edge (more commonly known as alpha in the trading industry).
+They can use this data to make informed decisions on the health of a country's economy, the capital spending of the oil
+industry, or the future price of wheat.
+
+This (Article from Internation Banker)
+[https://internationalbanker.com/brokerage/how-satellite-imagery-is-helping-hedge-funds-outperform/] provides some
+more examples of how hedge funds use satellites.
+
+## Very Secretive Industry
+
+Gathering the data, cleaning it, and organizing it into a useable dataset takes a massive amount of time, energy, and money.
+Understandably these firms are very protective of their datasets. As a result, the public's understanding of alternative data
+has barely scratched the surface. The reality is that we really have no idea what data these firms are using to
+fuel their trading decisions.
+
+export default ({ children }) => (
+  <LayoutLesson meta={meta}>{children}</LayoutLesson>
+);

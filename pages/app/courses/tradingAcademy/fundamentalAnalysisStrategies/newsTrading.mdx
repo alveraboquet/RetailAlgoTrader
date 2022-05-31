@@ -1,0 +1,179 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+export const meta = {
+  author: 'Rich Haines',
+};
+
+# Trading the News
+
+One of the most popular strategies when it comes to fundamental analysis is trading the news.
+
+News traders will pay very close attention to their economic calendars. Before beginning the trading day these traders will
+review any earnings reports or any major economic announcements.
+
+Typically when a major news event occurs there is a large price movement. Some traders attempt to quickly review the report and
+anticipate which direction price will jump. Using python web scrapping can greatly speed up this process. Other traders simply
+wait for the movement to start and then ride it to profitability.
+
+Below we will look at two of the most common news trading strategies. We focus on these two strategies as they are easier
+for beginners to execute. You do not need comprehensive understanding of financial reports and economic science for these
+strategies.
+
+In both of these strategies we specify rules for entry and exit. However the overall trading strategies of straddles and
+fades are the important part. The specific entry and exit rules can be modified to fit your trading style.
+
+## The Straddle
+
+The Straddle is what is considered a neutral position. This strategy is great if you have no idea which direction price
+is going to go. With this strategy you want to focus on high impact news events as this strategy requires significant
+volatility to be profitable. For this strategy you will want to focus on short time frames and price moves very quickly
+with news events. 5m or less is ideal.
+
+30 minutes before the news event you will want to draw two lines that encompass the recent price action range. The upper
+boundary will be your bullish entry and the lower boundary will be your bearish entry. During a news event price can move
+very quickly so we will want to use stop orders for our entry. Stop orders work well because we only want to enter the
+trade if price breaks out of the range we defined. Limit orders will not work in this situation as they would cause us
+to enter the trade before price breaks out of the range. Some brokers offer a stop-limit order that combines the best
+of both orders and minimizes risk. However, this is an advanced topic so we will just stick with stop orders for now.
+
+For both the bullish and bearish entry you should place the stoploss midway between the upper and lower boundary of the
+initial range. This gives the trade enough room to breathe but if price fails to make a large breakout it will allow
+you to exit the trade before taking a large loss.
+
+For the bullish take profit you will want to set it at a distance above the upper range boundary equal to the distance
+from the upper boundary to the lower boundary of the range. If price makes a jump up and breaks out of our defined range
+it typically continues jumping up for quite a bit.
+
+For the bearish take profit you will want to set it at a distance below the lower range boundary equal to the distance
+from the upper boundary to the lower boundary of the range. If price drops and breaks out of our defined range
+it typically continues dropping for quite a bit.
+
+Then you wait for the news to release. Typically this will cause a large price movement the will break out either above
+or below the range we previously identified. Once either your bullish or bearish trade is triggered you want to cancel
+the other order. And then you let the breakout continue to your takeprofit or revert to your stoploss if the
+breakout fails.
+
+This strategy can make great use of some more advanced topics that we will discuss such as one cancels the other orders and
+algorithmic handling of the strategies.
+
+### Straddle Example
+
+In our example we will be looking at trading the US' non-farm payroll. The NFP report is released the first Friday of the
+month at 8:30 am EST. This is typically a high impact news event for the US dollar. The NFP report is the total number
+of paid workers in the US - farm employees - government employees - private household employees - employees of
+nonprofit organizations.
+
+The exact details of the NFP report are not essential. Just recognize that many traders use the NFP as an overall
+indicator to the health of the US' economy. If you would like to read more specifically about the NFP report [Investopedia]
+(https://www.investopedia.com/articles/forex/09/non-farm-payroll-report.asp) has some great resources on it.
+
+In this example we will be trading the EUR/USD Forex pair on the morning of May 06, 2022. The NFP report releases at
+8:30 am EST so we want to start paying attention to the chart at about 8:00 am EST. We will see that in the half hour
+leading up to the release price trades in a small range (indicated by the purple box). We will add an upper boundary
+(purple line) and a lower boundary (orange line) for this range.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/fundamentalAnalysisStrategies/tradingRange.webp"
+    height={864}
+    width={1218}
+    alt=""
+  />
+  <figcaption>Identifying range and setting up stop orders</figcaption>
+</figure>
+
+As you can see the upper boundary has a price of 1.05744 so we will set a buy stop order (dashed purple line) slightly
+higher at 1.05760. Now a buy order will only be triggered if price actually breaks out of the range. The exact price of the
+stop order is not too important. You just want it is close to the range boundary line as possible without having to worry
+about noise triggering it.
+
+The lower boundary has a price of 1.05648 so we will set a sell stop order slightly lower at 1.05633 (dashed orange line).
+A sell order will only be triggered if price actually breaks out of the range.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/fundamentalAnalysisStrategies/buyStopOrder.webp"
+    height={864}
+    width={1218}
+    alt=""
+  />
+  <figcaption>Buy Stop Order Triggered</figcaption>
+</figure>
+
+Now 8:30 am EST arrives and we can see that price shot up. Our buy stop order triggered almost immediately. So we cancel
+the sell stop order. We then want to add the stoploss order and the takeprofit order to our trade. We will add the stoploss
+in the middle of the predefined range. Again the exact price you set it at is not too important just as long as it is
+roughly in the middle. The range we identified previously was about 100 pips from bottom boundary to top boundary. So we
+set the takeprofit about 100 pips above our entry price.
+(If you are not familiar with Forex pips is simply how price is measured. The equivalent in the equities market would be
+dollars)
+
+Price quickly shot towards our takeprofit and we secured some sizeable profit in just a couple of minutes. You do not have
+to place the stoplosses and takeprofits where we have specified. We chose these levels after conducting some backtesting
+but if you find better levels to place them then by all means feel free to adjust this strategy. You ideally want your
+risk:reward ration to be at least 1:2. This means that you stand to gain twice as much than you stand to lose. In our example
+our stoploss is about 60 pips away from our entry and our takeprofit is about 100 pips away from our entry. This is nearly
+a 1:2 risk:reward ratio. Just remember that with this strategy (and most other strategies) your takeprofit should be about
+twice as far from your entry as the stoploss is.
+
+In this example we manually closed our sell stop order and manually placed our stoplosses and takeprofit after our buy stop
+order was triggered. There are a couple of ways we could improve this method:
+
+- Use one cancels the other order to automatically close the sell stop order after the buy stop order is triggered
+- Some brokers allow you to attach stoplosses and takeprofits to a pending stop order
+- Creating an algorithm to automate the process
+- Use a trailing stoploss to try to achieve maximum profits
+
+## The Fade
+
+The fade is the opposite of the straddle. In the straddle we did not pick an outright direction and attempted to enter
+the breakout right as it was starting. In the fade we let the breakout occur and then once the frenzy has died down
+we take the opposite direction of the breakout.
+
+If there was a bullish breakout we would then short the asset once the breakout was over. If there was a bearish
+breakout breakout we would then buy the asset once the breakout was over.
+
+This strategy works on the philisophy that during major news events the market overreacts. So once all the buying and
+selling slows down after the first couple minutes price usually pulls back to a certain degree.
+
+### The Fade Example
+
+In this example we will be using the same 5m EURUSD chart from the straddle example.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/fundamentalAnalysisStrategies/fadeExample.webp"
+    height={864}
+    width={1218}
+    alt=""
+  />
+  <figcaption>Buy Stop Order Triggered</figcaption>
+</figure>
+
+We will enter at the close of the breakout bar (the open of the 8:35 am EST candlestick) as indicated by the purple dashed line.
+We are operating off of the assumption that after 5 minutes the major breakout pressure has died down.
+
+We will place the stoploss (red line) at 1.05974 which is slightly above the high of the breakout bar. This gives our trade some
+room to breath so our stoploss is not hit by noise. Frequently after the breakout bar the next candlestick will make
+another upward push but fail to break the high (or low if a bearish breakout) set by the breakout bar. If price does
+break the high set by the breakout bar it invalidates our theory that price will pull back towards the mean and it will
+hit our stoploss. This saves us from taking massive losses.
+
+We will place the takeprofit (green line) at 1.05810. Good takeprofit targets are typically a 1:2 risk:reward ratio or halfway
+down (or up) the breakout bar. In our case our takeprofit satisfies both of these conditions. The stoploss is about 60 pips
+away from our entry and our takeprofit is about 100 pips away from our entry. It is also halfway down the breakout bar.
+
+The exact levels that we place the stoploss, takeprofit, and entry order are not important. There are many valid places
+you could place these orders. You should spend some time backtesting and discover what levels are more profitable given
+your unique trading methodology. Just ensure that you have close to a 1:2 risk:reward ratio.
+
+## Conclusion
+
+This lesson only covers two potential strategies and only one news event. There are countless news events across all markets
+and an infinite number of ways to trade them. The best way to learn is by picking a news event and clicking through
+TradingView's historical data to see how the news event affects price action.
+
+export default ({ children }) => (
+  <LayoutLesson meta={meta}>{children}</LayoutLesson>
+);

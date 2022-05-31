@@ -1,0 +1,73 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# The Martingale Method
+
+The Martingale method is an extremely risky risk management strategy developed by Paul Pierre Levy, a French mathematician.
+The Martingale method requires you to double your trade size every time a trade is a loss.
+
+We do NOT recommend using the Martingal method. The only reason we even discuss it is so that if you stumble across it
+you understand the immense risks associated with this technique.
+
+## How to Trade using Martingale
+
+The idea behind the Martingale method is simple. Everytime you have a losing trade your next trade should double the position
+size. If you win you have made all of your money back plus some profit. If you lose you again double your position size.
+
+This technique can actually work well in situations where winning and losing is an equal probability. However, winning and
+losing is not at all an equal probability in the markets. At some point while trading you will encounter a streak of losing
+trades. If you are using the Martingale method a streak of losers will blow up your account very quickly.
+
+## Martingale Example with Coin Flip
+
+In the example below we explore how the Martingale method works with a simple coin flip and a risk of 2%.
+
+| Trade Number | Account Balance | Percent Risked | $ Risked | W/L | New Balance |
+| ------------ | --------------- | -------------- | -------- | --- | ----------- |
+| 1            | 100.00          | 2              | 2.00     | L   | 98.00       |
+| 2            | 98.00           | 4              | 3.92     | L   | 94.08       |
+| 3            | 94.08           | 8              | 7.53     | W   | 101.61      |
+| 4            | 101.61          | 2              | 2.03     | L   | 99.57       |
+
+As you can see trades 1 and 2 were losses. As a result the percent risked double each time. On trade 3 we are risking 8% and
+finally get a win. We make all of our money back plus a profit of $1.61. The next trade resets and we only risk 2%.
+
+Martingale worked here because a coin flip has a 50% probability of being a win. It is a decent bet to assume that your
+wins and losses will be roughly the same.
+
+## Martingale Example in the Markets
+
+In the example below we explore how the Martingale method works when trading in the markets with a risk of 2%.
+
+| Trade Number | Account Balance | Percent Risked | $ Risked | W/L | New Balance |
+| ------------ | --------------- | -------------- | -------- | --- | ----------- |
+| 1            | 100.00          | 2              | 2.00     | L   | 98.00       |
+| 2            | 98.00           | 4              | 3.92     | L   | 94.08       |
+| 3            | 94.08           | 8              | 7.53     | L   | 86.55       |
+| 4            | 86.55           | 16             | 13.85    | L   | 72.71       |
+| 5            | 72.71           | 32             | 23.27    | L   | 49.44       |
+| 6            | 49.44           | 64             | 31.64    | L   | 17.80       |
+| 7            | 17.80           | ?              | ?        | ?   | ?           |
+
+As you can see all it took was 6 losing trades in a row to lose nearly all of your capital. After 6 losing trades you can no longer
+double the risk percentage and you have no money left. This is why you should absolutely not use Martingale while trading.
+During your time trading you will almost definitely experience a streak of losing trades that is at least 6 trades long.
+
+Some people have attempted to modify Martingale method for the markets; however, the core issue of too much risk is inherent
+in all of these attempts.
+
+## Conclusion
+
+Do NOT use Martingale to trade the markets. All it takes is a small losing streak to wipe out your account.
+
+export default ({ children }) => (
+  <LayoutLesson
+    meta={meta}
+    course="tradingAcademy"
+    prevChapter="riskManagement"
+    nextChapter="riskManagement"
+    prevLesson="forexLotSizingFormula"
+    nextLesson="kellyCriterionMethod"
+  >
+    {children}
+  </LayoutLesson>
+);

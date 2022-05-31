@@ -5,7 +5,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-const Layout = ({ children }: Props) => {
+const LayoutApp = ({ children }: Props) => {
   return (
     <>
       <HeaderApp />
@@ -15,4 +15,4 @@ const Layout = ({ children }: Props) => {
   );
 };
 
-export default Layout;
+export default LayoutApp;

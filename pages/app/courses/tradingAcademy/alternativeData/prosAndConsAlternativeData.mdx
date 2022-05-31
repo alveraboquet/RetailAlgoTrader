@@ -1,0 +1,25 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+export const meta = {
+  author: 'Rich Haines',
+};
+
+# Pros and Cons of Alternative Data
+
+## Pros
+
+- One of the best sources of alpha available on the markets
+  - Through access to private and unique datasets you have information that no other trader has
+  - Combining multiple datasets to create a new dataset can provide a huge trading advantage
+
+## Cons
+
+- Requires lots of capital to purchase data
+- Very resource intensive to clean, organize, and manipulate data
+- Data can be inaccurate which is a difficult issue to recognize
+- Accurately understanding the data is far from easily
+  - Read up on (Zillow's failed house trading algorithm)[https://www.geekwire.com/2021/ibuying-algorithms-failed-zillow-says-business-worlds-love-affair-ai/amp/]
+
+export default ({ children }) => (
+  <LayoutLesson meta={meta}>{children}</LayoutLesson>
+);
