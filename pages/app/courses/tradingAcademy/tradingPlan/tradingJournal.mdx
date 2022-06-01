@@ -1,0 +1,42 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Trading Journal
+
+Unlike the first three components of a trading strategy, a trading journal has nothing to do with trade management. A trading
+journal is used to log trades. This allows analysis of your performance and long-term trends of your strategy. It also allows
+you to recognize if you are properly following your trading system.
+
+## Components of a Trading Journal
+
+All trading journals should include at a minimum the following:
+
+- Date and Time
+- Entry Price
+- Exit Price
+- Stoploss Price
+- Takeprofit Price
+- Profit / Loss
+- Market Condition (Upward Trend, Downward Trend, Ranging, etc)
+- Picture of trade before opened
+- Picture of trade after close
+- Additional Thoughts
+
+## How to Create a Trading Journal
+
+In the beginning most people simply use an excel spreadsheet to track their trades. However, as you become more advanced and
+trade more often you need to upgrade to a more advanced tool. Our recommendation is (tradersync)[https://tradersync.com/]. It
+allows complex analysis as well as integration with your brokers so that you do not have to type in all of your trades'
+information manually.
+
+export default ({ children }) => (
+  <LayoutLesson
+    meta={meta}
+    course="tradingAcademy"
+    prevChapter="tradingPlan"
+    nextChapter="tradingPlan"
+    prevLesson="exitRules"
+    nextLesson="schedule"
+  >
+    {children}
+  </LayoutLesson>
+);

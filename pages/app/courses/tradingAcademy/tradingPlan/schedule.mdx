@@ -1,0 +1,34 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Schedule
+
+This last component is very straight-forward. As a trader there is no parent or boss to force you to do your job. It all comes
+down to you. This requires immense discipline. Trading can be stressful. Filling out a trading journal is boring. Backtesting
+is very tedious. Like any job there is a lot about trading that is not enjoyable.
+
+Creating a schedule that dictates when you will perform what actions is vital. In addition to holding you accountable it can
+also ensure you do not overtrade. Many people cannot trade correctly past 4 hours or so. They become tired and begin making
+poor trading decisions. By defining when you can and cannot trade you ensure long-term productivity.
+
+## Components of a Schedule
+
+All schedules should include at a minimum the following:
+
+- On what days will you trade?
+- During what hours will you trade?
+- When will you complete your trading journal?
+- When will you analyze your trading journal?
+- When will you work on developing new strategies?
+
+export default ({ children }) => (
+  <LayoutLesson
+    meta={meta}
+    course="tradingAcademy"
+    prevChapter="tradingPlan"
+    nextChapter="backtesting"
+    prevLesson="tradingJournal"
+    nextLesson="overviewOfBacktesting"
+  >
+    {children}
+  </LayoutLesson>
+);

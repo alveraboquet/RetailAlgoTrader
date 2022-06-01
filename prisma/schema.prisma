@@ -35,16 +35,18 @@ model Session {
 }
 
 model User {
-  id            String         @id @default(cuid())
-  name          String?
-  email         String?        @unique
-  emailVerified DateTime?
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-  User_Chapter  User_Chapter[]
-  User_Lesson   User_Lesson[]
-  User_Course   User_Course[]
+  id               String         @id @default(cuid())
+  name             String?
+  email            String?        @unique
+  emailVerified    DateTime?
+  image            String?
+  accounts         Account[]
+  sessions         Session[]
+  User_Chapter     User_Chapter[]
+  User_Lesson      User_Lesson[]
+  User_Course      User_Course[]
+  stripeCustomerId String?
+  isPro            Boolean        @default(false)
 }
 
 model VerificationToken {
@@ -100,10 +102,12 @@ model Course {
 }
 
 model User_Course {
-  user_id   String
-  course_id Int
-  enrolled  Boolean
-  completed Boolean
+  user_id         String
+  course_id       Int
+  enrolled        Boolean
+  completed       Boolean
+  current_chapter String
+  current_lesson  String
   user      User    @relation(fields: [user_id], references: [id])
   course    Course  @relation(fields: [course_id], references: [id])
 

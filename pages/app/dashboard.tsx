@@ -4,6 +4,7 @@ import LayoutApp from '../../components/layout/layoutApp';
 import { NextPageContext } from 'next';
 import CourseCard from '../../components/course/courseCard';
 import coursesData from '../../components/landingPages/coursesData';
+import Link from 'next/link';
 
 const Dashboard = () => {
   const { data: session } = useSession();
@@ -120,6 +121,11 @@ const Dashboard = () => {
           Signed in as {session.user?.name ?? session.user.email}
         </p>
       )}
+      <Link href="/app/proSignup">
+        <a>
+          <h2>Upgrade to Pro</h2>
+        </a>
+      </Link>
       <h1>Course Catalog</h1>
       <div className="row">
         <div className="col-4">

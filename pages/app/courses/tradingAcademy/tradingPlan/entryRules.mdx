@@ -1,0 +1,73 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Entry Rules
+
+Every trading strategy should have a strict set of entry rules. If these entry rules are met and the parameters of the risk
+management strategy are met then a trade should be entered. Entry rules should require multiple separate conditions to qualify
+as a valid trade entry. For example a MA crossover that coincides with RSI showing oversold. These are two separate indicators
+and if they both provide a trading signal at the same time this provides more reinforcement that it is a quality trade.
+
+You can add even more entry rules if you want such as chart patterns or news catalysts. However, if you add too many trade
+conditions your strategy will become too restrictive. There will be very few trade opportunities that meet all of your
+entry rules.
+
+Entry rules should remove as much subjectivity as possible. Here is an example of a poor entry rule:
+
+- Enter on an indecisive bar followed by an engulfing bar
+
+Here is how that entry rule can be improved:
+
+- Wait for a bar whose body is less than 20% of the candlestick with roughly equal top and bottom wicks
+- The following bar should have a body at least x3 the size of the indecision candle's total height (high - low)
+- The engulfing bar should exceed the high (bullish signal) or low (bearish signal) of the indecision candle
+- If it is a bullish engulfing bar it should occur during a downtrend (indicates a bullish reversal)
+- If it is a bearish engulfing bar it should occur during an uptrend (indicates a bearish reversal)
+
+The second example is much more specific than the first example. It removes as much subjectivity as possible in an attempt
+to clearly define what is and is not a valid trade signal. This rule should then be combined with another rule or two.
+
+In the beginning aim for two or three entry rules. Strict entry rules that determine your trade entries helps your trading
+psychology. It removes the stress on deciding whether or not you should enter a trade. The trade either meets your entry rules
+or it does not. Set entry rules also allow efficient and accurate backtesting. If you strategy is very subjective it is easy
+to have inaccurate backtests. This will be discussed in-depth in the next chapter.
+
+## Bollinger-Band Reversion Entry Rules
+
+Following are the entry rules we will use for our Bollinger-Band reversion strategy
+
+### Breaks upper or lower Bollinger Band
+
+- For a bullish signal a candlestick's low must exceed the lower Bollinger-Band
+- For a bearish signal a candlestick's high must exceed the upper Bollinger-Band
+- The candlestick's close is allowed to be within the Bollinger-Bands
+
+### Following Bar is Engulfing Bar
+
+- The next bar should have a body (open - close) at least x2 that of the previous candlestick's total height (high - low)
+- For a bullish signal the close of the engulfing bar should be within 10 pips of its' low
+- For a bearish signal the close of the engulfing bar should be within 10 pips of its' high
+
+### Trade Entry provides at least a 1:1.5 risk:reward ratio
+
+- No trade will be entered if the risk:reward ratio is less than 1.5
+
+### Account Should be Flat on Friday
+
+Many traders do not like to hold trades over the weekend. As trades can gap up or down significantly at market open after a
+weekend. This can result in large unexpected losses especially in a margin account.
+
+'Going flat' or a 'flat account' means there are no open positions. On Friday's we will not initiate any new positions and we
+will close all positions prior to market close.
+
+export default ({ children }) => (
+  <LayoutLesson
+    meta={meta}
+    course="tradingAcademy"
+    prevChapter="tradingPlan"
+    nextChapter="tradingPlan"
+    prevLesson="riskManagementStrategy"
+    nextLesson="exitRules"
+  >
+    {children}
+  </LayoutLesson>
+);
