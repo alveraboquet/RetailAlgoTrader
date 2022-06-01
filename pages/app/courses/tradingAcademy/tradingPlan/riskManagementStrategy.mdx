@@ -1,0 +1,89 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Risk Management Strategy
+
+The most important part of your trading plan is your risk management strategy. Even if you screw up every other aspect of the
+trading plan your risk management strategy will ensure that you do not lose too much capital. Remember that our primary goal is
+to preserve capital. It is not to make massive profits. If we preserve our capital profits will come.
+
+## Components of a Risk Management Strategy
+
+The following are the primary considerations for a risk management strategy.
+
+### Percent Risked
+
+Your strategy should choose a set risk percentage. Every trade will risk the same amount. This will typically be 1% or 2%
+of your account value. This ensures that no one trade can lose too much of your capital. Even 'sure' trades will frequently
+turn out to be losing trades.
+
+As you become a more advanced trader you can increase your percent risked. You can also develop conditions that dictate percent
+risked. For example if your trading system provides a strong technical trading signal and there was recently a strong news
+catalyst you risk 3% instead of 2%. Determining the strength of trading signals and modifying percent risked is an advanced
+technique and not recommended for beginners.
+
+Bollinger-Band Reversion: 2% per trade
+
+### Correlated Assets
+
+Before trading you need to decide how to handle correlated assets. You need to have a plan for how you will detect if two
+assets are correlated and how you will handle two correlated assets. Sooner or later your trading system will provide
+trading signals for two correlated assets at the same time.
+
+Considerations for correlated assets:
+
+- How will you calculate correlation? (Recommended to use a calculator as discussed previously)
+- What will your correlation cutoff be? (-0.5 to 0.5 is a good starting point)
+- How will you trade two correlated assets? (Risk full percentage on one asset or split percent risked between the assets)
+
+Bollinger-Band Reversion: Portfolio Visualizer, -0.5 to 0.5, Split percent
+
+### Allowable Max Drawdown
+
+Every strategy experiences drawdowns. Some strategies will experience many small drawdowns and some strategies will experience
+a few very large drawdowns. You must analyze your backtesting results to see the average and max drawdowns your strategy
+underwent. This will give you an idea of what to set your allowable max drawdown at. For example if your max drawdown during
+testing was 17% maybe you set your allowable max drawdown at 20%. If your live strategy experiences a drawdown of 20% it is
+a fair assumption that market conditions have changed and your strategy may no longer be effective.
+
+Bollinger-Band Reversion: 20%
+
+### Position Size Tools
+
+How will you calculate position size? You should not be using a calculator or pen and paper. You should either be using
+an algorithm or an online calculator that you input values into. In the risk management chapter we discussed the recommended
+online calculators and why they are necessary.
+
+Bollinger-Band Reversion: Babypips Position Size Calculator
+
+### Minimum Allowable Maintenance Margin (Or Margin Level if trading Forex)
+
+If you are trading in a margin account you need to pay attention to your maintenance margin. Brokers require a certain amount
+of account equity in comparison to how much you have borrowed. If you drop below this maintenance margin brokers can initiate a
+margin call which you absolutely do not want.
+
+You should set a minimum allowable maintenance margin well above your broker's maintenance margin. This will ensure that you
+are safe from a margin call and ensure that you are not too exposed to the markets at once. If your broker has a maintenance
+margin requirement of 30% maybe you set yours at 45%. Trades will frequently dip toward your stoploss before heading for your
+takeprofit. This extra 15% buffer gives your open trades room to breathe.
+
+Before opening a trade double check how it will impact maintenance margin. Ensure that it will not violate the minimum
+allowable maintenance margin you have set.
+
+Brokers have a variety of names for different margin metrics and have different requirements for each metric. Be sure to read
+up on your broker's documentation to ensure that you understand everything correctly. For example forex brokers typically
+use a metric called margin level. If this drops below 100% brokers usually do not allow you to open more trades.
+
+Bollinger-Band Reversion: 150% Margin Level
+
+export default ({ children }) => (
+  <LayoutLesson
+    meta={meta}
+    course="tradingAcademy"
+    prevChapter="tradingPlan"
+    nextChapter="tradingPlan"
+    prevLesson="chooseStrategy"
+    nextLesson="exitRules"
+  >
+    {children}
+  </LayoutLesson>
+);

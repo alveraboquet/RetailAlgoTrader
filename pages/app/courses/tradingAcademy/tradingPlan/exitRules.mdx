@@ -1,0 +1,45 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Exit Rules
+
+Every trading strategy should have a strict set of exit rules. If these exit rules are met the trade will be exited. There should
+be no adjusting the exit rules because you feel as though the market is going to turn in your favor. Set the exit rules and
+adhere to them. Exit rules are typically more straight-forward than entry rules.
+
+A proper exit strategy will typically consist of a stoploss and a takeprofit that is set when the trade is made. For example
+a stoploss set $5 below the entry candlestick's low and a takeprofit set at the moving average.
+
+Exit rules should remove as much subjectivity as possible. Here is an example of a poor exit rule:
+
+- Exit if price action reverses away from takeprofit
+
+This is a poor exit rule because it involves way too much subjectivity. How do you know if price action has actually reversed?
+At what point has it reversed too much? Maybe it is going to change directions again and go back towards your takeprofit? Having
+to make all of these decisions for every trade is exhausting and stressful.
+
+Here is how that exit rule can be improved (these will also be the exit conditions for our Bollinger-Band Reversion Strategy):
+
+- Stoploss will be placed 10 pips below (if bullish signal) or above (if bearish signal) the indecision candle's low / high
+- A takeprofit will be placed at the Bollinger Band's center moving average (1/2 of the position will be sold here)
+- A second takeprofit will be placed the Bollinger Band's opposite band (Upper if bullish and lower if bearish) (Sell remaining position)
+- The takeprofits will be adjusted to dynamically track the Bollinger Band's moving average
+- If first takeprofit is hit the stoploss will be moved to the trade's entry price
+- All trades will be closed prior to market close on Friday
+
+The second example is much more specific than the first example. It removes as much subjectivity as possible in an attempt
+to clearly define when and how a trade should be exited.
+
+Exit rules can become more advanced as you progress. They can use trailing stops and indicators as exit conditions.
+
+export default ({ children }) => (
+  <LayoutLesson
+    meta={meta}
+    course="tradingAcademy"
+    prevChapter="tradingPlan"
+    nextChapter="tradingPlan"
+    prevLesson="entryRules"
+    nextLesson="tradingJournal"
+  >
+    {children}
+  </LayoutLesson>
+);

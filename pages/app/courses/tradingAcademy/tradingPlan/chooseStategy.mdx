@@ -1,0 +1,77 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Choose a Strategy
+
+At this point you have enough knowledge to develop your first trading system. Throughout this chapter and the backtesting
+chapter we will go through the process of developing and testing the bollinger-band reversion strategy that was discussed
+previously in the course.
+
+Our recommendation is to observe how we develop the bollinger-band reversion strategy with EURUSD and follow the same steps to
+develop your own strategy. By actively following along you will gain much more from the following chapters. For this first
+strategy make it fairly simple. Focus on one or two indicators combined with a chart pattern. Right now the focus is more on
+learning the process than developing an actual profitable strategy.
+
+## Why is a Trading Plan so Important?
+
+A proper trading plan is essential to long-term profitability. Many people begin trading thinking it will be easy money and
+are shocked when they lose all of their capital. Then they close their accounts and continue to feed into the narrative
+that trading is just gambling. You would never just show up to an NFL practice and expect to make the team.
+
+Being a successful trader requires practice, discipline, and a plan. A proper trading plan is what separates 'dumb money' from
+profitable traders. A trading plan requires a couple of key benefits:
+
+1. Trading Rules
+
+- The entry, exit, and risk management rules are all clearly laid out
+- This makes it very clear whether or not a trade should be entered. You do not have to sit there and debate whether or
+  not you should enter the trade. This greatly decreases the stress and energy involved in trading.
+- These trading rules can be tested on historical data
+- This gives you a reasonable expectation of how your strategy should perform and in what market conditions it does and
+  does not perform well
+
+2. Accountability
+
+- Having a well-structured trading plan holds you accountable
+- With trading you are your own boss. This requires an immense amount of discipline.
+- Having a framework that dictates when and how you conduct your trading is invaluable
+
+3. Pyschological Health
+
+- Every strategy will experience a streak of losers also known as a drawdown
+- This is always very tough on your trading psychology
+- You begin to question your strategy and your abilities so you begin to modify your strategy or even abandon your strategy
+- This is the wrong thing to do. You need to stick with your trading plan even through drawdowns.
+- A well-constructed trading plan can be backtested. You have the histoical data proving that your strategy is profitable.
+- You understand how your strategy performs over the long-term. You can historically check the max drawdown of your strategy
+  and see that it managed to bounce back
+- A good trading plan gives you the peace of mind and confidence that your strategy will work over the long-term
+
+A trading plan is not a trading algorithm. These are separate things. A trading plan can incorporate algorithms to help enforce
+and act out the trading plan; however, a trading plan is simply a set of rules that you as a trader need to follow.
+
+A trading plan is so effective because it is repeatable. It provides consistent conditions for trading that can later be
+analyzed. Without a trading plan it is almost impossible to accurately gauge your strategy's performance.
+
+## Components of a Trading Plan
+
+1. Risk Management Strategy
+2. Entry Rules
+3. Exit Rules
+4. Trading Journal
+5. Schedule
+
+These five components listed above are absolutely required to develop a successful trading plan. We will discuss each of
+these in-depth.
+
+export default ({ children }) => (
+  <LayoutLesson
+    meta={meta}
+    course="tradingAcademy"
+    prevChapter="tradingPlan"
+    nextChapter="tradingPlan"
+    prevLesson="typesOfTraders"
+    nextLesson="riskManagementStrategy"
+  >
+    {children}
+  </LayoutLesson>
+);
