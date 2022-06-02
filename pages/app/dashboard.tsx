@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useSession, getSession } from 'next-auth/react';
 import LayoutApp from '../../components/layout/layoutApp';
-import { NextPageContext } from 'next';
+import { NextPage, NextPageContext } from 'next';
 import CourseCard from '../../components/course/courseCard';
 import coursesData from '../../components/landingPages/coursesData';
 import Link from 'next/link';
 
-const Dashboard = () => {
+const Dashboard: NextPage = () => {
   const { data: session } = useSession();
   const [enrolledCourses, setEnrolledCourses] = useState([
     { course_id: 0, enrolled: false, current_chapter: 0, current_lesson: 0 },
