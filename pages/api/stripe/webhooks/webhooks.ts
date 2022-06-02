@@ -1,8 +1,9 @@
 import { buffer } from 'micro';
 import Cors from 'micro-cors';
 import { NextApiRequest, NextApiResponse } from 'next';
-
 import Stripe from 'stripe';
+import prisma from '../../../../prisma/sharedClient';
+
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   // https://github.com/stripe/stripe-node#configuration
   apiVersion: '2020-08-27',
@@ -58,10 +59,22 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     } else if (event.type === 'charge.succeeded') {
       const charge = event.data.object as Stripe.Charge;
       console.log(`💵 Charge id: ${charge.id}`);
+    } else if (event.type === 'customer.subscription.created') {
+      const subscription = event.data.object as Stripe.Subscription;
+      console.log(subscription.customer);
+      await prisma.user.update({
+        // Find the customer in our database with the Stripe customer ID linked to this purchase
+        where: {
+          stripeCustomerId: subscription.customer as string,
+        },
+        // Update that customer so their status is now active
+        data: {
+          isPro: true,
+        },
+      });
     } else {
       console.warn(`🤷‍♀️ Unhandled event type: ${event.type}`);
     }
-
     // Return a response to acknowledge receipt of the event.
     res.json({ received: true });
   } else {
