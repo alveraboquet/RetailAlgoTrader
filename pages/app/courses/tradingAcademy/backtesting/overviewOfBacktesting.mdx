@@ -6,9 +6,9 @@ export const meta = {
 
 # Overview of Backtesting
 
-## What is Backtesting
+In this lesson you will be introduced to backtesting. Backtesting is one of the most important concepts in trading.
 
-Backtesting is one of the most important concepts in trading.
+## What is Backtesting
 
 It is the method used to determine if your strategy will be profitable over the long term,
 in what market conditions it performs well, and when the strategy has become unprofitable and needs to be shut down.
@@ -21,35 +21,25 @@ Before you can begin backtesting you must have a full trading strategy developed
 exit rules, and risk-management rules.
 
 These rules must be very clear and rigid rules. When backtesting you want to eliminate as much subjectivity as possible. There should
-not be instances where you are asking yourself "Would I take this trade or not?". It should be very evident based on your
+not be instances where you are asking yourself "Would I take this trade or not?". It should be very clear based on your
 trading system's rules whether or not you would enter the trade.
 
-We will use the Bollinger Band with Engulfing Bar mean reversion strategy discussed previously.
-
-Entry Rules:
-
-- Price reaches outside of the upper or lower Bollinger Band (It does not need to close outside of the band)
-- The following candlestick is an engulfing bar that is at least twice as large as the previous candlestick that
-  broke outside of the band.
-- The close of the engulfing bar is at least 3/4 of the way up the candlestick if it is a bullish signal and at
-  least 3/4 of the way down the candlestick if it is a bearish signal.
-- The entry price is not within 1 STD of the moving average.
-
-Exit Rules:
-
-- The stoploss will be placed at 0.25 ATR (Average True Range) from the high of the candlestick that broke the band (if a bearish signal)
-  or the low of the candlestick that broke the band (if a bullish signal)
-- There will be one take profit that dynamically follows the moving average. Sell 50% of your position at this point.
-- There will be second take profit that dynamically follows the opposite bollinger band. Sell the other 50% of you position at
-  this point.
-- After hitting the first take profit move your stoploss to your entry price
-
-Risk Managment Rules:
-
-- Every trade will risk 2% of your capital.
-- Max allowed drawdown will be 20%.
-
 ## Who needs to perform Backtesting?
+
+Every single trader needs to perform backtesting. It does not matter what your strategy is or how skilled how a trader you
+are. You need to backtest.
+
+Without backtesting you have no idea if your strategy will be profitable over the longterm. Backtesting gives you an in-depth
+understanding of how and why your strategy works. It allows you to understand in what market conditions the strategy works
+and in what market conditions the strategy does not work.
+
+During backtesting you will place hundreds of trades. This practice and repetition with your strategy is essential. It will get
+to the point where you do not even have to think about your strategy. You can just trade with the confidence that you have
+the proof that your strategy is profitable over the long-term.
+
+So many traders just want somebody to hand them the holy-grail of trading strategies. However, even if a great strategy was
+given to these traders they would most likely not be profitable. This is because they have not spent the time to truly
+understand the strategy. This deep understanding can only come through backtesting.
 
 export default ({ children }) => (
   <LayoutLesson

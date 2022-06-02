@@ -1,0 +1,82 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Backtesting with TradingView
+
+Until you dive into algorithmic trading, TradingView is one of the best resources you have for backtesting. It has historical
+data for nearly all assets and all timeframes. It has a very useful Chart Replay function that allows you to set the chart
+at a certain date and step through the chart as if you are live trading.
+
+If you are trading Forex another good option is (ForexTester)[https://forextester.com/]. It is a software specifically designed
+for backtesting and practice trading. You can provide your own data or use their data subscription. However, it is a little
+expensive. Our recommendation for now is to stick with backtesting on TradingView until you decide how you want to continue.
+
+## Strategy to Backtest
+
+We will use the Bollinger Band with Engulfing Bar mean reversion strategy discussed previously.
+
+Entry Rules:
+
+- Price reaches outside of the upper or lower Bollinger Band (It does not need to close outside of the band)
+- The following candlestick is an engulfing bar whose body is at least twice as large as the previous candlestick's total height
+- The close of the engulfing bar is at least 3/4 of the way up the candlestick if it is a bullish signal and at
+  least 3/4 of the way down the candlestick if it is a bearish signal.
+- The entry price is not within 1 STD of the moving average.
+
+Exit Rules:
+
+- The stoploss will be placed at 0.25 ATR (Average True Range) from the high of the candlestick that broke the band
+  (if a bearish signal) or the low of the candlestick that broke the band (if a bullish signal)
+- There will be one take profit that dynamically follows the moving average. Sell 50% of your position at this point.
+- There will be a second take profit that dynamically follows the opposite bollinger band. Sell the other 50% of you position at
+  this point.
+- After hitting the first take profit move your stoploss to your entry price
+
+Risk Managment Rules:
+
+- Every trade will risk 2% of your capital.
+- Max allowed drawdown will be 20%.
+- Only trading EURUSD so correlation is not an issue.
+- Account flat by close of markets on Friday
+
+Trading Journal:
+
+For this backtesting session we will use a simple Excel sheet (Click Here for Download)[]. As you become more advanced, you will
+want to look at more efficient options such as (TraderSync)[https://tradersync.com/]. Below are the values we will track in our
+Excel sheet.
+
+- Date and time trade opened
+- Data and time trade closed
+- Position Size
+- Entry Price
+- Exit Price
+- Stoploss Price
+- Takeprofit Price
+- Direction
+- Risk / Reward
+- Win / Loss
+- Profit / Loss
+- Market Condition (Upward Trend, Downward Trend, Ranging, etc)
+- Picture of trade before opened
+- Picture of trade after close
+- Additional Thoughts
+
+Feel free to add whatever categories and metrics you would like. The metrics we have included are more than enough to get
+started with some simple manual backtesting.
+
+Schedule:
+
+- Trading will be conduced from 8:00am EST until 4:00pm EST
+- Trades will only be entered on Monday through Thursday
+
+export default ({ children }) => (
+  <LayoutLesson
+    meta={meta}
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="backtesting"
+    prevLesson="syllabus"
+    nextLesson="overviewOfBacktesting"
+  >
+    {children}
+  </LayoutLesson>
+);

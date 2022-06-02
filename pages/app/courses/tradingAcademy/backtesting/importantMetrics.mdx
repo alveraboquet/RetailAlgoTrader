@@ -1,0 +1,49 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Important metrics
+
+When backtesting there are a couple of metrics to take into consideration. These are concepts from statistics that will
+ensure you are properly conducting backtesting. We frequently see traders claiming they have a developed a strategy that
+can achieve a low-risk, 300% gain in a year or some other similar claim. Then we take a look at their backtest and discover
+that they only have 20 tested trades. This is nowhere near enough trades to understand the long-term performance of your
+strategy. After extending the number of tested trades out to a couple of hundred we realize that over the long-term the
+strategy is not actually profitable.
+
+## Law of Large Numbers
+
+The law of large numbers establishes that as the size of the sample grows the sample average will approach the true population
+average. Essentially the greater the number of trades in your backtest the more reflective of true performance the backtest
+will be.
+
+This law seems to imply that testing as many trades as possible is your best option. While in general it is true that increasing
+the number of trades tested will give you a better representation of actual performance, it is important to remember that
+market conditions change. Running a bunch of tests from data in 1995 will not necessarily provide an accurate representation
+of how your strategy will perform in today's markets. It is typically always better to test the most recent data you
+can. If you are day trading or swing trading there should be more than enough trades to test in the past couple of years.
+
+Another benefit of testing a large number of trades, is that you can see how your strategy performs in a variety of
+market conditions. If you only test 20 trades all of these trades may occur during a strong uptrend. You have no idea how
+your strategy will perform in a downtrend or ranging market.
+
+Unfortunately limited by time and resources, so we need a way to determine if we have tested enough trades in our
+backtest to have a reasonable expectation of future performance. This is where the minimum sample size comes into play.
+
+## Minimum Sample Size
+
+Some strategies will not have enough data to achieve this minimum sample size. Strategies such as long-term strategies or
+strategies that rely on obscure data may not be able to meet this minimum sample size. That does not mean you should throw the
+strategy away. Do the best you can with the data you have but recognize that your strategy is not as strong tested as you
+would like.
+
+export default ({ children }) => (
+  <LayoutLesson
+    meta={meta}
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="backtesting"
+    prevLesson="syllabus"
+    nextLesson="overviewOfBacktesting"
+  >
+    {children}
+  </LayoutLesson>
+);
