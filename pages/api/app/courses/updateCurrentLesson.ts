@@ -9,13 +9,13 @@ const updateCurrentLesson = async (
   const session = await getSession({ req });
   if (session) {
     try {
-      const { userId } = session;
+      const { user } = session;
       const lessonData = JSON.parse(req.body);
       // Generate SQL statement
       const statement = `UPDATE "User_Course"
                           SET current_lesson = $1, current_chapter = $2
                           WHERE user_id = $3`;
-      const values = [lessonData.nextLesson, lessonData.nextChapter, userId];
+      const values = [lessonData.nextLesson, lessonData.nextChapter, user.id];
 
       // Execute SQL statement
       const result = await pool.query(statement, values);
