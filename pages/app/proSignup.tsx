@@ -1,4 +1,4 @@
-import { NextPage } from 'next';
+import { NextPage, NextPageContext } from 'next';
 import LayoutApp from '../../components/layout/layoutApp';
 import { fetchPostJSON } from '../../lib/fetchJSON';
 import getStripe from '../../lib/getStripe';
@@ -6,8 +6,11 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import alert from '../../lib/alert';
+import { getSession, useSession } from 'next-auth/react';
+import { MONTHLY_AMOUNT, ANNUAL_AMOUNT } from '../../stripe.config';
 
 const ProSignup: NextPage = () => {
+  const { data: session } = useSession();
   const [loading, setLoading] = useState(false);
   const [monthly, setMonthly] = useState(true);
 
@@ -17,7 +20,7 @@ const ProSignup: NextPage = () => {
     const response = await fetchPostJSON(
       '/api/stripe/checkoutSession/checkoutSession',
       {
-        amount: monthly ? 40.0 : 30.0,
+        amount: monthly ? MONTHLY_AMOUNT : ANNUAL_AMOUNT,
       }
     );
     if (response.statusCode === 500) {
@@ -167,7 +170,7 @@ const ProSignup: NextPage = () => {
             <tr>
               <th></th>
               <th>
-                <button className="btn btn-warning">
+                <button className="btn btn-warning" disabled={session !== null}>
                   <Link href="/auth/signin">
                     <a className="text-decoration-none text-dark">Sign up</a>
                   </Link>
@@ -177,7 +180,7 @@ const ProSignup: NextPage = () => {
                 <button
                   className="btn btn-warning"
                   onClick={handleCheckout}
-                  disabled={loading}
+                  disabled={loading || session?.user.isPro}
                 >
                   Upgrade to Pro
                 </button>
@@ -185,6 +188,23 @@ const ProSignup: NextPage = () => {
             </tr>
           </tbody>
         </table>
+        {session && !session?.user.isPro ? (
+          <div className="alert alert-success text-center">
+            You currently have a Hobby account. If you would like to upgrade to
+            a Pro membership please click &quot;Upgrade to Pro&quot; above
+          </div>
+        ) : (
+          <div></div>
+        )}
+        {session?.user.isPro ? (
+          <div className="alert alert-success text-center">
+            You are already a Pro user. If you would like to change your
+            membership status please visit your Account Settings page or email
+            contact@retailalgotrader.com
+          </div>
+        ) : (
+          <div></div>
+        )}
         <div id="liveAlertPlaceholder"></div>
       </div>
       <section className="text-center p-3">
@@ -302,3 +322,21 @@ const ProSignup: NextPage = () => {
 };
 
 export default ProSignup;
+
+// Export the `session` prop to use sessions with Server Side Rendering
+export async function getServerSideProps(context: NextPageContext) {
+  const session = await getSession(context);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: { session },
+  };
+}
