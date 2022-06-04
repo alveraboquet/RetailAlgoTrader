@@ -6,6 +6,7 @@ import Link from 'next/link';
 import coursesData from '../landingPages/coursesData';
 import { signIn, useSession } from 'next-auth/react';
 import ProSignupBanner from '../../components/pricing/proSignupBanner';
+import { useRouter } from 'next/router';
 
 interface Props {
   children: React.ReactNode;
@@ -27,6 +28,7 @@ const LayoutLesson = ({
   const { data: session, status } = useSession();
   const ref = useRef<any>(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const checkIfClickedOutside = (event: MouseEvent) => {
@@ -49,6 +51,10 @@ const LayoutLesson = ({
   if (status === 'unauthenticated') {
     signIn();
     return null;
+  }
+
+  if (!session?.user.isPro) {
+    router.push('/app/dashboard');
   }
 
   return (
