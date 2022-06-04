@@ -46,8 +46,15 @@ const Header = () => {
                   </a>
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link href="/pricing">
+                  <a className="nav-link text-white active" aria-current="page">
+                    Pricing
+                  </a>
+                </Link>
+              </li>
               <button
-                className="nav-item btn btn-warning"
+                className="nav-item btn btn-warning ms-md-2"
                 onClick={(e) => {
                   e.preventDefault();
                   signIn(undefined, { callbackUrl: '/app/dashboard' });
