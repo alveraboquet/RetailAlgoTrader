@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { MONTHLY_AMOUNT, ANNUAL_AMOUNT } from '../../stripe.config';
-import NonUserButton from './SignUpButton';
+import SignUpButton from './SignUpButton';
 
 interface Props {
   signedIn: boolean;
@@ -115,8 +115,8 @@ const PricingTable = ({ signedIn, monthly }: Props) => {
             ) : (
               <tr>
                 <th></th>
-                <th>{signedIn ? <></> : <NonUserButton />}</th>
-                <th>{signedIn ? <></> : <NonUserButton />}</th>
+                <th>{signedIn ? <></> : <SignUpButton />}</th>
+                <th>{signedIn ? <></> : <SignUpButton />}</th>
               </tr>
             )}
           </tbody>
