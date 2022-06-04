@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import coursesData from '../landingPages/coursesData';
 import { signIn, useSession } from 'next-auth/react';
+import ProSignupBanner from '../../components/pricing/proSignupBanner';
 
 interface Props {
   children: React.ReactNode;
@@ -23,7 +24,7 @@ const LayoutLesson = ({
   prevLesson,
   nextLesson,
 }: Props) => {
-  const { status } = useSession();
+  const { data: session, status } = useSession();
   const ref = useRef<any>(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -96,6 +97,7 @@ const LayoutLesson = ({
         <div style={{ height: '80px' }}>
           <HeaderApp />
         </div>
+        <ProSignupBanner isPro={session?.user.isPro} />
         <div
           className="mt-4 bg-light"
           style={{ height: '100%', overflowY: 'auto' }}
