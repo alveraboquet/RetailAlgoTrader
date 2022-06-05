@@ -3,6 +3,7 @@ import Cors from 'micro-cors';
 import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import prisma from '../../../../prisma/sharedClient';
+import DOMPurify from 'isomorphic-dompurify';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   // https://github.com/stripe/stripe-node#configuration
@@ -36,7 +37,9 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
         webhookSecret
       );
     } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'Unknown error';
+      const errorMessage = DOMPurify.sanitize(
+        err instanceof Error ? err.message : 'Unknown error'
+      );
       // On error, log and return the error message.
       if (err! instanceof Error) console.log(err);
       console.log(`❌ Error message: ${errorMessage}`);
