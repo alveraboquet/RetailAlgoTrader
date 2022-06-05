@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { MONTHLY_AMOUNT, ANNUAL_AMOUNT } from '../../stripe.config';
-import SignUpButton from './SignUpButton';
+import SignUpButton from './signUpButton';
 
 interface Props {
   signedIn: boolean;
