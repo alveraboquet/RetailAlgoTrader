@@ -199,10 +199,7 @@ const Home: NextPage = () => {
           </aside>
 
           {/*Portfolio Chart*/}
-          <section
-            className="container text-center ps-md-3 pe-md-3 fs-5"
-            style={{ color: '#3c484e' }}
-          >
+          <section className="container text-center ps-md-3 pe-md-3 fs-5">
             <h2 className="m-3 fw-bold text-dark">
               See how various strategies performed in recent markets
             </h2>
