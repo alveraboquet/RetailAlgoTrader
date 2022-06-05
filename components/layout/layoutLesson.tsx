@@ -1,12 +1,11 @@
 import HeaderApp from '../header/headerApp';
 import FooterLesson from '../footer/footerLesson';
-import Sidebar from 'react-sidebar';
-import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
 import coursesData from '../landingPages/coursesData';
 import { signIn, useSession } from 'next-auth/react';
 import ProSignupBanner from '../../components/pricing/proSignupBanner';
 import { useRouter } from 'next/router';
+import LessonSidebar from './lessonSidebar';
+import styles from '../../styles/LayoutLesson.module.css';
 
 interface Props {
   children: React.ReactNode;
@@ -26,23 +25,7 @@ const LayoutLesson = ({
   nextLesson,
 }: Props) => {
   const { data: session, status } = useSession();
-  const ref = useRef<any>(null);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
   const router = useRouter();
-
-  useEffect(() => {
-    const checkIfClickedOutside = (event: MouseEvent) => {
-      if (sidebarOpen && ref.current && !ref.current.contains(event.target)) {
-        setSidebarOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', checkIfClickedOutside);
-
-    return () => {
-      document.removeEventListener('mousedown', checkIfClickedOutside);
-    };
-  }, [sidebarOpen]);
 
   if (status === 'loading') {
     return null;
@@ -59,58 +42,24 @@ const LayoutLesson = ({
 
   return (
     <div>
-      <Sidebar
-        sidebar={
-          <div ref={ref}>
-            <h1>Sidebar content</h1>
-            <Link href="/signup">
-              <a className="text-decoration-none text-dark">
-                Get Started for Free
-              </a>
-            </Link>
-            {coursesData.tradingAcademy.curriculum.map((chapter) => (
-              <div
-                key={chapter}
-                className="ps-4 pe-4 mb-3 bg-secondary rounded text-white w-75 mx-auto"
-              >
-                {chapter}
-              </div>
-            ))}
-          </div>
-        }
-        open={sidebarOpen}
-        styles={{ sidebar: { background: 'white' } }}
+      <button
+        className={`${styles.lessonButton} position-fixed bottom-0 start-0 m-4 btn btn-light`}
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#lessonSidebar"
       >
-        <button
-          style={{ zIndex: '2' }}
-          className="position-fixed bottom-0 start-0 m-4 btn btn-light"
-          onClick={() => setSidebarOpen(true)}
-        >
-          Lessons
-        </button>
-      </Sidebar>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          height: '100%',
-          left: 0,
-          position: 'fixed',
-          top: 0,
-          width: '100%',
-        }}
-      >
-        <div style={{ height: '80px' }}>
+        Lessons
+      </button>
+      <LessonSidebar curriculum={coursesData.tradingAcademy.curriculum} />
+      <div className={styles.pageLayout}>
+        <div className={styles.headerHeight}>
           <HeaderApp />
         </div>
-        <ProSignupBanner isPro={session?.user.isPro} />
-        <div
-          className="mt-4 bg-light"
-          style={{ height: '100%', overflowY: 'auto' }}
-        >
+        <ProSignupBanner isPro={!session?.user.isPro} />
+        <div className={`${styles.lessonBody} mt-4 bg-light`}>
           <div className="container text-center">{children}</div>
         </div>
-        <div style={{ height: '100px' }}>
+        <div className={styles.footerHeight}>
           <FooterLesson
             course={course}
             prevChapter={prevChapter}
