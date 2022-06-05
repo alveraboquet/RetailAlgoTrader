@@ -55,7 +55,7 @@ const LayoutLesson = ({
         <div className={styles.headerHeight}>
           <HeaderApp />
         </div>
-        <ProSignupBanner isPro={!session?.user.isPro} />
+        <ProSignupBanner isPro={session?.user.isPro} />
         <div className={`${styles.lessonBody} mt-4 bg-light`}>
           <div className="container text-center">{children}</div>
         </div>
