@@ -37,13 +37,13 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
         webhookSecret
       );
     } catch (err) {
-      const errorMessage = DOMPurify.sanitize(
-        err instanceof Error ? err.message : 'Unknown error'
-      );
+      const errorMessage = err instanceof Error ? err.message : 'Unknown error';
       // On error, log and return the error message.
       if (err! instanceof Error) console.log(err);
       console.log(`❌ Error message: ${errorMessage}`);
-      res.status(400).send(`Webhook Error: ${errorMessage}`);
+      res
+        .status(400)
+        .send(`Webhook Error: ${DOMPurify.sanitize(errorMessage)}`);
       return;
     }
 
