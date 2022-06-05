@@ -3,7 +3,7 @@ import Cors from 'micro-cors';
 import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import prisma from '../../../../prisma/sharedClient';
-import DOMPurify from 'isomorphic-dompurify';
+import escapeHTML from 'escape-html';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   // https://github.com/stripe/stripe-node#configuration
@@ -41,9 +41,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       // On error, log and return the error message.
       if (err! instanceof Error) console.log(err);
       console.log(`❌ Error message: ${errorMessage}`);
-      res
-        .status(400)
-        .send(`Webhook Error: ${DOMPurify.sanitize(errorMessage)}`);
+      res.status(400).send(`Webhook Error: ${escapeHTML(errorMessage)}`);
       return;
     }
 
