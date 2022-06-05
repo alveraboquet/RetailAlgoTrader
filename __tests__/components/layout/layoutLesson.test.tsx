@@ -1,6 +1,10 @@
 import { screen, render } from '@testing-library/react';
 import LayoutLesson from '../../../components/layout/layoutLesson';
 import { SessionProvider } from 'next-auth/react';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import mockRouter from 'next-router-mock';
+
+jest.mock('next/dist/client/router', () => require('next-router-mock'));
 
 describe('<LayoutLesson />', () => {
   test('renders correctly', () => {
@@ -10,7 +14,13 @@ describe('<LayoutLesson />', () => {
       <SessionProvider
         session={{
           expires: '1',
-          user: { id: '1', email: 'testEmail@email.com', name: 'testUser' },
+          user: {
+            id: 'testId',
+            email: 'testEmail@email.com',
+            name: 'testUser',
+            stripeCustomerId: 'testStripeId',
+            isPro: false,
+          },
         }}
       >
         <LayoutLesson
@@ -30,7 +40,10 @@ describe('<LayoutLesson />', () => {
     const markdown = screen.getByRole('heading', { name: /test markdown/i });
     const lessonsButton = screen.getByRole('button', { name: /lessons/i });
     const sidebarTitle = screen.getByRole('heading', {
-      name: /sidebar content/i,
+      name: /lessons/i,
+    });
+    const proUpgradeBanner = screen.getByRole('button', {
+      name: /upgrade to pro/i,
     });
 
     expect(header).toBeInTheDocument();
@@ -38,5 +51,6 @@ describe('<LayoutLesson />', () => {
     expect(markdown).toBeInTheDocument();
     expect(lessonsButton).toBeInTheDocument();
     expect(sidebarTitle).toBeInTheDocument();
+    expect(proUpgradeBanner).toBeInTheDocument();
   });
 });
