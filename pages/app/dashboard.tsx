@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useSession, getSession } from 'next-auth/react';
 import LayoutApp from '../../components/layout/layoutApp';
-import { NextPageContext } from 'next';
+import { NextPage, NextPageContext } from 'next';
 import CourseCard from '../../components/course/courseCard';
 import coursesData from '../../components/landingPages/coursesData';
-import Link from 'next/link';
+import ProSignupBanner from '../../components/pricing/proSignupBanner';
 
-const Dashboard = () => {
+const Dashboard: NextPage = () => {
   const { data: session } = useSession();
   const [enrolledCourses, setEnrolledCourses] = useState([
     { course_id: 0, enrolled: false, current_chapter: 0, current_lesson: 0 },
@@ -116,16 +116,12 @@ const Dashboard = () => {
 
   return (
     <LayoutApp>
+      <ProSignupBanner isPro={session?.user.isPro} />
       {session?.user && (
         <p className="text-end">
           Signed in as {session.user?.name ?? session.user.email}
         </p>
       )}
-      <Link href="/app/proSignup">
-        <a>
-          <h2>Upgrade to Pro</h2>
-        </a>
-      </Link>
       <h1>Course Catalog</h1>
       <div className="row">
         <div className="col-4">

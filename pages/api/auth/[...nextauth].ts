@@ -27,12 +27,18 @@ export default NextAuth({
     signIn: '/auth/signin',
   },
   callbacks: {
+    // Adds userId, stripeCustomerId, and isPro boolean from DB to the default session values
     session: async ({ session, user }) => {
-      session.userId = user.id;
+      if (typeof user.id === 'string') session.user.id = user.id;
+      if (typeof user.stripeCustomerId === 'string') {
+        session.user.stripeCustomerId = user.stripeCustomerId;
+      }
+      if (typeof user.isPro === 'boolean') session.user.isPro = user.isPro;
       return Promise.resolve(session);
     },
   },
   events: {
+    // Creates a Stripe customer on signup
     createUser: async ({ user }) => {
       // Create stripe API client using the secret key env variable
       const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {

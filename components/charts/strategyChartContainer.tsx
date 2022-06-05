@@ -1,5 +1,6 @@
 import { Line } from 'react-chartjs-2';
 import { options, data } from './strategyChartData';
+import styles from '../../styles/StrategyChartContainer.module.css';
 
 const StrategyChart = () => {
   return (
@@ -8,7 +9,7 @@ const StrategyChart = () => {
         <Line
           options={options}
           data={data}
-          style={{ height: '300px' }}
+          className={styles.chartSmallHeight}
           data-testid="portfolioChartPhone"
         />
       </div>
@@ -16,7 +17,7 @@ const StrategyChart = () => {
         <Line
           options={options}
           data={data}
-          style={{ height: '400px' }}
+          className={styles.chartLargeHeight}
           data-testid="portfolioChartDesktop"
         />
       </div>

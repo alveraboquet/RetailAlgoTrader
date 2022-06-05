@@ -9,12 +9,12 @@ const findEnrolledCoursesByUser = async (
   const session = await getSession({ req });
   if (session) {
     try {
-      const { userId } = session;
+      const { user } = session;
       // Generate SQL statement
       const statement = `SELECT course_id, enrolled, current_chapter, current_lesson
                            FROM "User_Course"
                            WHERE user_id = $1`;
-      const values = [userId];
+      const values = [user.id];
 
       // Execute SQL statement
       const result = await pool.query(statement, values);

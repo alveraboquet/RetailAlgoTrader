@@ -11,14 +11,20 @@ describe('<Dashboard />', () => {
       <SessionProvider
         session={{
           expires: '1',
-          user: { id: '1', email: 'testEmail@email.com', name: 'testUser' },
+          user: {
+            id: 'testId',
+            email: 'testEmail@email.com',
+            name: 'testUser',
+            stripeCustomerId: 'testStripeid',
+            isPro: false,
+          },
         }}
       >
         <Dashboard />
       </SessionProvider>
     );
 
-    // Header, Footer, and Body
+    // Header, Footer, Body, and pro upgrade bar
     const header = screen.getByRole('link', { name: /dashboard/i });
     const logoutButton = screen.getByRole('button', { name: /logout/i });
     const signedInAs = screen.getByText(/signed in as testUser/i);
@@ -26,11 +32,15 @@ describe('<Dashboard />', () => {
       name: /course catalog/i,
     });
     const footer = screen.getByRole('heading', { name: /about us/i });
+    const proUpgradeBar = screen.getByRole('button', {
+      name: /upgrade to pro/i,
+    });
     expect(header).toBeInTheDocument();
     expect(logoutButton).toBeInTheDocument();
     expect(signedInAs).toBeInTheDocument();
     expect(courseCatalog).toBeInTheDocument();
     expect(footer).toBeInTheDocument();
+    expect(proUpgradeBar).toBeInTheDocument();
 
     // Course Cards
     const tradingAcademy = screen.getByText(/if you have no or little/i);
@@ -74,5 +84,29 @@ describe('<Dashboard />', () => {
     expect(twentyFivePercentComplete).toBeInTheDocument();
     expect(fiftyPercentComplete).toBeInTheDocument();
     expect(zeroPercentComplete).toHaveLength(4);
+  });
+
+  test('renders upgrade pro bar for non pro member', () => {
+    render(
+      <SessionProvider
+        session={{
+          expires: '1',
+          user: {
+            id: 'testId',
+            email: 'testEmail@email.com',
+            name: 'testUser',
+            stripeCustomerId: 'testStripeid',
+            isPro: true,
+          },
+        }}
+      >
+        <Dashboard />
+      </SessionProvider>
+    );
+
+    const proUpgradeBar = screen.queryByRole('button', {
+      name: /upgrade to pro/i,
+    });
+    expect(proUpgradeBar).not.toBeInTheDocument();
   });
 });
