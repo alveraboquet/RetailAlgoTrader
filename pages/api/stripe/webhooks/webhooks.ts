@@ -43,7 +43,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       // On error, log and return the error message.
       if (err! instanceof Error) console.log(err);
       console.log(`❌ Error message: ${errorMessage}`);
-      res.status(400).send('Webhook Error: ' + escapeHTML(errorMessage));
+      res.status(400).send('Webhook Error');
       return;
     }
 
