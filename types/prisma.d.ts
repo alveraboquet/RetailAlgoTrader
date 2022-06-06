@@ -5,4 +5,10 @@ declare global {
   var prisma: PrismaClientType;
 }
 
+declare namespace Prisma {
+  interface UserUpdateArgs {
+    stripeCustomerId: string;
+  }
+}
+
 export {};

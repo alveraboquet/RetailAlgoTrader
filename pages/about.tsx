@@ -4,7 +4,7 @@ import Image from 'next/image';
 const About = () => {
   return (
     <Layout>
-      <article className="container fs-5" style={{ color: '#3c484e' }}>
+      <article className="container fs-5">
         <h1 className="mt-3 fw-bold text-dark text-center">
           About RetailAlgoTrading
         </h1>

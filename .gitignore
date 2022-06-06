@@ -40,3 +40,6 @@ yarn-error.log*
 
 # .env
 .env
+
+# msw
+/public/mockServiceWorker.js
