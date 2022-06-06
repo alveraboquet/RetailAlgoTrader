@@ -1,34 +1,32 @@
-import { NextPage } from 'next';
+import { NextPage, NextPageContext } from 'next';
 import LayoutApp from '../../components/layout/layoutApp';
-import Platform from '../../components/eaGenerator/platform';
-import RiskManagementRules from '../../components/eaGenerator/riskManagementRules';
-import EntryRules from '../../components/eaGenerator/entryRules';
-import ExitRules from '../../components/eaGenerator/exitRules';
+import { getSession } from 'next-auth/react';
+import EaTemplateTool from '../../components/eaGenerator/eaTemplateTool';
 
-const eaGenerator: NextPage = () => {
+const EaGenerator: NextPage = () => {
   return (
     <LayoutApp>
-      <h1>EA Generator</h1>
-      <div className="row">
-        <div className="col-6">
-          <h2>Platform</h2>
-          <Platform />
-          <h2>Risk Management Rules</h2>
-          <RiskManagementRules />
-          <h2>Entry Rules</h2>
-          <EntryRules />
-          <h2>Exit Rules</h2>
-          <ExitRules />
-        </div>
-        <div className="col-6">
-          <h2>Platform</h2>
-          <h2>Risk Management Rules</h2>
-          <h2>Entry Rules</h2>
-          <h2>Exit Rules</h2>
-        </div>
-      </div>
+      <EaTemplateTool />
     </LayoutApp>
   );
 };
 
-export default eaGenerator;
+export default EaGenerator;
+
+// Export the `session` prop to use sessions with Server Side Rendering
+export async function getServerSideProps(context: NextPageContext) {
+  const session = await getSession(context);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: { session },
+  };
+}
