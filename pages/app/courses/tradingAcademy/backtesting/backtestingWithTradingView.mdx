@@ -14,7 +14,7 @@ expensive. Our recommendation for now is to stick with backtesting on TradingVie
 
 We will use the Bollinger Band with Engulfing Bar mean reversion strategy discussed previously.
 
-Entry Rules:
+### Entry Rules
 
 - Price reaches outside of the upper or lower Bollinger Band (It does not need to close outside of the band)
 - The following candlestick is an engulfing bar whose body is at least twice as large as the previous candlestick's total height
@@ -22,7 +22,7 @@ Entry Rules:
   least 3/4 of the way down the candlestick if it is a bearish signal.
 - The entry price is not within 1 STD of the moving average.
 
-Exit Rules:
+### Exit Rules
 
 - The stoploss will be placed at 0.25 ATR (Average True Range) from the high of the candlestick that broke the band
   (if a bearish signal) or the low of the candlestick that broke the band (if a bullish signal)
@@ -31,14 +31,14 @@ Exit Rules:
   this point.
 - After hitting the first take profit move your stoploss to your entry price
 
-Risk Managment Rules:
+### Risk Managment Rules
 
 - Every trade will risk 2% of your capital.
 - Max allowed drawdown will be 20%.
 - Only trading EURUSD so correlation is not an issue.
 - Account flat by close of markets on Friday
 
-Trading Journal:
+### Trading Journal
 
 For this backtesting session we will use a simple Excel sheet (Click Here for Download)[]. As you become more advanced, you will
 want to look at more efficient options such as (TraderSync)[https://tradersync.com/]. Below are the values we will track in our
@@ -63,14 +63,20 @@ Excel sheet.
 Feel free to add whatever categories and metrics you would like. The metrics we have included are more than enough to get
 started with some simple manual backtesting.
 
-Schedule:
+### Schedule
 
-- Trading will be conduced from 8:00am EST until 4:00pm EST
+- Trading will be conducted from 8:00am EST until 4:00pm EST
 - Trades will only be entered on Monday through Thursday
+- Trades will be tested from 1/2019 to 1/2020 on the daily timeframe
+
+### Backtesting Results
+
+In the image below you can see the overall results of our backtest of this strategy.
+
+In the links below you can download our completed trade journal to review.
 
 export default ({ children }) => (
   <LayoutLesson
-    meta={meta}
     course="tradingAcademy"
     prevChapter="courseOverview"
     nextChapter="backtesting"

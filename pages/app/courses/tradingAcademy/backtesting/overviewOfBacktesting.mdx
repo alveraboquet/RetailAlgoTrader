@@ -1,9 +1,5 @@
 import LayoutLesson from '../../../../../components/layout/layoutLesson';
 
-export const meta = {
-  author: 'Rich Haines',
-};
-
 # Overview of Backtesting
 
 In this lesson you will be introduced to backtesting. Backtesting is one of the most important concepts in trading.
@@ -11,10 +7,20 @@ In this lesson you will be introduced to backtesting. Backtesting is one of the 
 ## What is Backtesting
 
 It is the method used to determine if your strategy will be profitable over the long term,
-in what market conditions it performs well, and when the strategy has become unprofitable and needs to be shut down.
+in what market conditions it performs well, and when the strategy has become unprofitable and needs to be shut down. Proper
+backtesting involves running your developed strategy through historical data. If manually trading this means that you will
+load up data from the past and then step through the data and trade as if it is live data. If trading algorithmically you will
+use a platform's backtesting framework to automate the process.
+
+<video
+  controls
+  src={'/images/courses/tradingAcademy/backtesting/backtestExample.mov'}
+  style={{ width: '75%' }}
+/>
 
 Learning how to properly backtest will be one of the most important lessons in this course. Backtesting is vital to ensuring
-that you understand your strategy and have the confidence to trust your strategy.
+that you understand your strategy and have the confidence to trust your strategy. It is the best way to simulate live trading
+conditions. It is a safe environment to practice and experiment in without risk of losing money.
 
 Backtesting is a fairly straight-forward procedure that is unfortunately very difficult to perform correctly.
 Before you can begin backtesting you must have a full trading strategy developed. This trading strategy must have entry rules,
@@ -26,7 +32,7 @@ trading system's rules whether or not you would enter the trade.
 
 ## Who needs to perform Backtesting?
 
-Every single trader needs to perform backtesting. It does not matter what your strategy is or how skilled how a trader you
+Every single trader needs to perform backtesting. It does not matter what your strategy is or how skilled of a trader you
 are. You need to backtest.
 
 Without backtesting you have no idea if your strategy will be profitable over the longterm. Backtesting gives you an in-depth
@@ -43,7 +49,6 @@ understand the strategy. This deep understanding can only come through backtesti
 
 export default ({ children }) => (
   <LayoutLesson
-    meta={meta}
     course="tradingAcademy"
     prevChapter="courseOverview"
     nextChapter="backtesting"
