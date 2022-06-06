@@ -1,26 +1,26 @@
 const Platform = () => {
   return (
-    <div className="accordion accordion-flush" id="accordionFlushExample">
+    <div className="accordion accordion-flush" id="platform">
       <div className="accordion-item">
-        <h2 className="accordion-header" id="flush-headingOne">
+        <h2 className="accordion-header" id="platformHeading">
           <button
             className="accordion-button collapsed"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseOne"
+            data-bs-target="#platformCollapse"
             aria-expanded="false"
-            aria-controls="flush-collapseOne"
+            aria-controls="platformCollapse"
           >
             Pinescript
           </button>
         </h2>
         <div
-          id="flush-collapseOne"
+          id="platformCollapse"
           className="accordion-collapse collapse"
-          aria-labelledby="flush-headingOne"
-          data-bs-parent="#accordionFlushExample"
+          aria-labelledby="platformHeading"
+          data-bs-parent="#platform"
         >
-          <div className="accordion-body">
+          <div className="accordion-body border bg-light">
             Pinescript is TradingView&apos;s proprietary trading language. It
             can be used to create custom indicators or fully functional expert
             advisors. Pinescript is perfect for novices at algorithmic trading.
@@ -31,25 +31,30 @@ const Platform = () => {
         </div>
       </div>
       <div className="accordion-item">
-        <h2 className="accordion-header" id="flush-headingTwo">
+        <h2
+          className="accordion-header"
+          id="mt4Heading
+        "
+        >
           <button
             className="accordion-button collapsed"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseTwo"
+            data-bs-target="#mt4Collapse"
             aria-expanded="false"
-            aria-controls="flush-collapseTwo"
+            aria-controls="mt4Collapse"
           >
             MT4
           </button>
         </h2>
         <div
-          id="flush-collapseTwo"
+          id="mt4Collapse"
           className="accordion-collapse collapse"
-          aria-labelledby="flush-headingTwo"
-          data-bs-parent="#accordionFlushExample"
+          aria-labelledby="mt4Heading
+          "
+          data-bs-parent="#platform"
         >
-          <div className="accordion-body">
+          <div className="accordion-body border bg-light">
             MT4 supports MQL4. Like Pinescript MQL4 is a language developed
             specifically for trading. However, where Pinescript is only
             supported by TradingView, MT4 is supported by nearly all Forex
@@ -62,25 +67,25 @@ const Platform = () => {
         </div>
       </div>
       <div className="accordion-item">
-        <h2 className="accordion-header" id="flush-headingThree">
+        <h2 className="accordion-header" id="quantconnectHeading">
           <button
             className="accordion-button collapsed"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseThree"
+            data-bs-target="#quantconnectCollapse"
             aria-expanded="false"
-            aria-controls="flush-collapseThree"
+            aria-controls="quantconnectCollapse"
           >
             QuantConnect
           </button>
         </h2>
         <div
-          id="flush-collapseThree"
+          id="quantconnectCollapse"
           className="accordion-collapse collapse"
-          aria-labelledby="flush-headingThree"
-          data-bs-parent="#accordionFlushExample"
+          aria-labelledby="quantconnectHeading"
+          data-bs-parent="#platform"
         >
-          <div className="accordion-body">
+          <div className="accordion-body border bg-light">
             QuantConnect combines the advanced packages and flexibility of
             Python and C# with the built-in data pipeline of MT4. QuantConnect
             has data for nearly every asset and offers a top-tier backtesting

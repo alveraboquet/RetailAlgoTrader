@@ -1,26 +1,26 @@
 const RiskManagementRules = () => {
   return (
-    <div className="accordion accordion-flush" id="accordionFlushExample">
+    <div className="accordion accordion-flush" id="riskManagement">
       <div className="accordion-item">
-        <h2 className="accordion-header" id="flush-headingOne">
+        <h2 className="accordion-header" id="riskPercentageHeader">
           <button
             className="accordion-button collapsed"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseOne"
+            data-bs-target="#riskPercentageCollapse"
             aria-expanded="false"
-            aria-controls="flush-collapseOne"
+            aria-controls="riskPercentageCollapse"
           >
             Risk Percentage
           </button>
         </h2>
         <div
-          id="flush-collapseOne"
+          id="riskPercentageCollapse"
           className="accordion-collapse collapse"
-          aria-labelledby="flush-headingOne"
-          data-bs-parent="#accordionFlushExample"
+          aria-labelledby="riskPercentageHeader"
+          data-bs-parent="#riskManagement"
         >
-          <div className="accordion-body">
+          <div className="accordion-body border bg-light">
             All trading strategies should have a set risk percentage per trade.
             Select your desired risk percentage by percent. We offer 1%-100%;
             however, our recommendation is 2%. Be very cautious about exceeding
@@ -30,25 +30,25 @@ const RiskManagementRules = () => {
         </div>
       </div>
       <div className="accordion-item">
-        <h2 className="accordion-header" id="flush-headingTwo">
+        <h2 className="accordion-header" id="rrHeading">
           <button
             className="accordion-button collapsed"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseTwo"
+            data-bs-target="#rrCollapse"
             aria-expanded="false"
-            aria-controls="flush-collapseTwo"
+            aria-controls="rrCollapse"
           >
             Minimum Risk:Reward
           </button>
         </h2>
         <div
-          id="flush-collapseTwo"
+          id="rrCollapse"
           className="accordion-collapse collapse"
-          aria-labelledby="flush-headingTwo"
-          data-bs-parent="#accordionFlushExample"
+          aria-labelledby="rrHeading"
+          data-bs-parent="#riskManagement"
         >
-          <div className="accordion-body">
+          <div className="accordion-body border bg-light">
             For the majority of strategies you should aim for a Risk:Reward
             ratio greater than 1. Ideally it will be 2:1 or 3:1 but it depends
             on the strategy. Most strategies will want to set a minimum
@@ -58,25 +58,25 @@ const RiskManagementRules = () => {
         </div>
       </div>
       <div className="accordion-item">
-        <h2 className="accordion-header" id="flush-headingThree">
+        <h2 className="accordion-header" id="maxDrawdownHeading">
           <button
             className="accordion-button collapsed"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseThree"
+            data-bs-target="#maxDrawdownCollapse"
             aria-expanded="false"
-            aria-controls="flush-collapseThree"
+            aria-controls="maxDrawdownCollapse"
           >
             Max Drawdown
           </button>
         </h2>
         <div
-          id="flush-collapseThree"
+          id="maxDrawdownCollapse"
           className="accordion-collapse collapse"
-          aria-labelledby="flush-headingThree"
-          data-bs-parent="#accordionFlushExample"
+          aria-labelledby="maxDrawdownHeading"
+          data-bs-parent="#riskManagement"
         >
-          <div className="accordion-body">
+          <div className="accordion-body border bg-light">
             Every strategy should have a max drawdown. This max drawdown should
             be established through backtesting. If your backtesting produces a
             max drawdown of 15% then setting your strategy&apos;s max drawdown
@@ -88,25 +88,25 @@ const RiskManagementRules = () => {
         </div>
       </div>
       <div className="accordion-item">
-        <h2 className="accordion-header" id="flush-headingFour">
+        <h2 className="accordion-header" id="adjustHeading">
           <button
             className="accordion-button collapsed"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseFour"
+            data-bs-target="#adjustCollapse"
             aria-expanded="false"
-            aria-controls="flush-collapseFour"
+            aria-controls="adjustCollapse"
           >
             Adjust stoploss to entry price
           </button>
         </h2>
         <div
-          id="flush-collapseFour"
+          id="adjustCollapse"
           className="accordion-collapse collapse"
-          aria-labelledby="flush-headingFour"
-          data-bs-parent="#accordionFlushExample"
+          aria-labelledby="adjustHeading"
+          data-bs-parent="#riskManagement"
         >
-          <div className="accordion-body">
+          <div className="accordion-body border bg-light">
             One of the most popular trading techniques is to sell part of your
             position at a certain take profit level, move the stoploss to your
             entry price, and then attempt to sell the remainder of your position

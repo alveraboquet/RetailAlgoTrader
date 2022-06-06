@@ -1,26 +1,26 @@
 const EntryRules = () => {
   return (
-    <div className="accordion accordion-flush" id="accordionFlushExample">
+    <div className="accordion accordion-flush" id="entryRules">
       <div className="accordion-item">
-        <h2 className="accordion-header" id="flush-headingOne">
+        <h2 className="accordion-header" id="entryRulesHeading">
           <button
             className="accordion-button collapsed"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseOne"
+            data-bs-target="#entryRulesCollapse"
             aria-expanded="false"
-            aria-controls="flush-collapseOne"
+            aria-controls="entryRulesCollapse"
           >
             Moving-Average Crossover
           </button>
         </h2>
         <div
-          id="flush-collapseOne"
+          id="entryRulesCollapse"
           className="accordion-collapse collapse"
-          aria-labelledby="flush-headingOne"
-          data-bs-parent="#accordionFlushExample"
+          aria-labelledby="entryRulesHeading"
+          data-bs-parent="#entryRules"
         >
-          <div className="accordion-body">
+          <div className="accordion-body border bg-light">
             This entry rule uses a slow and fast moving average crossover to
             initiate trades. While this is a basic entry rule that we do not
             recommend using by itself, it provides a very good example and
@@ -30,25 +30,25 @@ const EntryRules = () => {
         </div>
       </div>
       <div className="accordion-item">
-        <h2 className="accordion-header" id="flush-headingTwo">
+        <h2 className="accordion-header" id="bbHeading">
           <button
             className="accordion-button collapsed"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseTwo"
+            data-bs-target="#bbCollapse"
             aria-expanded="false"
-            aria-controls="flush-collapseTwo"
+            aria-controls="bbCollapse"
           >
             Bollinger-Band Mean Reversion with Engulfing Bar
           </button>
         </h2>
         <div
-          id="flush-collapseTwo"
+          id="bbCollapse"
           className="accordion-collapse collapse"
-          aria-labelledby="flush-headingTwo"
-          data-bs-parent="#accordionFlushExample"
+          aria-labelledby="bbHeading"
+          data-bs-parent="#entryRules"
         >
-          <div className="accordion-body">
+          <div className="accordion-body border bg-light">
             This is a more complicated entry strategy using Bollinger-Bands and
             chart patterns. If price action breaks the upper or lower band of
             the Bollinger-Bands and is then followed by an engulfing bar the
@@ -59,25 +59,25 @@ const EntryRules = () => {
         </div>
       </div>
       <div className="accordion-item">
-        <h2 className="accordion-header" id="flush-headingThree">
+        <h2 className="accordion-header" id="cointegrationHeading">
           <button
             className="accordion-button collapsed"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseThree"
+            data-bs-target="#cointegrationCollapse"
             aria-expanded="false"
-            aria-controls="flush-collapseThree"
+            aria-controls="cointegrationCollapse"
           >
             Cointegration
           </button>
         </h2>
         <div
-          id="flush-collapseThree"
+          id="cointegrationCollapse"
           className="accordion-collapse collapse"
-          aria-labelledby="flush-headingThree"
-          data-bs-parent="#accordionFlushExample"
+          aria-labelledby="cointegrationHeading"
+          data-bs-parent="#entryRules"
         >
-          <div className="accordion-body">
+          <div className="accordion-body border bg-light">
             This is a very advanced strategy. Cointegration strategies track two
             assets that move very similarly. The average standard deviation for
             the two assets is calculated. If the assets spread further apart
