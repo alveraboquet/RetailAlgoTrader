@@ -43,7 +43,7 @@ const LayoutLesson = ({
   return (
     <div>
       <button
-        className={`${styles.lessonButton} position-fixed bottom-0 start-0 m-4 btn btn-light`}
+        className={`${styles.lessonButton} position-fixed bottom-0 start-0 m-2 btn btn-light`}
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#lessonSidebar"
