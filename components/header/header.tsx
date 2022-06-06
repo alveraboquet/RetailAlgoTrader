@@ -40,6 +40,13 @@ const Header = () => {
                 </Link>
               </li>
               <li className="nav-item">
+                <Link href="/eaGenerator">
+                  <a className="nav-link text-white active" aria-current="page">
+                    EA Generator
+                  </a>
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link href="/blog">
                   <a className="nav-link text-white active" aria-current="page">
                     Blog
