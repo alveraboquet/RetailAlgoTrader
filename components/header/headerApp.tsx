@@ -46,6 +46,13 @@ const HeaderApp = () => {
                   </a>
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link href="/app/accountManagement">
+                  <a className="nav-link text-white active" aria-current="page">
+                    Account Info
+                  </a>
+                </Link>
+              </li>
               <button
                 className="nav-item btn btn-warning"
                 onClick={(e) => {
