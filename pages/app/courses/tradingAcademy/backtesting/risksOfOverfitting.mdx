@@ -1,0 +1,80 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Risks of Overfitting
+
+One of the most common mistakes even for advanced traders in regards to backtesting is overfitting. When traders first discover
+backtesting they typically choose a timeframe, run through 100 trades or so, and then evaluate the performance. So far this is
+all fine. The issue arises when they decide that they can improve the performance of their strategy.
+
+So they adjust the parameters (entry rules, exit rules, risk management, etc) and backtest again. They continue this cycle
+until they achieve the best possible return. Now they believe they have an incredibly profitable strategy with the historical
+data to prove it. They launch it on the live markets and their strategy performs terribly.
+
+By repeatedly running backtestings and adjusting the parameters, their strategy now performs great for the data it was
+backtested on. But on any other data the strategy performs horribly. The strategy is overfit to the backtest data. This is a
+common issue within trading and statistics in general. This cycle of backtesting and adjusting parameters is known as
+optimization.
+
+## How to Prevent Overfitting
+
+There are a couple of primary ways to prevent overfitting.
+
+### Limit Number of Backtests
+
+One of the best ways is to simply limit how many times you backtest a specific strategy on the same piece of data. Try not to
+backtest the same strategy on the same set of data more than 10 times. This becomes a bigger issue with algorithmic trading
+where you can run 100 backtests / optimizations in 10 minutes. Backtesting manually is much more time-intensive which helps to
+limit overfitting.
+
+The greater the number of times you backtest a strategy and mess with the parameters the greater the chance that you are
+overfitting your strategy.
+
+This is another reason why we recommend running backtests across a variety of market conditions. By running backtests across
+varying historical data, you reduce the risks of overfitting. If after 10 backtests on one set of data you want to continue
+adjusting the parameters of your data then be sure to change the data it is being tested on. This leads into training and
+testing data.
+
+### Training vs Testing Data
+
+When you have a block of data you need to split it up into training data and testing data. The training data will be
+used for backtesting/optimizaing and the testing data will be used to test your new strategy parameters. If you have
+backtested/optimized correctly your strategy should perform well on both the training data and the testing data.
+
+If you have overfit your strategy parameters to the training data then the strategy will perform poorly in the testing
+data. At the bare minimum data should be broken up into 75% training data and the remaining 25% reserved for testing. A better
+methodology is known as walk-forward optimization where the data is broken up into many blocks of training
+and testing data that overlap each other. This will be discussed in-depth in the next section.
+
+## Note on Risk Percentage
+
+This is more of an issue with automated backtesting and optimization; however, it is important that you at least recognize
+this potential issue. When traders are backtesting and optimizing a profitable strategy, you will frequently receive the best
+results by maximizing profit. This makes sense. If you have a profitable strategy than risking the greatest amount will return
+the greatest amount.
+
+However, your actual trading conditions will not exaclty reflect those of your backtest. In addition, it is tough to avoid
+some degree of overfitting. Since your strategy will perform somewhat differently live than in backtests you need to still
+use smart risk management. Backtests are not a guarantee of future performance. They are simple an estimation and are prone to
+different failures.
+
+This topic will be discussed in-depth in the optimization chapter. For now just recognize that even if a backtest returns
+massive profits when you greatly increase risk percentage this is a poor idea. Set your risk percentage at 1% or 2% and leave
+it there.
+
+## Conclusion
+
+By the very nature of developing a trading strategy, you will be overfitting to some degree. You are looking at past data and
+creating a strategy to take advantage of repeats of this past data in the future. It is impossible to avoid 100% of overfitting.
+
+export default ({ children }) => (
+  <LayoutLesson
+    meta={meta}
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="backtesting"
+    prevLesson="syllabus"
+    nextLesson="overviewOfBacktesting"
+  >
+    {children}
+  </LayoutLesson>
+);

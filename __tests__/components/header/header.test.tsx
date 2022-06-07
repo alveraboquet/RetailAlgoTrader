@@ -5,11 +5,13 @@ describe('<Header />', () => {
   test('renders correctly', () => {
     render(<Header />);
 
-    const companyTitle = screen.getByText(/retailalgotrader/i);
+    const companyTitle = screen.getByRole('link', {
+      name: /retailalgotrader/i,
+    });
     const homeLink = screen.getByRole('link', { name: /home/i });
     const aboutLink = screen.getByRole('link', { name: /about/i });
     const blogLink = screen.getByRole('link', { name: /blog/i });
-    const loginLink = screen.getByRole('link', { name: /login/i });
+    const loginLink = screen.getByRole('button', { name: /login/i });
 
     expect(companyTitle).toBeInTheDocument();
     expect(homeLink).toBeInTheDocument();
