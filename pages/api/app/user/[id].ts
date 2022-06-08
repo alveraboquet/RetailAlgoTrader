@@ -5,6 +5,9 @@ import { getSession } from 'next-auth/react';
 const findUserById = async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getSession({ req });
   if (session) {
+    if (req.method !== 'GET') {
+      res.status(405).send({ message: 'Only GET requests allowed' });
+    }
     try {
       const {
         query: { id },

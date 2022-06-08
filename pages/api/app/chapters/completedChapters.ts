@@ -8,6 +8,9 @@ const findCompletedChaptersByUser = async (
 ) => {
   const session = await getSession({ req });
   if (session) {
+    if (req.method !== 'GET') {
+      res.status(405).send({ message: 'Only GET requests allowed' });
+    }
     try {
       const { user } = session;
       // Generate SQL statement

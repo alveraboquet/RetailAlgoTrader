@@ -5,7 +5,9 @@
  */
 export async function fetchGetJSON(url: string) {
   try {
-    const data = await fetch(url).then((res) => res.json());
+    const data = await fetch(url, {
+      headers: { 'X-Custom-Header': 'lollipop' },
+    }).then((res) => res.json());
     return data;
   } catch (err) {
     if (err instanceof Error) {
@@ -34,7 +36,7 @@ export async function fetchPostJSON(
       credentials: 'same-origin', // include, *same-origin, omit
       headers: {
         'Content-Type': 'application/json',
-        // 'Content-Type': 'application/x-www-form-urlencoded',
+        'X-Custom-Header': 'lollipop',
       },
       redirect: 'follow', // manual, *follow, error
       referrerPolicy: 'no-referrer', // no-referrer, *client

@@ -27,6 +27,9 @@ const Dashboard: NextPage = () => {
             'X-Custom-Header': 'lollipop',
           },
         });
+        if (res.status !== 200) {
+          throw new Error();
+        }
         const data = await res.json();
         if (data) {
           setEnrolledCourses(data);
@@ -44,6 +47,9 @@ const Dashboard: NextPage = () => {
             'X-Custom-Header': 'lollipop',
           },
         });
+        if (res.status !== 200) {
+          throw new Error();
+        }
         const data = await res.json();
         if (data) {
           setCompletedChapters(data);

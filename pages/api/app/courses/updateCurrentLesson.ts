@@ -8,6 +8,9 @@ const updateCurrentLesson = async (
 ) => {
   const session = await getSession({ req });
   if (session) {
+    if (req.method !== 'PUT') {
+      res.status(405).send({ message: 'Only PUT requests allowed' });
+    }
     try {
       const { user } = session;
       const lessonData = JSON.parse(req.body);
