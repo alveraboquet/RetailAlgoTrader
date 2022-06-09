@@ -2,16 +2,11 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import { getSession } from 'next-auth/react';
 
-//https://billing.stripe.com/session/test_YWNjdF8xTDVaaHZHeE5RM3dJd0FmLF9McUFERDFvbUh5cFJVTUNacTJjQlpRUXRhOG1YbUh40100nES7JTaX
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2020-08-27',
 });
 
-/**
- * Next API path to open a Stripe portal
- * @param req
- * @param res
- */
+// Redirects user to account interface handled by Stripe
 export default async function createCustomerPortalSession(
   req: NextApiRequest,
   res: NextApiResponse

@@ -2,16 +2,10 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import { getSession } from 'next-auth/react';
 
-//https://billing.stripe.com/session/test_YWNjdF8xTDVaaHZHeE5RM3dJd0FmLF9McUFERDFvbUh5cFJVTUNacTJjQlpRUXRhOG1YbUh40100nES7JTaX
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2020-08-27',
 });
 
-/**
- * Next API path to delete a customer from Stripe and the DB
- * @param req
- * @param res
- */
 export default async function deleteCustomer(
   req: NextApiRequest,
   res: NextApiResponse

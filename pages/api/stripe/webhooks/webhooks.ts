@@ -6,7 +6,6 @@ import prisma from '../../../../prisma/sharedClient';
 import escapeHTML from 'escape-html';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  // https://github.com/stripe/stripe-node#configuration
   apiVersion: '2020-08-27',
 });
 
@@ -79,11 +78,9 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       const subscription = event.data.object as Stripe.Subscription;
       console.log(subscription.customer);
       await prisma.user.update({
-        // Find the customer in our database with the Stripe customer ID linked to this purchase
         where: {
           stripeCustomerId: subscription.customer as string,
         },
-        // Update that customer so their status is now active
         data: {
           isPro: false,
         },
@@ -92,7 +89,6 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       const deletedCustomer = event.data.object as Stripe.Customer;
       console.log(deletedCustomer);
       await prisma.user.delete({
-        // Find the customer in our database with the Stripe customer ID linked to this purchase
         where: {
           stripeCustomerId: deletedCustomer.id as string,
         },
