@@ -1,0 +1,198 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+# Considerations for Choosing a Broker
+
+When you select a broker you are putting a lot of faith in their ability to properly and ethically handle your money. This is
+why it is so important to choose a broker with a good reputation and one that is part of a proper regulatory agency.
+
+RobinHood is a new broker that has made no-fee trading popular. In addition, it has attracted thousands of young people
+to day trading and investing. However, during Covid 2020 - 2021 RobinHood ran into some huge scandals. If you have been at all involved
+in the markets you have definitely heard of the GameStop squeeze. Since RobinHood offers no-fee trading they need to make
+revenue somehow. RobinHood does this through payment for order flow. Payment for order flow means that Robinhood takes all of
+the data from your account (open trades, trading patterns, account balances, etc) and sells it to hedge funds and data
+conglomerates.
+
+This is a questionable practice that is actually undergoing review by the SEC currently. However, even if you ignore the ethics
+of this practice, payment for order flow presents another issue. RobinHood's customers are not you. RobinHood's customers are the
+hedge funds that are buying your data. So during 2021 when Gamestop and other stocks such as AMC began to squeeze, [RobinHood
+was pressured by Hedge Funds to cut off retail trader access to the stocks] (https://www.cnbc.com/2021/01/28/robinhood-interactive-brokers-restrict-trading-in-gamestop-s.html).
+People were unable to buy these stocks and many lost out on significant money. Not to mention that RobinHood worked with
+Hedge Funds to disrupt the very foundation of a free market (not a new thing by the way).
+
+RobinHood and other brokers that took part in this scandal claim it was due to the increased volatility of these stocks and the
+goal was to protect investors. There may be some truth to this but the majority of people agree that it benefited the hedge
+funds much more than these brokers' investors.
+
+This is an extreme example but it does represent the importance of carefully choosing your broker. Avoid recent brokers aimed at
+retail traders like RobinHood and Webull. These brokers have strong financial ties to Hedge Funds, regulatory agencies are still
+struggling to properly manage these firms, and these firms simply do not have a strong history of protecting retail trader's
+accounts. [RobinHood recently settled a lawsuit] (https://www.reuters.com/business/finance/robinhood-agrees-settle-customer-lawsuit-over-2020-outages-2022-05-27/)
+over its' Covid trading outages.
+
+Unfortunately RobinHood was not the only broker caught in this scandal, others such as Interactive Brokers restricted trading
+of Gamestop and other stocks. Interactive Brokers also takes part in the practice of Payment for Order Flow. It is best to play
+it safe and choose a reputable broker that has a strong history of industry best practices. It is tough to escape the payment
+for order flow business model and many reputable brokers such as Charles Schwab and TD Ameritrade use it. At the time of
+writing Fidelity is one of the few brokers that does not participate in the payment for order flow business model.
+
+There are many factors to consider when choosing a broker. A few key factors to consider are listed below.
+
+## Assets Offered
+
+Most brokers specialize in one or a set of assets. For example, Fidelity is aimed at equities, mutual funds, and options.
+Coinbase is aimed at cryptocurrencies. Oanda is aimed at forex. Choosing your broker will be mostly determined by
+what assets you decide to trade.
+
+## Is it Regulated?
+
+Depending on the markets there will be different regulatory agencies. For the US equities market there is the
+[The Financial Industry Regulatory Authority (FINRA)](https://www.finra.org/#/). For the US futures market and forex
+there is the Commodity Futures Trading Commission (CFTC) and the National Futures Association(NFA).
+
+Before opening an account with a broker ensure that they are licensed and regulated by one of the above organizations or a
+similar organization. The above regulatory agencies are aimed at US markets and citizens. However, there are similar governmental
+agencies in other countries. For example, the UK has the Financial Conduct Authority (FCA) which IG (a popular forex broker) is
+regulated by.
+
+To see a list of all firms regulated by FINRA use this [link](https://www.finra.org/about/firms-we-regulate/broker-dealer-firms-we-regulate).
+
+## Spreads vs Fixed Commissions
+
+When trading equities, your broker will typically have a no transaction cost model making this point irrelevant.
+
+When trading options or futures, many brokers still charge a commission fee per contract. However, some are beginning to
+offer the no transaction cost model for these assets as well.
+
+The remainder of this discussion will be in regards to Forex. As a non-centralized market, Forex has a few additional details
+unique to it that need to be reviewed. Forex brokers use three models for making money: fixed spreads, variable spreads, and
+commission. A spread is simply the difference between the bid and ask price. So if the difference between the bid and ask
+price of EURUSD is 3 pips then the spread will be 3 pips. This also means that your transaction costs for the trade will be
+3 pips.
+
+Recognize that in Forex zero commission does not mean zero transaction cost. Instead of paying a commission you pay your transaction
+fee through spreads. In equities many of the brokers genuinly offer zero transaction cost trading.
+
+### Fixed Spreads
+
+With the fixed spread model, traders always pay a set spread regardless of market conditions. The benefit of this is that you
+can accurately predict what your transaction costs will be. The disadvantage is that in fast moving markets you will experience
+frequent requotes as well as slippage. Requotes occur when price is moving too quickly so by the time your order goes through
+to the market maker your broker can no longer offer the set spread. A requore is sent to you and you have to resubmit your
+order.
+
+Slippage occurs when you submit an order but your broker cannot submit the order at your designated price while honoring the
+set spread. As a result, your order is submitted at a different price. Obviously you do not want your broker determining
+your order's entry price. When using a fixed spread broker, traders must implement strong requote and slippage controls.
+
+Fixed spread brokers are not recommended for novice traders. Fixed spread brokers can be very useful for algorithmic traders
+with strategies that make frequent trades. They can create algorithms to automatically handle requotes and slippage. In addition,
+one of the biggest threats to high frequency traders are transaction costs. Their trades typically have a small amount of profit.
+It is essential that they are able to accurately predict transaction costs. For longer term strategies such as multi hour and up
+fixed spreads do not offer much benefit.
+
+### Variable Spreads
+
+The variable spread model means that the spread offered by brokers changes according to market conditions. So if the markets
+are highly volatile or if liquidity for an asset is low the spread will be high. This high transaction cost discourages trading
+until the markets cool down. If the markets have low volatility and there is a high level of liquidity spreads will be very
+low.
+
+Variable spread brokers are by far the most popular brokers in Forex. This is also the model that we recommend for beginner
+traders. The brokers constantly compete with each other to offer the lowest spreads. In addition requotes and slippage are
+a much smaller issue than with fixed spreads.
+
+Variable spreads work well for longer-term strategies as the transaction cost is spread out over a large time period. The
+transaction cost tends to be irrelevant when compared to the P/L of the trade.
+
+### Commission
+
+Brokers with the traditional commission model are not very common for retail forex traders. This model charges a set dollar amount
+per trade. These transaction costs can add up very quickly and as a result it is not recommended.
+
+Really the only time you should consider a commission based broker as a retail trader is if you are purely a news trader. During
+high-impact news events spreads widen, slippage increases, and requotes increases. All of these factors make the fixed spread
+and variable spread models not ideal.
+
+## Market Makers vs ECNs
+
+As we have previously discussed, the Forex market is a decentralized, global market. There is no central exhange that determines
+price. As a result, the price of assets can vary from broker to broker. Market makers and ECNs take the place of a centralized
+exchange. They facilitate the connection of buyers and sellers so that fast, low-cost trading is available for retail traders.
+
+### Market Makers
+
+Market makers offer assets at a certain bid and ask price. The difference between their set bid and ask prices is the spread
+that we discussed earlier. Market makers are free to set their own bid and ask prices; however, the large amount of competition
+in the market tends to keep spreads low. When you trade with a market maker you are actually trading against the market maker. For example, when you submit a buy order
+for EURUSD the market maker must take the opposite sell order.
+
+This seems to present a clear conflict of interest as the market maker is simultaneously managing your order fulfillment while
+trading against you. When your trade is profitable you make money and the market maker loses money. And in the past there have
+certainly been issues with market makers. For example, market makers would adjust the spread of an asset if there was a large
+collection of stoplosses. If you are a consistently profitable traders some market makers will actually copy your trades to
+increase their profits.
+
+However, that being said in today's forex markets there is very little manipulation due to strong regulation. There are many
+reputable brokers that use the market maker model. Do not let the fear of market manipulation steer you away from market
+maker brokers.
+
+Market makers were developed to increase liquidity and ease of trading. Brokers that use market makers are easy to use and offer
+many features to help your trading. In addition, with market maker based brokerages you can pretty much always buy and sell
+any asset at a reasonable price. Without market makers, retail trading would be extremely difficult. The majority of retail
+forex brokers have their own in-house market makers or are partnered with a market maker.
+
+#### Pros
+
+- Easy to use and feature-rich trading platforms
+- Better liquidity
+- Allows greater access to the markets for retail traders
+
+#### Cons
+
+- Past issues with conflict of interest (Not really an issue anymore)
+- Trade execution depends on the market maker. If the market maker's systems go down you are out of luck.
+
+### ECNs
+
+Electronic communication networks (ECNs) collect prices from a variety of market participants. These market participants
+consist of banks, market makers, retail traders, etc. The bid and ask price of the asset is determined by the collection of
+prices.
+
+During times of high liquidity and low volatility this can even result in zero spread. However, during times of low liquidity or
+high volatility the spread can skyrocket. Remember that ECNs do not set the price. So in order to buy or sell an asset the ECN
+must have another trader willing to conduct a transaction at the same bid and ask price. Unlike market makers, the ECN is not
+taking the trade opposite of you. It is connecting your order to another entity such as a bank or another retail trader
+that takes the opposite order. This eliminates any risk of market manipulation.
+
+ECNs frequently work on a commission based model. Their logic is that they pull prices from a wide variety of sources and thus
+can get you the lowest possible spread. Trading on an ECN is not recommended for beginner traders. Their trading platforms are
+usually not very user-friendly and they do not offer many of the features that market-maker based platforms offer.
+
+ECNs are aimed at institutional traders and more advanced retail algorithmic traders. The increased flexibility of ECNs allows
+knowledgble traders to increase their profits and also opens up additional strategies. For example, retail traders can actually
+act as market makers through ECN brokers. In this strategy the trader is market neutral and makes their profit off of spreads.
+
+#### Pros
+
+- Price is gathered from many sources and is frequently betten than that offered by a market maker
+- No conflict of interest on trade management
+- Offers more flexibility
+
+#### Cons
+
+- Trading platforms are not user-friendly
+- Managing orders especially stoplosses and takeprofits is more difficult
+- Usually commissions charged for trades
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="backtesting"
+    prevLesson="syllabus"
+    nextLesson="overviewOfBacktesting"
+  >
+    {children}
+  </LayoutLesson>
+);
