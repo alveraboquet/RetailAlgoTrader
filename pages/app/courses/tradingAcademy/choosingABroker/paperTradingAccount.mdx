@@ -1,0 +1,42 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+# Setting up a Paper Trading Account
+
+If you have not already set up a paper trading account we highly recommend you do so now. You know enough to begin developing
+your own trading systems, to start backtesting, and to start practicing live trading. Nearly all brokers offer paper trading accounts;
+however, most require you to open an account with them. If you are not interested in opening a brokerage account at this time, both
+TradingView and QuantConnect offer paper trading without an active broker account.
+
+## Paper Trading with TradingView
+
+In order to open a paper trading account with TradingView navigate to their chart feature. At the bottom click Trading Panel
+and a list of available brokers will open. The first one will be Paper Trading. Click that and you will be able to set up
+a paper trading account.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/choosingABroker/paperTradingAccountTradingView.webp"
+    height={2160}
+    width={3840}
+    alt=""
+  />
+  <figcaption>PaperTrading Account with TradingView</figcaption>
+</figure>
+
+## Paper Trading with QuantConnect
+
+The following [documentation](https://www.quantconnect.com/docs/v2/our-platform/live-trading/brokerages/quantconnect-paper-trading)
+details how to setup a paper trading account with QuantConnect.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="backtesting"
+    prevLesson="syllabus"
+    nextLesson="overviewOfBacktesting"
+  >
+    {children}
+  </LayoutLesson>
+);
