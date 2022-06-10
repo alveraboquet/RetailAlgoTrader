@@ -3,8 +3,11 @@ import Cors from 'micro-cors';
 import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import prisma from '../../../../prisma/sharedClient';
-import escapeHTML from 'escape-html';
 
+// https://vercel.com/guides/getting-started-with-nextjs-typescript-stripe
+// https://dev.to/ajones_codes/how-to-add-user-accounts-and-paid-subscriptions-to-your-nextjs-website-585e
+
+// Load Stripe package for Node environment
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2020-08-27',
 });
@@ -36,9 +39,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
         webhookSecret
       );
     } catch (err) {
-      const errorMessage = escapeHTML(
-        err instanceof Error ? err.message : 'Unknown error'
-      );
+      const errorMessage = err instanceof Error ? err.message : 'Unknown error';
       // On error, log and return the error message.
       if (err! instanceof Error) console.log(err);
       console.log(`❌ Error message: ${errorMessage}`);

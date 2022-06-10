@@ -1,7 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import pool from '../../../../db/index';
 import { getSession } from 'next-auth/react';
+import validator from 'validator';
 
+/**
+ *
+ * @param req - PUT req to modify name, email in DB
+ * @param res - 405 if not PUT req, 400 if invalid input, 200 if successful, 500 if error, 401 if non-signed in user
+ * @returns - res status code and message
+ */
 const changeAccountDetails = async (
   req: NextApiRequest,
   res: NextApiResponse
@@ -14,11 +21,37 @@ const changeAccountDetails = async (
     try {
       const { user } = session;
       const reqData = JSON.parse(req.body);
+      let newName = reqData.newName;
+      let newEmail = reqData.newEmail;
+      // validate user input for name field
+      if (
+        validator.isLength(newName, { min: 1, max: 20 }) &&
+        validator.isAlpha(newName)
+      ) {
+        newName = validator.trim(newName);
+        newName = validator.escape(newName);
+      } else {
+        res.status(400).send('Invalid name input');
+        return;
+      }
+      // validate user input for email field
+      if (
+        validator.isEmail(newEmail) &&
+        validator.isLength(newEmail, { min: 1, max: 200 })
+      ) {
+        newEmail = validator.normalizeEmail(newEmail);
+        newEmail = validator.trim(newEmail);
+        newEmail = validator.escape(newEmail);
+      } else {
+        res.status(400).send('Invalid email input');
+        return;
+      }
+
       // Generate SQL statement
       const statement = `UPDATE "User"
                            SET name = $1, email = $2
                            WHERE "User".id = $3`;
-      const values = [reqData.newName, reqData.newEmail, user.id];
+      const values = [newName, newEmail, user.id];
 
       // Execute SQL statement
       const result = await pool.query(statement, values);
