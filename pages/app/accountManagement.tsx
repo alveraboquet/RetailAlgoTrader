@@ -6,9 +6,17 @@ import {
   formatAmountFromStripe,
   formatAmountForDisplay,
 } from '../../lib/stripeHelpers';
-import alert from '../../lib/alert';
 import { useRouter } from 'next/router';
+import {
+  displayAlert,
+  fetchAccountDetails,
+  fetchStripeDetails,
+  changeAccountInfo,
+  deleteCustomer,
+} from '../../lib/accountManagementHelpers';
+import DOMPurify from 'isomorphic-dompurify';
 
+// Renders account info page
 const AccountManagement = () => {
   const { data: session } = useSession();
   const [accountDetails, setAccountDetails] = useState({
@@ -22,146 +30,61 @@ const AccountManagement = () => {
   const [accountSettingsChange, setAccountSettingsChange] = useState(false);
   const router = useRouter();
 
-  const fetchAccountDetails = async () => {
-    try {
-      const res = await fetch('/api/app/user/retrieveAccountDetails', {
-        headers: {
-          'X-Custom-Header': 'lollipop',
-        },
-      });
-      const data = await res.json();
-      if (data) {
-        setAccountDetails(data);
-        return;
-      }
-      setAccountDetails({
-        name: 'Failed to Retrieve',
-        email: 'Failed to Retrive',
-        provider: 'Failed to Retrive',
-      });
-    } catch (err) {
-      setAccountDetails({
-        name: 'Failed to Retrieve',
-        email: 'Failed to Retrive',
-        provider: 'Failed to Retrive',
-      });
-      const accountAlertPlaceholder = document.getElementById(
-        'accountAlertPlaceholder'
-      );
-      if (!accountAlertPlaceholder) {
-        return;
-      } else {
-        alert(
-          'Unable to retrieve account information. Try refreshing the page. If this issue continues please email contact@retailalgotrader.com',
-          'danger',
-          accountAlertPlaceholder
-        );
-        return;
-      }
-    }
-  };
-  const fetchStripeDetails = async () => {
-    try {
-      const res = await fetch('/api/stripe/retrieveCustomer', {
-        headers: {
-          'X-Custom-Header': 'lollipop',
-        },
-      });
-      if (res.status === 204) {
-        setLastFour('Not a Paying Customer');
-        setSubscription('Not a Paying Customer');
-        setPrice(0);
-        return;
-      }
-      if (res.status === 200) {
-        const stripeData = await res.json();
-        setLastFour(`···· ···· ···· ${stripeData.lastFour}`);
-        setSubscription(stripeData.subscription);
-        setPrice(stripeData.price);
-        return;
-      } else {
-        throw new Error();
-      }
-    } catch (err) {
-      setLastFour('Failed to Retrieve');
-      setSubscription('Failed to Retrieve');
-      setPrice(0);
-      const billingAlertPlaceholder = document.getElementById(
-        'billingAlertPlaceholder'
-      );
-      if (!billingAlertPlaceholder) {
-        return;
-      } else {
-        alert(
-          'Unable to retrieve billing information. Try refreshing the page. If this issue continues please email contact@retailalgotrader.com',
-          'danger',
-          billingAlertPlaceholder
-        );
-        return;
-      }
-    }
-  };
-
   // Fetch content from protected routes with custom header
   useEffect(() => {
-    fetchAccountDetails();
-    fetchStripeDetails();
+    fetchAccountDetails().then((accountDetails) =>
+      setAccountDetails(accountDetails)
+    );
+    fetchStripeDetails().then((stripeDetails) => {
+      setLastFour(stripeDetails.lastFour);
+      setSubscription(stripeDetails.subscription);
+      setPrice(stripeDetails.price);
+    });
   }, [session]);
 
-  const handleAccountInfoChange = async (event: React.FormEvent) => {
-    event.preventDefault();
+  // Display alert banner if account details could not be retrieved
+  useEffect(() => {
+    if (accountDetails.name === 'Failed to Retrieve') {
+      displayAlert(
+        'accountAlertPlaceholder',
+        'Unable to retrieve account information. Try refreshing the page. If this issue continues please email contact@retailalgotrader.com'
+      );
+    }
+  }, [accountDetails]);
+
+  // Display alert banner if billing details could not be retrieved
+  useEffect(() => {
+    if (lastFour === 'Failed to Retrieve') {
+      displayAlert(
+        'billingAlertPlaceholder',
+        'Unable to retrieve billing information. Try refreshing the page. If this issue continues please email contact@retailalgotrader.com'
+      );
+    }
+  }, [lastFour]);
+
+  // Handle form submit for user changing account information
+  const handleAccountInfoChange = async (e: React.FormEvent) => {
+    e.preventDefault();
     const formValidation = (await import('../../lib/formValidation')).default;
-    const validated = formValidation(event);
+    const validated = formValidation(e);
     if (validated) {
-      type SignupDetails = EventTarget & {
-        newName: HTMLInputElement;
-        newEmail: HTMLInputElement;
-        newProvider: HTMLInputElement;
-      };
-      const target = event.target as SignupDetails;
-      // add error / timeout for fetch
-      const res = await fetch('/api/app/user/changeAccountDetails', {
-        method: 'PUT',
-        headers: {
-          'X-Custom-Header': 'lollipop',
-        },
-        body: JSON.stringify({
-          newName: target.newName.value,
-          newEmail: target.newEmail.value,
-        }),
-      });
-      (event.target as HTMLFormElement).reset();
-      const result = await res.json();
-      setAccountSettingsChange(false);
-      fetchAccountDetails();
+      const validInput = await changeAccountInfo(e);
+      if (validInput) {
+        fetchAccountDetails().then((data) => setAccountDetails(data));
+        setAccountSettingsChange(false);
+      } else {
+        displayAlert(
+          'accountAlertPlaceholder',
+          'Invalid input. Name can only consist of letters and must be less than 20 characters. Email must be of form johnsmith@email.com and must be less than 200 characters.'
+        );
+      }
     }
   };
 
-  const handleDeleteAccount = async () => {
-    try {
-      await fetch('/api/stripe/deleteCustomer', {
-        method: 'DELETE',
-        headers: {
-          'X-Custom-Header': 'lollipop',
-        },
-      });
-      router.push('/');
-    } catch (err) {
-      console.log(err);
-      const deleteAccountAlertPlaceholder = document.getElementById(
-        'deleteAccountAlertPlaceholder'
-      );
-      if (!deleteAccountAlertPlaceholder) {
-        return;
-      } else {
-        alert(
-          'Unable to delete account information. Please try again. If this issue continues please email contact@retailalgotrader.com',
-          'danger',
-          deleteAccountAlertPlaceholder
-        );
-        return;
-      }
-    }
+  // Handles deleting user from Stripe and DB
+  const handleDeleteAccount = () => {
+    deleteCustomer();
+    router.push('/');
   };
 
   return (
@@ -187,7 +110,8 @@ const AccountManagement = () => {
               type="text"
               autoComplete="given-name"
               className="form-control"
-              placeholder={accountDetails.name}
+              placeholder={DOMPurify.sanitize(accountDetails.name)}
+              maxLength={20}
               onChange={() => {
                 setAccountSettingsChange(true);
               }}
@@ -207,11 +131,15 @@ const AccountManagement = () => {
               autoComplete="email"
               aria-describedby="emailHelp"
               className="form-control"
-              placeholder={accountDetails.email}
+              placeholder={DOMPurify.sanitize(accountDetails.email)}
+              maxLength={200}
               onChange={() => {
                 setAccountSettingsChange(true);
               }}
             />
+            <div className="invalid-feedback">
+              Please ensure email is of form johnsmith@email.com
+            </div>
           </div>
         </div>
         <div className="row mt-4 mb-3">
@@ -225,7 +153,7 @@ const AccountManagement = () => {
               id="newProvider"
               type="text"
               className="form-control"
-              placeholder={accountDetails.provider}
+              placeholder={DOMPurify.sanitize(accountDetails.provider)}
               onChange={() => {
                 setAccountSettingsChange(true);
               }}
@@ -238,7 +166,12 @@ const AccountManagement = () => {
             <button
               type="button"
               className="btn btn-light border me-3"
-              onClick={() => setAccountSettingsChange(false)}
+              onClick={() => {
+                setAccountSettingsChange(false);
+                (
+                  document.getElementById('accountSettings') as HTMLFormElement
+                ).reset();
+              }}
             >
               Cancel
             </button>
