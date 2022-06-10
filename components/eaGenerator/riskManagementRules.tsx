@@ -1,3 +1,5 @@
+// https://getbootstrap.com/docs/5.2/components/accordion/#content
+// Risk management rules glossary for eaTemplateTool
 const RiskManagementRules = () => {
   return (
     <div className="accordion accordion-flush" id="riskManagement">

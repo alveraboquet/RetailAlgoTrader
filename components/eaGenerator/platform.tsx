@@ -1,3 +1,5 @@
+// https://getbootstrap.com/docs/5.2/components/accordion/#content
+// Platform rules glossary for eaTemplateTool
 const Platform = () => {
   return (
     <div className="accordion accordion-flush" id="platform">

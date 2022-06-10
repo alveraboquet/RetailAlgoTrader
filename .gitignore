@@ -43,3 +43,6 @@ yarn-error.log*
 
 # msw
 /public/mockServiceWorker.js
+
+# archive
+/archive

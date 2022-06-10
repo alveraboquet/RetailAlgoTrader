@@ -6,6 +6,8 @@ import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import prisma from '../../../prisma/sharedClient';
 import Stripe from 'stripe';
 
+// https://next-auth.js.org/getting-started/example
+// https://dev.to/ajones_codes/how-to-add-user-accounts-and-paid-subscriptions-to-your-nextjs-website-585e
 export default NextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [
@@ -23,6 +25,7 @@ export default NextAuth({
       issuer: process.env.AUTH0_ISSUER,
     }),
   ],
+  // Custome signin page
   pages: {
     signIn: '/auth/signin',
   },

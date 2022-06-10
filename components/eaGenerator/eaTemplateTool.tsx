@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import NonUserButton from './nonUserButton';
 
+// Component for the expert advisor template generation tool
 const EaTemplateTool = () => {
   const [platform, setPlatform] = useState('0');
   const [riskManagementRules, setRiskManagementRules] = useState('0');
@@ -16,6 +17,7 @@ const EaTemplateTool = () => {
   return (
     <div>
       <h1 className="mt-3 text-center">EA Generator</h1>
+      {/* Glossary of terms and options*/}
       <div className="row mb-3">
         <div className="col-6">
           <p>
@@ -32,13 +34,16 @@ const EaTemplateTool = () => {
           <h2>Exit Rules</h2>
           <ExitRules />
         </div>
+        {/**Interactive feature selection for template */}
         <div className="col-6">
           <p>
             Select the components below that you want included in your custom
             template. If you want more info on the different components you can
             click on the component to the left.
           </p>
+          {/**Platform options*/}
           <h2>Platform</h2>
+          {/**https://getbootstrap.com/docs/5.2/forms/select/#content*/}
           <select
             className="form-select"
             aria-label="platformSelect"
@@ -51,7 +56,9 @@ const EaTemplateTool = () => {
             <option value="2">MT4</option>
             <option value="3">QuantConnect</option>
           </select>
+          {/**Risk management options*/}
           <h2 className="mt-3">Risk Management Rules</h2>
+          {/**https://getbootstrap.com/docs/5.2/forms/select/#content*/}
           <select
             className="form-select"
             aria-label="riskManagementSelect"
@@ -65,7 +72,9 @@ const EaTemplateTool = () => {
             <option value="3">Max Drawdown</option>
             <option value="4">Adjust Stoploss to Entry Price</option>
           </select>
+          {/**Entry rule options*/}
           <h2 className="mt-3">Entry Rules</h2>
+          {/**https://getbootstrap.com/docs/5.2/forms/select/#content*/}
           <select
             className="form-select"
             aria-label="entryRulesSelect"
@@ -80,7 +89,9 @@ const EaTemplateTool = () => {
             </option>
             <option value="3">Cointegration</option>
           </select>
+          {/**Exit rule options*/}
           <h2 className="mt-3">Exit Rules</h2>
+          {/**https://getbootstrap.com/docs/5.2/forms/select/#content*/}
           <select
             className="form-select"
             aria-label="exitRulesSelect"
@@ -96,6 +107,7 @@ const EaTemplateTool = () => {
           <h2 className="mt-3">Generate Template</h2>
           {session ? <p>Signed in</p> : <NonUserButton />}
           <p>Please click here to download your template</p>
+          {/**Creates unique number to know which file to download */}
           {platform + riskManagementRules + entryRules + exitRules}
         </div>
       </div>

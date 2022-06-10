@@ -4,6 +4,7 @@ interface Props {
   isPro: boolean | undefined;
 }
 
+// Signup banner for pro membership if currently on a free hobby account
 const ProSignupBanner = ({ isPro }: Props) => {
   return (
     <>

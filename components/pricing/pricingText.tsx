@@ -1,3 +1,4 @@
+// Text for rendering underneath pricing table
 const PricingText = () => {
   return (
     <div>

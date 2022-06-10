@@ -2,6 +2,7 @@ import QuizLandingPage from '../../components/landingPages/quizLandingPage';
 import Layout from '../../components/layout/layout';
 import coursesData from '../../components/landingPages/coursesData';
 
+// Landing page if quiz result is Equities and Crypto with TradingView
 const EquitiesAndCryptoWithTradingviewLandingPage = () => {
   return (
     <div className="text-center">

@@ -7,6 +7,7 @@ interface Props {
   monthly: boolean;
 }
 
+// Table used for pricing pages
 const PricingTable = ({ signedIn, monthly }: Props) => {
   return (
     <div className="container">
@@ -110,13 +111,18 @@ const PricingTable = ({ signedIn, monthly }: Props) => {
                 {monthly ? `$${MONTHLY_AMOUNT}/mo` : `$${ANNUAL_AMOUNT}/mo`}
               </td>
             </tr>
+            {/**Display no signup buttons if user is already signedin*/}
             {signedIn ? (
               <></>
             ) : (
               <tr>
                 <th></th>
-                <th>{signedIn ? <></> : <SignUpButton />}</th>
-                <th>{signedIn ? <></> : <SignUpButton />}</th>
+                <th>
+                  <SignUpButton />
+                </th>
+                <th>
+                  <SignUpButton />
+                </th>
               </tr>
             )}
           </tbody>

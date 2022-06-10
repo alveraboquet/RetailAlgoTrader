@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+// button for nextauth signin page
 const SignUpButton = () => {
   return (
     <button className="btn btn-warning">

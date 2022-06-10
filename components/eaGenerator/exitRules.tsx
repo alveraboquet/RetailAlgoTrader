@@ -1,3 +1,5 @@
+// https://getbootstrap.com/docs/5.2/components/accordion/#content
+// Exit rules glossary for eaTemplateTool
 const ExitRules = () => {
   return (
     <div className="accordion accordion-flush" id="exitRules">

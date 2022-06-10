@@ -1,7 +1,4 @@
-/**
- * Array of question objects to be used by the quiz component
- */
-
+// Array of question objects to be used by the quiz component
 const questions = [
   {
     questionText: 'How much trading capital do you have available?',

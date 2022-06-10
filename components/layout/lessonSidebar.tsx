@@ -2,6 +2,8 @@ interface Props {
   curriculum: string[];
 }
 
+// Sidebar containing all chapters and lessons for the current course
+// https://getbootstrap.com/docs/5.2/components/offcanvas/
 const LessonSidebar = ({ curriculum }: Props) => {
   return (
     <div className="offcanvas offcanvas-start" id="lessonSidebar">

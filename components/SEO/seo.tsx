@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import settings from '../../settings/seoSettings';
+import settings from './seoSettings';
 import Script from 'next/script';
 import DOMPurify from 'isomorphic-dompurify';
 
@@ -15,6 +15,8 @@ interface Props {
   schemaType: string;
 }
 
+// Creates all social tags to be used with SEO component
+// https://cheatcode.co/tutorials/how-to-handle-seo-metadata-in-next-js
 const socialTags = ({
   openGraphType,
   url,
@@ -67,6 +69,8 @@ const socialTags = ({
   return metaTags;
 };
 
+// Creates SEO component to be used on all internat-facing pages
+// https://cheatcode.co/tutorials/how-to-handle-seo-metadata-in-next-js
 const SEO = (props: Props) => {
   const { url, title, description, image, schemaType } = props;
 

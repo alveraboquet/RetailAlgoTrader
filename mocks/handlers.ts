@@ -1,5 +1,6 @@
 import { rest } from 'msw';
 
+// mock handlers for testing
 const handlers = [
   rest.get('/api/app/courses/enrolledCourses', (req, res, ctx) => {
     return res(

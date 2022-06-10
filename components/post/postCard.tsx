@@ -11,6 +11,7 @@ interface Props {
   postPath: string;
 }
 
+// Bootstrap card component for posts on blog homepage
 const PostCard = ({
   imagePath,
   imageHeight,

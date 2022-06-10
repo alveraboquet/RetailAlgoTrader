@@ -1,8 +1,3 @@
-/**
- * Contains data to be used for the quiz landing pages
- * This data is fed into the quizLandingPage component
- */
-
 interface CourseData {
   title: string;
   shortDescription: string;
@@ -15,6 +10,10 @@ interface Courses {
   [key: string]: CourseData;
 }
 
+/**
+ * Contains data to be used for the quiz landing pages
+ * This data is fed into the quizLandingPage component
+ */
 const coursesData: Courses = {
   algorithmicTradingAcademy: {
     title: 'Algorithmic Trading Academy',
