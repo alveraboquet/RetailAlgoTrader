@@ -1,8 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 
+// Load Stripe for Node environment
+// https://github.com/stripe/stripe-node#configuration
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  // https://github.com/stripe/stripe-node#configuration
   apiVersion: '2020-08-27',
 });
 
@@ -10,6 +11,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
  * Retrieves checkout session details from Stripe API
  * @param req
  * @param res
+ * https://stripe.com/docs/api/checkout/sessions/retrieve?lang=node
  */
 export default async function handler(
   req: NextApiRequest,
