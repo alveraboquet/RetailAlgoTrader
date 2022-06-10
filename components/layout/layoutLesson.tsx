@@ -16,6 +16,8 @@ interface Props {
   nextLesson: string;
 }
 
+// Layout component for lesson pages
+// Children prop is mdx component with lesson material
 const LayoutLesson = ({
   children,
   course,

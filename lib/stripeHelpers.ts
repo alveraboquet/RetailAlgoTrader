@@ -1,3 +1,9 @@
+/**
+ *
+ * @param amount - transaction amount
+ * @param currency - currency for amount to be displayed in
+ * @returns - amount formatted with correct currency
+ */
 export function formatAmountForDisplay(
   amount: number,
   currency: string
@@ -10,6 +16,12 @@ export function formatAmountForDisplay(
   return numberFormat.format(amount);
 }
 
+/**
+ *
+ * @param amount - transaction amount
+ * @param currency - currency for amount
+ * @returns - amount from Stripe formatted as a transaction with correct currency
+ */
 export function formatAmountFromStripe(
   amount: number,
   currency: string

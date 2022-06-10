@@ -6,6 +6,7 @@ import CourseCard from '../../components/course/courseCard';
 import coursesData from '../../components/landingPages/coursesData';
 import ProSignupBanner from '../../components/pricing/proSignupBanner';
 
+// Renders user dashboard page
 const Dashboard: NextPage = () => {
   const { data: session } = useSession();
   const [enrolledCourses, setEnrolledCourses] = useState([

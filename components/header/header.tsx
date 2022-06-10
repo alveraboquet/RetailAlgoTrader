@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { signIn } from 'next-auth/react';
 
+// Header for pages that do not require sign-in
 const Header = () => {
   return (
     <header className="container-fluid ps-3 pe-3 bg-dark">
@@ -64,6 +65,8 @@ const Header = () => {
                 className="nav-item btn btn-warning ms-md-2"
                 onClick={(e) => {
                   e.preventDefault();
+                  // NextAuth function to initiate user authentication flow
+                  // https://next-auth.js.org/getting-started/client#signin
                   signIn(undefined, { callbackUrl: '/app/dashboard' });
                 }}
               >

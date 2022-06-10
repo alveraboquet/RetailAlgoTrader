@@ -2,6 +2,12 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import pool from '../../../../db/index';
 import { getSession } from 'next-auth/react';
 
+/**
+ *
+ * @param req - GET req to retrieve courses currently enrolled in
+ * @param res - 405 if not GET req, 200 if successful, 500 if error, 401 if non-signed in user
+ * @returns
+ */
 const findEnrolledCoursesByUser = async (
   req: NextApiRequest,
   res: NextApiResponse
@@ -26,11 +32,10 @@ const findEnrolledCoursesByUser = async (
         res.status(200).json(result.rows);
       }
 
-      return null;
+      throw new Error('No results returned from table');
     } catch (err) {
-      if (typeof err === 'string') {
-        throw new Error(err);
-      }
+      console.log(err);
+      res.status(500).send('Failed to retrieve completed courses data');
     }
   } else {
     res

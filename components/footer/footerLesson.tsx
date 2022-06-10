@@ -1,6 +1,3 @@
-/**
- * Footer component for lesson pages
- */
 import Link from 'next/link';
 
 interface Props {
@@ -11,6 +8,7 @@ interface Props {
   nextLesson: string;
 }
 
+// Footer component for lesson pages
 const FooterLesson = ({
   course,
   prevChapter,
