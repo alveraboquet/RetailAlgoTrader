@@ -32,6 +32,7 @@ const findCompletedChaptersByUser = async (
 
       if (result.rows?.length) {
         res.status(200).json(result.rows);
+        return;
       }
 
       throw new Error('No results returned from table');

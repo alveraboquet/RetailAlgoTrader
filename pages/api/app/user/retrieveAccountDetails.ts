@@ -31,6 +31,7 @@ const retrieveAccountDetails = async (
 
       if (result.rows?.length) {
         res.status(200).json(result.rows[0]);
+        return;
       }
 
       throw new Error('No result returned from DB');

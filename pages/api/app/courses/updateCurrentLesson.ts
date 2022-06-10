@@ -30,6 +30,7 @@ const updateCurrentLesson = async (
 
       if (result) {
         res.status(200).json({ success: 'Current Lesson Updated' });
+        return;
       }
 
       throw new Error('No result returned from DB');

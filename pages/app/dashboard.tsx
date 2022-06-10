@@ -36,9 +36,8 @@ const Dashboard: NextPage = () => {
           setEnrolledCourses(data);
           return;
         }
-        setEnrolledCourses([]);
       } catch (err) {
-        setEnrolledCourses([]);
+        console.log(err);
       }
     };
     const fetchCompletedChapters = async () => {
@@ -56,9 +55,8 @@ const Dashboard: NextPage = () => {
           setCompletedChapters(data);
           return;
         }
-        setCompletedChapters([]);
       } catch (err) {
-        setCompletedChapters([]);
+        console.log(err);
       }
     };
     fetchEnrolledCourses();

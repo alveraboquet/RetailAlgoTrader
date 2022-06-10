@@ -58,7 +58,10 @@ const changeAccountDetails = async (
 
       if (result) {
         res.status(200).json({ success: 'Account settings updated' });
+        return;
       }
+
+      throw new Error('No results returned from table');
     } catch (err) {
       console.log(err);
       res.status(500).send('Unable to update account settings');
