@@ -13,7 +13,9 @@ interface Provider {
   callbackUrl: string;
 }
 
+// Custom signin page used with NextAuth
 const SignIn = ({ providers }: { [k: string]: Provider }) => {
+  // Retrieves error if one returned by NextAuth signin flow
   const { error } = useRouter().query;
 
   return (
@@ -42,6 +44,8 @@ const SignIn = ({ providers }: { [k: string]: Provider }) => {
                 <button
                   className="btn btn-warning btn-block w-100 mt-4"
                   onClick={() =>
+                    // Nextauth function to initiate signin flow
+                    // https://next-auth.js.org/getting-started/client#signin
                     signIn(provider.id, { callbackUrl: '/app/dashboard' })
                   }
                 >
@@ -93,6 +97,8 @@ const SignIn = ({ providers }: { [k: string]: Provider }) => {
                       <button
                         className="btn btn-warning btn-block w-100 mt-4"
                         onClick={() =>
+                          // Nextauth function to initiate signin flow
+                          // https://next-auth.js.org/getting-started/client#signin
                           signIn(provider.id, { callbackUrl: '/app/dashboard' })
                         }
                       >

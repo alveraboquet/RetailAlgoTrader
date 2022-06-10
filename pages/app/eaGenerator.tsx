@@ -3,6 +3,7 @@ import LayoutApp from '../../components/layout/layoutApp';
 import { getSession } from 'next-auth/react';
 import EaTemplateTool from '../../components/eaGenerator/eaTemplateTool';
 
+// EA template generator page for signedin users
 const EaGenerator: NextPage = () => {
   return (
     <LayoutApp>

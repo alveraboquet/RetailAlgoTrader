@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+// Renders signup button for ea template generator if not signed in
 const NonUserButton = () => {
   return (
     <button className="btn btn-warning p-md-3">

@@ -9,6 +9,10 @@ import {
   Legend,
 } from 'chart.js';
 
+// All data and settings required for strategy chart with react-chartjs-2
+// https://react-chartjs-2.js.org/examples/line-chart
+// See documentation to learn more: https://react-chartjs-2.js.org/
+
 ChartJS.register(
   CategoryScale,
   LinearScale,

@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 /**
  * Quiz component that renders on the home page
  * Consists of five questions. Answers to the questions add a value to specified categories.
@@ -17,7 +16,9 @@ const Quiz = () => {
   const router = useRouter();
 
   const handleQuestionClick = (answerCategory: string) => {
+    // Adds answerCategory from selected button to array
     setResult((result) => [...result, answerCategory]);
+    // Render next question unless no more questions. If no more questions redirect to results page
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
@@ -30,6 +31,7 @@ const Quiz = () => {
         marketResearchWithPython: 0,
         futuresWithQuantconnect: 0,
       };
+      // iterate through each answerCategory in result array and sum number of appearances
       result.forEach((answerCategory) => {
         switch (answerCategory) {
           case 'tradingAcademy':
@@ -58,6 +60,7 @@ const Quiz = () => {
             break;
         }
       });
+      // select category with highest total and redirect to results page
       const maxCategory = getMaxValueKey(answerCategorySums);
       const landingPageURL = `/quiz/${maxCategory}`;
       router.push(landingPageURL);

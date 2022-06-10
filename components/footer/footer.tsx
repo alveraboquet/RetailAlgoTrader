@@ -1,10 +1,10 @@
+import Link from 'next/link';
+import Image from 'next/image';
+
 /**
  * Footer component for non-logged in users
  * Contains: CTA, about us section, contact section, social media links, and top blog posts
  */
-import Link from 'next/link';
-import Image from 'next/image';
-
 const Footer = () => {
   return (
     <footer className="bg-dark overflow-hidden ps-4 pe-4">

@@ -1,9 +1,8 @@
 import { Pool } from 'pg';
 import { DB } from '../config';
 
-/**
- * Creates new pool instance for Postgres from .env
- */
+// Creates new pool instance for Postgres from .env
+// Import this pool into all API routes that require a pool connection
 const pool = new Pool({
   user: DB.PGUSER,
   host: DB.PGHOST,
