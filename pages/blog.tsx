@@ -3,6 +3,7 @@ import SEO from '../components/SEO/seo';
 import Layout from '../components/layout/layout';
 import PostCard from '../components/post/postCard';
 
+// Renders blog page with collection of articles and guides
 const Blog: NextPage = () => {
   return (
     <div>
