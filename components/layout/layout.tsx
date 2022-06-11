@@ -5,6 +5,7 @@ interface Props {
   children: React.ReactNode;
 }
 
+// Layout component for pages that do not require sign-in
 const Layout = ({ children }: Props) => {
   return (
     <>

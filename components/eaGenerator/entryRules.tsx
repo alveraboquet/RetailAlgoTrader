@@ -1,3 +1,5 @@
+// https://getbootstrap.com/docs/5.2/components/accordion/#content
+// Entry rules glossary for eaTemplateTool
 const EntryRules = () => {
   return (
     <div className="accordion accordion-flush" id="entryRules">

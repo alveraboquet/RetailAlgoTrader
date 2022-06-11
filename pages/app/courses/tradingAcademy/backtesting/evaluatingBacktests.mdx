@@ -1,0 +1,59 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+# Evaluating Backtests
+
+It is not enough to just run a backtest and see that it produces a profitable result. There is a multitude of analysis that
+must be conducted on the results to determine the validity of the backtest. Throughout the lessons of this chapter we have
+looked at varying methods to accomplish the below goals.
+
+## Verify Trades
+
+This is more of a focus with algorithmic trading to ensure there are no coding errors; however, it is still useful with manual trading.
+Choose ten long trades and ten short trades. Now verify that your entry rules, exit rules, and risk management rules were
+followed for each and every trade. If you are manually backtesting and the trades do not adhere to your system's rules this
+indicates that you are not consistently following your trading system.
+
+## Ensure Strategy is Resilient
+
+This can be accomplished through Monte Carlo analysis. By making small, random changes to the strategy and testing conditions
+we can understand how the strategy handles the randomness it will encounter in live trading.
+
+## Analyze when Strategy Works
+
+Earlier we looked at the below table.
+
+| Market Condition | # of Trades | P/L (%) | Max Drawdown |
+| ---------------- | ----------- | ------- | ------------ |
+| Downtrend #1     |             |         |              |
+| Downtrend #2     |             |         |              |
+| Downtrend #3     |             |         |              |
+| Uptrend #1       |             |         |              |
+| Uptrend #2       |             |         |              |
+| Uptrend #3       |             |         |              |
+| Ranging #1       |             |         |              |
+| Ranging #2       |             |         |              |
+| Ranging #3       |             |         |              |
+| Black Swan #1    |             |         |              |
+| Black Swan #2    |             |         |              |
+| Black Swan #3    |             |         |              |
+
+Be sure that you have a proper understanding of the market conditions that are favorable to your strategy.
+
+## Conclusion
+
+When backtesting and optimizing a strategy you should constantly be analyzing the results. Figure our how your strategy is
+working, why it is working, and when it is working. An in-depth understanding of a proven strategy is the true key to
+profitable trading.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="backtesting"
+    prevLesson="syllabus"
+    nextLesson="overviewOfBacktesting"
+  >
+    {children}
+  </LayoutLesson>
+);

@@ -1,5 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+/**
+ *
+ * @param req - Any req that hits the API paths covered by this middleware
+ *              (any folders and files at or below this file's level in the folder structure)
+ * @returns - 401 error code if customer header and origin not valid
+ */
 export const middleware = (req: NextRequest) => {
   const origin = req.headers.get('origin');
   const referrer = req.headers.get('referrer');

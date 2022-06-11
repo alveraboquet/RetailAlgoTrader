@@ -1,8 +1,3 @@
-/* eslint-disable security/detect-object-injection */
-/**
- * This is a general template for the quiz landing pages
- * Information specific to each landing page is passed in as props
- */
 import SimilarCourseCard from './similarCourseCard';
 import coursesData from './coursesData';
 import Image from 'next/image';
@@ -16,6 +11,10 @@ interface Props {
   similar2Course: string;
 }
 
+/**
+ * This is a general template for the quiz landing pages
+ * Information specific to each landing page is passed in as props
+ */
 const QuizLandingPage = ({
   title,
   description,

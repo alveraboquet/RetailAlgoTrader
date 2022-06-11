@@ -5,6 +5,7 @@ interface Props {
   children: React.ReactNode;
 }
 
+// Layout component for pages that require sign-in
 const LayoutApp = ({ children }: Props) => {
   return (
     <>

@@ -1,0 +1,96 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Important metrics
+
+When backtesting there are a couple of metrics to take into consideration. These are concepts from statistics that will
+ensure you are properly conducting backtesting. We frequently see traders claiming they have a developed a strategy that
+can achieve a low-risk, 300% gain in a year or some other similar claim. Then we take a look at their backtest and discover
+that they only have 20 tested trades. This is nowhere near enough trades to understand the long-term performance of your
+strategy. After extending the number of tested trades out to a couple of hundred we realize that over the long-term the
+strategy is not actually profitable.
+
+## Law of Large Numbers
+
+The law of large numbers establishes that as the size of the sample grows the sample average will approach the true population
+average. Essentially the greater the number of trades in your backtest the more reflective of true performance the backtest
+will be.
+
+This law seems to imply that testing as many trades as possible is your best option. While in general it is true that increasing
+the number of trades tested will give you a better representation of actual performance, it is important to remember that
+market conditions change. Running a bunch of tests from data in 1995 will not necessarily provide an accurate representation
+of how your strategy will perform in today's markets. It is typically always better to test the most recent data you
+can. If you are day trading or swing trading there should be more than enough trades to test in the past couple of years.
+
+Another benefit of testing a large number of trades, is that you can see how your strategy performs in a variety of
+market conditions. If you only test 20 trades all of these trades may occur during a strong uptrend. You have no idea how
+your strategy will perform in a downtrend or ranging market.
+
+Unfortunately we are limited by time and resources, so we need a way to determine if we have tested enough trades in our
+backtest to have a reasonable expectation of future performance. This is where the minimum sample size comes into play.
+
+## Minimum Sample Size
+
+Some strategies will not have enough data to achieve this minimum sample size. Strategies such as long-term strategies or
+strategies that rely on obscure data may not be able to meet this minimum sample size. That does not mean you should throw the
+strategy away. Do the best you can with the data you have but recognize that your strategy is not as strong tested as you
+would like.
+
+## P-Hacking
+
+P-Hacking is a statistical concept that is unfortunately a common occurence in science and trading. P-Hacking occurs when you
+run many different backtest / optimization iterations but only pay attention to the positive results. By throwing away the
+negative results you are making a large mistake.
+
+In backtesting / optimization the negative results are in fact more important than the positive results. For example, you
+run a backtest with a set of parameters that returns a poor result. You then modify the parameters slightly and rerun the backtest.
+Again you receive a poor result. You continue modifying the parameter until after 6 iterations you receive a positive result. You
+use this positive result as an indication you have a profitable strategy with properly optimized parameters.
+
+However in actuality you have ignored all of the negative results. Your strategy is very delicate and it takes very little
+change for your strategy to go from profitable to unprofitable. When backtesting and optimizing, small changes in your parameters
+should not have a significant impact on your strategy's performance. This indicates that your strategy is resilient and has a
+much better chance of being profitable in the long-term.
+
+## Monte Carlo Simulation
+
+Monte Carlo simulations provide insight into how randomness affects the long-term profitability of our strategy. Perhaps the
+defining features of the markets is the randomness. Monte Carlo does not provide the solution to this randomness but it does
+allow us to see how that randomness will affect our strategy.
+
+When we get into algorithmic trading we will create proper Monte Carlo simulations. For now use the below framework to manually
+achieve a similar effect to an automated Monte Carlo Simulation. When making adjustments to these parameters, make small
+adjustments. The goal is to analyze how small levels of randomness affect our strategy's performance. For example if you are trading
+on the daily timeframe maybe you move your start day up a week or a month. If you are using MACD maybe you increase the period
+of the moving averages by 10. In addition, only change one parameter at a time so that it is evident which parameter is causing
+large variations in performance.
+
+| Adjusted Parameter            | P/L | Max Drawdown | # Winning Trades | # Losing Trades |
+| ----------------------------- | --- | ------------ | ---------------- | --------------- |
+| Move the Start Date Forward   |     |              |                  |                 |
+| Move the Start Date Backward  |     |              |                  |                 |
+| Increase Trading Parameter #1 |     |              |                  |                 |
+| Decrease Trading Parameter #1 |     |              |                  |                 |
+| Increase Trading Parameter #2 |     |              |                  |                 |
+| Decrease Trading Parameter #2 |     |              |                  |                 |
+
+By slightly adjusting all of these parameters it will become evident how randomness can affect your strategy's performance. For
+example, by slightly changing the start date of your backtest your strategy will take an entirely different set of trades than
+it took with your original start date.
+
+If you have developed a resilient strategy it will be profitable across all or most of these variations. The small changes in
+parameters should not have a large impact on performance. If you find that the randomness introduced by Monte Carlo simulations
+does have a large impact on your strategy's performance then do not launch your trading strategy on the live markets. You need
+to continue working on the strategy to ensure that is resilient through different market conditions and that it is not overfit
+to historical data.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="backtesting"
+    prevLesson="syllabus"
+    nextLesson="overviewOfBacktesting"
+  >
+    {children}
+  </LayoutLesson>
+);

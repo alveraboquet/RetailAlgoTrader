@@ -1,0 +1,127 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+# Broker Comparison
+
+## Equities, Options, Futures
+
+Below is a table of our recommended brokers for equities, options, and futures with additional information.
+
+|                     | Assets Offered                        | Minimum Deposit | Commissions                                                             |
+| ------------------- | ------------------------------------- | --------------- | ----------------------------------------------------------------------- |
+| Fidelity            | Stocks, ETFs, Options                 | $0              | $0 for stocks, ETFs $0.65 per option contract                           |
+| Charles Schwab      | Stocks, ETFs, Options, Futures        | $0              | $0 for stocks, ETFs, options $2.25 per future contract                  |
+| TD Ameritrade       | Stocks, ETFs, Options, Futures, Forex | $0              | $0 for stocks, ETFs $0.65 per option contract $2.25 per future contract |
+| Interactive Brokers | Stocks, ETFs, Options, Futures, Forex | $200            | $0 for stocks, ETFs $0.65 per option contract $0.85 per future contract |
+| Tradovate           | Futures                               | $0              | $0.79 per future contract                                               |
+| TradeStation        | Stocks, Futures, Crypto               | $0              | $0 for stocks, ETFs $0.60 per option contract $1.50 per future contract |
+
+- Interactive Brokers offers a lite and pro plan. The pro plan removes commission free equity trading; however, it gives you
+  access to many tools such as their API.
+- Tradovate has multiple subscription tiers. We have listed data from the free tier.
+
+## Forex
+
+Below is a table of our recommended brokers for forex with additional information.
+
+|                     | Assets Offered                        | Minimum Deposit | Commissions                         |
+| ------------------- | ------------------------------------- | --------------- | ----------------------------------- |
+| Oanda               | Forex                                 | $50             | None; Variable Spreads              |
+| FOREX.com           | Forex                                 | $100            | None; Variable Spreads              |
+| Interactive Brokers | Stocks, ETFs, Options, Futures, Forex | $0              | Small Commissions, Variable Spreads |
+
+- Interactive Brokers charges a [small commission](https://www.interactivebrokers.com/en/pricing/commissions-spot-currencies.php)
+  for Forex trades; however, they also frequently have some of the lowest spreads.
+
+## Crypto
+
+Below is a table of our recommended brokers for crypto with addtional information.
+
+|                     | Assets Offered                        | Minimum Deposit | Commissions                     |
+| ------------------- | ------------------------------------- | --------------- | ------------------------------- |
+| Coinbase            | Crypto                                | $0.01           | 0.05% to 0.60% of Trade Value   |
+| BITFINEX            | Crypto                                | $10,000         | 0.1% to 0.2% of Trade Value     |
+| Binance             | Crypto                                | $0              | 0.6% of Trade Value             |
+| Kraken              | Crypto                                | $10             | 0% to 0.26% of Trade Value      |
+| FTX                 | Crypto                                | $0              | 0% to 0.070% of Trade Value     |
+| TradeStation        | Stocks, Futures, Crypto               | $0              | $1 + 0.20% of Trade Value       |
+| Interactive Brokers | Stocks, ETFs, Options, Futures, Forex | $0              | $1.75 + up to 1% of Trade Value |
+| Gemini              | Crypto                                | $0              | .03% to .40% of Trade Value     |
+
+With Crypto transaction costs can be complicated to calculate. The final transaction cost is usually a function of your total
+trade volume for the month, the cryptocurrency (ETH has gas fees for example), and size of the trade.
+
+## Algorithmic Trading
+
+Below is a table of our recommended brokers for advanced algorithmic trading.
+
+|                      | Assets Offered                        | Minimum Deposit |
+| -------------------- | ------------------------------------- | --------------- |
+| Interactive Brokers  | Stocks, ETFs, Options, Futures, Forex | $0              |
+| Tradier Brokerage    | Stocks, ETFs, Options                 | $0              |
+| Trading Technologies | Futures                               | $0              |
+| Atreyu               | Stocks, ETFs                          | $25,000         |
+
+These firms offer a variety of tools for algorithmic traders. Designing an API, backtesting, creating a data pipeline, etc are
+all much simpler with the tools provided by these brokers. If you are interested in creating professional level trading
+softward you should take a look at these brokers.
+
+## QuantConnect Integration
+
+The following list are all brokers that integrate with QuantConnect. QuantConnect is a platform that greatly simplifies algorithmic
+trading for retail traders. If you are interested in algorithmic trading we highly suggest setting up an account with one of the
+listed brokers.
+
+- Interactive Brokers
+- Oanda
+- Coinbase
+- Bitfinex
+- tradier brokerage
+- Trading Technologies
+- Atreyu
+- Bloomberg
+- Binance
+- Kraken
+- FTX
+
+## TradingView Integration
+
+The following lists are all brokers that integrate with TradingView. TradingView is the best charting software out there and even
+includes its own coding langauge Pinescript. Pinescript allows you to create custom indicators and trading robots. If you are
+interested more in manual trading than algorithmic trading at this point in time you should choose one of the below brokers.
+
+The different tiers of brokers are published by TradingView. We recommend you focus on the Platinum and Gold brokers; however,
+any of them should be fine.
+
+### Platinum Brokers
+
+- TradeStation
+- Gemini
+
+### Gold Brokers
+
+- Tradovate
+- Oanda
+- Forex.com
+- Interactive Brokers
+- Bitstamp
+
+### Silver Brokers
+
+- AMP Global
+- Optimus Futures
+- Alpaca
+- Ironbeam
+- Ally Invest
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="backtesting"
+    prevLesson="syllabus"
+    nextLesson="overviewOfBacktesting"
+  >
+    {children}
+  </LayoutLesson>
+);

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+// CTA component that can be used in blog posts or other locations
 const CallToAction = () => {
   return (
     <div className="mt-md-4 mb-md-3 d-md-flex justify-content-center">

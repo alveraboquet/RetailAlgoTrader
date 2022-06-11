@@ -2,6 +2,7 @@ import coursesData from '../../components/landingPages/coursesData';
 import QuizLandingPage from '../../components/landingPages/quizLandingPage';
 import Layout from '../../components/layout/layout';
 
+// Landing page if quiz result is Algorithmic Trading Academy
 const AlgorithmicTradingAcademyLandingPage = () => {
   return (
     <div className="text-center">

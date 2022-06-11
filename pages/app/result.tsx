@@ -5,6 +5,7 @@ import PrintObject from '../../components/stripe/printObject';
 import { fetchGetJSON } from '../../lib/fetchJSON';
 import useSWR from 'swr';
 
+// Default result page after successful checkout
 const ResultPage: NextPage = () => {
   const router = useRouter();
 

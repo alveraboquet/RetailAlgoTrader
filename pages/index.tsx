@@ -8,6 +8,7 @@ import Quiz from '../components/quiz/quiz';
 import StrategyChart from '../components/charts/strategyChartContainer';
 import PostCard from '../components/post/postCard';
 
+// Homepage
 const Home: NextPage = () => {
   return (
     <div>

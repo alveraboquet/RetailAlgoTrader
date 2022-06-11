@@ -13,6 +13,7 @@ interface Props {
   percentComplete: number;
 }
 
+// Bootstrap card component for courses
 const CourseCard = ({
   imagePath,
   imageHeight,

@@ -1,0 +1,107 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+# Walk-Forward Optimization
+
+Walk-forward optimization is a statistical method for finding the optimal parameters for a strategy through backtesting on
+multiple sets of in-sample data and out-of-sample data that overlap. Walk-forward optimizations in one of the best methods
+for optimizing your strategy without overfitting. Walk-forward optimization is seen in a lot of fields outside of trading
+as well. Really any process that uses machine-learning will incorporate walk-forward optimizations.
+
+## What Parameters should we Optimize?
+
+There are many parameters that can be optimized depending on your strategy. Time periods for indicators, STD for Bollinger Bands,
+cointegration thresholds, and much more are all strategy parameters that can be optimized. When optimizing a strategy you should
+settle on a small amount of parameters (2 or 3) to optimize.
+
+As the number of parameters being optimized increases, the risks of overfitting increases. If you are optimizing every parameter
+in your strategy then the strategy will perform great on your test data but be useless on any other dataset.
+
+Do NOT include risk percentage as a parameter to be optimized. There are methods to properly optimize risk percentage; however,
+they are advanced techniques that will be discussed in the future. For now just choose a set risk percentage and do not adjust it.
+
+## Optimization Criteria
+
+In order to properly optimize you need to have a single goal to actually optimize to. This is known as the optimization criteria.
+This is not to be confused with the parameters of your trading strategy. The optimization criteria is a single metric that ranks
+the performance of every parameter optimization run. It attempts to find the "best" combination of parameter values. Examples of
+optimized parameters are:
+
+- Balance
+- Profit Factor
+- Expected Payoff
+- Maximal Drawdown
+- Drawdown Percent
+
+For example, if balance is chosen as your optimization objective then parameter combinations that result in the highest account
+balance would score higher. Parameter combinations that result in a lower account balance would score lower. Many novice traders
+only care about their long-term account balance and as a result only optimize their strategy to account balance. However, a strategy
+purely optimized to account balance can frequently result in lots of volatility and large drawdowns.
+
+### Risk-Adjusted Optimization Criteria
+
+In order to achieve balanced optimized parameters you should separately optimize to multiple criteria and then compare the results.
+Spend time optimizing to account
+balance. Then spend time optimizing to max drawdown. Then spend time optimizing to profit factor. Finally compare the
+parameters returned by these three seperate optimization runs. You will see how much of an impact the optimization criteria
+has on the returned parameters.
+
+Most likely the ideal optimized parameters will be a combination of the three separate runs. This will provide a more balanced
+strategy that is not overly optimized to any one objective. Earlier we discussed how optimizing to account balance can result
+in large volatility in your account balance. Well optimizing to max drawdown has the opposite effect. It will return parameters
+that result in minimal drawdown but probably also result in minimal account growth. By combining the two you can achieve
+optimized parameters that result in good account growth while keeping drawdowns small.
+
+Thankfully we do not have to run separate optimization runs and then try and combine the parameters manually. There are risk-adjusted
+optimization criteria that can be used to return balanced parameters. Examples of risk-adjusted optimization criteria are:
+
+- Account Balance / Max Drawdown
+- Sharpe Ratio
+
+## Walk-Forward methodology
+
+In the diagram below we take a look at how walk-forward optimization works. In this example we have data for year 2020 and 2021.
+This data has been broken up into 3 sets of training and testing data. Each block of training data is a year long and each
+block of testing data is four months long. Our trading strategy will use the daily timeframe which is why it is being optimized
+across two years of data. If your strategy trades on a shorter timeframe such as 30m you can run the optimization on a shorter
+set of data. At 30m you might only need 2 or 3 months worth of data.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/backtesting/CHFEUR.webp"
+    height={428}
+    width={1784}
+    alt=""
+  />
+  <figcaption>Walk-Forward Optimization Example</figcaption>
+</figure>
+
+The process is detailed below:
+
+1. Backtest and optimize parameters on training set #1
+2. Review performance on testing set #1
+3. Backtest and optimize parameters on training set #2
+4. Review performance on testing set #2
+5. Backtest and optimize parameters on training set #3
+6. Review performance on testing set #3
+7. Compare the performance across all three trainging sets
+8. Take the best performing training set's parameters and test these parameters on the other two training sets
+
+## Conclusion
+
+After backtesting and optimizing your strategy, be sure that you spend ample time analyzing the backtests and optimizations.
+Be sure you understand when your strategy works and when it does not work. If your strategy is intended to be a mean-reversion
+strategy but it performs very well during trending markets look into this. It is not necessarily a bad thing. In fact, you may
+have developed a very profitable strategy. But you need to ensure that you understand why your strategy performs the way it does.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="backtesting"
+    prevLesson="syllabus"
+    nextLesson="overviewOfBacktesting"
+  >
+    {children}
+  </LayoutLesson>
+);

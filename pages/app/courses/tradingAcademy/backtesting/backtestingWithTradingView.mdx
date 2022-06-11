@@ -1,0 +1,283 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+# Backtesting with TradingView
+
+Until you dive into algorithmic trading, TradingView is one of the best resources you have for backtesting. It has historical
+data for nearly all assets and all timeframes. It has a very useful Chart Replay function that allows you to set the chart
+at a certain date and step through the chart as if you are live trading.
+
+In the top left corner select your asset that you will be trading (EURUSD in this case). Then add the Bollinger Band indicator
+that we will be using for this example by clicking the indicator button at the top of the chart. As you can see there are a
+bunch of different results that pop up for Bollinger Bands. Many of these are custom indicators created by retail traders such
+as yourself. These indicators include small changes and improvements that are aimed at helping you as the trader. For example,
+many traders will add automated trade alerts for different indicators. For now just select the indicator called "Bollinger Bands".
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/backtesting/bbBandsIndicator.webp"
+    height={2160}
+    width={3840}
+    alt=""
+  />
+  <figcaption>Adding Bollinger Bands to Chart</figcaption>
+</figure>
+
+Finally, you will want to select the replay button at the top of the chart. A small bar with 4 buttons and a speed slider will pop up.
+If you would like to reposition the bar you can use the six dots on the left side to grab and move it. Select the button on the left
+called "Jump To..." and scroll to 1/1/2019 and click. You will notice that all the data prior to 1/1/2019 is gone. In this
+example we will be using the third button called "Forward". This button will allow us to step through the data one bar at a time
+at our own pace.
+
+When backtesting it can become very easy to see a potential setup and then click forward to see if the trade worked out. Do NOT
+do this. If you see a trade setup that fits your entry criteria take it and then click forward to see how the trade plays out.
+By clicking forward before placing your trade you are inflicting a form of look-ahead bias on yourself.
+
+During live trading future price action is obviously not available. As a result, for backtesting data to be as accurate as
+possible future data should not be used to make a trading decision. Backtest conditions need to mirror those of live
+trading as closely as possible.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/backtesting/barReplay.webp"
+    height={2160}
+    width={3840}
+    alt=""
+  />
+  <figcaption>Adding ATR to Chart</figcaption>
+</figure>
+
+The second button called "Play" is used to automatically step through the data at the speed selected by you on the slider. This
+is useful at lower timeframes where you want to simulate live trading. Finally the last button is called "Real-Time" and this
+will skip forward to the current bar.
+
+If you are trading Forex another good option is (ForexTester)[https://forextester.com/]. It is a software specifically designed
+for backtesting and practice trading. You can provide your own data or use their data subscription. However, it is a little
+expensive. Our recommendation for now is to stick with backtesting on TradingView until you decide how you want to continue.
+
+## Strategy to Backtest
+
+We will use the Bollinger Band with Engulfing Bar mean reversion strategy discussed previously. The term engulfing bar used
+here is not technically accurate. By the book an engulfing bar completely overshadows the previous bar's body. Really all we are
+looking for is a bar trading at a Bollinger Band that is followed by a larger bar with a higher high and close (if bullish)
+or a lower low and close (if bearish).
+
+This can take the form of a couple of different chart patterns such as engulfing bars, morning star, hanging man, etc. As you
+go through this exercise you will begin to recognize the chart patterns that indicate an ideal setup. This is part of the importance
+of thorough backtesting. You come to unconcioulsy recognize setups for your trading system.
+
+### Entry Rules
+
+Remember that we try to eliminate as much subjectivity as possible. We want it to be very evident whether we should or should
+not enter a trade. However, if you make your entry rules too strict you will never actually be able to enter any trades. Quality
+entry rules eliminate any unnecessary subjectivity while allowing enough discretion from the trader to actually enter trades.
+
+As you move into algorithmic trading, your strategy will need very clear entry rules as they all have to be programmed
+for the software to run.
+
+#### Bullish Signal
+
+- Price touches the lower Bollinger Band (It does not need to close outside of the band)
+- There should be a smaller bar followed by a bar with a higher close and a higher high
+- The close of the larger bar is at least 3/4 of the way up the candlestick
+
+#### Bearish Signal
+
+- Price touches the upper Bollinger Band (It does not need to close outside of the band)
+- There should be a smaller bar followed by a larger bar with a lower close and a lower low
+- The close of the larger bar is at least 3/4 of the way down the candlestick
+
+### Exit Rules
+
+- The stoploss will be placed at 5 pips from the high of the candlestick that broke the band
+  (if a bearish signal) or the low of the candlestick that broke the band (if a bullish signal)
+- There will be one take profit that dynamically follows the moving average. Sell 50% of your position at this point.
+- There will be a second take profit that dynamically follows the opposite bollinger band. Sell the other 50% of you position at
+  this point.
+- After hitting the first take profit move your stoploss to your entry price
+
+### Risk Managment Rules
+
+- Every trade will risk 2% of your capital.
+- Max allowed drawdown will be 20%.
+- Only trading EURUSD so correlation is not an issue.
+
+### Trading Journal
+
+For this backtesting session we will use a simple Excel sheet (Click Here for Download)[]. As you become more advanced, you will
+want to look at more efficient options such as (TraderSync)[https://tradersync.com/]. Below are the values we will track in our
+Excel sheet.
+
+- Date and time trade opened
+- Data and time trade closed
+- Position Size
+- Entry Price
+- Exit Price
+- Stoploss Price
+- Takeprofit Price
+- Direction
+- Risk / Reward
+- Win / Loss
+- Profit / Loss
+- Market Condition (Upward Trend, Downward Trend, Ranging, etc)
+- Picture of trade before opened
+- Picture of trade after close
+- Additional Thoughts
+
+Feel free to add whatever categories and metrics you would like. The metrics we have included are more than enough to get
+started with some simple manual backtesting. For the market condition metric we will jump up to the daily timeframe to determine
+the overall market sentiment. While in replay mode, TradingView allows you to change the timeframe without losing your place.
+This is an extremely useful tool as you become more advanced.
+
+Keep in mind that you do not need to be perfect with all of the numbers entered into the trading journal. If you are off by
+a couple of pips or 50 cents that is fine. We are more concerned with overall long-term performance of the strategy.
+
+### Schedule
+
+- Trading will be conducted from 8:00am EST until 4:00pm EST
+- Trades will only be entered on Monday through Thursday
+- Trades will be tested during 1/2019 (ranging market) and during 5/2018 (downtrend) on the 4h timeframe
+
+### Backtesting Results for 1/2019
+
+In the image below you can see the overall results of our backtest of this strategy for 1/2019.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/backtesting/1-2019Backtest.webp"
+    height={400}
+    width={1850}
+    alt=""
+  />
+  <figcaption>Backtest Metrics for 1/2019</figcaption>
+</figure>
+
+There were six trades taken and all were winners. This resulted in a final P/L for the month of $12,163.
+
+The strategy performed equally well on long trades and short trades. Many strategies will only perform well short or long but
+this one performs well for both.
+
+The average risk:reward ratio was less than 1 which is not ideal. However, we have such a high win rate that this is not an issue.
+
+This strategy performed great for the month. The reason why is that if you zoom out to the daily chart of 1/2019 you will see
+that the market is ranging. Mean reversion strategies such as this one perform great in ranging markets.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/backtesting/1-2019Curve.webp"
+    height={590}
+    width={1004}
+    alt=""
+  />
+  <figcaption>Equity Curve for 1/2019</figcaption>
+</figure>
+
+Taking a look at our equity curve it is a smooth, upward line. This is an ideal equity curve. You do not want a lot of volatility
+in your equity curve. If you have many large peaks and valleys this indicates that your are risking too much per trade.
+
+In the links below you can download our completed trade journal to review.
+
+### Backtesting Results for 5/2018
+
+In the image below you can see the overall results of our backtest of this strategy for 5/2018.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/backtesting/5-2018Backtest.webp"
+    height={432}
+    width={1988}
+    alt=""
+  />
+  <figcaption>Backtest Metrics for 5/2018</figcaption>
+</figure>
+
+There were 7 trades with 4 winners and 3 losers. This resulted in a final P/L for the month of $4,117.
+
+The strategy had nearly double the average profit per trade on short orders than it did on long orders.
+
+The average risk:reward ratio was about 1 which is not ideal. However, with proper risk management we were able to get by
+without this being a huge issue.
+
+This strategy performed much worse than it did in our previous backtest. The reason why is that if you zoom out to the
+daily chart of 5/2018 you will see that the market is in a very strong downtrend. Mean reversion strategies such as this
+one typically do not perform well during trends.
+
+This also explains why our short trades had such a high profit. Trading with the trend typically results in larger profits
+while trading against the trend (our long trades during this backtest) frequently are losers or small winners.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/backtesting/5-2018Curve.webp"
+    height={644}
+    width={1076}
+    alt=""
+  />
+  <figcaption>Equity Curve for 5/2018</figcaption>
+</figure>
+
+Taking a look at our equity curve it is a little choppy but there are no massive spikes up or down. We have a proper risk
+percetange per trade. Without additional trades it is difficult to tell the quality of this equity curve.
+
+In the links below you can download our completed trade journal to review.
+
+### Possible Improvements
+
+Reviewing the backtesting results, something we noticed was that a lot of the trades taken had an entry price very close to
+our first take profit of the BollingerBand moving average. A lot of the trades probably do not have ideal risk:reward ratios.
+We should separate all of our trades with poor risk:reward ratios and analyze their metrics separately. We should also see
+how removing these trades affect's our strategy's metrics.
+
+You may have noticed with quite a few trades with this strategy that price continued through the moving average to the opposite
+Bollinger band. To take advantage of this we could sell 1/2 of the position at the moving average and the other 1/2 at the
+opposite Bollinger Band. You would move the stoploss to your entry price after selling the first 1/2 of the position. This will
+ensure you do not exit your trade too early while also protecting your profits from the first 1/2 of your position.
+
+Knowing where to place the stopless can be tricky. We used a set stoploss distance in pips; however, this does not adapt to
+market volatility. You could use Average True Range (ATR) to place the stoplosses. This will adapt your stoploss distance to
+the current volatility of the markets.
+
+During these backtests we ignored the weekend. However, many traders prefer to have their accounts flat over the weekend.
+This just means that they close out of all positions before the close of market hours on Friday afternoon. If we decided
+to include this rule in our strategy we would also want to include a rule that does not allow us to enter trades on Friday.
+This is because many of our trades take a full day or two to play out. Entering a trade on Friday morning and then having to
+close out of it a couple of hours later is not worth the risk.
+
+### Next Steps
+
+This strategy is definitely showing promise. It performed flawlessly in a ranging market and surprisingly well in a trending
+market. However, we have only tested 13 trades. This is nowhere near enough to truly understand the long-term profitability
+of this strategy.
+
+Before even thinking about live trading this strategy needs to be tested across the following conditions:
+
+- Another ranging market
+- 2 different uptrend markets
+- Another downtrend market
+- 2 black swan events (March Covid dip and BREXIT)
+
+In addition, we traded this strategy on the 4h timeframe which limited the number of trading opportunities. In order to increase
+the number of trade opportunities we could trade multiple assets (need to check for correlation) or decrease the timeframe
+(need to rerun backtests at new timeframe).
+
+## Why Algorithmic Trading is so popular?
+
+As you most likely noticed going through this process, manually backtesting is very time-intensive. This was a very simple
+strategy being tested on one asset with not other strategies being traded at the same time. We still not to conduct multiple
+backtests through different market conditions and black swan events.
+
+This is the reason that algorithmic trading is so popular. It allows you to create a strategy and run a multitude of backtests
+in a fraction of the time that it would take with manual testing. This is also a reason why so many traders fail. They do not
+want to spend the time to learn how to trade algorithmically. At the same time they do not want to spend the time to manually
+backtest their strategy. So they jump into the markets with an untested strategy and lose their capital.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="backtesting"
+    prevLesson="syllabus"
+    nextLesson="overviewOfBacktesting"
+  >
+    {children}
+  </LayoutLesson>
+);

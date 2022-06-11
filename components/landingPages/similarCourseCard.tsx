@@ -1,7 +1,3 @@
-/**
- * This component renders a small card for similar courses on the quiz landing pages
- * It takes title, description, and path to icon as props
- */
 import Link from 'next/link';
 
 interface Props {
@@ -9,6 +5,10 @@ interface Props {
   description: string;
 }
 
+/**
+ * This component renders a small card for similar courses on the quiz landing pages
+ * It takes title, description, and path to icon as props
+ */
 const SimilarCourseCard = ({ title, description }: Props) => {
   return (
     <div className="card">

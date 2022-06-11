@@ -1,0 +1,151 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+export const meta = {
+  author: 'Rich Haines',
+};
+
+# Importance of Backtesting
+
+Backtesting is important for a variety of reasons:
+
+- Evaluate your strategy across different market conditions
+- Understand how your strategy handles Black Swan events
+- Provide a foundation for your trading psychology
+
+## Evaluate Your Strategy Across Different Market Conditions
+
+The majority of strategies out there focus on specific market conditions. At the most basic level the market conditons would be
+uptrend, downtrend, or ranging. There are very few strategies that perform well across all market conditions. As you become
+more advanced you will discover strategies such as cointegration that can work well in a variety of market conditions. However,
+starting out your strategies will be fairly basic and most likely not work in all market conditions.
+
+For example most strategies can be divided into trend-following or mean-reversion strategies. Trend-following strategies
+tend to work well in trending markets and mean-reversion strategies tend to work well in ranging markets. A trend-following
+strategy will get slaughtered in a market that ranges for a long period of time.
+
+The table below details the different market conditions that your strategy should be tested across.
+
+| Market Condition | # of Trades | P/L (%) | Max Drawdown |
+| ---------------- | ----------- | ------- | ------------ |
+| Downtrend #1     |             |         |              |
+| Downtrend #2     |             |         |              |
+| Downtrend #3     |             |         |              |
+| Uptrend #1       |             |         |              |
+| Uptrend #2       |             |         |              |
+| Uptrend #3       |             |         |              |
+| Ranging #1       |             |         |              |
+| Ranging #2       |             |         |              |
+| Ranging #3       |             |         |              |
+| Black Swan #1    |             |         |              |
+| Black Swan #2    |             |         |              |
+| Black Swan #3    |             |         |              |
+
+As you learn more about trading, you will gain the skills to develop more technical and advanced strategies than just
+trend-following or mean-reversion strategies. This advanced strategies will focus on more nuanced market conditions than
+just uptrend, downtrend, and ranging.
+
+### Black Swan Events
+
+In addition to standard market conditions you need to test your strategy across different Black Swan events. Black Swan
+events are freak market conditions that occur unexpectedly and are difficult to prepare for. Some examples of Black Swan events
+are the dot-com bubble, the unpegging of the Swiss Franc, and the March 2020 Covid dip. See below for a more length list of
+Black Swan events.
+
+| Black Swan Event               | Date |
+| ------------------------------ | ---- |
+| Asian Financial Crisis         | 1997 |
+| Dot-Com Crash                  | 2000 |
+| Crash of 9/11                  | 2001 |
+| Global Financial Meltdown      | 2008 |
+| European Sovereign Debt Crisis | 2009 |
+| Fukushima Nuclear Disaster     | 2001 |
+| Crude Oil Crisis               | 2014 |
+| Black Monday China             | 2015 |
+| BREXIT                         | 2016 |
+| Covid                          | 2020 |
+| Swiss Franc Unpegging          | 2015 |
+| WTI Futures Going Negative     | 2020 |
+
+These events happen extremely quickly and cause massive jumps in price. Preparing for these events is very difficult as there
+are so few to test your strategy on. In addition, during these events market conditions you take for granted such as high liquidity
+and minimal slippage may be invalidated.
+
+For example on January 15th, 2015 the Swiss announced that the Franc would no
+longer be pegged to the Euro. Immediately the Swiss Franc skyrocketed. Traders that were short the Swiss Franc in any currency
+pair such as the CHFEUR or CHFUSD experienced huge losses. The price shot up so quickly that even if short traders had set a
+stoploss at 0.8500 it was not getting fulfilled until .9500. That is a full 100 pips later which resulted in massive losses
+especially with the level of leverage available in the Forex market.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/backtesting/CHFEUR.webp"
+    height={2160}
+    width={3840}
+    alt=""
+  />
+  <figcaption>CHFEUR Unpegging</figcaption>
+</figure>
+
+The above image illustrates the massive price jump that occured in CHFEUR almost instantly. While this is the most extreme example of a Black Swan event, it does demonstrate the risks posed by Black Swan events. During
+backtesting you should pick 2 or 3 Black Swan events and see how your strategy handles them.
+
+Each of these events typically targets a specific market. You may not even be trading that specific market; however, this events
+typically have large ripple effects in all markets.
+
+### Trading Psychology
+
+Trading is a difficult and stressful endeavor. When you are stressed you tend to make poor decisions. These poor decisions
+cause you to lose money. This stresses you out even more and you make even more poor decisions. This cycle continues until
+you quit or you run out of capital.
+
+Backtesting helps to eliminate much of this stress and poor decision making. When trading you will experience a drawdown. It
+is inevitable. If you have not backtested your strategy you will begin to doubt your strategy. You will start to modify your
+strategy to try and make back your capital. However if you are constantly modifying your strategy is impossible to tell how
+it is performing. You cannot tell which aspects of the strategy are performing well and which are not because you are constantly
+changing everything.
+
+A lengthy backtest process provides the confidence that your strategy will work over the long-term. When your strategy hits
+a drawdown you can look at your testing and know that your strategy always recovered from these drawdowns. This confidence
+allows you to continue trading your system through drawdowns. If you have properly tested your strategy and are experiencing
+a drawdown it is essential that you stick with your strategy.
+
+### Strategy Portfolios
+
+As you develop your own strategies and discover which market conditions they
+perform well in, these strategies can be combined. If you are trading multiple strategies that all handle different market
+conditions then you can profitably trade in all market conditions.
+
+| Strategy                                  | P/L during Ranging Market |
+| ----------------------------------------- | ------------------------- |
+| MA Crossover (Trend-Following)            | -$4,000                   |
+| Bollinger Band Reversion (Mean-Reversion) | $10,000                   |
+| News Trading (Breakout)                   | -$2,000                   |
+
+| Strategy                                  | P/L during Trending Market |
+| ----------------------------------------- | -------------------------- |
+| MA Crossover (Trend-Following)            | $5,000                     |
+| Bollinger Band Reversion (Mean-Reversion) | -$3,000                    |
+| News Trading (Breakout)                   | $1,000                     |
+
+Many traders create algorithms to weight their different strategies. So if the market is ranging they might invest 75% of their
+capital with their mean-reversion strategy and 25% of their capital with their trend-following strategy. Once the market begins
+to trend upward then they allocate 75% of their capital to their trend-following strategy and 25% to their mean-reversion
+strategy.
+
+Developing and managing a portfolio of strategies is a more advanced topic. We included a brief discussion of it here so that
+you see the importance of backtesting. Without backtesting you will not gain the proper understanding of when your strategy
+works well and when it does not.
+
+export default ({ children }) => (
+  <LayoutLesson
+    meta={meta}
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="backtesting"
+    prevLesson="syllabus"
+    nextLesson="overviewOfBacktesting"
+  >
+    {children}
+  </LayoutLesson>
+);
