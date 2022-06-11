@@ -3,49 +3,17 @@ import LayoutApp from '../../components/layout/layoutApp';
 import PricingText from '../../components/pricing/pricingText';
 import { NextPage, NextPageContext } from 'next';
 import { getSession, useSession } from 'next-auth/react';
-import { useState } from 'react';
-import { fetchPostJSON } from '../../lib/fetchJSON';
-import { MONTHLY_AMOUNT, ANNUAL_AMOUNT } from '../../stripe.config';
-import alert from '../../lib/alert';
-import getStripe from '../../lib/getStripe';
+import { useEffect, useState } from 'react';
+import { handleCheckout } from '../../lib/proSignupHelpers';
 
 const ProSignup: NextPage = () => {
   const { data: session } = useSession();
-  const [loading, setLoading] = useState(false);
+  const [isStripeLoading, setIsStripeLoading] = useState(false);
   const [monthly, setMonthly] = useState(true);
 
-  const handleCheckout = async () => {
-    setLoading(true);
-    // Create a Checkout Session.
-    const response = await fetchPostJSON(
-      '/api/stripe/checkoutSession/checkoutSession',
-      {
-        amount: monthly ? MONTHLY_AMOUNT : ANNUAL_AMOUNT,
-      }
-    );
-    if (response.statusCode === 500) {
-      console.error(response.message);
-      const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
-      if (!alertPlaceholder) {
-        return;
-      } else {
-        alert(
-          'Unable to process the request. Please try again. If this issue continues please email contact@retailalgotrader.com',
-          'danger',
-          alertPlaceholder
-        );
-        setLoading(false);
-        return;
-      }
-    }
-    // Redirect to Checkout.
-    const stripe = await getStripe();
-    const { error } = await stripe!.redirectToCheckout({
-      sessionId: response.id,
-    });
-    console.warn(error.message);
-    setLoading(false);
-  };
+  useEffect(() => {
+    if (isStripeLoading) handleCheckout(monthly);
+  }, [isStripeLoading]);
 
   return (
     <LayoutApp>
@@ -88,8 +56,8 @@ const ProSignup: NextPage = () => {
           Pro membership please click
           <button
             className="btn btn-warning ms-3"
-            onClick={handleCheckout}
-            disabled={loading || session?.user.isPro}
+            onClick={() => setIsStripeLoading(true)}
+            disabled={isStripeLoading}
           >
             Upgrade to Pro
           </button>
