@@ -13,7 +13,7 @@ const ProSignup: NextPage = () => {
 
   useEffect(() => {
     if (isStripeLoading) handleCheckout(monthly);
-  }, [isStripeLoading]);
+  }, [isStripeLoading, monthly]);
 
   return (
     <LayoutApp>
