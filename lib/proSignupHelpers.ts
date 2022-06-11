@@ -3,6 +3,11 @@ import { MONTHLY_AMOUNT, ANNUAL_AMOUNT } from '../stripe.config';
 import alert from './alert';
 import getStripe from './getStripe';
 
+/**
+ *
+ * @param monthly - monthly pricing or annual pricing
+ * @returns - nothing
+ */
 export const handleCheckout = async (monthly: boolean) => {
   // Create a Checkout Session.
   const response = await fetchPostJSON(

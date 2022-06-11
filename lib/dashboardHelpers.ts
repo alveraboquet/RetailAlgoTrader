@@ -1,3 +1,9 @@
+/**
+ *
+ * @param courseID - id of course to retrieve percent complete
+ * @param coursesPercentComplete - array of objects with percent complete for each course
+ * @returns - percent complete if successful or 0 if unsuccessful
+ */
 export const getPercentComplete = (
   courseID: number,
   coursesPercentComplete: { courseID: number; percentComplete: number }[]
@@ -9,6 +15,12 @@ export const getPercentComplete = (
   else return 0;
 };
 
+/**
+ *
+ * @param courseID - id of course to retrieve enrollment status
+ * @param enrolledCourses - array of objects with all course enrollment and progress status
+ * @returns - true if enrolled and false if not enrolled
+ */
 export const getCourseEnrolled = (
   courseID: number,
   enrolledCourses: {
@@ -25,6 +37,12 @@ export const getCourseEnrolled = (
   else return false;
 };
 
+/**
+ *
+ * @param courseID - id of course to retrieve enrollment status
+ * @param enrolledCourses - array of objects with all course enrollment and progress status
+ * @returns - object with course info if course exists or blank/null course info if course does not exist
+ */
 export const getCourseObject = (
   courseID: number,
   enrolledCourses: {
@@ -47,6 +65,10 @@ export const getCourseObject = (
     };
 };
 
+/**
+ *
+ * @returns - user's enrolled courses
+ */
 export const fetchEnrolledCourses = async () => {
   try {
     const res = await fetch('/api/app/courses/enrolledCourses', {
@@ -63,6 +85,10 @@ export const fetchEnrolledCourses = async () => {
   }
 };
 
+/**
+ *
+ * @returns - user's completed chapters for a course
+ */
 export const fetchCompletedChapters = async () => {
   try {
     const res = await fetch('/api/app/chapters/completedChapters', {
@@ -79,8 +105,11 @@ export const fetchCompletedChapters = async () => {
   }
 };
 
-// fetchCompletedChapters returns array of objects ordered by descending course_id
-// Max course_id will be in first object
+/**
+ *
+ * @param completedChapters - array of all chapters with completion status from fetchCompleteChapters
+ * @returns - array of courses with percent complete for each course
+ */
 export const percentCompleteByCourse = (
   completedChapters: {
     chapter_id: number;
@@ -89,6 +118,8 @@ export const percentCompleteByCourse = (
   }[]
 ) => {
   const coursesPercentComplete = [];
+  // fetchCompletedChapters returns array of objects ordered by descending course_id
+  // Max course_id will be in first object
   const numCourses = completedChapters[0].course_id;
   for (let i = 1; i <= numCourses; i++) {
     const totalChaptersByCourse = completedChapters
