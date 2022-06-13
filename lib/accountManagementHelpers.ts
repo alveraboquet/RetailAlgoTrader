@@ -146,6 +146,7 @@ export const changeAccountInfo = async (event: React.FormEvent) => {
 
 /**
  * deletes customer from Stripe database and our database
+ * @returns - true if delete process successful and false if delete process fails
  */
 export const deleteCustomer = async () => {
   try {
@@ -155,11 +156,30 @@ export const deleteCustomer = async () => {
         'X-Custom-Header': 'lollipop',
       },
     });
+    return true;
   } catch (err) {
     console.log(err);
     displayAlert(
       'deleteAccountAlertPlaceholder',
       'Unable to delete account information. Please try again. If this issue continues please email contact@retailalgotrader.com'
     );
+    return false;
+  }
+};
+
+/**
+ *
+ * @param confirmationString - random alphanumeric string
+ * @param userInput - input by user on modal
+ * @returns  - true if inputs match and false if inputs do not match
+ */
+export const checkBeforeDelete = (
+  confirmationString: string,
+  userInput: string
+) => {
+  if (confirmationString === userInput) {
+    return true;
+  } else {
+    return false;
   }
 };

@@ -6,19 +6,23 @@ import {
   formatAmountFromStripe,
   formatAmountForDisplay,
 } from '../../lib/stripeHelpers';
-import { useRouter } from 'next/router';
 import {
   displayAlert,
   fetchAccountDetails,
   fetchStripeDetails,
   changeAccountInfo,
-  deleteCustomer,
 } from '../../lib/accountManagementHelpers';
 import DOMPurify from 'isomorphic-dompurify';
+import CheckBeforeDeleteModal from '../../components/accountManagement/checkBeforeDeleteModal';
+import ErrorModal from '../../components/accountManagement/errorModal';
 
-// Renders account info page
+/**
+ *
+ * @returns - page for managing and changing account information
+ */
 const AccountManagement = () => {
   const { data: session } = useSession();
+  const userId = session?.user.id;
   const [accountDetails, setAccountDetails] = useState({
     name: 'Loading',
     email: 'Loading',
@@ -28,7 +32,6 @@ const AccountManagement = () => {
   const [subscription, setSubscription] = useState('Loading');
   const [price, setPrice] = useState(0);
   const [accountSettingsChange, setAccountSettingsChange] = useState(false);
-  const router = useRouter();
 
   // Fetch content from protected routes with custom header
   useEffect(() => {
@@ -81,14 +84,13 @@ const AccountManagement = () => {
     }
   };
 
-  // Handles deleting user from Stripe and DB
-  const handleDeleteAccount = () => {
-    deleteCustomer();
-    router.push('/');
-  };
-
   return (
     <LayoutApp>
+      {typeof session?.user.id === 'string' ? (
+        <CheckBeforeDeleteModal confirmationString={session.user.id} />
+      ) : (
+        <ErrorModal />
+      )}
       <h1>Account Management</h1>
       <hr />
       <h2 className="mb-4">Account Settings</h2>
@@ -244,7 +246,12 @@ const AccountManagement = () => {
               method="POST"
               action="/api/stripe/createCustomerPortalSession"
             >
-              <button type="submit" className="btn btn-danger">
+              <button
+                type="submit"
+                className="btn btn-danger"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+              >
                 Cancel Subscription
               </button>
             </form>
@@ -268,7 +275,8 @@ const AccountManagement = () => {
           <div className="col-4 text-end">
             <button
               className="btn btn-danger"
-              onClick={() => handleDeleteAccount()}
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
             >
               Delete Account
             </button>
