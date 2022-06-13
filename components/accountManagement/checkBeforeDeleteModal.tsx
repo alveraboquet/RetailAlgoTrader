@@ -60,17 +60,18 @@ const CheckBeforeDeleteModal = (confirmationString: {
     return (
       <div
         className="modal fade"
-        id="staticBackdrop"
+        id="deleteConfirmModal"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
         tabIndex={-1}
-        aria-labelledby="staticBackdropLabel"
+        aria-labelledby="deleteConfirmModalLabel"
         aria-hidden="true"
+        data-testid="deleteConfirmModal"
       >
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="staticBackdropLabel">
+              <h5 className="modal-title" id="deleteConfirmModalLabel">
                 Are you sure you want to delete your account?
               </h5>
               <button
@@ -86,14 +87,14 @@ const CheckBeforeDeleteModal = (confirmationString: {
             <div className="modal-body">
               This action cannot be reversed. All billing and account info will
               be permanently deleted.
-              <p>
-                Please type{' '}
-                <span className="fw-bold">
-                  {confirmationString.confirmationString}
-                </span>{' '}
-                to confirm.
-              </p>
               <form onSubmit={handleDeleteAccount}>
+                <label htmlFor="userInput">
+                  Please type{' '}
+                  <span className="fw-bold">
+                    {confirmationString.confirmationString}
+                  </span>{' '}
+                  to confirm.
+                </label>
                 <input
                   id="userInput"
                   type="text"
@@ -130,17 +131,17 @@ const CheckBeforeDeleteModal = (confirmationString: {
     return (
       <div
         className="modal fade"
-        id="staticBackdrop"
+        id="deleteConfirmModal"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
         tabIndex={-1}
-        aria-labelledby="staticBackdropLabel"
+        aria-labelledby="deleteConfirmModalLabel"
         aria-hidden="true"
       >
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="staticBackdropLabel">
+              <h5 className="modal-title" id="deleteConfirmModalLabel">
                 Unable to delete account information
               </h5>
               <button

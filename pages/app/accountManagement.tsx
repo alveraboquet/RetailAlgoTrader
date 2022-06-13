@@ -276,7 +276,7 @@ const AccountManagement = () => {
             <button
               className="btn btn-danger"
               data-bs-toggle="modal"
-              data-bs-target="#staticBackdrop"
+              data-bs-target="#deleteConfirmModal"
             >
               Delete Account
             </button>
