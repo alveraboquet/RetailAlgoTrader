@@ -22,7 +22,6 @@ import ErrorModal from '../../components/accountManagement/errorModal';
  */
 const AccountManagement = () => {
   const { data: session } = useSession();
-  const userId = session?.user.id;
   const [accountDetails, setAccountDetails] = useState({
     name: 'Loading',
     email: 'Loading',
@@ -144,24 +143,6 @@ const AccountManagement = () => {
             </div>
           </div>
         </div>
-        <div className="row mt-4 mb-3">
-          <div className="col-3">
-            <label htmlFor="newProvider" className="form-label">
-              Authorization Provider:
-            </label>
-          </div>
-          <div className="col-3">
-            <input
-              id="newProvider"
-              type="text"
-              className="form-control"
-              placeholder={DOMPurify.sanitize(accountDetails.provider)}
-              onChange={() => {
-                setAccountSettingsChange(true);
-              }}
-            />
-          </div>
-        </div>
         <div id="accountAlertPlaceholder"></div>
         <div className="text-end">
           {accountSettingsChange ? (
@@ -181,7 +162,11 @@ const AccountManagement = () => {
             <></>
           )}
 
-          <button type="submit" className="btn btn-warning">
+          <button
+            type="submit"
+            className="btn btn-warning"
+            disabled={!accountSettingsChange}
+          >
             Save
           </button>
         </div>

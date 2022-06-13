@@ -20,7 +20,7 @@ const retrieveAccountDetails = async (
     try {
       const { user } = session;
       // Generate SQL statement
-      const statement = `SELECT name, email, provider
+      const statement = `SELECT name, email
                            FROM "User"
                            JOIN "Account" ON ("Account"."userId" = "User".id)
                            WHERE "User".id = $1`;
