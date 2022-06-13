@@ -1,0 +1,37 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Stop limit order
+
+Stop limit orders combine the best of stop orders with the best of limit orders. Remember that a stop order triggers as soon
+as the set price threshold is reached. So if your buy stop order is set at $280 and price hits $280 then a buy order will
+be submitted. Typically this order will be filled right at $280 or within plus or minus $1. However, theoretically with a stop
+order the order could be filled at any price. If price is moving quickly and there is low liquidity your buy order might trigger
+at $280 but is not actually fulfilled until $295.
+
+A limit order does not allow transactions to occur above or below a set threshold. A buy limit order at $285 means your buy
+order will only be submitted if it can be fulfilled at less than $285.
+
+A stop limit order allows you to define a range where you want to allow your order to be fulfilled. The stop order portion of
+the stop limit order will establish that no trades should be opened until price breaks $280. The limit order portion of the
+stop limit order will establish that no trades should be opened if they cannot be fulfilled at less than $285. With this stop
+limit order you have established a range of $280-$285 where your buy order can be fulfilled.
+
+Stop limit orders at fantastic at ensuring a certain entry price for your order. One of the primary risks that stop limit
+orders negate is price gapping up or down. Price gaps up or down when there is a major price jump between trading sessions.
+This is typically due to a news event that occurred overnight.
+
+In our previous example if you had placed a buy stop order at $280 on Monday afternoon
+but Tuesday morning price gaps up to $310 then your trade will be fulfilled at $310. Instead if you use a stop limit order
+the trade will not be fulfilled since it has exceeded the limit order of $285.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="choosingABroker"
+    nextChapter="advancedStrategies"
+    prevLesson="paperTradingAccount"
+    nextLesson="oneCancelsTheOther"
+  >
+    {children}
+  </LayoutLesson>
+);

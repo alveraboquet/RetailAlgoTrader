@@ -1,0 +1,64 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Advanced Order Types
+
+So far in this course we have discussed the most commonly seen order types:
+
+- Market Orders
+- Limit Orders
+- Stop Orders
+- Stoploss Orders
+- Takeprofit Orders
+
+With these orders you can build pretty much any strategy. You use a market/limit/stop order to enter your trade. Then you place
+a stoploss order and a takeprofit order. Maybe you were trading a news event with a Straddle technique so you had two stop
+orders placed. One triggers so you manually cancel the other.
+
+As you can see, these basic order types can be combined in many different ways depending on what is required. However, manually
+placing and managing all of these orders is tedious and can quickly become confusing. Just one simple strategy could require
+you to place and manage six different orders just for one potential trade. There are two primary solutions to this issue:
+
+1. Algorithmic trading
+2. Advanced Order Types
+
+## Algorithmic Trading for Order Management
+
+A huge benefit of algorithmic trading is that you can automate trade management. For example, you might develop an algorithm
+for your bollinger band mean reversion strategy. You write the algorithm so that when price breaks the lower bollinger band
+a buy trade is placed.
+
+When the lower bollinger band is broken, the algorithm places a market buy order at the next candle's open. At the same time
+it places a stoploss order below the low of the previous candle and a takeprofit at the moving average at the center of the
+Bollinger Band. When the first takeprofit is hit the algorithm is programmed to only sell 1/2 of your position while at the
+same time placing a second takeprofit at the upper bollinger band and moving your stoploss to your entry price.
+
+This strategy has a lot of moving parts. Managing all of these different trades efficiently and correctly would be extremely
+difficult even if you stayed glued to your screen 24/7. Automatic trade management is one of the reasons why some many traders
+get into algorithmic trading.
+
+As your strategies become more refined and advanced it will become difficult to manage everything by yourself. We discuss
+the role of algorithmic trading in order management in depth in our Algorithmic Trading Academy course.
+
+## Advanced Order Types
+
+There is another option if you are not prepared to dive into algorithmic trading yet. Many brokers offer advanced order types
+that are combinations of the orders listed above. These advanced orders can be seen below:
+
+- One-cancels-the-other
+- Bracket order
+- Trailing stop
+- Stop limit order
+
+Keep in mind that not all brokers offer all of these order types.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="choosingABroker"
+    nextChapter="advancedStrategies"
+    prevLesson="paperTradingAccount"
+    nextLesson="oneCancelsTheOther"
+  >
+    {children}
+  </LayoutLesson>
+);

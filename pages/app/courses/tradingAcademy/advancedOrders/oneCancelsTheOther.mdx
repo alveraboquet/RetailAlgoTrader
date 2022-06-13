@@ -1,0 +1,46 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# One-cancels-the-other
+
+A one-cancels-the-other order places two different orders specified by you. When one of the orders triggers, the other order
+is automatically cancelled. This is ideal for straddle strategies where you are not sure which direction price will move. In
+our news straddle trading strategy a one-cancels-the-other order is what we would want to use.
+
+Another common use for this order type is takeprofits and stoplosses. The majority of brokers allow you to set a specific
+takeprofit and stoploss order for an open position. If the either the takeprofit or the stoploss is hit the other is automatically
+cancelled.
+
+However, some brokers do not offer this functionality. With these brokers you must open a position in a stock and then place
+a one-cancels-the-other order for the takeprofit and the stoploss. Let's look at an example.
+
+You issue a buy market order for 5 shares of $TSLA at $700. If price hits $750 you want to sell your position for profit. If price hits
+$680 you want to close your position to minimize losses. Unfortunately your broker does not let you set a takeprofit or
+stoploss for this order.
+
+So you submit a sell limit order for 5 shares of $TSLA at $750 (your takeprofit order). You submit a separate sell stop order
+for 5 shares of $TSLA at $680. Your trade idea was correct and $TSLA rockets up to $750 triggering your sell limit order. Now
+you have no shares of $TSLA but because your stoploss was a separate sell stop order it is still open. $TSLA's stock price drops
+to $680 and your sell stop order is triggered. Now you are short 5 shares of $TSLA which is not at all your intention.
+
+This happens because you submitted two separate orders. Instead lets see what happens when you submit a one-cancels-the-other
+order. One order is a sell limit order for 5 shares of $TSLA at $750. Now if $TSLA's
+price breaks $750 5 shares of $TSLA will be sold from your account. The other order is a sell stop order at $680. Now if $TSLA's
+price hits $680 5 shares of $TSLA will be sold from your account. $TSLA jumps up to $750 and your 5 shares are sold. In
+addition, your sell stop order at $680 is automatically cancelled. This eliminates the issue of accidently shorting 5 shares
+that we saw in the first example.
+
+Again, nowadays the majority of brokers allow you to attach specified takeprofits and stoplosses to each trade. So using
+one-cancels-the-other as stoplosses and takeprofits is not necessary. However, there is a chance you experience the need
+to use one-cancels-the-other as stoplosses and takeprofits.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="choosingABroker"
+    nextChapter="advancedStrategies"
+    prevLesson="paperTradingAccount"
+    nextLesson="oneCancelsTheOther"
+  >
+    {children}
+  </LayoutLesson>
+);
