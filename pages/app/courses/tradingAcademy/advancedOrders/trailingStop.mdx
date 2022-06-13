@@ -1,0 +1,61 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Trailing stop
+
+A trailing stop is a very useful stop loss order. Trailing stop orders automatically move your stoploss order to track
+the price of the asset. This is very effective at maximizing returns from a trade as it ensures you do not exit your trade
+too early. As long as price continues upward, your stoploss will follow it.
+
+Trailing stops are extremely useful to implement once your trade is already profitable. For example, you issue a buy order
+believing that $AAPL will rise and as an intelligent trader you set a stoploss just in case you are wrong. Well you were
+right and price rises substantially. At this point you have a couple of options:
+
+1. Close your trade to secure profit
+2. Move your stoploss to your entry price to ensure you do not take a loss on this trade if it reverses
+3. Set a trailing stop loss
+
+If you close your trade for profit now you may be losing out on a lot of potential profit. If you just move your stoploss to
+your entry price you may end up with no profit. However, if you use a trailing stop loss you can maximize your potential gains
+as your stoploss will automatically follow behind price as it continues to rise.
+
+## Trailing stop example
+
+Trailing stops track the high water mark of price. Let's say that you submit a buy order for $AAPL at $320. You set your trailing
+stop at $10. Your initial stop loss is at $310. Price rises to $330 so your stoploss rises to $320. Price rises to $345 so your
+stop loss rises to $335. Price drops to $340 but your stop loss stays at $335. Price rises to $350 so your stop loss rises
+to $340. Finally price drops to $340 and your order is closed out.
+
+## How to set trailing distance of a trailing stop
+
+Determining how far behind to set your trailing stop behind price is very difficult. It will depend heavily on strategy.
+If you trading a short-term strategy you probably want your trailing stop to follow closer behind. If you are trading a long-term
+strategy you probably want your trailing stop to follow further behind. This will give your trade more to breathe and play out.
+
+If your trailing stop is set too close to price then your trade will not have enough room to breathe and it will be closed out
+before it truly has a chance to make a profit. Keep in mind that trades frequently oscillate up and down (known as noise)
+before continuing towards your take profit. You need to ensure that your trailing stop allows enough noise.
+
+If your trailing stop is set too far from the price then you will sacrifice significant profits before your trade is closed out.
+Trailing stops always follow the high water mark of price. As a result, you will always sacrifice some profits from the peak
+before your order is closed out. This is not much of an issue because it is almost impossible to accurately predict the peak
+anyways.
+
+One of the common ways to set the trailing distance is through the use of Average True Range (ATR). By making the trailing stop
+distance a function of ATR the trailing stop distance will adjust to market volatility.
+
+Regardless of what method you use to set your trailing distance, you need to heavily backtest in order to ensure that it is:
+
+1. Far enough away to allow trades to breathe
+2. Close enough that you do not sacrifice an unnecessary amount of profit
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="choosingABroker"
+    nextChapter="advancedStrategies"
+    prevLesson="paperTradingAccount"
+    nextLesson="oneCancelsTheOther"
+  >
+    {children}
+  </LayoutLesson>
+);

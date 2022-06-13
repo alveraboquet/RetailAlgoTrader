@@ -1,0 +1,23 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Bracket order
+
+Bracket orders are used to automatically place a takeprofit and a stoploss. The takeprofit order and the stoploss order
+will be a one-cancels-the-other order. So essentially a bracket order automates the process of opening a
+one-cancels-the-other order.
+
+When you open a buy order, a sell limit (take profit) and a sell stop (stoploss) will be automatically opened as well.
+
+When you open a sell order, a buy limit (take profit) and a buy stop (stoploss) will be automatically opened as well.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="choosingABroker"
+    nextChapter="advancedStrategies"
+    prevLesson="paperTradingAccount"
+    nextLesson="oneCancelsTheOther"
+  >
+    {children}
+  </LayoutLesson>
+);
