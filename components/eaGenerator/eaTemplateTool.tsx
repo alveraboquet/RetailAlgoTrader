@@ -85,7 +85,7 @@ const EaTemplateTool = () => {
             </option>
             <option value="1">Moving-Average Crossover</option>
             <option value="2">
-              Bollinger-Band Mean Reversion with Engulfing Bar
+              Bollinger Band Mean Reversion with Engulfing Bar
             </option>
             <option value="3">Cointegration</option>
           </select>
