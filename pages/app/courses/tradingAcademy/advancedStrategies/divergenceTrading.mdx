@@ -1,0 +1,84 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+# Divergence Trading
+
+A divergence occurs when the price action is trending in one direction and an indicator is trending in another direction. A
+divergence signals a potential trend reversal. We do not recommend using a divergence as your sole trading signal. However,
+a divergence is a great technique to confirm and validate other trading signals.
+
+Bullish Divergence: Price is setting a lower low while the oscillator is setting a higher low. In this situation while price
+is still continuing downward the selling pressure is decreasing. This indicates a reversal may occur.
+
+Bearish Divergence: Price is setting a higher high while the oscillator is setting a lower high. In this situation while price
+is still continuing upward the buying pressure is decreasing. This indicates a reversal may occur.
+
+## Trading Divergence with MACD
+
+In the example below you can see that while price is trending downwards, MACD is actually trending upwards. This is an example
+of a bullish divergence. Shortly after this divergence price broke out of the downtrend and jumped upwards.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/advancedStrategies/divergence/Picture1.webp"
+    height={514}
+    width={977}
+    alt=""
+  />
+  <figcaption>MACD Bullish Divergence</figcaption>
+</figure>
+
+In the second example below you can see that while price is trending upwards, MACD is actually trending downwards. This is an
+example of a bearish divergence. Shortly after this divergence price broke out of the uptrend and dropped.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/advancedStrategies/divergence/Picture2.webp"
+    height={535}
+    width={977}
+    alt=""
+  />
+  <figcaption>MACD Bearish Divergance</figcaption>
+</figure>
+
+## Trading Divergence with RSI
+
+In the example below EUR/USD is in a strong downtrend. Price is making lower lows from January 2021 until April 2021. RSI is
+making lower lows from January 2021 until March 2021 shown by the red dashed line. However, from March 2021 to April 2021 RSI
+made a higher low as indicated by the blue dashed line. March 2021 to April 2021 is a bullish divergence. Price is making lower
+lows while RSI is making a higher low. You can see that right after this divergence price shot up.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/advancedStrategies/divergence/Picture3.webp"
+    height={535}
+    width={977}
+    alt=""
+  />
+  <figcaption>RSI Bullish Divergence</figcaption>
+</figure>
+
+A RSI bearish divergence can be seen in the example below. Price is making higher highs while RSI is making lower highs.
+Price then enters a strong downtrend.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/advancedStrategies/divergence/Picture4.webp"
+    height={510}
+    width={977}
+    alt=""
+  />
+  <figcaption>RSI Bearish Divergence</figcaption>
+</figure>
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="choosingABroker"
+    nextChapter="advancedStrategies"
+    prevLesson="paperTradingAccount"
+    nextLesson="oneCancelsTheOther"
+  >
+    {children}
+  </LayoutLesson>
+);

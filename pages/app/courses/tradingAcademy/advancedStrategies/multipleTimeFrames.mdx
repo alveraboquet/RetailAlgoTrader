@@ -1,0 +1,229 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+# Multiple Timeframe Analysis
+
+Many day traders that focus on shorter timeframes have a poor understanding and awareness of the bigger picture. Remember that
+the shorter the timeframe the greater the noise. At a 5m timeframe much of the price action is not going to be meaningful and
+your trade signals will be less strong. At a daily timeframe noise is not much of an issue and your trade signals will be very
+strong.
+
+This does not mean you should not trade short timeframes. Instead you need to use multiple time frame analysis to track larger
+market trends while trading on the short timeframes. This will ensure that you understand whether or not you are trading with
+the trend and if there are any key S/R levels on the higher timeframes.
+
+When trading with multiple timeframe analysis, it is typically best to use three different timeframes. If you use less than
+this you miss out on some of the benefits of multiple timeframe analysis and using more is unnecessary.
+
+## Setting it up
+
+To get started with multiple timeframes you first need to determine how long your average trade is held. This timeframe will
+be used as your primary timeframe. So if your trades typically take 12h then your primary timeframe will be 12h. If your trades
+typically take 15m then your primary timeframe will be 15m.
+
+Your primary timeframe will act as your medium timeframe. You will then need to establish your short-term timeframe. Your
+short-term timeframe should be about 1/4 of your primary timeframe. So if your primary timeframe is 12h your short-term
+timeframe will be 4h. If your primary timeframe is 15m then your short-term timeframe will be 5m or 1m.
+
+Next you need to establish your long-term timeframe. Your long-term timeframe should be about x4 your primary timeframe. So
+if your primary timeframe is 12h your long-term timeframe will be the daily. (Most charting software and brokers only offer
+daily, weekly, and monthly for longer timeframes so just choose whatever is closest). If your primary timeframe is 15m then
+your long-term timeframe will be 1h.
+
+1. Determine how long your average trade is held
+2. Set your medium-term / primary chart to average trade hold time
+3. Set the short-term chart to 1/4 of medium-term
+4. Set the long-term chart to x4 of medium-term
+
+Most traders use multiple screens with multiple charts. This allows them to view the same asset across different timeframes
+all at once. If you only have a laptop or a phone you can still use multiple timeframes. The majority of charting software
+will allow you to jump back and forth between timeframes without deleting your drawings and notes on the chart.
+
+## Example
+
+During this example, we will be trading $MSFT with TradingView. After conducting some backtesting, we discover that our
+trades typically take 3-5 hours to play out. As a result, we decide to use the 4h timeframe as our primary chart. This means
+that our short-term chart will be the 1h chart and the long-term chart will the daily chart.
+
+For a strategy we will be using a simple bollinger band mean reversion strategy. If price breaks the upper or lower band
+and it is followed by a strong mean reverting bar then it is a potential trade signal.
+
+### How to use long-term chart
+
+The long-term chart is the first chart that you will look at. Take note of the overall trend of the market. In addition, mark
+all significant S/R levels that you see. You should pick a specific color for all long-term chart drawings. As you drop to the
+lower timeframes, these S/R levels will become extremely important.
+
+As we can see in the picture below, $MSFT has been in a slight downtrend for the past couple of months. For the daily chart
+we have drawn the key S/R levels in green. Note that sometimes you have to scroll to the left in order to find the key
+levels.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/advancedStrategies/multipleTimeFrames/longTermKeyLevels2.webp"
+    height={2160}
+    width={3840}
+    alt=""
+  />
+  <figcaption>Key Levels on Daily Chart</figcaption>
+</figure>
+
+For example the following picture demonstrates how we found the 239.60 key level and the 226.74 key level.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/advancedStrategies/multipleTimeFrames/longTermKeyLevels.webp"
+    height={2160}
+    width={3840}
+    alt=""
+  />
+  <figcaption>Key Levels on Daily Chart</figcaption>
+</figure>
+
+### How to use primary chart
+
+The primary chart is where you will spend most of your time. This is the chart that you watch for trade signals and where you
+do the majority of your analysis. When watching for trade signals pay special attention to the S/R levels you drew on the
+long-term chart. You should use a different color for this chart than you did for your long-term chart.
+
+Remember that the longer the timeframe the stronger the S/R levels. When a trade signal on your primary chart lines up with a
+S/R level from the long-term chart then that provides even more strength to the trade signal.
+
+In addition, when your system issues a trade signal on your primary chart make sure you keep the long-term trend in mind. If your
+system is a trend-following system it might issue a decent sell signal. However, if the long-term chart is in a strong uptrend
+it is probably a bad idea to try and trade against the long-term trend. The lower timeframes might have a weak, temporary
+trend reversal, but the strong uptrend on the longer timeframe will most likely win.
+
+Below you can see the 4h chart with our analysis. Note that our S/R levels from the daily chart is still there.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/advancedStrategies/multipleTimeFrames/mediumTermTrades.webp"
+    height={2160}
+    width={3840}
+    alt=""
+  />
+  <figcaption>4h Chart Analysis</figcaption>
+</figure>
+
+#### Trade Option #1
+
+This potential trade occurs at a key S/R level from the daily chart. Price breaks the lower band and is followed by a
+bullish bar. However, the bullish bar is not that strong when compared to recent bearish bars. In addition, because we looked
+at the daily chart we know that $MSFT is in a downtrend.
+
+We decide the trade signal is not strong enough to trade against the trend. Turns out this was an intelligent decision as the
+buying pressure quickly faded before price even reached the moving average.
+
+This is an instance where the long-term chart kept us out of a losing trade.
+
+#### Trade Option #2
+
+This potential trade also occurs at a key S/R level from the daily chart. Again price breaks the lower band and is followed by
+a hammer candlestick pattern. This is typically a bullish signal; however, it is only about half the size of the bearish
+candle that broke the lower band. In addition, because we looked at the daily chart we know that $MSFT is in a downtrend.
+
+We decide the trade signal is not strong enough to trade against the trend. Turns out price actually made a decent little
+pullback but it still barely made it to the moving average. This is an instance where analyzing multiple timeframes kept us
+out of a trade that would have been somewhat profitable.
+
+#### Trade Option #3
+
+For the third time this potential trade occurs at a key S/R level from the daily chart. This time price breaks the upper band
+and is followed by a strong bearish engulfing bar. In addition, because we looked at the daily chart we know that $MSFT is in a
+downtrend.
+
+By itself the strong bearish bar at the upper Bollinger Band would be a strong trade signal. When you combine it with the fact
+that it is at a key S/R level from the long-term chart and the long-term chart indicates a downtrend it becomes an extremely
+strong trade signal. As we can see, after this trade signal price chopped up and down a little bit before dropping like a
+rock.
+
+This is an instance where analyzing multiple timeframes gave us strong confirmation that a short trade would be profitable.
+
+### How to use short-term chart
+
+After a trade signal has been issued, the short-term chart becomes important. The short term chart is used to get more precise
+entries. At this point you should have S/R levels and varying analysis from both your long-term and your primary chart.
+
+By dropping to a lower timeframe you get a much more detailed look at the chart. You can more precisly place your entry orders,
+stoploss orders, and takeprofit orders. At the lower timeframe it is much easier to understand how price action is interacting
+with the key levels you marked at the higher timeframes.
+
+For example, if you tried to do everything on the 4h timeframe you would miss out on key long-term info and your order placement
+would be less precise. On the 4h timeframe you might be able to place your orders within a couple of dollars of the ideal
+price. However, on the 1h timeframe you might be able to place your orders within a couple of cents of the ideal price.
+
+At first glance this does not appear to make a huge difference. However, when trading every small advantage can turn into
+significant profitability over the long-term.
+
+Below you can see how much more chart detail we were able to see when we dropped to the 1h timeframe. The candlestick circled
+in yellow is where you would have entered if you had just been using the 4h chart. However, since we dropped down to the
+1h chart we decide to wait for a retest of the daily S/R level marked in green.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/advancedStrategies/multipleTimeFrames/shortTermTrade.webp"
+    height={2160}
+    width={3840}
+    alt=""
+  />
+  <figcaption>Trade Entry on 1h Chart</figcaption>
+</figure>
+
+We see that price takes a small dip down, reverses up, attempts to break the S/R level, forms a small indecision candle, and
+is followed by an engulfing bearish bar that closes below the S/R level. This situation can be seen circled in grey. Price
+again tried to break the daily S/R level and failed to do so. This is known as a retest of the S/R level. In this case it is a
+bearish signal indicating that price is unable to exceed that level.
+
+We decide to enter on this retest with the stoploss marked in red and the entry order marked in purple. Below you can see how
+much of a difference entering at the 1h timeframe instead of the 4h timeframe made to our trade's profitability.
+
+Usual strategy:
+
+- Enter at market close of bearish bar ($270.92)
+- Stoploss above bearish bar high ($278.10)
+- At 2% risk and $100,000 capital we could buy 278 shares
+
+1h Chart:
+
+- Enter at market close of bearish retest bar ($272.33)
+- Stoploss above bearish retest bar high ($275.14)
+- At 2% risk and $100,000 capital we could buy 711 shares
+
+For the exact same risk of $2,000 we can more than double our potential profit through the use of the 1h timeframe for entries.
+This is because with the 1h timeframe we can more more precisly place our entry order and our stoploss order.
+
+This is why trader who know what they are doing will drop down to lower timeframes for entering trades. The closer the
+stoploss price to the entry price the greater the number of shares that you can purchase at a set risk percentage. The greater
+the number of shares in a trade the greater the potential profit.
+
+## Pros of Multiple Timeframe Analysis
+
+- Stronger trade signals
+- More precise entries
+- Awareness of overall market trends and key S/R levels
+
+## Cons of Multiple Timeframe Analysis
+
+- More difficult to keep track of multiple timeframes
+- Can miss out on potential trades
+
+## Conclusion
+
+Using multiple timeframes is a relatively low-effort way to significantly increase quality of trade signals as well as your
+Risk:Reward ratio. If you do not have much experience with trading we recommend sticking with one chart until you become
+more familiar with trading and your strategy.
+
+Keeping track of multiple timeframes can be a little confusing and difficult for begineer traders.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="choosingABroker"
+    nextChapter="advancedStrategies"
+    prevLesson="paperTradingAccount"
+    nextLesson="oneCancelsTheOther"
+  >
+    {children}
+  </LayoutLesson>
+);
