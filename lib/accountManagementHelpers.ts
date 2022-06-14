@@ -87,60 +87,64 @@ export const displayAlert = (placeholder: string, message: string) => {
  * @returns - false if user input is invalid and true if user input is valid
  */
 export const changeAccountInfo = async (event: React.FormEvent) => {
-  type SignupDetails = EventTarget & {
-    newName: HTMLInputElement;
-    newEmail: HTMLInputElement;
-    newProvider: HTMLInputElement;
-  };
-  const target = event.target as SignupDetails;
-  let newName = target.newName.value;
-  let newEmail = target.newEmail.value;
-  // if the name or email form inputs are blank then keep the original name or email value
-  if (validator.isEmpty(newName)) {
-    newName = target.newName.placeholder;
-  }
-  if (validator.isEmpty(newEmail)) {
-    newEmail = target.newEmail.placeholder;
-  }
-  // verify user input for name field
-  if (
-    validator.isLength(newName, { min: 1, max: 20 }) &&
-    validator.isAlpha(newName)
-  ) {
-    newName = validator.trim(newName);
-    newName = validator.escape(newName);
-  } else {
+  try {
+    type SignupDetails = EventTarget & {
+      newName: HTMLInputElement;
+      newEmail: HTMLInputElement;
+    };
+    const target = event.target as SignupDetails;
+    console.log(target.newName);
+    let newName = target.newName.value;
+    let newEmail = target.newEmail.value;
+    // if the name or email form inputs are blank then keep the original name or email value
+    if (validator.isEmpty(newName)) {
+      newName = target.newName.placeholder;
+    }
+    if (validator.isEmpty(newEmail)) {
+      newEmail = target.newEmail.placeholder;
+    }
+    // verify user input for name field
+    if (
+      validator.isLength(newName, { min: 1, max: 20 }) &&
+      validator.isAlpha(newName)
+    ) {
+      newName = validator.trim(newName);
+      newName = validator.escape(newName);
+    } else {
+      return false;
+    }
+    // verify user input for email field
+    if (
+      validator.isEmail(newEmail) &&
+      validator.isLength(newEmail, { min: 1, max: 200 })
+    ) {
+      const newNormalizedEmail = validator.normalizeEmail(newEmail);
+      if (!newNormalizedEmail) return false; // returns false if normalization process fails
+      newEmail = validator.trim(newNormalizedEmail);
+      newEmail = validator.escape(newNormalizedEmail);
+    } else {
+      return false;
+    }
+    // submit new account into to API route
+    const res = await fetch('/api/app/user/changeAccountDetails', {
+      method: 'PUT',
+      headers: {
+        'X-Custom-Header': 'lollipop',
+      },
+      body: JSON.stringify({
+        newName: newName,
+        newEmail: newEmail,
+      }),
+    });
+    if (res.status === 200) {
+      (event.target as HTMLFormElement).reset();
+      return true; // Returns true if all input is valid
+    } else {
+      return false; // Returns false if any input is invalid
+    }
+  } catch (err) {
+    console.log(err);
     return false;
-  }
-  // verify user input for email field
-  if (
-    validator.isEmail(newEmail) &&
-    validator.isLength(newEmail, { min: 1, max: 200 })
-  ) {
-    const newNormalizedEmail = validator.normalizeEmail(newEmail);
-    if (!newNormalizedEmail) return false; // returns false if normalization process fails
-    newEmail = validator.trim(newNormalizedEmail);
-    newEmail = validator.escape(newNormalizedEmail);
-  } else {
-    return false;
-  }
-
-  // submit new account into to API route
-  const res = await fetch('/api/app/user/changeAccountDetails', {
-    method: 'PUT',
-    headers: {
-      'X-Custom-Header': 'lollipop',
-    },
-    body: JSON.stringify({
-      newName: newName,
-      newEmail: newEmail,
-    }),
-  });
-  if (res.status === 200) {
-    (event.target as HTMLFormElement).reset();
-    return true; // Returns true if all input is valid
-  } else {
-    return false; // Returns false if any input is invalid
   }
 };
 
