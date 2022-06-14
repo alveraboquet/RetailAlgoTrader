@@ -56,6 +56,27 @@ const handlers = [
       ])
     );
   }),
+  rest.get('/api/app/user/retrieveAccountDetails', (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json([{ name: 'testUser', email: 'testUser@email.com' }])
+    );
+  }),
+  rest.get('/api/stripe/retrieveCustomer', (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json([
+        {
+          lastFour: 1234,
+          subscription: 'testSubscription',
+          price: 1000,
+        },
+      ])
+    );
+  }),
+  rest.post('/api/stripe/checkoutSession/checkoutSession', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(['to stripe checkoutsession']));
+  }),
 ];
 
 export default handlers;

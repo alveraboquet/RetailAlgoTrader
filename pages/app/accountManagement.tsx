@@ -34,9 +34,9 @@ const AccountManagement = () => {
 
   // Fetch content from protected routes with custom header
   useEffect(() => {
-    fetchAccountDetails().then((accountDetails) =>
-      setAccountDetails(accountDetails)
-    );
+    fetchAccountDetails().then((accountDetails) => {
+      setAccountDetails(accountDetails);
+    });
     fetchStripeDetails().then((stripeDetails) => {
       setLastFour(stripeDetails.lastFour);
       setSubscription(stripeDetails.subscription);
@@ -149,6 +149,7 @@ const AccountManagement = () => {
             <button
               type="button"
               className="btn btn-light border me-3"
+              data-testid="cancelAccountInfoChangeButton"
               onClick={() => {
                 setAccountSettingsChange(false);
                 (
