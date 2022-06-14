@@ -5,6 +5,7 @@ import {
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import validator from 'validator';
+import CheckBeforeDeleteForm from './checkBeforeDeleteForm';
 
 /**
  *
@@ -14,7 +15,7 @@ const CheckBeforeDeleteModal = (confirmationString: {
   confirmationString: string;
 }) => {
   const [error, setError] = useState(false);
-  const [deleteButtonDisabled, setDeleteButtonDisabled] = useState(true);
+  const [isDeleteButtonDisabled, setIsDeleteButtonDisabled] = useState(true);
   const router = useRouter();
 
   /**
@@ -50,10 +51,14 @@ const CheckBeforeDeleteModal = (confirmationString: {
 
   const handleUserInput = (userInput: string) => {
     if (userInput === confirmationString.confirmationString) {
-      setDeleteButtonDisabled(false);
+      setIsDeleteButtonDisabled(false);
     } else {
-      setDeleteButtonDisabled(true);
+      setIsDeleteButtonDisabled(true);
     }
+  };
+
+  const changeIsDeleteButtonDisabled = () => {
+    setIsDeleteButtonDisabled(true);
   };
 
   if (!error) {
@@ -87,41 +92,13 @@ const CheckBeforeDeleteModal = (confirmationString: {
             <div className="modal-body">
               This action cannot be reversed. All billing and account info will
               be permanently deleted.
-              <form onSubmit={handleDeleteAccount}>
-                <label htmlFor="userInput">
-                  Please type{' '}
-                  <span className="fw-bold">
-                    {confirmationString.confirmationString}
-                  </span>{' '}
-                  to confirm.
-                </label>
-                <input
-                  id="userInput"
-                  type="text"
-                  className="form-control"
-                  maxLength={30}
-                  required
-                  onChange={(e) => handleUserInput(e.target.value)}
-                  autoComplete={'off'}
-                />
-                <div className="modal-footer">
-                  <button
-                    type="reset"
-                    className="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                    onClick={() => setDeleteButtonDisabled(true)}
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="btn btn-warning"
-                    disabled={deleteButtonDisabled}
-                  >
-                    Delete Account
-                  </button>
-                </div>
-              </form>
+              <CheckBeforeDeleteForm
+                handleDeleteAccount={handleDeleteAccount}
+                confirmationString={confirmationString}
+                handleUserInput={handleUserInput}
+                changeIsDeleteButtonDisabled={changeIsDeleteButtonDisabled}
+                isDeleteButtonDisabled={isDeleteButtonDisabled}
+              />
             </div>
           </div>
         </div>

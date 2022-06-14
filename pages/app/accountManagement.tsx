@@ -10,11 +10,12 @@ import {
   displayAlert,
   fetchAccountDetails,
   fetchStripeDetails,
-  changeAccountInfo,
+  verifyAccountInfoChange,
 } from '../../lib/accountManagementHelpers';
-import DOMPurify from 'isomorphic-dompurify';
 import CheckBeforeDeleteModal from '../../components/accountManagement/checkBeforeDeleteModal';
 import ErrorModal from '../../components/accountManagement/errorModal';
+import AccountInfoChangeForm from '../../components/accountManagement/accountInfoChangeForm';
+import CreateCustomerPortalSessionForm from '../../components/accountManagement/createCustomerPortalSessionForm';
 
 /**
  *
@@ -25,12 +26,12 @@ const AccountManagement = () => {
   const [accountDetails, setAccountDetails] = useState({
     name: 'Loading',
     email: 'Loading',
-    provider: 'Loading',
   });
   const [lastFour, setLastFour] = useState('Loading');
   const [subscription, setSubscription] = useState('Loading');
   const [price, setPrice] = useState(0);
-  const [accountSettingsChange, setAccountSettingsChange] = useState(false);
+  const [isAccountSettingsChanged, setIsAccountSettingsChanged] =
+    useState(false);
 
   // Fetch content from protected routes with custom header
   useEffect(() => {
@@ -66,21 +67,26 @@ const AccountManagement = () => {
 
   // Handle form submit for user changing account information
   const handleAccountInfoChange = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const formValidation = (await import('../../lib/formValidation')).default;
-    const validated = formValidation(e);
-    if (validated) {
-      const validInput = await changeAccountInfo(e);
-      if (validInput) {
-        fetchAccountDetails().then((data) => setAccountDetails(data));
-        setAccountSettingsChange(false);
-      } else {
-        displayAlert(
-          'accountAlertPlaceholder',
-          'Invalid input. Name can only consist of letters and must be less than 20 characters. Email must be of form johnsmith@email.com and must be less than 200 characters.'
-        );
-      }
+    const validInput = await verifyAccountInfoChange(e);
+    if (validInput) {
+      fetchAccountDetails().then((data) => setAccountDetails(data));
+      setIsAccountSettingsChanged(false);
+    } else {
+      displayAlert(
+        'accountAlertPlaceholder',
+        'Invalid input. Name can only consist of letters and must be less than 20 characters. Email must be of form johnsmith@email.com and must be less than 200 characters.'
+      );
     }
+  };
+
+  // Update isAccountSettingsChanged to true when input on AccountInfoChangeForm
+  const setAccountSettingsChangeTrue = () => {
+    setIsAccountSettingsChanged(true);
+  };
+
+  // Update isAccountSettingsChanged to false when input cleared on AccountInfoChangeForm
+  const setAccountSettingsChangeFalse = () => {
+    setIsAccountSettingsChanged(false);
   };
 
   return (
@@ -93,85 +99,13 @@ const AccountManagement = () => {
       <h1>Account Management</h1>
       <hr />
       <h2 className="mb-4">Account Settings</h2>
-      <form
-        onSubmit={handleAccountInfoChange}
-        className="form rounded"
-        noValidate
-        id="accountSettings"
-      >
-        <div className="row">
-          <div className="col-3">
-            <label htmlFor="newName" className="form-label">
-              Name:
-            </label>
-          </div>
-          <div className="col-3">
-            <input
-              id="newName"
-              type="text"
-              autoComplete="given-name"
-              className="form-control"
-              placeholder={DOMPurify.sanitize(accountDetails.name)}
-              maxLength={20}
-              onChange={() => {
-                setAccountSettingsChange(true);
-              }}
-            />
-          </div>
-        </div>
-        <div className="row mt-4">
-          <div className="col-3">
-            <label htmlFor="newEmail" className="form-label">
-              Email:
-            </label>
-          </div>
-          <div className="col-3">
-            <input
-              id="newEmail"
-              type="email"
-              autoComplete="email"
-              aria-describedby="emailHelp"
-              className="form-control"
-              placeholder={DOMPurify.sanitize(accountDetails.email)}
-              maxLength={200}
-              onChange={() => {
-                setAccountSettingsChange(true);
-              }}
-            />
-            <div className="invalid-feedback">
-              Please ensure email is of form johnsmith@email.com
-            </div>
-          </div>
-        </div>
-        <div id="accountAlertPlaceholder"></div>
-        <div className="text-end">
-          {accountSettingsChange ? (
-            <button
-              type="button"
-              className="btn btn-light border me-3"
-              data-testid="cancelAccountInfoChangeButton"
-              onClick={() => {
-                setAccountSettingsChange(false);
-                (
-                  document.getElementById('accountSettings') as HTMLFormElement
-                ).reset();
-              }}
-            >
-              Cancel
-            </button>
-          ) : (
-            <></>
-          )}
-
-          <button
-            type="submit"
-            className="btn btn-warning"
-            disabled={!accountSettingsChange}
-          >
-            Save
-          </button>
-        </div>
-      </form>
+      <AccountInfoChangeForm
+        handleAccountInfoChange={handleAccountInfoChange}
+        accountDetails={accountDetails}
+        setAccountSettingsChangeTrue={setAccountSettingsChangeTrue}
+        setAccountSettingsChangeFalse={setAccountSettingsChangeFalse}
+        isAccountSettingsChanged={isAccountSettingsChanged}
+      />
       <hr />
       <h2 className="mb-4">Mail Settings</h2>
       <hr />
@@ -180,11 +114,7 @@ const AccountManagement = () => {
           <h2 className="mb-4">Billing Settings</h2>
         </div>
         <div className="col-4 text-end">
-          <form method="POST" action="/api/stripe/createCustomerPortalSession">
-            <button type="submit" className="btn btn-warning">
-              Manage Billing
-            </button>
-          </form>
+          <CreateCustomerPortalSessionForm />
         </div>
       </div>
       <div className="row">
