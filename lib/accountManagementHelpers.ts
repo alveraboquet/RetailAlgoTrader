@@ -26,7 +26,6 @@ export const fetchAccountDetails = async () => {
     return {
       name: 'Failed to Retrieve',
       email: 'Failed to Retrive',
-      provider: 'Failed to Retrive',
     };
   }
 };
@@ -93,7 +92,6 @@ export const changeAccountInfo = async (event: React.FormEvent) => {
       newEmail: HTMLInputElement;
     };
     const target = event.target as SignupDetails;
-    console.log(target.newName);
     let newName = target.newName.value;
     let newEmail = target.newEmail.value;
     // if the name or email form inputs are blank then keep the original name or email value
@@ -183,6 +181,23 @@ export const checkBeforeDelete = (
 ) => {
   if (confirmationString === userInput) {
     return true;
+  } else {
+    return false;
+  }
+};
+
+/**
+ *
+ * @param e - form submission event from AccountInfoChangeForm
+ * @returns - true if valid input and false if not valid input
+ */
+export const verifyAccountInfoChange = async (e: React.FormEvent) => {
+  e.preventDefault();
+  const formValidation = (await import('../lib/formValidation')).default;
+  const validated = formValidation(e);
+  if (validated) {
+    const validInput = await changeAccountInfo(e);
+    return validInput;
   } else {
     return false;
   }
