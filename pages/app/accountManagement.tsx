@@ -140,7 +140,7 @@ const AccountManagement = () => {
           <p className="fw-normal">{lastFour}</p>
         </div>
       </div>
-      <div id="billingAlertPlaceholder"></div>
+      <div id="billingAlertPlaceholder" className="mt-3"></div>
       <hr />
       <div className="border border-danger rounded p-2 text-danger mb-4">
         <h2 className="mb-4">Danger Zone</h2>
@@ -186,7 +186,7 @@ const AccountManagement = () => {
               After your account is deleted you will be redirected to the
               homepage.
             </p>
-            <div id="deleteAccountAlertPlaceholder"></div>
+            <div id="deleteAccountAlertPlaceholder" className="mt-3"></div>
           </div>
           <div className="col-4 text-end">
             <button
