@@ -24,11 +24,13 @@ const CheckBeforeDeleteModal = (confirmationString: {
    */
   const handleDeleteAccount = async (e: React.FormEvent) => {
     e.preventDefault();
-    type UserInput = EventTarget & {
-      userInput: HTMLInputElement;
-    };
-    const target = e.target as UserInput;
-    let userInput = target.userInput.value;
+    interface FormInputs extends EventTarget {
+      elements: {
+        userInput: HTMLInputElement;
+      };
+    }
+    const inputs = (e.target as FormInputs).elements;
+    let userInput = inputs.userInput.value;
     if (
       validator.isLength(userInput, { min: 1, max: 30 }) &&
       !validator.isEmpty(userInput) &&
@@ -44,6 +46,7 @@ const CheckBeforeDeleteModal = (confirmationString: {
     if (stringsMatch) {
       const isCustomerDeleted = await deleteCustomer();
       if (isCustomerDeleted) router.push('/');
+      else setError(true);
     } else {
       setError(true);
     }
