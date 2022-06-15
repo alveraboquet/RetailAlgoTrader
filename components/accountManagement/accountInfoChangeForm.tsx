@@ -77,7 +77,7 @@ const AccountInfoChangeForm = ({
           </div>
         </div>
       </div>
-      <div id="accountAlertPlaceholder"></div>
+      <div id="accountAlertPlaceholder" className="mt-3"></div>
       <div className="text-end">
         {isAccountSettingsChanged ? (
           <button
