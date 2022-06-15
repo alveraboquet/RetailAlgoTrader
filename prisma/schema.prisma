@@ -69,7 +69,7 @@ model Lesson {
   id          Int           @id @default(autoincrement())
   name        String        @unique
   chapter_id  Int
-  chapter     Chapter       @relation(fields: [chapter_id], references: [id])
+  chapter     Chapter       @relation(fields: [chapter_id], references: [id], onDelete: Cascade)
   User_Lesson User_Lesson[]
 }
 
@@ -77,8 +77,8 @@ model User_Chapter {
   user_id    String
   chapter_id Int
   completed  Boolean
-  user       User    @relation(fields: [user_id], references: [id])
-  chapter    Chapter @relation(fields: [chapter_id], references: [id])
+  user       User    @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  chapter    Chapter @relation(fields: [chapter_id], references: [id], onDelete: Cascade)
 
   @@id([user_id, chapter_id])
 }
@@ -87,8 +87,8 @@ model User_Lesson {
   user_id   String
   lesson_id Int
   completed Boolean
-  user      User    @relation(fields: [user_id], references: [id])
-  lesson    Lesson  @relation(fields: [lesson_id], references: [id])
+  user      User    @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  lesson    Lesson  @relation(fields: [lesson_id], references: [id], onDelete: Cascade)
 
   @@id([user_id, lesson_id])
 }
@@ -108,8 +108,8 @@ model User_Course {
   completed       Boolean
   current_chapter String
   current_lesson  String
-  user      User    @relation(fields: [user_id], references: [id])
-  course    Course  @relation(fields: [course_id], references: [id])
+  user      User    @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  course    Course  @relation(fields: [course_id], references: [id], onDelete: Cascade)
 
   @@id([user_id, course_id])
 }
@@ -117,8 +117,8 @@ model User_Course {
 model Course_Chapter {
   course_id  Int
   chapter_id Int
-  course     Course  @relation(fields: [course_id], references: [id])
-  chapter    Chapter @relation(fields: [chapter_id], references: [id])
+  course     Course  @relation(fields: [course_id], references: [id], onDelete: Cascade)
+  chapter    Chapter @relation(fields: [chapter_id], references: [id], onDelete: Cascade)
 
   @@id([course_id, chapter_id])
 }

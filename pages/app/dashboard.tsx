@@ -5,7 +5,16 @@ import { NextPage, NextPageContext } from 'next';
 import CourseCard from '../../components/course/courseCard';
 import coursesData from '../../components/landingPages/coursesData';
 import ProSignupBanner from '../../components/pricing/proSignupBanner';
+import {
+  getPercentComplete,
+  getCourseEnrolled,
+  getCourseObject,
+  fetchEnrolledCourses,
+  fetchCompletedChapters,
+  percentCompleteByCourse,
+} from '../../lib/dashboardHelpers';
 
+// Renders user dashboard page
 const Dashboard: NextPage = () => {
   const { data: session } = useSession();
   const [enrolledCourses, setEnrolledCourses] = useState([
@@ -20,99 +29,18 @@ const Dashboard: NextPage = () => {
 
   // Fetch content from protected routes with custom header
   useEffect(() => {
-    const fetchEnrolledCourses = async () => {
-      try {
-        const res = await fetch('/api/app/courses/enrolledCourses', {
-          headers: {
-            'X-Custom-Header': 'lollipop',
-          },
-        });
-        const data = await res.json();
-        if (data) {
-          setEnrolledCourses(data);
-          return;
-        }
-        setEnrolledCourses([]);
-      } catch (err) {
-        setEnrolledCourses([]);
-      }
-    };
-    const fetchCompletedChapters = async () => {
-      try {
-        const res = await fetch('/api/app/chapters/completedChapters', {
-          headers: {
-            'X-Custom-Header': 'lollipop',
-          },
-        });
-        const data = await res.json();
-        if (data) {
-          setCompletedChapters(data);
-          return;
-        }
-        setCompletedChapters([]);
-      } catch (err) {
-        setCompletedChapters([]);
-      }
-    };
-    fetchEnrolledCourses();
-    fetchCompletedChapters();
+    fetchEnrolledCourses().then((enrolledCourses) => {
+      if (enrolledCourses) setEnrolledCourses(enrolledCourses);
+    });
+    fetchCompletedChapters().then((completedChapters) => {
+      if (completedChapters) setCompletedChapters(completedChapters);
+    });
   }, [session]);
 
   // Calculate percent complete for each course
   useEffect(() => {
-    // fetchCompletedChapters returns array of objects ordered by descending course_id
-    // Max course_id will be in first object
-    const numCourses = completedChapters[0].course_id;
-    setCoursesPercentComplete([]);
-    for (let i = 1; i <= numCourses; i++) {
-      const totalChaptersByCourse = completedChapters
-        .filter((chapter) => chapter.course_id === i)
-        .map((chapter) => chapter.chapter_id);
-      const completedChaptersByCourse = completedChapters
-        .filter((chapter) => chapter.course_id === i)
-        .filter((chapter) => chapter.completed)
-        .map((chapter) => chapter.chapter_id);
-      const coursePercentComplete =
-        (completedChaptersByCourse.length / totalChaptersByCourse.length) * 100;
-      setCoursesPercentComplete((percentComplete) => [
-        ...percentComplete,
-        {
-          courseID: i,
-          percentComplete: coursePercentComplete ? coursePercentComplete : 0,
-        },
-      ]);
-    }
+    setCoursesPercentComplete(percentCompleteByCourse(completedChapters));
   }, [completedChapters]);
-
-  const getPercentComplete = (courseID: number) => {
-    const coursePercentComplete = coursesPercentComplete.find(
-      (course) => course.courseID === courseID
-    );
-    if (coursePercentComplete) return coursePercentComplete.percentComplete;
-    else return 0;
-  };
-
-  const getCourseEnrolled = (courseID: number) => {
-    const courseEnrolled = enrolledCourses.find(
-      (course) => course.course_id === courseID
-    );
-    if (courseEnrolled) return courseEnrolled.enrolled;
-    else return false;
-  };
-
-  const getCourseObject = (courseID: number) => {
-    const courseObject = enrolledCourses.find(
-      (course) => course.course_id === courseID
-    );
-    if (courseObject) return courseObject;
-    else
-      return {
-        course_id: 0,
-        enrolled: false,
-        current_chapter: 0,
-        current_lesson: 0,
-      };
-  };
 
   return (
     <LayoutApp>
@@ -133,10 +61,10 @@ const Dashboard: NextPage = () => {
             cardTitle={coursesData.tradingAcademy.title}
             cardText={coursesData.tradingAcademy.shortDescription}
             coursePath={`/app/courses/tradingAcademy/${
-              getCourseObject(1).current_chapter
-            }/${getCourseObject(1).current_lesson}`}
-            enrolled={getCourseEnrolled(1)}
-            percentComplete={getPercentComplete(1)}
+              getCourseObject(1, enrolledCourses).current_chapter
+            }/${getCourseObject(1, enrolledCourses).current_lesson}`}
+            enrolled={getCourseEnrolled(1, enrolledCourses)}
+            percentComplete={getPercentComplete(1, coursesPercentComplete)}
           ></CourseCard>
         </div>
         <div className="col-4">
@@ -148,10 +76,10 @@ const Dashboard: NextPage = () => {
             cardTitle={coursesData.algorithmicTradingAcademy.title}
             cardText={coursesData.algorithmicTradingAcademy.shortDescription}
             coursePath={`/app/courses/tradingAcademy/${
-              getCourseObject(2).current_chapter
-            }/${getCourseObject(2).current_lesson}`}
-            enrolled={getCourseEnrolled(2)}
-            percentComplete={getPercentComplete(2)}
+              getCourseObject(2, enrolledCourses).current_chapter
+            }/${getCourseObject(2, enrolledCourses).current_lesson}`}
+            enrolled={getCourseEnrolled(2, enrolledCourses)}
+            percentComplete={getPercentComplete(2, coursesPercentComplete)}
           ></CourseCard>
         </div>
         <div className="col-4">
@@ -165,8 +93,8 @@ const Dashboard: NextPage = () => {
               coursesData.equitiesAndCryptoWithTradingview.shortDescription
             }
             coursePath="/app/courses/tradingAcademy"
-            enrolled={getCourseEnrolled(3)}
-            percentComplete={getPercentComplete(3)}
+            enrolled={getCourseEnrolled(3, enrolledCourses)}
+            percentComplete={getPercentComplete(3, coursesPercentComplete)}
           ></CourseCard>
         </div>
       </div>
@@ -180,8 +108,8 @@ const Dashboard: NextPage = () => {
             cardTitle={coursesData.forexTradingWithMT4.title}
             cardText={coursesData.forexTradingWithMT4.shortDescription}
             coursePath="/app/courses/tradingAcademy"
-            enrolled={getCourseEnrolled(4)}
-            percentComplete={getPercentComplete(4)}
+            enrolled={getCourseEnrolled(4, enrolledCourses)}
+            percentComplete={getPercentComplete(4, coursesPercentComplete)}
           ></CourseCard>
         </div>
         <div className="col-4">
@@ -193,8 +121,8 @@ const Dashboard: NextPage = () => {
             cardTitle={coursesData.futuresWithQuantconnect.title}
             cardText={coursesData.futuresWithQuantconnect.shortDescription}
             coursePath="/app/courses/tradingAcademy"
-            enrolled={getCourseEnrolled(5)}
-            percentComplete={getPercentComplete(5)}
+            enrolled={getCourseEnrolled(5, enrolledCourses)}
+            percentComplete={getPercentComplete(5, coursesPercentComplete)}
           ></CourseCard>
         </div>
         <div className="col-4">
@@ -206,8 +134,8 @@ const Dashboard: NextPage = () => {
             cardTitle={coursesData.marketResearchWithPython.title}
             cardText={coursesData.marketResearchWithPython.shortDescription}
             coursePath="/app/courses/tradingAcademy"
-            enrolled={getCourseEnrolled(6)}
-            percentComplete={getPercentComplete(6)}
+            enrolled={getCourseEnrolled(6, enrolledCourses)}
+            percentComplete={getPercentComplete(6, coursesPercentComplete)}
           ></CourseCard>
         </div>
       </div>

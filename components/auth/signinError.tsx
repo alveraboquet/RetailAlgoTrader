@@ -25,10 +25,10 @@ interface Props {
  * @returns - blank if undefined error or div with error message
  */
 const SignInError = (error: Props) => {
-  if (error === undefined) {
+  if (error.error === undefined) {
     return <></>;
-  } else if (typeof error === 'string') {
-    const errorMessage = error && (errors[error] ?? errors.default);
+  } else if (typeof error.error === 'string') {
+    const errorMessage = error.error && (errors[error.error] ?? errors.default);
     return <div className="text-danger">{errorMessage}</div>;
   } else {
     return <div className="text-danger">Unable to sign in.</div>;

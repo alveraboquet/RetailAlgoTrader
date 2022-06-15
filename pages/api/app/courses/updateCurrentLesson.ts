@@ -2,12 +2,20 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import pool from '../../../../db/index';
 import { getSession } from 'next-auth/react';
 
+/**
+ *
+ * @param req - PUT req from footerLesson to update current lesson
+ * @param res - 405 if not PUT req, 200 if successful,
+ */
 const updateCurrentLesson = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
   const session = await getSession({ req });
   if (session) {
+    if (req.method !== 'PUT') {
+      res.status(405).send({ message: 'Only PUT requests allowed' });
+    }
     try {
       const { user } = session;
       const lessonData = JSON.parse(req.body);
@@ -22,13 +30,13 @@ const updateCurrentLesson = async (
 
       if (result) {
         res.status(200).json({ success: 'Current Lesson Updated' });
+        return;
       }
 
-      return null;
+      throw new Error('No result returned from DB');
     } catch (err) {
-      if (typeof err === 'string') {
-        throw new Error(err);
-      }
+      console.log(err);
+      res.status(500).send('Failed to update current lesson');
     }
   } else {
     res

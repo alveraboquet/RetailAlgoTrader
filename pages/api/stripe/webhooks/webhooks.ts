@@ -3,10 +3,12 @@ import Cors from 'micro-cors';
 import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import prisma from '../../../../prisma/sharedClient';
-import escapeHTML from 'escape-html';
 
+// https://vercel.com/guides/getting-started-with-nextjs-typescript-stripe
+// https://dev.to/ajones_codes/how-to-add-user-accounts-and-paid-subscriptions-to-your-nextjs-website-585e
+
+// Load Stripe package for Node environment
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  // https://github.com/stripe/stripe-node#configuration
   apiVersion: '2020-08-27',
 });
 
@@ -37,9 +39,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
         webhookSecret
       );
     } catch (err) {
-      const errorMessage = escapeHTML(
-        err instanceof Error ? err.message : 'Unknown error'
-      );
+      const errorMessage = err instanceof Error ? err.message : 'Unknown error';
       // On error, log and return the error message.
       if (err! instanceof Error) console.log(err);
       console.log(`❌ Error message: ${errorMessage}`);
@@ -73,6 +73,25 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
         // Update that customer so their status is now active
         data: {
           isPro: true,
+        },
+      });
+    } else if (event.type === 'customer.subscription.deleted') {
+      const subscription = event.data.object as Stripe.Subscription;
+      console.log(subscription.customer);
+      await prisma.user.update({
+        where: {
+          stripeCustomerId: subscription.customer as string,
+        },
+        data: {
+          isPro: false,
+        },
+      });
+    } else if (event.type === 'customer.deleted') {
+      const deletedCustomer = event.data.object as Stripe.Customer;
+      console.log(deletedCustomer);
+      await prisma.user.delete({
+        where: {
+          stripeCustomerId: deletedCustomer.id as string,
         },
       });
     } else {

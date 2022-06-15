@@ -67,7 +67,7 @@ describe('<ProSignup />', () => {
     expect(displayedPrice).toBeInTheDocument();
   });
 
-  test('renders pro signup bar for non pro users', () => {
+  test('renders pro signup bar for non pro users', async () => {
     render(
       <SessionProvider
         session={{
@@ -84,11 +84,14 @@ describe('<ProSignup />', () => {
         <ProSignup />
       </SessionProvider>
     );
+    const user = userEvent.setup();
 
     const proSignupButton = screen.getByRole('button', {
       name: /upgrade to pro/i,
     });
     expect(proSignupButton).toBeInTheDocument();
+    await user.click(proSignupButton);
+    expect(proSignupButton).toBeDisabled();
   });
 
   test('renders already pro user bar for pro users', () => {

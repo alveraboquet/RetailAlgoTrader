@@ -1,6 +1,3 @@
-/**
- * Footer component for lesson pages
- */
 import Link from 'next/link';
 
 interface Props {
@@ -11,6 +8,7 @@ interface Props {
   nextLesson: string;
 }
 
+// Footer component for lesson pages
 const FooterLesson = ({
   course,
   prevChapter,
@@ -22,10 +20,10 @@ const FooterLesson = ({
   const updateCurrentLesson = async () => {
     try {
       const res = await fetch('/api/app/courses/updateCurrentLesson', {
+        method: 'PUT',
         headers: {
           'X-Custom-Header': 'lollipop',
         },
-        method: 'PUT',
         body: JSON.stringify({
           course,
           prevChapter,
@@ -34,8 +32,9 @@ const FooterLesson = ({
           nextLesson,
         }),
       });
-      const data = await res.json();
-      console.log(data);
+      if (res.status !== 200) {
+        throw new Error();
+      }
     } catch (err) {
       console.log(err);
     }

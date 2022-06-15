@@ -1,14 +1,13 @@
 import Link from 'next/link';
 import { signOut } from 'next-auth/react';
 
+// Header for pages that require sign-in
 const HeaderApp = () => {
   return (
     <header className="ps-3 pe-3 bg-dark">
       <nav className="navbar navbar-expand-sm navbar-dark">
         <Link href="/app/dashboard">
-          <a className="navbar-brand" href="#">
-            RetailAlgoTrader
-          </a>
+          <a className="navbar-brand">RetailAlgoTrader</a>
         </Link>
         <button
           className="navbar-toggler"
@@ -34,7 +33,7 @@ const HeaderApp = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link href="/app/courses/testCourse">
+              <Link href="/app/eaGenerator">
                 <a className="nav-link text-white active" aria-current="page">
                   EA Generator
                 </a>
@@ -47,10 +46,19 @@ const HeaderApp = () => {
                 </a>
               </Link>
             </li>
+            <li className="nav-item">
+              <Link href="/app/accountManagement">
+                <a className="nav-link text-white active" aria-current="page">
+                  Account Info
+                </a>
+              </Link>
+            </li>
             <button
               className="nav-item btn btn-warning"
               onClick={(e) => {
                 e.preventDefault();
+                // Nextauth function to initiate user signout flow
+                // https://next-auth.js.org/getting-started/client#signout
                 signOut({ callbackUrl: '/' });
               }}
             >

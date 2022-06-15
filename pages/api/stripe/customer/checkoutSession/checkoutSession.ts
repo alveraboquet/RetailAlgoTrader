@@ -1,16 +1,20 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { MONTHLY_AMOUNT, ANNUAL_AMOUNT } from '../../../../stripe.config';
+import { MONTHLY_AMOUNT, ANNUAL_AMOUNT } from '../../../../../stripe.config';
 import Stripe from 'stripe';
 import { getSession } from 'next-auth/react';
 
+// Load Stripe package for Node environment
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2020-08-27',
 });
 
 /**
  * Next API path to connect with Stripe API
- * @param req
- * @param res
+ * @param req - POST request to create checkout session with Stripe API
+ * @param res - 200 if successful, 500 if error, 405 if not POST req, 401 if non-signed in user
+ * https://vercel.com/guides/getting-started-with-nextjs-typescript-stripe
+ * https://stripe.com/docs/api/checkout/sessions?lang=node
+ * https://dev.to/ajones_codes/how-to-add-user-accounts-and-paid-subscriptions-to-your-nextjs-website-585e
  */
 export default async function handler(
   req: NextApiRequest,
