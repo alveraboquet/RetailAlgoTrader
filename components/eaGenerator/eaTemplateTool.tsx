@@ -108,7 +108,7 @@ const EaTemplateTool = () => {
           {session ? <p>Signed in</p> : <NonUserButton />}
           <p>Please click here to download your template</p>
           {/**Creates unique number to know which file to download */}
-          {platform + riskManagementRules + entryRules + exitRules}
+          <p>{platform + riskManagementRules + entryRules + exitRules}</p>
         </div>
       </div>
     </div>
