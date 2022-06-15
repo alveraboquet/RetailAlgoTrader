@@ -65,17 +65,21 @@ const handlers = [
   rest.get('/api/stripe/retrieveCustomer', (req, res, ctx) => {
     return res(
       ctx.status(200),
-      ctx.json([
-        {
-          lastFour: 1234,
-          subscription: 'testSubscription',
-          price: 1000,
-        },
-      ])
+      ctx.json({
+        lastFour: 1234,
+        subscription: 'Pro Subscription - Monthly',
+        price: 1000,
+      })
     );
   }),
   rest.post('/api/stripe/checkoutSession/checkoutSession', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(['to stripe checkoutsession']));
+  }),
+  rest.put('/api/app/user/changeAccountDetails', (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({ name: 'updatedTestUser', email: 'updatedTestUser@email.com' })
+    );
   }),
 ];
 
