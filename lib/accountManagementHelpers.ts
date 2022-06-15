@@ -87,19 +87,21 @@ export const displayAlert = (placeholder: string, message: string) => {
  */
 export const changeAccountInfo = async (event: React.FormEvent) => {
   try {
-    type SignupDetails = EventTarget & {
-      newName: HTMLInputElement;
-      newEmail: HTMLInputElement;
-    };
-    const target = event.target as SignupDetails;
-    let newName = target.newName.value;
-    let newEmail = target.newEmail.value;
+    interface FormInputs extends EventTarget {
+      elements: {
+        newName: HTMLInputElement;
+        newEmail: HTMLInputElement;
+      };
+    }
+    const inputs = (event.target as FormInputs).elements;
+    let newName = inputs.newName.value;
+    let newEmail = inputs.newEmail.value;
     // if the name or email form inputs are blank then keep the original name or email value
     if (validator.isEmpty(newName)) {
-      newName = target.newName.placeholder;
+      newName = inputs.newName.placeholder;
     }
     if (validator.isEmpty(newEmail)) {
-      newEmail = target.newEmail.placeholder;
+      newEmail = inputs.newEmail.placeholder;
     }
     // verify user input for name field
     if (
@@ -152,13 +154,14 @@ export const changeAccountInfo = async (event: React.FormEvent) => {
  */
 export const deleteCustomer = async () => {
   try {
-    await fetch('/api/stripe/deleteCustomer', {
+    const res = await fetch('/api/stripe/deleteCustomer', {
       method: 'DELETE',
       headers: {
         'X-Custom-Header': 'lollipop',
       },
     });
-    return true;
+    if (res.status === 204) return true;
+    else return false;
   } catch (err) {
     console.log(err);
     displayAlert(
