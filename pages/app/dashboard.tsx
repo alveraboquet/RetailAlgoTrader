@@ -61,10 +61,20 @@ const Dashboard: NextPage = () => {
             cardTitle={coursesData.tradingAcademy.title}
             cardText={coursesData.tradingAcademy.shortDescription}
             coursePath={`/app/courses/tradingAcademy/${
-              getCourseObject(1, enrolledCourses).current_chapter
-            }/${getCourseObject(1, enrolledCourses).current_lesson}`}
-            enrolled={getCourseEnrolled(1, enrolledCourses)}
-            percentComplete={getPercentComplete(1, coursesPercentComplete)}
+              getCourseObject(coursesData.tradingAcademy.id, enrolledCourses)
+                .current_chapter
+            }/${
+              getCourseObject(coursesData.tradingAcademy.id, enrolledCourses)
+                .current_lesson
+            }`}
+            enrolled={getCourseEnrolled(
+              coursesData.tradingAcademy.id,
+              enrolledCourses
+            )}
+            percentComplete={getPercentComplete(
+              coursesData.tradingAcademy.id,
+              coursesPercentComplete
+            )}
           ></CourseCard>
         </div>
         <div className="col-4">
@@ -76,10 +86,24 @@ const Dashboard: NextPage = () => {
             cardTitle={coursesData.algorithmicTradingAcademy.title}
             cardText={coursesData.algorithmicTradingAcademy.shortDescription}
             coursePath={`/app/courses/tradingAcademy/${
-              getCourseObject(2, enrolledCourses).current_chapter
-            }/${getCourseObject(2, enrolledCourses).current_lesson}`}
-            enrolled={getCourseEnrolled(2, enrolledCourses)}
-            percentComplete={getPercentComplete(2, coursesPercentComplete)}
+              getCourseObject(
+                coursesData.algorithmicTradingAcademy.id,
+                enrolledCourses
+              ).current_chapter
+            }/${
+              getCourseObject(
+                coursesData.algorithmicTradingAcademy.id,
+                enrolledCourses
+              ).current_lesson
+            }`}
+            enrolled={getCourseEnrolled(
+              coursesData.algorithmicTradingAcademy.id,
+              enrolledCourses
+            )}
+            percentComplete={getPercentComplete(
+              coursesData.algorithmicTradingAcademy.id,
+              coursesPercentComplete
+            )}
           ></CourseCard>
         </div>
         <div className="col-4">
@@ -93,8 +117,14 @@ const Dashboard: NextPage = () => {
               coursesData.equitiesAndCryptoWithTradingview.shortDescription
             }
             coursePath="/app/courses/tradingAcademy"
-            enrolled={getCourseEnrolled(3, enrolledCourses)}
-            percentComplete={getPercentComplete(3, coursesPercentComplete)}
+            enrolled={getCourseEnrolled(
+              coursesData.equitiesAndCryptoWithTradingview.id,
+              enrolledCourses
+            )}
+            percentComplete={getPercentComplete(
+              coursesData.equitiesAndCryptoWithTradingview.id,
+              coursesPercentComplete
+            )}
           ></CourseCard>
         </div>
       </div>
@@ -108,8 +138,14 @@ const Dashboard: NextPage = () => {
             cardTitle={coursesData.forexTradingWithMT4.title}
             cardText={coursesData.forexTradingWithMT4.shortDescription}
             coursePath="/app/courses/tradingAcademy"
-            enrolled={getCourseEnrolled(4, enrolledCourses)}
-            percentComplete={getPercentComplete(4, coursesPercentComplete)}
+            enrolled={getCourseEnrolled(
+              coursesData.forexTradingWithMT4.id,
+              enrolledCourses
+            )}
+            percentComplete={getPercentComplete(
+              coursesData.forexTradingWithMT4.id,
+              coursesPercentComplete
+            )}
           ></CourseCard>
         </div>
         <div className="col-4">
@@ -121,8 +157,14 @@ const Dashboard: NextPage = () => {
             cardTitle={coursesData.futuresWithQuantconnect.title}
             cardText={coursesData.futuresWithQuantconnect.shortDescription}
             coursePath="/app/courses/tradingAcademy"
-            enrolled={getCourseEnrolled(5, enrolledCourses)}
-            percentComplete={getPercentComplete(5, coursesPercentComplete)}
+            enrolled={getCourseEnrolled(
+              coursesData.futuresWithQuantconnect.id,
+              enrolledCourses
+            )}
+            percentComplete={getPercentComplete(
+              coursesData.futuresWithQuantconnect.id,
+              coursesPercentComplete
+            )}
           ></CourseCard>
         </div>
         <div className="col-4">
@@ -134,8 +176,14 @@ const Dashboard: NextPage = () => {
             cardTitle={coursesData.marketResearchWithPython.title}
             cardText={coursesData.marketResearchWithPython.shortDescription}
             coursePath="/app/courses/tradingAcademy"
-            enrolled={getCourseEnrolled(6, enrolledCourses)}
-            percentComplete={getPercentComplete(6, coursesPercentComplete)}
+            enrolled={getCourseEnrolled(
+              coursesData.marketResearchWithPython.id,
+              enrolledCourses
+            )}
+            percentComplete={getPercentComplete(
+              coursesData.marketResearchWithPython.id,
+              coursesPercentComplete
+            )}
           ></CourseCard>
         </div>
       </div>
