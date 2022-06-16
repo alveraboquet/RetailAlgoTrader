@@ -1,0 +1,89 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+# Leading Assets
+
+One of the most profitable strategies in existence is the use of leading assets. A leading asset can be used to predict almost
+exactly the price movements of another asset.
+
+A strategy built upon a leading asset requires you to find a pair of assets with a very unique relationship. These assets must
+have the exact same or nearly the exact same price movements. When one asset moves up the other asset moves up. When one asset
+moves down the other asset moves down.
+
+At first glance this seems easy. For example, gold and silver move almost identically. Bitcoin and Ethereum make the same
+price moves. The trick is finding assets that move the same, but one asset moves before the other asset does.
+
+This is where the phrase leading asset comes from. One asset's "leads" the other asset's price. If you can find a genuine
+leading asset relationship you can exploit it for insane profits.
+
+The sinusoidal curves below demonstrate what the ideal leading asset relationship would be. The blue line moves roughly half
+a period before the black line moves.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/advancedStrategies/leadingAsset/sineCurves.webp"
+    height={572}
+    width={761}
+    alt=""
+  />
+  <figcaption>Ideal Leading Asset Overlay</figcaption>
+</figure>
+
+If these curves were two different assets it would be simple to create a system that trades the blue asset based on the
+price movements of the black asset.
+
+Leading asset strategies provide what is essentially a consistent, risk-free trade which allows you to leverage your capital
+for maximum profit.
+
+## Issue with leading asset strategies
+
+Unfortunately it is almost impossible to find these kinds of trading opportunities. Every hedge fund, statisician, data scientist,
+economist, etc have scoured the markets for these kinds of relationships.
+
+Nearly all of these relationships have already been discovered. And when one of these relationships is discovered it is quickly
+exploited for maximum profit. Traders will create algorithmic systems to take advantage of the leading asset.
+
+As more and more traders launch their systems the time difference between the leading asset's price movements and the following
+asset's price movements becomes smaller and smaller. This continues until the leading asset and the following asset move at the
+same time.
+
+At which point this trade opporutnity is gone for the majority of traders. Hedge funds can still pursue these opportunities as
+it now becomes a high frequency trading opportunity but this is not achievable for the vast majority of traders.
+
+## How to find leading assets in today's markets
+
+This type of relationship is still possible to trade. It just requires some creativity and a willingness to jump into
+unfamiliar markets.
+
+For example, in the early years of crytocurrency many traders were able to find these types of relationships amongst different
+cryptocurrencies. Unfortunately, the hedge funds have now entered the crypto markets and these opportunities have dried up.
+
+The below image shows the price of ETH overlaid on BTC. As you can see marked by the vertical purple lines, BTC and ETH make
+the exact same price moves at the exact same time. It is not reasonable for a retail trader to use one of these assets as a
+leading indicator.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/advancedStrategies/leadingAsset/btceth.webp"
+    height={2160}
+    width={3840}
+    alt=""
+  />
+  <figcaption>ETH overlaid on BTC</figcaption>
+</figure>
+
+Other potential markets are penny stocks or international stock markets. Really you are looking for any market that receives
+little attention from hedge funds. This will typically be smaller, less regulated markets so be sure to do your research
+into any market before trading.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="choosingABroker"
+    nextChapter="advancedStrategies"
+    prevLesson="paperTradingAccount"
+    nextLesson="oneCancelsTheOther"
+  >
+    {children}
+  </LayoutLesson>
+);

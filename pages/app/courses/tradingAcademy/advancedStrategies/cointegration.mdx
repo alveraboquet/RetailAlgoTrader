@@ -1,0 +1,112 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+# Cointegration
+
+Cointegration is an advanced strategy with a lot of profit potential and relatively low risk if done correctly. Cointegration
+occurs when you have two assets that consistently return to an equilibrium. These assets will trade very similarly but not
+identically.
+
+However, if these assets are cointegrated there is a limit to how different their price can be. If the price difference becomes
+too large then these assets will move back towards each other. The key to cointegration strategies is calculating the price
+threshold at which diverging assets will return to an equilibrium.
+
+Once the price difference between the assets reaches that threshold, you short the more expensive asset and buy the less
+expensive asset.
+
+The advantage of cointegration strategies over the other strategies that we have looked at is that it is market neutral. You
+do not care if the market is trending or ranging. You do not care if the less expensive asset increases in price or if the
+more expensive asset decreases in price.
+
+This is the true power of a cointegration strategy. It eliminates the need to make an estimation at what direction price will
+take.
+
+## Cointegration scenarios
+
+In the following examples we have already calculated the price difference threshold at which we estimate price will
+return to equilibrium. When price breaks our calculated threshold, we will short the more expensive asset and buy the less
+expensive asset. We will look at the three possible scenarios that can occur when two assets reach our price
+difference threshold.
+
+### Assets converge together
+
+This scenario occurs when the more expensive asset drops in price and the less expensive asset rises in price until they
+meet back in the equilibrium. This results in a profitable short trade and a profitable long trade.
+
+### More expensive asset does not move / increases slighlty
+
+This scenario occurs when the more expensive asset does not move much or maybe even increases in price. This will result in a
+small losing short trade. However, if the assets are cointegrated the less expensive asset will see a large rise in price in order
+to restore equilibrium. This will result in a large profitable buy trade.
+
+The profits of the buy trade will more than make up for the small losses from the sell trade. With this strategy we do not need
+both trades to be profitable. As long as the assets are cointegrated and you are buying/selling at the extremes of the historical
+price difference, the trade will be profitable.
+
+### Less expensive asset does not move / decreases slighlty
+
+This is the same situation as the previous scenario just reversed. In this scenario the less expensive asset does not move
+much or even decreases in price. This will result in a small losing buy trade. However, if the assets are cointegrated the more
+expensive asset will see a large drop in price in order to restore equilibrium. This will result in a large profitable sell
+trade that covers the losses from the buy trade.
+
+### Assets diverge
+
+This is the primary risk of a cointegration strategy. If the assets break your threshold but continue to diverge it is possible
+to accrue massive loses quickly without a proper risk management strategy. Your short trade on the more expensive asset will
+lose money as its' price continues to rise. Your buy trade on the less expensive asset will lose money as its' price
+continues to fall.
+
+Remember that cointegration is not a law that the asset must follow. It is simply a historical pattern that you have discovered
+through statistical analysis and backtesting. As long as this pattern continues, you have a low-risk, market-neutral method
+at making profit. However, once this pattern stops for whatever reason this strategy can quickly lose significant capital.
+
+## How to limit risks of cointegration
+
+As we saw, the main risk with a cointegration strategy is that price will continue to diverge when you expect it to move
+back towards equilibrium. This can happen for any number of reasons.
+
+The best technique for avoiding this situation is to have a proper understanding of why the two assets are cointegrated. If you
+understand the fundamental reasons that cause two assets to cointegrate then you can predict what conditions will cause the
+assets to fail to cointegrate.
+
+Many times, expecially with the limited resources of retail traders, we will not be able to determine why two assets are
+cointegrated. That is okay. We just need to ensure that we have a strong risk management strategy.
+
+A strong risk management strategy is so important as the profits of cointegration strategies are capped. Once the assets return
+to an equilibrium price your potential for profit is over.
+
+With a cointegration strategy you will not land any home-run trades that result in massive profit. Instead you will have many
+trades with a small amount of profit.
+
+## How to calculate cointegration
+
+### Engle-Granger method
+
+### Johansen Test
+
+## Cointegration example with TradingView
+
+The two assets will not always return exactly to equilibrium. Need to determine at what point you want to take profit.
+
+## What assets to trade with cointegration
+
+As we discussed above, the profitability of cointegration trades is limited. As a result, many traders prefer to trade futures
+and forex with cointegration strategies. Both futures and forex offer large leverage which can turn small profitable trades
+into large profitable trades.
+
+The downside of this is that leverage also magnifies your losses. This is why we recommend starting with stocks as there is
+less leverage. Once you have a good understanding of cointegration and you know how to handle the risks, then you can move
+onto futures or forex.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="choosingABroker"
+    nextChapter="advancedStrategies"
+    prevLesson="paperTradingAccount"
+    nextLesson="oneCancelsTheOther"
+  >
+    {children}
+  </LayoutLesson>
+);
