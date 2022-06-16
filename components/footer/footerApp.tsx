@@ -13,29 +13,6 @@ const FooterApp = () => {
           <p className="text-light">
             RetailAlgoTrader - Become a profitable retail trader
           </p>
-          <aside className="d-md-none d-flex justify-content-center">
-            <button className="btn btn-warning">
-              <Link href="/signup">
-                <a className="text-decoration-none text-dark">
-                  Get Started for Free
-                </a>
-              </Link>
-            </button>
-          </aside>
-          <aside className="d-none d-md-flex justify-content-center">
-            <p className="fs-4 bg-light text-center p-md-3 rounded mt-md-3">
-              Get started with algorithmic trading today with our free courses!
-              <span>
-                <button className="btn btn-warning ms-3">
-                  <Link href="/signup">
-                    <a className="text-decoration-none text-white">
-                      Click Here
-                    </a>
-                  </Link>
-                </button>
-              </span>
-            </p>
-          </aside>
           <section className="row">
             <div className="col-md-6">
               <h2 className="fs-5 text-light mt-3">ABOUT US</h2>
@@ -75,7 +52,7 @@ const FooterApp = () => {
           </section>
           <section className="row mt-md-3 mb-md-3">
             <div className="col-3 p-0 d-flex justify-content-center">
-              <Link href="https://www.facebook.com/RetailAlgoTrading" passHref>
+              <Link href="https://www.facebook.com/RetailAlgoTrading">
                 <a>
                   <Image
                     src="/images/svgs/facebook.svg"
@@ -87,7 +64,7 @@ const FooterApp = () => {
               </Link>
             </div>
             <div className="col-3 p-0 d-flex justify-content-center">
-              <Link href="https://twitter.com/RetailAlgoTrade" passHref>
+              <Link href="https://twitter.com/RetailAlgoTrade">
                 <a>
                   <Image
                     src="/images/svgs/twitter.svg"
@@ -99,7 +76,7 @@ const FooterApp = () => {
               </Link>
             </div>
             <div className="col-3 p-0 d-flex justify-content-center">
-              <Link href="https://www.instagram.com/retailalgotrader/" passHref>
+              <Link href="https://www.instagram.com/retailalgotrader/">
                 <a>
                   <Image
                     src="/images/svgs/instagram.svg"
@@ -111,7 +88,7 @@ const FooterApp = () => {
               </Link>
             </div>
             <div className="col-3 p-0 d-flex justify-content-center">
-              <Link href="https://www.quora.com/profile/Matt-Laux" passHref>
+              <Link href="https://www.quora.com/profile/Matt-Laux">
                 <a>
                   <Image
                     src="/images/svgs/quora.svg"
@@ -198,24 +175,24 @@ const FooterApp = () => {
           </article>
         </section>
         <nav className="nav pb-5 mt-3 justify-content-center">
-          <Link href="/">
+          <Link href="/app/dashboard">
             <a className="nav-link text-light" aria-current="page">
-              Home
+              Dashboard
             </a>
           </Link>
-          <Link href="/about">
+          <Link href="/app/eaGenerator">
             <a className="nav-link text-light" aria-current="page">
-              About
+              Privacy Policy
             </a>
           </Link>
           <Link href="/blog">
             <a className="nav-link text-light" aria-current="page">
-              Blog
+              Terms of Service
             </a>
           </Link>
-          <Link href="/login">
+          <Link href="/logout">
             <a className="nav-link text-light" aria-current="page">
-              Login
+              Logout
             </a>
           </Link>
         </nav>

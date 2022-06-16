@@ -75,7 +75,7 @@ const Footer = () => {
           </section>
           <section className="row mt-md-3 mb-md-3">
             <div className="col-3 p-0 d-flex justify-content-center">
-              <Link href="https://www.facebook.com/RetailAlgoTrading" passHref>
+              <Link href="https://www.facebook.com/RetailAlgoTrading">
                 <a>
                   <Image
                     src="/images/svgs/facebook.svg"
@@ -87,7 +87,7 @@ const Footer = () => {
               </Link>
             </div>
             <div className="col-3 p-0 d-flex justify-content-center">
-              <Link href="https://twitter.com/RetailAlgoTrade" passHref>
+              <Link href="https://twitter.com/RetailAlgoTrade">
                 <a>
                   <Image
                     src="/images/svgs/twitter.svg"
@@ -99,7 +99,7 @@ const Footer = () => {
               </Link>
             </div>
             <div className="col-3 p-0 d-flex justify-content-center">
-              <Link href="https://www.instagram.com/retailalgotrader/" passHref>
+              <Link href="https://www.instagram.com/retailalgotrader/">
                 <a>
                   <Image
                     src="/images/svgs/instagram.svg"
@@ -111,7 +111,7 @@ const Footer = () => {
               </Link>
             </div>
             <div className="col-3 p-0 d-flex justify-content-center">
-              <Link href="https://www.quora.com/profile/Matt-Laux" passHref>
+              <Link href="https://www.quora.com/profile/Matt-Laux">
                 <a>
                   <Image
                     src="/images/svgs/quora.svg"

@@ -48,10 +48,9 @@ const EaTemplateTool = () => {
             className="form-select"
             aria-label="platformSelect"
             onChange={(event) => setPlatform(event.target.value)}
+            defaultValue={0}
           >
-            <option value="0" selected>
-              Select your Platform
-            </option>
+            <option value="0">Select your Platform</option>
             <option value="1">Pinescript</option>
             <option value="2">MT4</option>
             <option value="3">QuantConnect</option>
@@ -63,10 +62,9 @@ const EaTemplateTool = () => {
             className="form-select"
             aria-label="riskManagementSelect"
             onChange={(event) => setRiskManagementRules(event.target.value)}
+            defaultValue={0}
           >
-            <option value="0" selected>
-              Select your Risk Management Rules
-            </option>
+            <option value="0">Select your Risk Management Rules</option>
             <option value="1">Risk Percentage</option>
             <option value="2">Minimum Risk:Reward</option>
             <option value="3">Max Drawdown</option>
@@ -79,10 +77,9 @@ const EaTemplateTool = () => {
             className="form-select"
             aria-label="entryRulesSelect"
             onChange={(event) => setEntryRules(event.target.value)}
+            defaultValue={0}
           >
-            <option value="0" selected>
-              Select your Entry Rules
-            </option>
+            <option value="0">Select your Entry Rules</option>
             <option value="1">Moving-Average Crossover</option>
             <option value="2">
               Bollinger-Band Mean Reversion with Engulfing Bar
@@ -96,10 +93,9 @@ const EaTemplateTool = () => {
             className="form-select"
             aria-label="exitRulesSelect"
             onChange={(event) => setExitRules(event.target.value)}
+            defaultValue={0}
           >
-            <option value="0" selected>
-              Select your Exit Rules
-            </option>
+            <option value="0">Select your Exit Rules</option>
             <option value="1">ATR Stoploss and Takeprofit</option>
             <option value="2">Turtle Trader Indicator Exit</option>
             <option value="3">Trailing Stop</option>
@@ -108,7 +104,7 @@ const EaTemplateTool = () => {
           {session ? <p>Signed in</p> : <NonUserButton />}
           <p>Please click here to download your template</p>
           {/**Creates unique number to know which file to download */}
-          {platform + riskManagementRules + entryRules + exitRules}
+          <p>{platform + riskManagementRules + entryRules + exitRules}</p>
         </div>
       </div>
     </div>

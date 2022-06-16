@@ -77,6 +77,7 @@ const RiskManagementRules = () => {
           className="accordion-collapse collapse"
           aria-labelledby="maxDrawdownHeading"
           data-bs-parent="#riskManagement"
+          data-testid="accordionText"
         >
           <div className="accordion-body border bg-light">
             Every strategy should have a max drawdown. This max drawdown should

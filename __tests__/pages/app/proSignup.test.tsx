@@ -23,7 +23,7 @@ describe('<ProSignup />', () => {
       </SessionProvider>
     );
 
-    const header = screen.getByRole('link', { name: /dashboard/i });
+    const header = screen.getByRole('link', { name: /ea generator/i });
     const logoutButton = screen.getByRole('button', { name: /logout/i });
     const title = screen.getByRole('heading', {
       name: /retailalgotrader pro membership/i,
