@@ -5,6 +5,7 @@ import Auth0Provider from 'next-auth/providers/auth0';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import prisma from '../../../prisma/sharedClient';
 import Stripe from 'stripe';
+import { populateUserCourse } from '../../../lib/nextAuthHelpers';
 
 // https://next-auth.js.org/getting-started/example
 // https://dev.to/ajones_codes/how-to-add-user-accounts-and-paid-subscriptions-to-your-nextjs-website-585e
@@ -41,8 +42,14 @@ export default NextAuth({
     },
   },
   events: {
-    // Creates a Stripe customer on signup
+    // Creates a Stripe customer and populates database on signup
     createUser: async ({ user }) => {
+      const userCourseRows = await populateUserCourse(user.id);
+      console.log(userCourseRows);
+      await prisma.user_Course.createMany({
+        data: userCourseRows,
+      });
+
       // Create stripe API client using the secret key env variable
       const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
         apiVersion: '2020-08-27',
