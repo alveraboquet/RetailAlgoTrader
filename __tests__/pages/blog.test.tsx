@@ -6,7 +6,7 @@ describe('<Blog />', () => {
     render(<Blog />);
 
     const homeButtons = screen.getAllByRole('link', { name: /home/i });
-    const articleTitle1 = screen.getByText(
+    const articleTitle1 = screen.getAllByText(
       /what are market makers and how do they work?/i
     );
     const articleButtons = screen.getAllByRole('button', {
@@ -14,7 +14,7 @@ describe('<Blog />', () => {
     });
 
     expect(homeButtons).toHaveLength(2);
-    expect(articleTitle1).toBeInTheDocument();
-    expect(articleButtons).toHaveLength(6);
+    expect(articleTitle1).toHaveLength(2);
+    expect(articleButtons).toHaveLength(9);
   });
 });

@@ -1,17 +1,13 @@
 import { screen, render } from '@testing-library/react';
-import Footer from '../../../components/footer/footer';
+import FooterApp from '../../../components/footer/footerApp';
 
-describe('<Footer />', () => {
+describe('<FooterApp />', () => {
   test('renders correctly', () => {
-    render(<Footer />);
+    render(<FooterApp />);
 
     const slogan = screen.getByText(
       /retailalgotrader - become a profitable retail trader/i
     );
-    const desktopCTA = screen.getByRole('button', { name: /click here/i });
-    const phoneCTA = screen.getByRole('button', {
-      name: /get started for free/i,
-    });
     const aboutUs = screen.getByText(/about us/i);
     const aboutUsText = screen.getByText(
       /retailalgotrading is a resource and community dedicated to retail/i
@@ -36,14 +32,16 @@ describe('<Footer />', () => {
     const articleButtons = screen.getAllByRole('button', {
       name: /read more/i,
     });
-    const homeLink = screen.getByRole('link', { name: /home/i });
-    const aboutLink = screen.getByRole('link', { name: /about/i });
-    const blogLink = screen.getByRole('link', { name: /blog/i });
-    const loginLink = screen.getByRole('link', { name: /login/i });
+    const dashboardLink = screen.getByRole('link', { name: /dashboard/i });
+    const privacyPolicyLink = screen.getByRole('link', {
+      name: /privacy policy/i,
+    });
+    const termsOfServiceLink = screen.getByRole('link', {
+      name: /terms of service/i,
+    });
+    const logoutLink = screen.getByRole('link', { name: /logout/i });
 
     expect(slogan).toBeInTheDocument();
-    expect(desktopCTA).toBeInTheDocument();
-    expect(phoneCTA).toBeInTheDocument();
     expect(aboutUs).toBeInTheDocument();
     expect(aboutUsText).toBeInTheDocument();
     expect(contactUs).toHaveLength(2);
@@ -58,9 +56,9 @@ describe('<Footer />', () => {
     expect(postsHeader).toBeInTheDocument();
     expect(article1).toBeInTheDocument();
     expect(articleButtons).toHaveLength(3);
-    expect(homeLink).toBeInTheDocument();
-    expect(aboutLink).toBeInTheDocument();
-    expect(blogLink).toBeInTheDocument();
-    expect(loginLink).toBeInTheDocument();
+    expect(dashboardLink).toBeInTheDocument();
+    expect(privacyPolicyLink).toBeInTheDocument();
+    expect(termsOfServiceLink).toBeInTheDocument();
+    expect(logoutLink).toBeInTheDocument();
   });
 });

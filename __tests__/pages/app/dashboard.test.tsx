@@ -25,7 +25,7 @@ describe('<Dashboard />', () => {
     );
 
     // Header, Footer, Body, and pro upgrade bar
-    const header = screen.getByRole('link', { name: /dashboard/i });
+    const header = screen.getByRole('link', { name: /ea generator/i });
     const logoutButton = screen.getByRole('button', { name: /logout/i });
     const signedInAs = screen.getByText(/signed in as testUser/i);
     const courseCatalog = screen.getByRole('heading', {

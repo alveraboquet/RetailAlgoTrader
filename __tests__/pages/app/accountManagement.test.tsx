@@ -26,7 +26,7 @@ describe('<AccountManagement />', () => {
         </SessionProvider>
       );
 
-      const header = screen.getByRole('link', { name: /dashboard/i });
+      const header = screen.getByRole('link', { name: /ea generator/i });
       const logoutButton = screen.getByRole('button', { name: /logout/i });
       const footer = screen.getByRole('heading', { name: /about us/i });
 
