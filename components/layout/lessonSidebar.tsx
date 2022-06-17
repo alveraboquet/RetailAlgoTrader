@@ -1,8 +1,14 @@
 import Link from 'next/link';
+import styles from '../../styles/LessonSidebar.module.css';
+
+interface Lessons {
+  title: string;
+  path: string;
+}
 
 interface Chapters {
   chapter: string;
-  lessons: string[];
+  lessons: Lessons[];
   id: string;
 }
 
@@ -46,11 +52,17 @@ const LessonSidebar = ({ curriculum }: Props) => {
                 data-bs-parent="#sidebarAccordion"
               >
                 {chapter.lessons.map((lesson) => (
-                  <div key={lesson} className="accordion-body">
-                    <Link href="/">
-                      <a>{lesson}</a>
-                    </Link>
-                  </div>
+                  <Link
+                    href={`/app/courses${lesson.path}`}
+                    key={lesson.title}
+                    passHref
+                  >
+                    <div className={`accordion-body ${styles.lesson}`}>
+                      <a className="text-decoration-none text-dark">
+                        {lesson.title}
+                      </a>
+                    </div>
+                  </Link>
                 ))}
               </div>
             </div>
