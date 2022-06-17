@@ -1,0 +1,180 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+# Scaling into and out of trades
+
+Scaling into and out of trades is the technique of opening and closing many small portions of your trade rather than opening
+and closing your entire position with one trade. So far we have really just looked at strategies where you place an order
+or a certain position size. You then close out of that entire position at either the takeprofit or stoploss.
+
+By using multiple orders to enter and exit your position you can increase your profits while decreasing risk. One of the largest
+benefits to scaling into and out of trades is psychological. As we have emphasized throughout the course, many traders
+underestimate how much of an impact their trading psychology has on their performance.
+
+By scaling into and out of positions you decrease the pressure on yourself to get the "perfect" entry and exit. You slowly enter
+your trade with multiple smaller orders and slowly exit your trade with multiple smaller orders. This greatly decreases your
+psychological stress which can have a huge impact on long-term profitability. With scaling you have acknowledged that it is
+impossible to consistently hit a perfect entry and exit. Immediately that pressure is removed. If the entry of one of the
+orders is not ideal that is okay because you have more attempts.
+
+The multiple small orders actually do a much better job at achieving a "perfect" entry than trying to time one large order does.
+This is due to the multiple small orders averaging out. One order might be below the perfect entry, one might be slightly higher
+than the perfect entry, and one might be much higher than the perfect entry. However, when combined together they turn out to
+be fairly close to the ideal entry.
+
+If you had just submitted one large order you would only have a 33% chance of being somewhat close to the ideal entry. You would
+have a 66% chance of significantly missing the ideal entry (much too low or much too high).
+
+## Risk management with trading scaling
+
+Risk management becomes a little more complicated once you begin scaling into trades. If you do not do it correctly it is very
+easy to risk more than you intended. When scaling into your trade your TOTAL risk percentage should not exceed your maximum
+allowed risk percentage.
+
+If your max allowed risk percentage on a trade is 3% you should not scale in with three separate orders all at a 3% risk. Essentially
+you would be risking 9% on this one trade. Instead you would have three smaller orders all at 1%.
+
+## Example
+
+Scaling into a trade looks very different depending on the strategy. In our example we will look at our Bollinger Band mean reversion
+strategy with a capital of $100,000
+
+With this example we will be scaling into trades with two separate trades with a total risk percentage of 2% of our account balance:
+
+1. 1/2 of the position (risk 1%) will be entered at the market close of the engulfing bar
+
+- Stoploss below low of bar that broke band
+
+2. 1/2 of the position (risk 1%) will be entered at the 1 STD Bollinger Band
+
+- Stoploss at 1.5 STD Bollinger Band
+
+We will be scaling out of trades with four separate trades:
+
+1. 1/2 of trade #1 at the moving average (Move trade #1 stoploss to entry price of trade #1) (Now a risk-free trade)
+2. Remaining 1/2 of trade #1 at the opposite 1 STD Bollinger Band (Trade #1 now fully closed out)
+3. 1/2 of trade #2 at the opposite 1.5 STD Bollinger Band (Move trade #2 stoploss to entry price of trade #2) (Now a risk-free trade)
+4. Remaining 1/2 of trade #2 at the opposite 2 STD Bollinger Band (Trade #2 now fully closed out)
+
+### With scaling
+
+The example below identifies a great potential setup for our Bollinger Band mean reversion strategy. The bottom Bollinger Band
+has been broken and there is a strong bullish bar following. The blue line indicates our entry price for our first order and
+the red line indicates our stoploss for our first order.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/advancedStrategies/trade1EntryScale.webp"
+    height={1502}
+    width={1411}
+    alt=""
+  />
+  <figcaption>Open buy order #1 and place stoploss</figcaption>
+</figure>
+
+Remember our total trade should not exceed 2% risk. As a result, trade #1 will risk 1% and trade #2 will risk 1% for a total
+risk of 2%.
+
+Using our entry price, stoploss price, and risk percentage of 1%, [ChartYourTrade's position size calculator](https://chartyourtrade.com/position-size-calculator/)
+allows you to calculate the correct position size. See below image for example.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/advancedStrategies/trade1PositionSize.webp"
+    height={2160}
+    width={3840}
+    alt=""
+  />
+  <figcaption>Position size of order #1</figcaption>
+</figure>
+
+We can see that the next bar triggered our entry condition at the 1.0 STD Bollinger Band. Our second buy order is now opened
+with the stoploss placed at the 1.5 STD Bollinger Band.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/advancedStrategies/trade2EntryScale.webp"
+    height={2160}
+    width={3840}
+    alt=""
+  />
+  <figcaption>Open buy order #2 and place stoploss</figcaption>
+</figure>
+
+Below you can see the final result of our trade. As price moved out we slowly exited our trades in order to maximize profit
+and minimize risk. Now in this case our trade worked out. As a result, the adjusting of the stoplosses is not shown but in
+reality they would have been adjusted throughout the trade.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/advancedStrategies/trade2Exits.webp"
+    height={2160}
+    width={3840}
+    alt=""
+  />
+  <figcaption>Takeprofit orders for order #1 and #2</figcaption>
+</figure>
+
+Below we calculate the profit of each order:
+
+| Order                  | Formula                                       | Profit        |
+| ---------------------- | --------------------------------------------- | ------------- |
+| First 1/2 of Order #1  | 0.5 $\times$ 182 $\times$ ($161.41 - $154.96) | $586.95       |
+| Second 1/2 of Order #1 | 0.5 $\times$ 182 $\times$ ($165.60 - $154.96) | $968.24       |
+| First 1/2 of Order #2  | 0.5 $\times$ 337 $\times$ ($168.24 - $157.37) | $1,831.60     |
+| Second 1/2 of Order #2 | 0.5 $\times$ 337 $\times$ ($171.81 - $157.37) | $2,433.14     |
+| **Total Profit**       |                                               | **$5,819.93** |
+
+Total profit of $5,819.93 at a risk of $2,000.
+
+### No scaling
+
+Now let's take a look at the same example; however, we do not use any scaling techniques.
+
+In this example we simply open one order when our entry conditions are met and exit the order when our
+takeprofit is hit.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/advancedStrategies/tradeNoScale.webp"
+    height={2160}
+    width={3840}
+    alt=""
+  />
+  <figcaption>Trade with no scaling</figcaption>
+</figure>
+
+Below we calculate the total profit from this trade.
+
+| Order            | Formula                          | Profit        |
+| ---------------- | -------------------------------- | ------------- |
+| Order #1         | 370 $\times$ ($161.41 - $154.96) | $2,386.60     |
+| **Total Profit** |                                  | **$2,386.60** |
+
+Total profit of $2,386.60 at a risk of $2,000. Not a bad trade but we made less than half of the profit and had about a
+1:1 R:R which is not ideal. In this situation the trade worked out in our favor, but if the trade had hit our stoploss instead
+we would have lost $2,000.
+
+Scaling into and out of trades can increase profitability while also decreasing risk.
+
+## Pros
+
+- Potential for greater profit
+- Decrease risk if trade does not go as expected
+- Decreases psychological stress
+
+## Cons
+
+- Must manage multiple orders
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="advancedStrategies"
+    nextChapter="advancedStrategies"
+    prevLesson="intro"
+    nextLesson="divergenceTrading"
+  >
+    {children}
+  </LayoutLesson>
+);

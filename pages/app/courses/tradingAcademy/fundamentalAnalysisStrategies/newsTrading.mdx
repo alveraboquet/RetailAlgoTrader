@@ -1,10 +1,6 @@
 import LayoutLesson from '../../../../../components/layout/layoutLesson';
 import Image from 'next/image';
 
-export const meta = {
-  author: 'Rich Haines',
-};
-
 # Trading the News
 
 One of the most popular strategies when it comes to fundamental analysis is trading the news.
@@ -175,5 +171,13 @@ and an infinite number of ways to trade them. The best way to learn is by pickin
 TradingView's historical data to see how the news event affects price action.
 
 export default ({ children }) => (
-  <LayoutLesson meta={meta}>{children}</LayoutLesson>
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="fundamentalAnalysisStrategies"
+    nextChapter="alternativeData"
+    prevLesson="cot"
+    nextLesson="whatIsAlternativeData"
+  >
+    {children}
+  </LayoutLesson>
 );
