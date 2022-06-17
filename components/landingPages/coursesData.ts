@@ -1,6 +1,11 @@
+interface Lessons {
+  title: string;
+  path: string;
+}
+
 interface Chapters {
   chapter: string;
-  lessons: string[];
+  lessons: Lessons[];
   id: string;
 }
 
@@ -73,13 +78,34 @@ const coursesData: Courses = {
         id: '17',
         chapter: 'Chapter 17: Advanced Strategies',
         lessons: [
-          'Scaling Into and Out of Trades',
-          'Divergence Trading',
-          'Multiple Timeframes',
-          'Average True Range',
-          'Leading Assets',
-          'Cointegration',
-          'Seasonal Trends',
+          {
+            title: 'Intro',
+            path: '/tradingAcademy/advancedStrategies/scalingIntoAndOutOfTrades',
+          },
+          {
+            title: 'Scaling Into and Out of Trades',
+            path: '/tradingAcademy/advancedStrategies/scalingIntoAndOutOfTrades',
+          },
+          {
+            title: 'Divergence Trading',
+            path: '/tradingAcademy/advancedStrategies/divergenceTrading',
+          },
+          {
+            title: 'Multiple Timeframes',
+            path: '/tradingAcademy/advancedStrategies/multipleTimeframes',
+          },
+          {
+            title: 'Average True Range',
+            path: '/tradingAcademy/advancedStrategies/atr',
+          },
+          {
+            title: 'Leading Assets',
+            path: '/tradingAcademy/advancedStrategies/leadingAssets',
+          },
+          {
+            title: 'Cointegration',
+            path: '/tradingAcademy/advancedStrategies/cointegration',
+          },
         ],
       },
       { id: '18', chapter: 'Chapter 18: Idea Generation', lessons: [] },
