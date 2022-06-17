@@ -75,6 +75,7 @@ const Dashboard: NextPage = () => {
               coursesData.tradingAcademy.id,
               coursesPercentComplete
             )}
+            isProCourse={false}
           ></CourseCard>
         </div>
         <div className="col-4">
@@ -104,6 +105,7 @@ const Dashboard: NextPage = () => {
               coursesData.algorithmicTradingAcademy.id,
               coursesPercentComplete
             )}
+            isProCourse={true}
           ></CourseCard>
         </div>
         <div className="col-4">
@@ -125,6 +127,7 @@ const Dashboard: NextPage = () => {
               coursesData.equitiesAndCryptoWithTradingview.id,
               coursesPercentComplete
             )}
+            isProCourse={true}
           ></CourseCard>
         </div>
       </div>
@@ -146,6 +149,7 @@ const Dashboard: NextPage = () => {
               coursesData.forexTradingWithMT4.id,
               coursesPercentComplete
             )}
+            isProCourse={true}
           ></CourseCard>
         </div>
         <div className="col-4">
@@ -165,6 +169,7 @@ const Dashboard: NextPage = () => {
               coursesData.futuresWithQuantconnect.id,
               coursesPercentComplete
             )}
+            isProCourse={true}
           ></CourseCard>
         </div>
         <div className="col-4">
@@ -184,6 +189,7 @@ const Dashboard: NextPage = () => {
               coursesData.marketResearchWithPython.id,
               coursesPercentComplete
             )}
+            isProCourse={true}
           ></CourseCard>
         </div>
       </div>

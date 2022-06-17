@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 
 interface Props {
   imagePath: string;
@@ -11,6 +12,7 @@ interface Props {
   coursePath: string;
   enrolled: boolean;
   percentComplete: number;
+  isProCourse: boolean;
 }
 
 // Bootstrap card component for courses
@@ -24,7 +26,10 @@ const CourseCard = ({
   coursePath,
   enrolled,
   percentComplete,
+  isProCourse,
 }: Props) => {
+  const { data: session } = useSession();
+
   return (
     <article className="card h-100 m-3 bg-light">
       <figure>
@@ -39,7 +44,10 @@ const CourseCard = ({
       <div className="card-body">
         <h3 className="card-title">{cardTitle}</h3>
         <p className="card-text">{cardText}</p>
-        <button className="btn btn-warning w-100">
+        <button
+          className="btn btn-warning w-100"
+          disabled={!session?.user.isPro && isProCourse}
+        >
           <Link href={coursePath}>
             <a className="text-decoration-none text-dark">
               {enrolled ? 'Continue Course' : 'Begin Course'}
