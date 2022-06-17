@@ -1,0 +1,154 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+# Average True Range
+
+Average true range is a market indicator used to measure market volatility. It returns a positive value that represents how
+much price has moved on average in a day over the past X days. Traders use this value to estimate how much price will move
+in the near future.
+
+Unlike the other indicators that we have looked at, ATR does not provide an indication on what direction price will move. It
+merely provides the recent magnitude of price movement whether it was up or down.
+
+In the below picture we can see the ATR indicator on the daily chart of $MSFT on TradingView. Note that from September to
+December the candlesticks are much smaller. There is not much volatility in the market during this time period. Price is not
+moving much at all.
+
+ATR reveals that on a typical day price is only moving about $4-$5.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/advancedStrategies/atr/atrIndicator.webp"
+    height={2160}
+    width={3840}
+    alt=""
+  />
+  <figcaption>ATR Indicator</figcaption>
+</figure>
+
+However, when we look at December to February in the above picture we see that the candlesticks grow significantly in size.
+As they grow, the value of our ATR indicator grows as well. This is a period of high volatility for the market. ATR reveals
+that the average price movement during this time period is $8-$9.
+
+The default period for calculating ATR is 14 days. This is generally agreed to be the sweet spot for period.
+
+However, you can certainly adjust it if you with. A shorter period will result in more trading signals but they will be
+weaker. A longer period will result in less trading signals but they will be stronger.
+
+## Average true range formula
+
+The value for true range is derived by finding the greatest value of the following three formulas:
+
+1. Current candlestick's high - current candlestick's low
+2. Absolute value of current candlestick's high - previous candlestick's close
+3. Absolute value of current candlestick's low - previous candlestick's close
+
+The true range must be calculated for the past 14 bars (or whatever period you have chosen) and then averaged. This average
+gives you the average true range.
+
+## Placing orders without ATR
+
+ATR is a very simple and useful method for placing stoplosses and takeprofits that dynamically adjust to market volatility.
+Many traders when they are developing their trading systems base their stoplosses and takeprofits on a set amount of dollars
+or pips.
+
+We will take another look at our $MFST example from earlier. This time we have two example trades on there. We are trading
+a Bollinger Band mean reversion strategy with a set stoploss of $3.00 and a set takeprofit of $6.00.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/advancedStrategies/atr/setTradeExamples.webp"
+    height={2160}
+    width={3840}
+    alt=""
+  />
+  <figcaption>Set TP and SL Example</figcaption>
+</figure>
+
+Let's say that as a trader you decide in October that you would like to start trading $MFST on the daily timeframe. You conduct
+some backtesting over August and September and discover that a stoploss at $3.00 below entry price and a takeprofit at $6.00
+above entry price is ideal. (Note as we discussed in the backtesting chapter this backtesting process is nowhere near thorough
+or lengthy enough but it works well for this demonstration).
+
+As we established earlier from August-December $MFST has an ATR of $4-$5. Your set stoploss of $3.00 and set takeprofit of $6.00
+will probably work well through December. We can see that our short trade on 05 Nov '21 is indeed profitable. The stoploss at
+$3.00 above entry price gives the trade enough room to breathe. The takeprofit at $6.00 below entry price gets us maximum
+profit.
+
+However, starting in January ATR jumps up to $8-$9. Our set stoploss and set takeprofit are now much too small. From January
+through March our stoploss and takeprofit range will not provide enough room for the trade to breathe. Average market noise
+during this time period will be large enough to trigger our set stoploss of $3.00 and set takeprofit of $6.00.
+
+This can be seen in our second trade on 10 Jan '22. There is a great trade setup with the bottom band broken, small indecision
+candle, and large bullish engulfing bar. However, our set stoploss of $3.00 is hit on the very next candle before price even
+has a chance to rise towards our takeprofit.
+
+An ATR of $4-$5 vs an ATR of $8-$9 is a huge difference in volatility. These examples demonstrate the importance of using
+ATR to place stoplosses and takeprofits.
+
+SIDENOTE: For these two example trades we used the short and long trade feature of TradingView. This is a great feature for
+placing stoplosses and takeprofits. It quickly allows you to see R:R ratio, SL and TP distance, potential profit and loss. Read
+[TradingView's Long and Short Position Drawing Tools documentation]
+(https://www.tradingview.com/support/solutions/43000475660-how-to-use-long-and-short-position-drawing-tools/) to learn more.
+
+Another issue with the set $3.00 stoploss and the $6.00 takeprofit is that these values will only work on the timeframe it was
+backtested on. If you go to a larger timeframe these values will be too small. If you go to a smaller timeframe these values
+will be too large.
+
+This is where ATR becomes useful. It allows one rule for placing stoplosses and takeprofits that can adapt to any asset, market,
+or timeframe.
+
+## Placing orders with ATR
+
+The best method for using ATR to place stoplosses and takeprofits is to use ratios of the ATR.
+
+For example, you may decide that your stoploss will be 1 ATR below your entry price and your takeprofit will be 2 ATR
+above your entry price.
+
+It is easy to see how this will automatically adjust your stoploss and takeprofit to any timeframe, market, or asset. As the ATR
+shrinks, your stoploss and takeprofit distance shrink. As the ATR increases, your stoploss and takeprofit distance increases.
+
+Let's take another look at our example trades from earlier but instead we will use ATR to place our takeprofit and stoploss.
+
+Rule for this example:
+
+- Enter at open of bar after trade signal (Eliminates possible gap issues that may occur overnight)
+- Stoploss at 0.5\*ATR
+- Takeprofit at 1.25\*ATR
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/advancedStrategies/atr/atrTradeExamples.webp"
+    height={2160}
+    width={3840}
+    alt=""
+  />
+  <figcaption>Set TP and SL Example</figcaption>
+</figure>
+
+As we can see in the example above, using ATR for stoplosses and takeprofits resulted in both of our trades being profitable.
+In addition, we were able to increase our R:R ratio from 2 to 2.5. As ATR increased for the second trade so did our stoploss
+distance and our takeprofit distance.
+
+## Pros of ATR
+
+- Adapts to any level of market volatility
+- Adapts to any timeframe
+- Adapts to any asset
+
+## Cons of ATR
+
+- Lags slighlty behind sudden, large price movements
+- Does not provide indication at direction of price movement
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="advancedStrategies"
+    nextChapter="advancedStrategies"
+    prevLesson="multipleTimeFrames"
+    nextLesson="leadingAssets"
+  >
+    {children}
+  </LayoutLesson>
+);

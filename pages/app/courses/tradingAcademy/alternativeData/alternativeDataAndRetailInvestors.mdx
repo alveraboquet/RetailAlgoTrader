@@ -24,4 +24,14 @@ If you are a more advanced trader interested in testing out alternative data tra
 mentioned earlier are a great opportunity. Google trends and web-scrapping are both very possible strategies to take
 advantage of as a retail trader.
 
-export default ({ children }) => <LayoutLesson>{children}</LayoutLesson>;
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="alternativeData"
+    nextChapter="riskManagement"
+    prevLesson="prosAndConsAlternativeData"
+    nextLesson="whyIsRiskManagementImportant"
+  >
+    {children}
+  </LayoutLesson>
+);

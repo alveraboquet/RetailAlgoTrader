@@ -41,7 +41,7 @@ const EntryRules = () => {
             aria-expanded="false"
             aria-controls="bbCollapse"
           >
-            Bollinger-Band Mean Reversion with Engulfing Bar
+            Bollinger Band Mean Reversion with Engulfing Bar
           </button>
         </h2>
         <div
@@ -51,11 +51,11 @@ const EntryRules = () => {
           data-bs-parent="#entryRules"
         >
           <div className="accordion-body border bg-light">
-            This is a more complicated entry strategy using Bollinger-Bands and
+            This is a more complicated entry strategy using Bollinger Bands and
             chart patterns. If price action breaks the upper or lower band of
-            the Bollinger-Bands and is then followed by an engulfing bar the
-            system will initiate a trade signal. It also uses a second
-            Bollinger-Band at 1 STD to filter out entry signals that have a poor
+            the Bollinger Bands and is then followed by an engulfing bar the
+            system will initiate a trade signal. It also uses a second Bollinger
+            Band at 1 STD to filter out entry signals that have a poor
             risk:reward.
           </div>
         </div>

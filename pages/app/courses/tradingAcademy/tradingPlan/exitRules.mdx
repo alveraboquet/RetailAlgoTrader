@@ -17,7 +17,7 @@ This is a poor exit rule because it involves way too much subjectivity. How do y
 At what point has it reversed too much? Maybe it is going to change directions again and go back towards your takeprofit? Having
 to make all of these decisions for every trade is exhausting and stressful.
 
-Here is how that exit rule can be improved (these will also be the exit conditions for our Bollinger-Band Reversion Strategy):
+Here is how that exit rule can be improved (these will also be the exit conditions for our Bollinger Band Reversion Strategy):
 
 - Stoploss will be placed 10 pips below (if bullish signal) or above (if bearish signal) the indecision candle's low / high
 - A takeprofit will be placed at the Bollinger Band's center moving average (1/2 of the position will be sold here)
@@ -33,7 +33,6 @@ Exit rules can become more advanced as you progress. They can use trailing stops
 
 export default ({ children }) => (
   <LayoutLesson
-    meta={meta}
     course="tradingAcademy"
     prevChapter="tradingPlan"
     nextChapter="tradingPlan"

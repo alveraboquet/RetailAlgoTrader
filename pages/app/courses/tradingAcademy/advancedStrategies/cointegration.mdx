@@ -1,0 +1,212 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+# Cointegration
+
+Cointegration is an advanced strategy with a lot of profit potential and relatively low risk if done correctly. Cointegration
+occurs when you have two assets that consistently return to an equilibrium. These assets will trade very similarly but not
+identically. Cointegration strategies are also commonly referred to as pairs trading.
+
+If two assets are cointegrated there is a limit to how different their price can be. If the price difference becomes
+too large then these assets will move back towards each other. The key to cointegration strategies is calculating the price
+threshold (aka the spread) at which diverging assets will return to an equilibrium.
+
+Once the price difference between the assets reaches that threshold, you short the more expensive asset and buy the less
+expensive asset.
+
+The advantage of cointegration strategies over the other strategies that we have looked at is that it is market neutral. You
+do not care if the market is trending or ranging. You do not care if the less expensive asset increases in price or if the
+more expensive asset decreases in price.
+
+This is the true power of a cointegration strategy. It eliminates the need to make an estimation at what direction price will
+take. This results in an uncorelated return with the overall market. A strategy with a consistently profitable return that is
+not correlated with market return is one of the most robust strategies available.
+
+It is rumored that Jim Simons and the Medallion Fund mostly trade market-neutral strategies such as cointegration strategies.
+This is one of the, if not the most, profitable hedge funds of all time. Clearly pairs trading is an important skill to
+develop.
+
+If you want to learn more about the Medallion Fund I highly recommend Gregory Zuckerman's book (The Man Who Solved the Market)
+[https://www.amazon.com/Man-Who-Solved-Market-Revolution/dp/073521798X/ref=tmm_hrd_swatch_0?_encoding=UTF8&qid=&sr=].
+
+## Cointegration scenarios
+
+In the following examples we have already calculated the price difference threshold at which we estimate price will
+return to equilibrium. When price breaks our calculated threshold, we will short the more expensive asset and buy the less
+expensive asset. We will look at the three possible scenarios that can occur when two assets reach our price
+difference threshold.
+
+### Assets converge together
+
+This scenario occurs when the more expensive asset drops in price and the less expensive asset rises in price until they
+meet back in the equilibrium. This results in a profitable short trade and a profitable long trade.
+
+In the below example we are looking at the ES1! (S&P 500 E-mini Futures) and NQ1! (Nasdaq E-mini Futures) overlaid on top
+of each other. This is a very useful TradingView feature. In the top left corner where you choose the chart symbol there is
+a plus symbol.
+
+This plus symbol allows you to select multiple assets to compare on one chart. The vertical axis will change to price percent
+change to allow equal comparison across assets. We recommend changing to a line graph to allow easy comparison.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/advancedStrategies/cointegration/sPAndNasdaq.webp"
+    height={2160}
+    width={3840}
+    alt=""
+  />
+  <figcaption>Possible Cointegrated Assets</figcaption>
+</figure>
+
+As you can see in the above chart, the assets move very similarly but not exactly. We have marked many spots where the price
+diverged an unusual amount and then quickly converged. This appears to be a very promising cointegrating relationship. However,
+there are some tests that we need to perform to confirm.
+
+### More expensive asset does not move / increases slighlty
+
+This scenario occurs when the more expensive asset does not move much or maybe even increases in price. This will result in a
+small losing short trade. However, if the assets are cointegrated the less expensive asset will see a large rise in price in order
+to restore equilibrium. This will result in a large profitable buy trade.
+
+The profits of the buy trade will more than make up for the small losses from the sell trade. With this strategy we do not need
+both trades to be profitable. As long as the assets are cointegrated and you are buying/selling at the extremes of the historical
+price difference, the trade will be profitable.
+
+### Less expensive asset does not move / decreases slighlty
+
+This is the same situation as the previous scenario just reversed. In this scenario the less expensive asset does not move
+much or even decreases in price. This will result in a small losing buy trade. However, if the assets are cointegrated the more
+expensive asset will see a large drop in price in order to restore equilibrium. This will result in a large profitable sell
+trade that covers the losses from the buy trade.
+
+### Assets diverge
+
+This is the primary risk of a cointegration strategy. If the assets break your threshold but continue to diverge it is possible
+to accrue massive loses quickly without a proper risk management strategy. Your short trade on the more expensive asset will
+lose money as its' price continues to rise. Your buy trade on the less expensive asset will lose money as its' price
+continues to fall.
+
+The below example plots the price movements of ES1! (S&P 500 E-mini Futures) and $TSLA. The price movements of these two
+assets are all over the place. These assets do not have a cointegration relationship and attempting a pairs trading strategy
+on these assets would result in large losses.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/advancedStrategies/cointegration/sPAndTsla.webp"
+    height={2160}
+    width={3840}
+    alt=""
+  />
+  <figcaption>Non-cointegrated Assets</figcaption>
+</figure>
+
+Remember that cointegration is not a law that the asset must follow. It is simply a historical pattern that you have discovered
+through statistical analysis and backtesting. As long as this pattern continues, you have a low-risk, market-neutral method
+at making profit. However, once this pattern stops for whatever reason this strategy can quickly lose significant capital.
+
+## How to limit risks of cointegration
+
+As we saw, the main risk with a cointegration strategy is that price will continue to diverge when you expect it to move
+back towards equilibrium. This can happen for any number of reasons. The fundamentals of the stocks may change, a black swan
+event may occur, etc.
+
+The best technique for avoiding this situation is to have a proper understanding of why the two assets are cointegrated. If you
+understand the fundamental reasons that cause two assets to cointegrate then you can predict what conditions will cause the
+assets to fail to cointegrate.
+
+For example, there are a couple explanations for why S&P 500 and Nasdaq futures appear to be cointegrated.
+
+1. They both reflect the US economy
+2. They have a large number of companies (the effects of individual companies on the index is minimized)
+3. They pull companies from many of the same industries
+4. Both are weighted by market capitalization
+
+Now it makes sense why these two assets may have a strong cointegration relationship. If we took a look at the Dow futures and
+the Russell 2000 futures we may realize that all four of these assets have a cointegration relationship.
+
+However, there a couple of differences with these indexes that could result in a weaker cointegration relationship or even
+none at all.
+
+1. The Dow only tracks 30 large blue-chip stocks
+2. The Dow lacks many industries
+3. The Dow is weighted by stock price
+4. The Russell 2000 tracks small-cap stocks and has little overlap with the other three indexes
+
+Conducting analysis such as this is vital for understanding why a cointegration relationship may exist.
+
+Many times, especially with the limited resources of retail traders, we will not be able to determine why two assets are
+cointegrated. That is okay. We just need to ensure that we have a strong risk management strategy.
+
+A strong risk management strategy is so important as the profits of cointegration strategies are capped. Once the assets return
+to an equilibrium price your potential for profit is over.
+
+With a cointegration strategy you will not land any home-run trades that result in massive profit. Instead you will have many
+trades with a small amount of profit.
+
+## How to calculate cointegration
+
+There are a couple of methods used to test for cointegration. These methods are more advanced statistical methods so we will
+not dive into the specifics.
+
+Cointegration is a very difficult strategy to effeciently and correctly pursue as a manual retail trader. This is why we
+really save this topic for our algorithmic trading courses.
+
+We just mention this information so that if you see these topics discussed you understand what is being referred to.
+
+If you would like to learn more about the following two cointegration tests this [article from APTECH]
+(https://www.aptech.com/blog/a-guide-to-conducting-cointegration-tests/) is a great resource.
+
+### Engle-Granger method
+
+This is the first method for determining if two assets are cointegrated.
+
+If you are only testing cointegration of two assets then the Engle-Granger method is sufficient. However, if you are scanning
+a large quantity of assets to find cointegrating relationships then you will need to use the Johansen test.
+
+### Johansen Test
+
+This is the second method for determining if two assets are cointegrated.
+
+The Johansen test can be used to test a large quantity of assets for cointegration relationships.
+
+## Cointegration example with TradingView
+
+The two assets will not always return exactly to equilibrium. Need to determine at what point you want to take profit.
+
+## What assets to trade with cointegration
+
+As we discussed above, the profitability of cointegration trades is limited. As a result, many traders prefer to trade futures
+and forex with cointegration strategies. Both futures and forex offer large leverage which can turn small profitable trades
+into large profitable trades.
+
+The downside of this is that leverage also magnifies your losses. This is why we recommend starting with stocks as there is
+less leverage. Once you have a good understanding of cointegration and you know how to handle the risks, then you can move
+onto futures or forex.
+
+## Conclusion
+
+Cointegration strategies are some of the best strategies out there if done correctly. Relatively low-risk and market-neutral
+can lead to significant and consistent profits.
+
+In order to efficiently and effectively discover cointegration relationships and develop systems to trade these relationships,
+you really need to delve into the world of algorithmic trading. Attempting to manually discover and trade cointegration
+relationships is very resource-intensive and it is easy to make a mistake.
+
+In addition, pairs trading involves shorting. With futures and forex this is a straight-forward process. With stocks it is
+a little more difficult. You typically need to get approval from your broker and you have to pay short interest on any
+open short positions.
+
+If you would like to learn more about cointegration strategies check out our Algorithmic Trading Academy course or our
+Market Research with Python course.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="advancedStrategies"
+    nextChapter="conclusion"
+    prevLesson="leadingAssets"
+    nextLesson="conclusion"
+  >
+    {children}
+  </LayoutLesson>
+);

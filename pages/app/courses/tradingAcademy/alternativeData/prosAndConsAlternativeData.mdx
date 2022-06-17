@@ -1,9 +1,5 @@
 import LayoutLesson from '../../../../../components/layout/layoutLesson';
 
-export const meta = {
-  author: 'Rich Haines',
-};
-
 # Pros and Cons of Alternative Data
 
 ## Pros
@@ -21,5 +17,13 @@ export const meta = {
   - Read up on (Zillow's failed house trading algorithm)[https://www.geekwire.com/2021/ibuying-algorithms-failed-zillow-says-business-worlds-love-affair-ai/amp/]
 
 export default ({ children }) => (
-  <LayoutLesson meta={meta}>{children}</LayoutLesson>
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="alternativeData"
+    nextChapter="alternativeData"
+    prevLesson="whatIsAlternativeData"
+    nextLesson="alternativeDataAndRetailInvestors"
+  >
+    {children}
+  </LayoutLesson>
 );
