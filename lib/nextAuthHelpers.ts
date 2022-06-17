@@ -52,3 +52,43 @@ export const populateUserCourse = (userId: string) => {
     },
   ];
 };
+
+export const populateUserLesson = (userId: string) => {
+  return [
+    {
+      user_id: userId,
+      lesson_id: 1,
+      completed: false,
+    },
+    {
+      user_id: userId,
+      lesson_id: 2,
+      completed: false,
+    },
+    {
+      user_id: userId,
+      lesson_id: 3,
+      completed: false,
+    },
+    {
+      user_id: userId,
+      lesson_id: 4,
+      completed: false,
+    },
+    {
+      user_id: userId,
+      lesson_id: 5,
+      completed: false,
+    },
+    {
+      user_id: userId,
+      lesson_id: 6,
+      completed: false,
+    },
+    {
+      user_id: userId,
+      lesson_id: 7,
+      completed: false,
+    },
+  ];
+};
