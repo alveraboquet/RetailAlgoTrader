@@ -1,10 +1,6 @@
 import LayoutLesson from '../../../../../components/layout/layoutLesson';
 import Image from 'next/image';
 
-export const meta = {
-  author: 'Rich Haines',
-};
-
 # Importance of Backtesting
 
 Backtesting is important for a variety of reasons:
@@ -139,12 +135,11 @@ works well and when it does not.
 
 export default ({ children }) => (
   <LayoutLesson
-    meta={meta}
     course="tradingAcademy"
-    prevChapter="courseOverview"
+    prevChapter="backtesting"
     nextChapter="backtesting"
-    prevLesson="syllabus"
-    nextLesson="overviewOfBacktesting"
+    prevLesson="overviewOfBacktesting"
+    nextLesson="backtestingWithTradingView"
   >
     {children}
   </LayoutLesson>

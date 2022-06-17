@@ -1,9 +1,5 @@
 import LayoutLesson from '../../../../../components/layout/layoutLesson';
 
-export const meta = {
-  author: 'Rich Haines',
-};
-
 # What is Fundamental Analysis?
 
 Fundamental analysis is the other primary category of trading strategies where technical analysis is the other.
@@ -45,5 +41,13 @@ Fundamental analysis can be very useful for long-term investing. However, for tr
 stick with technical analysis.
 
 export default ({ children }) => (
-  <LayoutLesson meta={meta}>{children}</LayoutLesson>
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="technicalAnalysisStrategies"
+    nextChapter="fundamentalAnalysis"
+    prevLesson="breakouts"
+    nextLesson="differentMarketFundamentals"
+  >
+    {children}
+  </LayoutLesson>
 );

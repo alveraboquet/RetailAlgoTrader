@@ -1,10 +1,6 @@
 import LayoutLesson from '../../../../../components/layout/layoutLesson';
 import Image from 'next/image';
 
-export const meta = {
-  author: 'Rich Haines',
-};
-
 # Trading the COT Report
 
 The Commitment of Traders Report is put out by the (Commodity Futures Trading Commission)
@@ -158,5 +154,15 @@ through a lengthy report every Friday afternoon. Some traders have even created 
 report to minimize the effort required on their part.
 
 export default ({ children }) => (
-  <LayoutLesson meta={meta}>{children}</LayoutLesson>
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="fundamentalAnalysis"
+    nextChapter="fundamentalAnalysisStrategies"
+    prevLesson="stayingInformed"
+    nextLesson="newsTrading"
+  >
+    {children}
+  </LayoutLesson>
 );
+
+;

@@ -1,9 +1,5 @@
 import LayoutLesson from '../../../../../components/layout/layoutLesson';
 
-export const meta = {
-  author: 'Rich Haines',
-};
-
 # Types of Fundamentals in Different Markets
 
 Below are examples of some of the primary fundamental analysis metrics for different markets. This list is not exhaustive.
@@ -35,5 +31,13 @@ If you wish to learn more about any of these topics [Investopedia](https://www.i
 - Circulating supply
 
 export default ({ children }) => (
-  <LayoutLesson meta={meta}>{children}</LayoutLesson>
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="fundamentalAnalysis"
+    nextChapter="fundamentalAnalysis"
+    prevLesson="whatIsFundamentalAnalysis"
+    nextLesson="stayingInformed"
+  >
+    {children}
+  </LayoutLesson>
 );

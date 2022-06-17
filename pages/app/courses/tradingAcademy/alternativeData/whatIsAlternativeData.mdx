@@ -1,10 +1,6 @@
 import LayoutLesson from '../../../../../components/layout/layoutLesson';
 import Image from 'next/image';
 
-export const meta = {
-  author: 'Rich Haines',
-};
-
 # What is Alternative Data?
 
 Alternative data is a less well-known category of trading. It focuses on the use of datasets that are either private
@@ -126,5 +122,13 @@ has barely scratched the surface. The reality is that we really have no idea wha
 fuel their trading decisions.
 
 export default ({ children }) => (
-  <LayoutLesson meta={meta}>{children}</LayoutLesson>
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="fundamentalAnalysisStrategies"
+    nextChapter="alternativeData"
+    prevLesson="newsTrading"
+    nextLesson="prosAndConsAlternativeData"
+  >
+    {children}
+  </LayoutLesson>
 );
