@@ -57,10 +57,11 @@ const LessonSidebar = ({ curriculum }: Props) => {
                     key={lesson.title}
                     passHref
                   >
-                    <div className={`accordion-body ${styles.lesson}`}>
+                    <div className={`accordion-body border ${styles.lesson}`}>
                       <a className="text-decoration-none text-dark">
                         {lesson.title}
                       </a>
+                      <p className="badge bg-success ms-1">Completed</p>
                     </div>
                   </Link>
                 ))}

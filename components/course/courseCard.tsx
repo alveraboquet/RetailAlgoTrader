@@ -29,7 +29,6 @@ const CourseCard = ({
   isProCourse,
 }: Props) => {
   const { data: session } = useSession();
-
   return (
     <article className="card h-100 m-3 bg-light">
       <figure>
