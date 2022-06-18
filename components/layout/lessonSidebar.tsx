@@ -1,9 +1,13 @@
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import styles from '../../styles/LessonSidebar.module.css';
+import { fetchCompletedLessons } from '../../lib/lessonSidebarHelpers';
 
 interface Lessons {
+  id: number;
   title: string;
   path: string;
+  completed?: boolean;
 }
 
 interface Chapters {
@@ -19,6 +23,14 @@ interface Props {
 // Sidebar containing all chapters and lessons for the current course
 // https://getbootstrap.com/docs/5.2/components/offcanvas/
 const LessonSidebar = ({ curriculum }: Props) => {
+  const [completedLessons, setCompletedLessons] = useState<Chapters[]>([]);
+
+  useEffect(() => {
+    fetchCompletedLessons(curriculum).then((lessonData) => {
+      setCompletedLessons(lessonData);
+    });
+  }, [curriculum]);
+
   return (
     <div className="offcanvas offcanvas-start" id="lessonSidebar">
       <div className="offcanvas-header">
@@ -31,7 +43,7 @@ const LessonSidebar = ({ curriculum }: Props) => {
       </div>
       <div className="offcanvas-body">
         <div className="accordion" id="sidebarAccordion">
-          {curriculum.map((chapter) => (
+          {completedLessons.map((chapter) => (
             <div key={chapter.id} className="accordion-item">
               <h2 className="accordion-header" id={chapter.chapter}>
                 <button
@@ -61,7 +73,11 @@ const LessonSidebar = ({ curriculum }: Props) => {
                       <a className="text-decoration-none text-dark">
                         {lesson.title}
                       </a>
-                      <p className="badge bg-success ms-1">Completed</p>
+                      {lesson.completed ? (
+                        <p className="badge bg-success ms-1">Completed</p>
+                      ) : (
+                        <p className="badge bg-danger ms-1">Incomplete</p>
+                      )}
                     </div>
                   </Link>
                 ))}
