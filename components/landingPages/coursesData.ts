@@ -1,4 +1,5 @@
 interface Lessons {
+  id: number;
   title: string;
   path: string;
 }
@@ -82,30 +83,37 @@ const coursesData: Courses = {
         chapter: 'Chapter 19: Advanced Strategies',
         lessons: [
           {
+            id: 1,
             title: 'Intro',
             path: '/tradingAcademy/advancedStrategies/intro',
           },
           {
+            id: 2,
             title: 'Scaling Into and Out of Trades',
             path: '/tradingAcademy/advancedStrategies/scalingIntoAndOutOfTrades',
           },
           {
+            id: 3,
             title: 'Divergence Trading',
             path: '/tradingAcademy/advancedStrategies/divergenceTrading',
           },
           {
+            id: 4,
             title: 'Multiple Timeframes',
             path: '/tradingAcademy/advancedStrategies/multipleTimeframes',
           },
           {
+            id: 5,
             title: 'Average True Range',
             path: '/tradingAcademy/advancedStrategies/atr',
           },
           {
+            id: 6,
             title: 'Leading Assets',
             path: '/tradingAcademy/advancedStrategies/leadingAssets',
           },
           {
+            id: 7,
             title: 'Cointegration',
             path: '/tradingAcademy/advancedStrategies/cointegration',
           },
