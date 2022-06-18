@@ -18,14 +18,7 @@ interface Props {
 
 // Layout component for lesson pages
 // Children prop is mdx component with lesson material
-const LayoutLesson = ({
-  children,
-  course,
-  prevChapter,
-  nextChapter,
-  prevLesson,
-  nextLesson,
-}: Props) => {
+const LayoutLesson = (props: Props) => {
   const { data: session, status } = useSession();
   const router = useRouter();
 
@@ -38,7 +31,8 @@ const LayoutLesson = ({
     return null;
   }
 
-  if (!session?.user.isPro) {
+  // Return to dashboard if user is not pro and attempts to access pro course
+  if (!session?.user.isPro && coursesData[props.course].isProCourse === true) {
     router.push('/app/dashboard');
   }
 
@@ -59,15 +53,15 @@ const LayoutLesson = ({
         </div>
         <ProSignupBanner isPro={session?.user.isPro} />
         <div className={`${styles.lessonBody} mt-4 bg-light`}>
-          <div className="container text-center">{children}</div>
+          <div className="container text-center">{props.children}</div>
         </div>
         <div className={styles.footerHeight}>
           <FooterLesson
-            course={course}
-            prevChapter={prevChapter}
-            nextChapter={nextChapter}
-            prevLesson={prevLesson}
-            nextLesson={nextLesson}
+            course={props.course}
+            prevChapter={props.prevChapter}
+            nextChapter={props.nextChapter}
+            prevLesson={props.prevLesson}
+            nextLesson={props.nextLesson}
           />
         </div>
       </div>
