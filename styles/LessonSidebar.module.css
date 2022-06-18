@@ -1,0 +1,4 @@
+.lesson:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}

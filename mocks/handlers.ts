@@ -81,6 +81,23 @@ const handlers = [
       ctx.json({ name: 'updatedTestUser', email: 'updatedTestUser@email.com' })
     );
   }),
+  rest.get('/api/app/lessons/getCompletedLessons', (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json([
+        {
+          user_id: 'testUserId',
+          lesson_id: 1,
+          completed: true,
+        },
+        {
+          user_id: 'testUserId',
+          lesson_id: 2,
+          completed: false,
+        },
+      ])
+    );
+  }),
 ];
 
 export default handlers;

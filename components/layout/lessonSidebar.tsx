@@ -1,10 +1,36 @@
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import styles from '../../styles/LessonSidebar.module.css';
+import { fetchCompletedLessons } from '../../lib/lessonSidebarHelpers';
+
+interface Lessons {
+  id: number;
+  title: string;
+  path: string;
+  completed?: boolean;
+}
+
+interface Chapters {
+  chapter: string;
+  lessons: Lessons[];
+  id: string;
+}
+
 interface Props {
-  curriculum: string[];
+  curriculum: Chapters[];
 }
 
 // Sidebar containing all chapters and lessons for the current course
 // https://getbootstrap.com/docs/5.2/components/offcanvas/
 const LessonSidebar = ({ curriculum }: Props) => {
+  const [completedLessons, setCompletedLessons] = useState<Chapters[]>([]);
+
+  useEffect(() => {
+    fetchCompletedLessons(curriculum).then((lessonData) => {
+      setCompletedLessons(lessonData);
+    });
+  }, [curriculum]);
+
   return (
     <div className="offcanvas offcanvas-start" id="lessonSidebar">
       <div className="offcanvas-header">
@@ -16,14 +42,49 @@ const LessonSidebar = ({ curriculum }: Props) => {
         ></button>
       </div>
       <div className="offcanvas-body">
-        {curriculum.map((chapter) => (
-          <div
-            key={chapter}
-            className="ps-4 pe-4 mb-3 bg-secondary rounded text-white"
-          >
-            {chapter}
-          </div>
-        ))}
+        <div className="accordion" id="sidebarAccordion">
+          {completedLessons.map((chapter) => (
+            <div key={chapter.id} className="accordion-item">
+              <h2 className="accordion-header" id={chapter.chapter}>
+                <button
+                  className="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target={`#chapterId${chapter.id}`}
+                  aria-expanded="false"
+                  aria-controls={`chapterId${chapter.id}`}
+                >
+                  {chapter.chapter}
+                </button>
+              </h2>
+              <div
+                id={`chapterId${chapter.id}`}
+                className="accordion-collapse collapse"
+                aria-labelledby={chapter.chapter}
+                data-bs-parent="#sidebarAccordion"
+              >
+                {chapter.lessons.map((lesson) => (
+                  <Link
+                    href={`/app/courses${lesson.path}`}
+                    key={lesson.title}
+                    passHref
+                  >
+                    <div className={`accordion-body border ${styles.lesson}`}>
+                      <a className="text-decoration-none text-dark">
+                        {lesson.title}
+                      </a>
+                      {lesson.completed ? (
+                        <p className="badge bg-success ms-1">Completed</p>
+                      ) : (
+                        <p className="badge bg-danger ms-1">Incomplete</p>
+                      )}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
