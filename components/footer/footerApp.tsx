@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { signOut } from 'next-auth/react';
 
 /**
  * Footer component for non-logged in users
@@ -124,74 +125,33 @@ const FooterApp = () => {
             </figure>
           </section>
         </div>
-        <section>
-          <h2 className="fs-5 text-light mt-3">Top Blog Posts</h2>
-          <article className="card">
-            <div className="card-header">Article</div>
-            <div className="card-body">
-              <h5 className="card-title">
-                What are market makers and how do they work?
-              </h5>
-              <p className="card-text d-none d-md-block">
-                There is a lot of confusion and inaccurate beliefs around market
-                makers and their roles in the market.
-              </p>
-              <button className="btn btn-warning">
-                <Link href="/posts/whatAreMarketMakersAndHowDoTheyWork">
-                  <a className="text-decoration-none text-dark">Read More</a>
-                </Link>
-              </button>
-            </div>
-          </article>
-          <article className="card mt-3">
-            <div className="card-header">Article</div>
-            <div className="card-body">
-              <h5 className="card-title">Article2</h5>
-              <p className="card-text d-none d-md-block">
-                There is a lot of confusion and inaccurate beliefs around market
-                makers and their roles in the market.
-              </p>
-              <button className="btn btn-warning">
-                <Link href="/posts/whatAreMarketMakersAndHowDoTheyWork">
-                  <a className="text-decoration-none text-dark">Read More</a>
-                </Link>
-              </button>
-            </div>
-          </article>
-          <article className="card mt-3">
-            <div className="card-header">Article</div>
-            <div className="card-body">
-              <h5 className="card-title">Article3</h5>
-              <p className="card-text d-none d-md-block">
-                There is a lot of confusion and inaccurate beliefs around market
-                makers and their roles in the market.
-              </p>
-              <button className="btn btn-warning">
-                <Link href="/posts/whatAreMarketMakersAndHowDoTheyWork">
-                  <a className="text-decoration-none text-dark">Read More</a>
-                </Link>
-              </button>
-            </div>
-          </article>
-        </section>
         <nav className="nav pb-5 mt-3 justify-content-center">
           <Link href="/app/dashboard">
             <a className="nav-link text-light" aria-current="page">
               Dashboard
             </a>
           </Link>
-          <Link href="/app/eaGenerator">
+          <Link href="/privacyPolicy">
             <a className="nav-link text-light" aria-current="page">
               Privacy Policy
             </a>
           </Link>
-          <Link href="/blog">
+          <Link href="/termsOfService">
             <a className="nav-link text-light" aria-current="page">
               Terms of Service
             </a>
           </Link>
           <Link href="/logout">
-            <a className="nav-link text-light" aria-current="page">
+            <a
+              className="nav-link text-light"
+              aria-current="page"
+              onClick={(e) => {
+                e.preventDefault();
+                // Nextauth function to initiate user signout flow
+                // https://next-auth.js.org/getting-started/client#signout
+                signOut({ callbackUrl: '/' });
+              }}
+            >
               Logout
             </a>
           </Link>

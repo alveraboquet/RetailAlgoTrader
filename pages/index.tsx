@@ -31,7 +31,7 @@ const Home: NextPage = () => {
               Discover how to trade intelligently and sustainably
             </p>
             <button className="btn btn-warning p-md-3">
-              <Link href="/signup">
+              <Link href="/auth/signin">
                 <a className="text-decoration-none text-dark fs-3">
                   Sign Up Today! No Credit Card Required
                 </a>
@@ -188,7 +188,7 @@ const Home: NextPage = () => {
                 </p>
                 <div>
                   <button className="btn btn-warning">
-                    <Link href="/demo">
+                    <Link href="/">
                       <a className="text-decoration-none text-dark">
                         Receive a Free Profitable Algorithm Guide
                       </a>
@@ -243,7 +243,7 @@ const Home: NextPage = () => {
                         Check out our recommended resources to get started.
                       </p>
                       <button className="btn btn-warning w-100">
-                        <Link href="/demo">
+                        <Link href="/quiz/tradingAcademy">
                           <a className="text-decoration-none text-dark">
                             Beginner Resources
                           </a>
@@ -262,7 +262,7 @@ const Home: NextPage = () => {
                         efficiency.
                       </p>
                       <button className="btn btn-warning w-100">
-                        <Link href="/demo">
+                        <Link href="/quiz/algorithmicTradingAcademy">
                           <a className="text-decoration-none text-dark">
                             Experienced Resources
                           </a>
@@ -281,7 +281,7 @@ const Home: NextPage = () => {
                         income.
                       </p>
                       <button className="btn btn-warning w-100">
-                        <Link href="/demo">
+                        <Link href="/quiz/futuresWithQuantconnect">
                           <a className="text-decoration-none text-dark">
                             Programmer Resources
                           </a>
@@ -322,7 +322,7 @@ const Home: NextPage = () => {
                   cardTitle="Article2"
                   cardText="There is a lot of confusion and inaccurate beliefs around market makers
                 and their roles in the market."
-                  postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
+                  postPath="/posts/isItActuallyPossibleToSucceedAsARetailTrader"
                 ></PostCard>
               </div>
               <div className="col-md-4 mt-3 mt-md-0">
@@ -334,7 +334,7 @@ const Home: NextPage = () => {
                   cardTitle="Article3"
                   cardText="There is a lot of confusion and inaccurate beliefs around market makers
                 and their roles in the market."
-                  postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
+                  postPath="/posts/howMuchMoneyCanIMakeTrading"
                 ></PostCard>
               </div>
             </div>
