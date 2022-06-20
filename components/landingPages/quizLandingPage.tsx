@@ -2,11 +2,23 @@ import SimilarCourseCard from './similarCourseCard';
 import coursesData from './coursesData';
 import Image from 'next/image';
 
+interface Lessons {
+  id: number;
+  title: string;
+  path: string;
+}
+
+interface Chapters {
+  chapter: string;
+  lessons: Lessons[];
+  id: string;
+}
+
 interface Props {
   title: string;
   description: string;
   imagePath: string;
-  curriculum: string[];
+  curriculum: Chapters[];
   similar1Course: string;
   similar2Course: string;
 }
@@ -41,10 +53,10 @@ const QuizLandingPage = ({
       <p>Check out the curriculum for {title}</p>
       {chapters.map((chapter) => (
         <div
-          key={chapter}
+          key={chapter.id}
           className="ps-4 pe-4 mb-3 bg-secondary rounded text-white w-75 mx-auto"
         >
-          {chapter}
+          {chapter.chapter}
         </div>
       ))}
       <div className="p-3">

@@ -40,7 +40,7 @@ const HeaderApp = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link href="/app/courses/testCourse">
+              <Link href="/blog">
                 <a className="nav-link text-white active" aria-current="page">
                   Articles & Guides
                 </a>

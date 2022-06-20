@@ -15,7 +15,7 @@ const Footer = () => {
           </p>
           <aside className="d-md-none d-flex justify-content-center">
             <button className="btn btn-warning">
-              <Link href="/signup">
+              <Link href="/auth/signin">
                 <a className="text-decoration-none text-dark">
                   Get Started for Free
                 </a>
@@ -27,7 +27,7 @@ const Footer = () => {
               Get started with algorithmic trading today with our free courses!
               <span>
                 <button className="btn btn-warning ms-3">
-                  <Link href="/signup">
+                  <Link href="/auth/signin">
                     <a className="text-decoration-none text-white">
                       Click Here
                     </a>
@@ -175,7 +175,7 @@ const Footer = () => {
                 makers and their roles in the market.
               </p>
               <button className="btn btn-warning">
-                <Link href="/posts/whatAreMarketMakersAndHowDoTheyWork">
+                <Link href="/posts/isItActuallyPossibleToSucceedAsARetailTrader">
                   <a className="text-decoration-none text-dark">Read More</a>
                 </Link>
               </button>
@@ -190,7 +190,7 @@ const Footer = () => {
                 makers and their roles in the market.
               </p>
               <button className="btn btn-warning">
-                <Link href="/posts/whatAreMarketMakersAndHowDoTheyWork">
+                <Link href="/posts/howMuchMoneyCanIMakeTrading">
                   <a className="text-decoration-none text-dark">Read More</a>
                 </Link>
               </button>
@@ -213,7 +213,7 @@ const Footer = () => {
               Blog
             </a>
           </Link>
-          <Link href="/login">
+          <Link href="/auth/signin">
             <a className="nav-link text-light" aria-current="page">
               Login
             </a>
