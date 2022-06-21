@@ -7,7 +7,7 @@ import networkErrorHandlers from '../../../mocks/networkErrorHandlers';
 import { rest } from 'msw';
 
 describe('<AccountManagement />', () => {
-  describe('Account Settings Section', () => {
+  describe('General Page', () => {
     test('renders header and footer correctly', () => {
       render(
         <SessionProvider
@@ -35,6 +35,67 @@ describe('<AccountManagement />', () => {
       expect(footer).toBeInTheDocument();
     });
 
+    test('renders pro upgrade banner if not pro user', () => {
+      render(
+        <SessionProvider
+          session={{
+            expires: '1',
+            user: {
+              id: 'testId',
+              email: 'testEmail@email.com',
+              name: 'testUser',
+              stripeCustomerId: 'testStripeid',
+              isPro: false,
+            },
+          }}
+        >
+          <AccountManagement />
+        </SessionProvider>
+      );
+
+      // There will be two banners displayed. 1 at top of page and 1 in footer
+      const proSignupBanner = screen.getAllByText(
+        /if you would like to upgrade to a pro membership please click/i
+      );
+      const proUpgradeButton = screen.getAllByRole('button', {
+        name: /upgrade to pro/i,
+      });
+
+      expect(proSignupBanner).toHaveLength(2);
+      expect(proUpgradeButton).toHaveLength(2);
+    });
+
+    test('does not render pro upgrade banner if pro user', () => {
+      render(
+        <SessionProvider
+          session={{
+            expires: '1',
+            user: {
+              id: 'testId',
+              email: 'testEmail@email.com',
+              name: 'testUser',
+              stripeCustomerId: 'testStripeid',
+              isPro: true,
+            },
+          }}
+        >
+          <AccountManagement />
+        </SessionProvider>
+      );
+
+      const proSignupBanner = screen.queryByText(
+        /if you would like to upgrade to a pro membership please click/i
+      );
+      const proUpgradeButton = screen.queryByRole('button', {
+        name: /upgrade to pro/i,
+      });
+
+      expect(proSignupBanner).not.toBeInTheDocument();
+      expect(proUpgradeButton).not.toBeInTheDocument();
+    });
+  });
+
+  describe('Account Settings Section', () => {
     test('renders account settings section with correct initial data and handles input', async () => {
       const user = userEvent.setup();
       render(
