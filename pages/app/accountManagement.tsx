@@ -1,7 +1,7 @@
 import LayoutApp from '../../components/layout/layoutApp';
 import { useEffect, useState } from 'react';
 import { getSession, useSession } from 'next-auth/react';
-import { NextPageContext } from 'next';
+import { NextPage, NextPageContext } from 'next';
 import {
   formatAmountFromStripe,
   formatAmountForDisplay,
@@ -22,7 +22,7 @@ import ProSignupBanner from '../../components/pricing/proSignupBanner';
  *
  * @returns - page for managing and changing account information
  */
-const AccountManagement = () => {
+const AccountManagement: NextPage = () => {
   const { data: session } = useSession();
   const [accountDetails, setAccountDetails] = useState({
     name: 'Loading',

@@ -5,7 +5,7 @@ import { getSession, useSession } from 'next-auth/react';
 import ProSignupBanner from '../../components/pricing/proSignupBanner';
 
 // Renders blog page with collection of articles and guides
-const Blog: NextPage = () => {
+const ArticlesAndGuides: NextPage = () => {
   const { data: session } = useSession();
 
   return (
@@ -95,7 +95,7 @@ const Blog: NextPage = () => {
   );
 };
 
-export default Blog;
+export default ArticlesAndGuides;
 
 // Export the `session` prop to use sessions with Server Side Rendering
 export async function getServerSideProps(context: NextPageContext) {

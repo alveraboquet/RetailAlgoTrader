@@ -1,9 +1,10 @@
 import QuizLandingPage from '../../components/landingPages/quizLandingPage';
 import Layout from '../../components/layout/layout';
 import coursesData from '../../components/landingPages/coursesData';
+import { NextPage } from 'next';
 
 // Landing page if quiz result is Futures with QuantConnect
-const FuturesWithQuantconnectLandingPage = () => {
+const FuturesWithQuantconnectLandingPage: NextPage = () => {
   return (
     <div className="text-center">
       <Layout>
