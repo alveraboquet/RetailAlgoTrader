@@ -16,6 +16,7 @@ import CheckBeforeDeleteModal from '../../components/accountManagement/checkBefo
 import ErrorModal from '../../components/accountManagement/errorModal';
 import AccountInfoChangeForm from '../../components/accountManagement/accountInfoChangeForm';
 import CreateCustomerPortalSessionForm from '../../components/accountManagement/createCustomerPortalSessionForm';
+import ProSignupBanner from '../../components/pricing/proSignupBanner';
 
 /**
  *
@@ -96,6 +97,7 @@ const AccountManagement = () => {
       ) : (
         <ErrorModal />
       )}
+      <ProSignupBanner isPro={session?.user.isPro} />
       <h1>Account Management</h1>
       <hr />
       <h2 className="mb-4">Account Settings</h2>

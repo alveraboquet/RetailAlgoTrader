@@ -1,14 +1,18 @@
 import type { NextPage, NextPageContext } from 'next';
 import LayoutApp from '../../components/layout/layoutApp';
 import PostCard from '../../components/post/postCard';
-import { getSession } from 'next-auth/react';
+import { getSession, useSession } from 'next-auth/react';
+import ProSignupBanner from '../../components/pricing/proSignupBanner';
 
 // Renders blog page with collection of articles and guides
 const Blog: NextPage = () => {
+  const { data: session } = useSession();
+
   return (
     <div>
       <LayoutApp>
         <article className="container">
+          <ProSignupBanner isPro={session?.user.isPro} />
           <div className="row">
             <aside className="col-md-4 mb-3">
               <PostCard
