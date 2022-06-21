@@ -4,7 +4,7 @@ import Link from 'next/link';
 const NonUserButton = () => {
   return (
     <button className="btn btn-warning p-md-3">
-      <Link href="/auth/signin">
+      <Link href="/auth/signup">
         <a className="text-decoration-none text-dark fs-3">
           Click Here to Download Your Template
         </a>

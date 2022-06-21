@@ -29,7 +29,7 @@ export default NextAuth({
       issuer: process.env.AUTH0_ISSUER,
     }),
   ],
-  // Custome signin page
+  // Custom signin page
   pages: {
     signIn: '/auth/signin',
   },

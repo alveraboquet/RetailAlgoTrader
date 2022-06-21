@@ -31,7 +31,7 @@ const Home: NextPage = () => {
               Discover how to trade intelligently and sustainably
             </p>
             <button className="btn btn-warning p-md-3">
-              <Link href="/auth/signin">
+              <Link href="/auth/signup">
                 <a className="text-decoration-none text-dark fs-3">
                   Sign Up Today! No Credit Card Required
                 </a>

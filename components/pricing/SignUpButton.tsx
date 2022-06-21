@@ -1,10 +1,10 @@
 import Link from 'next/link';
 
-// button for nextauth signin page
+// button for nextauth signup page
 const SignUpButton = () => {
   return (
     <button className="btn btn-warning">
-      <Link href="/auth/signin">
+      <Link href="/auth/signup">
         <a className="text-decoration-none text-dark">Sign up</a>
       </Link>
     </button>

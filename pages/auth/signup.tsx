@@ -3,6 +3,7 @@ import Link from 'next/link';
 import SEO from '../../components/SEO/seo';
 import SignInError from '../../components/auth/signinError';
 import { useRouter } from 'next/router';
+import styles from '../../styles/SignIn.module.css';
 
 interface Provider {
   id: string;
@@ -13,27 +14,27 @@ interface Provider {
 }
 
 // Custom signin page used with NextAuth
-const SignIn = ({ providers }: { [k: string]: Provider }) => {
+const SignUp = ({ providers }: { [k: string]: Provider }) => {
   // Retrieves error if one returned by NextAuth signin flow
   const { error } = useRouter().query;
 
   return (
     <div>
       <SEO
-        url="https://retailalgotrader/auth/signin"
+        url="https://retailalgotrader/auth/signup"
         openGraphType="website"
         schemaType="website"
-        title="Sign-in"
-        description="Sign-in for RetailAlgoTrader application. Allows access to courses and EA Template generator."
+        title="Sign-up"
+        description="Sign-up for RetailAlgoTrader application. Allows access to courses and EA Template generator."
         image="https://retailalgotrader.com/images/website/bulltrader.webp"
       />
 
       {/* Mobile Login page */}
-      <main className="container-fluid d-sm-none bg-light vh-100">
+      <main className="container-fluid d-lg-none bg-light vh-100">
         <div className="bg-light row"></div>
         <section className="bg-white position-relative top-50 start-50 translate-middle text-center rounded border">
           <header>
-            <h1 className="pt-3">User Login</h1>
+            <h1 className="pt-3">User Sign-Up</h1>
           </header>
           <SignInError error={error} />
           <div>
@@ -47,19 +48,33 @@ const SignIn = ({ providers }: { [k: string]: Provider }) => {
                     signIn(provider.id, { callbackUrl: '/app/dashboard' })
                   }
                 >
-                  Sign in with {provider.name}
+                  Sign up with {provider.name}
                 </button>
               </div>
             ))}
           </div>
-          <aside className="row mt-3 text-center ps-4 pe-4 mb-3">
-            <p className="fs-4">Not a member?</p>
-            <button className="btn btn-warning p-md-3">
-              <Link href="/auth/signup">
-                <a className="text-decoration-none text-dark">
-                  Sign Up Today! No Credit Card Required
-                </a>
-              </Link>
+          <p className="fs-4 mb-0 mt-3">Not a member?</p>
+          <p>
+            Sign in with one of the options above and an account will
+            automatically be created for you.
+          </p>
+          <p>
+            If you do not have an account with any of these services you can
+            setup a typical email and password login by clicking &apos;Sign in
+            with Auth0&apos;
+          </p>
+          <aside className="row mt-3 mb-3 text-center ps-4 pe-4">
+            <p className="fs-4">Already a member?</p>
+            <button
+              className="nav-item btn btn-warning ms-md-2"
+              onClick={(e) => {
+                e.preventDefault();
+                // NextAuth function to initiate user authentication flow
+                // https://next-auth.js.org/getting-started/client#signin
+                signIn(undefined, { callbackUrl: '/app/dashboard' });
+              }}
+            >
+              Member Login
             </button>
           </aside>
           <p className="text-center bg-light p-3">
@@ -79,12 +94,12 @@ const SignIn = ({ providers }: { [k: string]: Provider }) => {
 
       {/* Desktop Login page */}
       <main>
-        <div className="row vh-100 d-none d-sm-flex">
-          <section className="bg-light d-flex align-items-center justify-content-center p-4">
+        <div className="row vh-100 d-none d-lg-flex">
+          <section className="col-6 bg-light d-flex align-items-center justify-content-center p-4">
             <div className="row">
-              <article className="col-8 col-lg-6 mx-auto bg-white text-center rounded border p-3">
+              <article className="w-75 mx-auto bg-white text-center rounded border p-3">
                 <header>
-                  <h1>User Login</h1>
+                  <h1>User Sign-Up</h1>
                 </header>
                 <SignInError error={error} />
                 <div>
@@ -98,19 +113,33 @@ const SignIn = ({ providers }: { [k: string]: Provider }) => {
                           signIn(provider.id, { callbackUrl: '/app/dashboard' })
                         }
                       >
-                        Sign in with {provider.name}
+                        Sign up with {provider.name}
                       </button>
                     </div>
                   ))}
                 </div>
-                <aside className="row mt-3 text-center">
-                  <p className="fs-4">Not a member?</p>
-                  <button className="btn btn-warning">
-                    <Link href="/auth/signup">
-                      <a className="text-decoration-none text-dark">
-                        Sign Up Today! No Credit Card Required
-                      </a>
-                    </Link>
+                <p className="fs-4 mb-0 mt-3">Not a member?</p>
+                <p>
+                  Sign up with one of the options above and an account will
+                  automatically be created for you.
+                </p>
+                <p>
+                  If you do not have an account with Google or Facebook you can
+                  setup a typical email and password login by clicking
+                  &apos;Sign in with Auth0&apos;
+                </p>
+                <aside className="row mt-3 text-center ps-3 pe-3">
+                  <p className="fs-4">Already a member?</p>
+                  <button
+                    className="nav-item btn btn-warning"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      // NextAuth function to initiate user authentication flow
+                      // https://next-auth.js.org/getting-started/client#signin
+                      signIn(undefined, { callbackUrl: '/app/dashboard' });
+                    }}
+                  >
+                    Member Login
                   </button>
                 </aside>
               </article>
@@ -128,6 +157,17 @@ const SignIn = ({ providers }: { [k: string]: Provider }) => {
               </p>
             </div>
           </section>
+          <section className={`${styles.signinBackground} col-6`}>
+            <div className="row text-left mt-5">
+              <aside className="col-8 ps-5">
+                <header>
+                  <h2 className="display-4">
+                    Create a free account. No payment info necessary.
+                  </h2>
+                </header>
+              </aside>
+            </div>
+          </section>
         </div>
       </main>
     </div>
@@ -141,4 +181,4 @@ export async function getServerSideProps() {
   };
 }
 
-export default SignIn;
+export default SignUp;
