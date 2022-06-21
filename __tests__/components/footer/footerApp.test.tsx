@@ -1,9 +1,25 @@
 import { screen, render } from '@testing-library/react';
 import FooterApp from '../../../components/footer/footerApp';
+import { SessionProvider } from 'next-auth/react';
 
 describe('<FooterApp />', () => {
-  test('renders correctly', () => {
-    render(<FooterApp />);
+  test('renders correctly with no pro signup banner', () => {
+    render(
+      <SessionProvider
+        session={{
+          expires: '1',
+          user: {
+            id: 'testId',
+            email: 'testEmail@email.com',
+            name: 'testUser',
+            stripeCustomerId: 'testStripeid',
+            isPro: true,
+          },
+        }}
+      >
+        <FooterApp />
+      </SessionProvider>
+    );
 
     const slogan = screen.getByText(
       /retailalgotrader - become a profitable retail trader/i
@@ -23,15 +39,6 @@ describe('<FooterApp />', () => {
     const twitterLink = screen.getByRole('img', { name: /twitter logo/i });
     const instagramLink = screen.getByRole('img', { name: /instagram logo/i });
     const quoraLink = screen.getByRole('img', { name: /quora logo/i });
-    const postsHeader = screen.getByRole('heading', {
-      name: /top blog posts/i,
-    });
-    const article1 = screen.getByText(
-      'What are market makers and how do they work?'
-    );
-    const articleButtons = screen.getAllByRole('button', {
-      name: /read more/i,
-    });
     const dashboardLink = screen.getByRole('link', { name: /dashboard/i });
     const privacyPolicyLink = screen.getByRole('link', {
       name: /privacy policy/i,
@@ -40,6 +47,12 @@ describe('<FooterApp />', () => {
       name: /terms of service/i,
     });
     const logoutLink = screen.getByRole('link', { name: /logout/i });
+    const proSignupBanner = screen.queryByText(
+      /if you would like to upgrade to a pro membership please click/i
+    );
+    const proUpgradeButton = screen.queryByRole('button', {
+      name: /upgrade to pro/i,
+    });
 
     expect(slogan).toBeInTheDocument();
     expect(aboutUs).toBeInTheDocument();
@@ -53,12 +66,40 @@ describe('<FooterApp />', () => {
     expect(twitterLink).toBeInTheDocument();
     expect(instagramLink).toBeInTheDocument();
     expect(quoraLink).toBeInTheDocument();
-    expect(postsHeader).toBeInTheDocument();
-    expect(article1).toBeInTheDocument();
-    expect(articleButtons).toHaveLength(3);
     expect(dashboardLink).toBeInTheDocument();
     expect(privacyPolicyLink).toBeInTheDocument();
     expect(termsOfServiceLink).toBeInTheDocument();
     expect(logoutLink).toBeInTheDocument();
+    expect(proSignupBanner).not.toBeInTheDocument();
+    expect(proUpgradeButton).not.toBeInTheDocument();
+  });
+
+  test('renders pro signup banner', () => {
+    render(
+      <SessionProvider
+        session={{
+          expires: '1',
+          user: {
+            id: 'testId',
+            email: 'testEmail@email.com',
+            name: 'testUser',
+            stripeCustomerId: 'testStripeid',
+            isPro: false,
+          },
+        }}
+      >
+        <FooterApp />
+      </SessionProvider>
+    );
+
+    const proSignupBanner = screen.getByText(
+      /if you would like to upgrade to a pro membership please click/i
+    );
+    const proUpgradeButton = screen.getByRole('button', {
+      name: /upgrade to pro/i,
+    });
+
+    expect(proSignupBanner).toBeInTheDocument();
+    expect(proUpgradeButton).toBeInTheDocument();
   });
 });
