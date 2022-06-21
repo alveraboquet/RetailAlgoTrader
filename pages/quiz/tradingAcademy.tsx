@@ -1,9 +1,10 @@
 import QuizLandingPage from '../../components/landingPages/quizLandingPage';
 import Layout from '../../components/layout/layout';
 import coursesData from '../../components/landingPages/coursesData';
+import { NextPage } from 'next';
 
 // Landing page if quiz result is Trading Academy
-const TradingAcademyLandingPage = () => {
+const TradingAcademyLandingPage: NextPage = () => {
   return (
     <div className="text-center">
       <Layout>

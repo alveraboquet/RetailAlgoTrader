@@ -44,7 +44,9 @@ const Dashboard: NextPage = () => {
 
   return (
     <LayoutApp>
-      <ProSignupBanner isPro={session?.user.isPro} />
+      <div className="mt-3 mt-md-0">
+        <ProSignupBanner isPro={session?.user.isPro} />
+      </div>
       {session?.user && (
         <p className="text-end">
           Signed in as {session.user?.name ?? session.user.email}
@@ -52,7 +54,7 @@ const Dashboard: NextPage = () => {
       )}
       <h1>Course Catalog</h1>
       <div className="row">
-        <div className="col-4">
+        <div className="col-12 col-md-4">
           <CourseCard
             imagePath={coursesData.tradingAcademy.imagePath}
             imageHeight={1414}
@@ -78,7 +80,7 @@ const Dashboard: NextPage = () => {
             isProCourse={false}
           ></CourseCard>
         </div>
-        <div className="col-4">
+        <div className="col-12 col-md-4 mt-4 mt-md-0">
           <CourseCard
             imagePath={coursesData.algorithmicTradingAcademy.imagePath}
             imageHeight={1055}
@@ -108,7 +110,7 @@ const Dashboard: NextPage = () => {
             isProCourse={true}
           ></CourseCard>
         </div>
-        <div className="col-4">
+        <div className="col-12 col-md-4 mt-4 mt-md-0">
           <CourseCard
             imagePath={coursesData.equitiesAndCryptoWithTradingview.imagePath}
             imageHeight={358}
@@ -131,8 +133,8 @@ const Dashboard: NextPage = () => {
           ></CourseCard>
         </div>
       </div>
-      <div className="row mt-5 mb-5">
-        <div className="col-4">
+      <div className="row mt-0 mt-md-5 mb-5">
+        <div className="col-12 col-md-4 mt-4 mt-md-0">
           <CourseCard
             imagePath={coursesData.forexTradingWithMT4.imagePath}
             imageHeight={1414}
@@ -152,7 +154,7 @@ const Dashboard: NextPage = () => {
             isProCourse={true}
           ></CourseCard>
         </div>
-        <div className="col-4">
+        <div className="col-12 col-md-4 mt-4 mt-md-0">
           <CourseCard
             imagePath={coursesData.futuresWithQuantconnect.imagePath}
             imageHeight={1414}
@@ -172,7 +174,7 @@ const Dashboard: NextPage = () => {
             isProCourse={true}
           ></CourseCard>
         </div>
-        <div className="col-4">
+        <div className="col-12 col-md-4 mt-4 mt-md-0">
           <CourseCard
             imagePath={coursesData.marketResearchWithPython.imagePath}
             imageHeight={1414}

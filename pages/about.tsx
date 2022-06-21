@@ -1,9 +1,10 @@
 import Layout from '../components/layout/layout';
 import Image from 'next/image';
 import SEO from '../components/SEO/seo';
+import { NextPage } from 'next';
 
 // Renders about page
-const About = () => {
+const About: NextPage = () => {
   return (
     <div>
       <SEO

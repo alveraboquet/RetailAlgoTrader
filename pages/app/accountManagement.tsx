@@ -1,7 +1,7 @@
 import LayoutApp from '../../components/layout/layoutApp';
 import { useEffect, useState } from 'react';
 import { getSession, useSession } from 'next-auth/react';
-import { NextPageContext } from 'next';
+import { NextPage, NextPageContext } from 'next';
 import {
   formatAmountFromStripe,
   formatAmountForDisplay,
@@ -16,12 +16,13 @@ import CheckBeforeDeleteModal from '../../components/accountManagement/checkBefo
 import ErrorModal from '../../components/accountManagement/errorModal';
 import AccountInfoChangeForm from '../../components/accountManagement/accountInfoChangeForm';
 import CreateCustomerPortalSessionForm from '../../components/accountManagement/createCustomerPortalSessionForm';
+import ProSignupBanner from '../../components/pricing/proSignupBanner';
 
 /**
  *
  * @returns - page for managing and changing account information
  */
-const AccountManagement = () => {
+const AccountManagement: NextPage = () => {
   const { data: session } = useSession();
   const [accountDetails, setAccountDetails] = useState({
     name: 'Loading',
@@ -96,6 +97,9 @@ const AccountManagement = () => {
       ) : (
         <ErrorModal />
       )}
+      <div className="mt-3 mt-md-0">
+        <ProSignupBanner isPro={session?.user.isPro} />
+      </div>
       <h1>Account Management</h1>
       <hr />
       <h2 className="mb-4">Account Settings</h2>
@@ -110,18 +114,18 @@ const AccountManagement = () => {
       <h2 className="mb-4">Mail Settings</h2>
       <hr />
       <div className="row">
-        <div className="col-8">
+        <div className="col-6 col-md-8">
           <h2 className="mb-4">Billing Settings</h2>
         </div>
-        <div className="col-4 text-end">
+        <div className="col-6 col-md-4 text-end">
           <CreateCustomerPortalSessionForm />
         </div>
       </div>
       <div className="row">
-        <div className="col-4">
+        <div className="col-12 col-md-4 ps-3 pe-3 ps-md-0 pe-md-0">
           <p className="fw-bold">Active Subscription:</p>
         </div>
-        <div className="col-4">
+        <div className="col-12 col-md-4">
           <p className="fw-normal">
             {subscription} (
             {formatAmountForDisplay(
@@ -133,10 +137,10 @@ const AccountManagement = () => {
         </div>
       </div>
       <div className="row">
-        <div className="col-4">
+        <div className="col-12 col-md-4 ps-3 pe-3 ps-md-0 pe-md-0">
           <p className="fw-bold">Payment Method:</p>
         </div>
-        <div className="col-4">
+        <div className="col-12 col-md-4">
           <p className="fw-normal">{lastFour}</p>
         </div>
       </div>
@@ -146,7 +150,7 @@ const AccountManagement = () => {
         <h2 className="mb-4">Danger Zone</h2>
         <hr />
         <div className="row">
-          <div className="col-8">
+          <div className="col-12 col-md-8">
             <p className="fw-bold text-danger">Cancel Subscription:</p>
             <p>
               If you only want to change your subscription plan please click the
@@ -157,7 +161,7 @@ const AccountManagement = () => {
               billing period.
             </p>
           </div>
-          <div className="col-4 text-end">
+          <div className="col-12 col-md-4 text-center text-md-end">
             <form
               method="POST"
               action="/api/stripe/createCustomerPortalSession"
@@ -175,7 +179,7 @@ const AccountManagement = () => {
         </div>
         <hr />
         <div className="row">
-          <div className="col-8">
+          <div className="col-12 col-md-8">
             <p className="fw-bold text-danger">Delete Account:</p>
             <p>Any subscriptions will be immediately cancelled.</p>
             <p>
@@ -188,7 +192,7 @@ const AccountManagement = () => {
             </p>
             <div id="deleteAccountAlertPlaceholder" className="mt-3"></div>
           </div>
-          <div className="col-4 text-end">
+          <div className="col-12 col-md-4 text-center text-md-end">
             <button
               className="btn btn-danger"
               data-bs-toggle="modal"

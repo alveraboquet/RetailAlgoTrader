@@ -31,24 +31,27 @@ const CourseCard = ({
   const { data: session } = useSession();
   return (
     <article className="card h-100 m-3 bg-light">
-      <figure>
-        <Image
-          src={imagePath}
-          className="card-img-top"
-          height={imageHeight}
-          width={imageWidth}
-          alt={imageAlt}
-        />
-      </figure>
+      {isProCourse && (
+        <p className="bg-warning text-center mb-0 pb-0 border-round">
+          Pro Course
+        </p>
+      )}
+      <Image
+        src={imagePath}
+        className="card-img-top"
+        height={imageHeight}
+        width={imageWidth}
+        alt={imageAlt}
+      />
       <div className="card-body">
         <h3 className="card-title">{cardTitle}</h3>
         <p className="card-text">{cardText}</p>
         <button
-          className="btn btn-warning w-100"
+          className="btn btn-dark w-100"
           disabled={!session?.user.isPro && isProCourse}
         >
           <Link href={coursePath}>
-            <a className="text-decoration-none text-dark">
+            <a className="text-decoration-none text-white">
               {enrolled ? 'Continue Course' : 'Begin Course'}
             </a>
           </Link>

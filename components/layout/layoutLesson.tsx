@@ -2,7 +2,7 @@ import HeaderApp from '../header/headerApp';
 import FooterLesson from '../footer/footerLesson';
 import coursesData from '../landingPages/coursesData';
 import { signIn, useSession } from 'next-auth/react';
-import ProSignupBanner from '../../components/pricing/proSignupBanner';
+import ProSignupBanner from '../pricing/proSignupBanner';
 import { useRouter } from 'next/router';
 import LessonSidebar from './lessonSidebar';
 import styles from '../../styles/LayoutLesson.module.css';
@@ -51,8 +51,10 @@ const LayoutLesson = (props: Props) => {
         <div className={styles.headerHeight}>
           <HeaderApp />
         </div>
-        <ProSignupBanner isPro={session?.user.isPro} />
-        <div className={`${styles.lessonBody} mt-4 bg-light`}>
+        <div className="mt-4 mt-md-0">
+          <ProSignupBanner isPro={session?.user.isPro} />
+        </div>
+        <div className={`${styles.lessonBody} bg-light`}>
           <div className="container text-center">{props.children}</div>
         </div>
         <div className={styles.footerHeight}>

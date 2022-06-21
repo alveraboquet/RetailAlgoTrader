@@ -1,9 +1,9 @@
 import { screen, render } from '@testing-library/react';
-import EaGenerator from '../../../pages/app/eaGenerator';
+import ArticlesAndGuides from '../../../pages/app/articlesAndGuides';
 import { SessionProvider } from 'next-auth/react';
 
-describe('<EaGenerator />', () => {
-  test('renders page correctly with pro signup banner for non pro user', () => {
+describe('<ArticlesAndGuides />', () => {
+  test('renders header, footer, articles and pro signup banner for non pro user', () => {
     render(
       <SessionProvider
         session={{
@@ -17,23 +17,27 @@ describe('<EaGenerator />', () => {
           },
         }}
       >
-        <EaGenerator />
+        <ArticlesAndGuides />
       </SessionProvider>
     );
 
-    const header = screen.getByRole('link', { name: /account info/i });
-    const loginButton = screen.getByRole('button', { name: /logout/i });
-    const riskPercentageButton = screen.getByRole('button', {
-      name: /risk percentage/i,
+    const accountInfoButton = screen.getByRole('link', {
+      name: /account info/i,
     });
-    const platformInput = screen.getByLabelText('platformSelect');
-    const footer = screen.getByRole('heading', { name: /about us/i });
+    const privacyPolicyButton = screen.getByRole('link', {
+      name: /privacy policy/i,
+    });
+    const articleTitle1 = screen.getByText(
+      /what are market makers and how do they work?/i
+    );
+    const articleButtons = screen.getAllByRole('button', {
+      name: /read more/i,
+    });
 
-    expect(header).toBeInTheDocument();
-    expect(loginButton).toBeInTheDocument();
-    expect(riskPercentageButton).toBeInTheDocument();
-    expect(platformInput).toBeInTheDocument();
-    expect(footer).toBeInTheDocument();
+    expect(accountInfoButton).toBeInTheDocument();
+    expect(privacyPolicyButton).toBeInTheDocument();
+    expect(articleTitle1).toBeInTheDocument();
+    expect(articleButtons).toHaveLength(6);
 
     // There will be two banners displayed. 1 at top of page and 1 in footer
     const proSignupBanner = screen.getAllByText(
@@ -61,7 +65,7 @@ describe('<EaGenerator />', () => {
           },
         }}
       >
-        <EaGenerator />
+        <ArticlesAndGuides />
       </SessionProvider>
     );
 

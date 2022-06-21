@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import SEO from '../components/SEO/seo';
 import Layout from '../components/layout/layout';
-import PostCard from '../components/post/postCard';
+import BlogContent from '../components/blog/blogContent';
 
 // Renders blog page with collection of articles and guides
 const Blog: NextPage = () => {
@@ -18,84 +18,7 @@ const Blog: NextPage = () => {
         image="https://retailalgotrader.com/images/website/bulltrader.webp"
       />
       <Layout>
-        <article className="container">
-          <div className="row">
-            <aside className="col-md-4 mb-3">
-              <PostCard
-                imagePath="/images/website/genericStock.webp"
-                imageHeight={1306}
-                imageWidth={2295}
-                imageAlt="Picture of market candles"
-                cardTitle="What are market makers and how do they work?"
-                cardText="There is a lot of confusion and inaccurate beliefs around market makers
-        and their roles in the market."
-                postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
-              />
-            </aside>
-            <aside className="col-md-4 mb-3">
-              <PostCard
-                imagePath="/images/website/genericStock.webp"
-                imageHeight={1306}
-                imageWidth={2295}
-                imageAlt="Picture of market candles"
-                cardTitle="article3"
-                cardText="There is a lot of confusion and inaccurate beliefs around market makers
-        and their roles in the market."
-                postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
-              />
-            </aside>
-            <aside className="col-md-4 mb-3">
-              <PostCard
-                imagePath="/images/website/genericStock.webp"
-                imageHeight={1306}
-                imageWidth={2295}
-                imageAlt="Picture of market candles"
-                cardTitle="article4"
-                cardText="There is a lot of confusion and inaccurate beliefs around market makers
-        and their roles in the market."
-                postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
-              />
-            </aside>
-          </div>
-          <div className="row mb-5 ">
-            <aside className="col-md-4 mb-3">
-              <PostCard
-                imagePath="/images/website/genericStock.webp"
-                imageHeight={1306}
-                imageWidth={2295}
-                imageAlt="Picture of market candles"
-                cardTitle="article5"
-                cardText="There is a lot of confusion and inaccurate beliefs around market makers
-        and their roles in the market."
-                postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
-              />
-            </aside>
-            <aside className="col-md-4 mb-3">
-              <PostCard
-                imagePath="/images/website/genericStock.webp"
-                imageHeight={1306}
-                imageWidth={2295}
-                imageAlt="Picture of market candles"
-                cardTitle="article2"
-                cardText="There is a lot of confusion and inaccurate beliefs around market makers
-        and their roles in the market."
-                postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
-              />
-            </aside>
-            <aside className="col-md-4 mb-3">
-              <PostCard
-                imagePath="/images/website/genericStock.webp"
-                imageHeight={1306}
-                imageWidth={2295}
-                imageAlt="Picture of market candles"
-                cardTitle="article6"
-                cardText="There is a lot of confusion and inaccurate beliefs around market makers
-        and their roles in the market."
-                postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
-              />
-            </aside>
-          </div>
-        </article>
+        <BlogContent />
       </Layout>
     </div>
   );
