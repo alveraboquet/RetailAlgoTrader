@@ -35,11 +35,13 @@ describe('<CourseCard />', () => {
     const image = screen.getByRole('img', {
       name: /picture of market candles/i,
     });
+    const proCourseText = screen.getByText(/pro course/i);
     const cardTitle = screen.getByText(/example course title/i);
     const cardText = screen.getByText(/example course text/i);
     const button = screen.getByRole('button', { name: /begin course/i });
     const percentComplete = screen.getByRole('progressbar');
 
+    expect(proCourseText).toBeInTheDocument();
     expect(image).toBeInTheDocument();
     expect(cardTitle).toBeInTheDocument();
     expect(cardText).toBeInTheDocument();
@@ -47,7 +49,7 @@ describe('<CourseCard />', () => {
     expect(percentComplete).toHaveStyle('width: 0%');
   });
 
-  test('renders 50 progress and continue course button', () => {
+  test('renders 50 progress, continue course button, and pro course banner', () => {
     render(
       <SessionProvider
         session={{
@@ -76,9 +78,11 @@ describe('<CourseCard />', () => {
       </SessionProvider>
     );
 
+    const proCourseText = screen.queryByText(/pro course/i);
     const button = screen.getByRole('button', { name: /continue course/i });
     const percentComplete = screen.getByRole('progressbar');
 
+    expect(proCourseText).not.toBeInTheDocument();
     expect(button).toBeEnabled();
     expect(percentComplete).toHaveStyle('width: 50%');
   });
