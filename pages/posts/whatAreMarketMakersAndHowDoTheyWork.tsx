@@ -25,10 +25,10 @@ const BlogPost: NextPage = () => {
               <h1 className="text-center mt-3 mt-md-5 fw-bold text-dark">
                 Essential Facts of Market Makers in Today&apos;s Markets
               </h1>
-              <figure className="text-center rounded mt-4 mt-md-5">
+              <figure className="text-center mt-4 mt-md-5">
                 <Image
                   src="/images/posts/whatAreMarketMakers/MarketMaker-Cover.webp"
-                  className="card-img-top"
+                  className="rounded"
                   height={1288}
                   width={2326}
                   alt=""

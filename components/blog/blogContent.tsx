@@ -22,10 +22,9 @@ const BlogContent = () => {
             imageHeight={1306}
             imageWidth={2295}
             imageAlt="Picture of market candles"
-            cardTitle="article3"
-            cardText="There is a lot of confusion and inaccurate beliefs around market makers
-        and their roles in the market."
-            postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
+            cardTitle="How much money can I make trading?"
+            cardText="Many people imagine trading as an easy path to riches. Discover how much money you can reasonably make while trading."
+            postPath="/posts/howMuchMoneyCanIMakeTrading"
           />
         </aside>
         <aside className="col-md-4 mb-3">
@@ -34,10 +33,9 @@ const BlogContent = () => {
             imageHeight={1306}
             imageWidth={2295}
             imageAlt="Picture of market candles"
-            cardTitle="article4"
-            cardText="There is a lot of confusion and inaccurate beliefs around market makers
-        and their roles in the market."
-            postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
+            cardTitle="The mistake all new retail traders should avoid"
+            cardText="Do not repeat one of the most common mistakes we see with novice retail traders."
+            postPath="/posts/mistakeAllNewRetailTradersShouldAvoid"
           />
         </aside>
       </div>
@@ -48,10 +46,9 @@ const BlogContent = () => {
             imageHeight={1306}
             imageWidth={2295}
             imageAlt="Picture of market candles"
-            cardTitle="article5"
-            cardText="There is a lot of confusion and inaccurate beliefs around market makers
-        and their roles in the market."
-            postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
+            cardTitle="Find out if it is actually possible to succeed as a retail algorithmic trader"
+            cardText="Many people seem to believe that it is not possible to succeed long-term at trading. Find out why that is not accurate."
+            postPath="/posts/isItActuallyPossibleToSucceedAsARetailTrader"
           />
         </aside>
         <aside className="col-md-4 mb-3">
