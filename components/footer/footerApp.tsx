@@ -1,12 +1,16 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { signOut } from 'next-auth/react';
+import ProSignupBanner from '../pricing/proSignupBanner';
+import { useSession } from 'next-auth/react';
 
 /**
  * Footer component for non-logged in users
  * Contains: CTA, about us section, contact section, social media links, and top blog posts
  */
 const FooterApp = () => {
+  const { data: session } = useSession();
+
   return (
     <footer className="bg-dark overflow-hidden ps-4 pe-4">
       <div className="container">
@@ -14,6 +18,7 @@ const FooterApp = () => {
           <p className="text-light">
             RetailAlgoTrader - Become a profitable retail trader
           </p>
+          <ProSignupBanner isPro={session?.user.isPro} />
           <section className="row">
             <div className="col-md-6">
               <h2 className="fs-5 text-light mt-3">ABOUT US</h2>
