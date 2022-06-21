@@ -10,7 +10,9 @@ const EaGenerator: NextPage = () => {
 
   return (
     <LayoutApp>
-      <ProSignupBanner isPro={session?.user.isPro} />
+      <div className="mt-3 mt-md-0">
+        <ProSignupBanner isPro={session?.user.isPro} />
+      </div>
       <EaTemplateTool />
     </LayoutApp>
   );

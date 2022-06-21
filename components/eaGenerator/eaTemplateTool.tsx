@@ -19,11 +19,14 @@ const EaTemplateTool = () => {
       <h1 className="mt-3 text-center">EA Generator</h1>
       {/* Glossary of terms and options*/}
       <div className="row mb-3">
-        <div className="col-6">
-          <p>
+        <div className="col-12 col-md-6">
+          <p className="d-none d-md-block">
             On the right select the components you would like in your custom
             template. If you have any questions in regards to the components you
             can find more info below.
+          </p>
+          <p className="d-md-none text-center">
+            Find information regarding the template components below.
           </p>
           <h2>Platform</h2>
           <Platform />
@@ -35,11 +38,15 @@ const EaTemplateTool = () => {
           <ExitRules />
         </div>
         {/**Interactive feature selection for template */}
-        <div className="col-6">
-          <p>
+        <div className="col-12 col-md-6">
+          <p className="d-none d-md-block">
             Select the components below that you want included in your custom
             template. If you want more info on the different components you can
             click on the component to the left.
+          </p>
+          <p className="d-md-none text-center mt-3">
+            Select the components below that you want included in your custom
+            template.
           </p>
           {/**Platform options*/}
           <h2>Platform</h2>

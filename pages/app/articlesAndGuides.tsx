@@ -12,7 +12,9 @@ const ArticlesAndGuides: NextPage = () => {
     <div>
       <LayoutApp>
         <article className="container">
-          <ProSignupBanner isPro={session?.user.isPro} />
+          <div className="mt-3 mt-md-0">
+            <ProSignupBanner isPro={session?.user.isPro} />
+          </div>
           <div className="row">
             <aside className="col-md-4 mb-3">
               <PostCard

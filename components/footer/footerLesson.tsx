@@ -42,8 +42,8 @@ const FooterLesson = ({
 
   return (
     <footer className="bg-dark fixed-bottom" style={{ zIndex: '1' }}>
-      <div className="container text-center">
-        <button className="btn btn-warning me-3 mb-1">
+      <div className="container text-end text-md-center pt-1">
+        <button className="btn btn-warning me-0 me-md-3 mb-1">
           <Link href={`/app/courses/${course}/${prevChapter}/${prevLesson}`}>
             <a className="text-decoration-none text-dark fs-5">Prev</a>
           </Link>

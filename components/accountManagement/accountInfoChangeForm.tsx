@@ -33,13 +33,13 @@ const AccountInfoChangeForm = ({
       noValidate
       id="accountSettings"
     >
-      <div className="row">
+      <div className="row ps-3 pe-3 ps-md-0 pe-md-0">
         <div className="col-3">
           <label htmlFor="newName" className="form-label">
             Name:
           </label>
         </div>
-        <div className="col-3">
+        <div className="col-9 col-md-3">
           <input
             id="newName"
             type="text"
@@ -53,13 +53,13 @@ const AccountInfoChangeForm = ({
           />
         </div>
       </div>
-      <div className="row mt-4">
+      <div className="row mt-4 ps-3 pe-3 ps-md-0 pe-md-0">
         <div className="col-3">
           <label htmlFor="newEmail" className="form-label">
             Email:
           </label>
         </div>
-        <div className="col-3">
+        <div className="col-9 col-md-3">
           <input
             id="newEmail"
             type="email"
@@ -78,7 +78,7 @@ const AccountInfoChangeForm = ({
         </div>
       </div>
       <div id="accountAlertPlaceholder" className="mt-3"></div>
-      <div className="text-end">
+      <div className="text-end ps-3 pe-3 ps-md-0 pe-md-0">
         {isAccountSettingsChanged ? (
           <button
             type="button"

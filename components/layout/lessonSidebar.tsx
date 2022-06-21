@@ -47,7 +47,7 @@ const LessonSidebar = ({ curriculum }: Props) => {
             <div key={chapter.id} className="accordion-item">
               <h2 className="accordion-header" id={chapter.chapter}>
                 <button
-                  className="accordion-button"
+                  className="accordion-button collapsed"
                   type="button"
                   data-bs-toggle="collapse"
                   data-bs-target={`#chapterId${chapter.id}`}
