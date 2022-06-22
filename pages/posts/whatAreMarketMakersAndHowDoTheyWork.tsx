@@ -25,10 +25,10 @@ const BlogPost: NextPage = () => {
               <h1 className="text-center mt-3 mt-md-5 fw-bold text-dark">
                 Essential Facts of Market Makers in Today&apos;s Markets
               </h1>
-              <figure className="text-center rounded mt-4 mt-md-5">
+              <figure className="text-center mt-4 mt-md-5">
                 <Image
                   src="/images/posts/whatAreMarketMakers/MarketMaker-Cover.webp"
-                  className="card-img-top"
+                  className="rounded"
                   height={1288}
                   width={2326}
                   alt=""
@@ -60,7 +60,7 @@ const BlogPost: NextPage = () => {
                 instrument) and an ask price (the price to buy an instrument).
                 These are the prices you see on your trading platforms.
               </p>
-              <figure className="text-center m-md-5">
+              <figure className="centerFigure">
                 <Image
                   src="/images/posts/whatAreMarketMakers/Bid-vs-Ask.webp"
                   className="card-img-top"
@@ -68,9 +68,7 @@ const BlogPost: NextPage = () => {
                   width={576}
                   alt=""
                 />
-                <figcaption className="text-secondary">
-                  Bid vs Ask Spread of TSLA
-                </figcaption>
+                <figcaption>Bid vs Ask Spread of TSLA</figcaption>
               </figure>
               <p>
                 In the example above, Tesla’s bid price is $799.52 while the ask
@@ -117,7 +115,7 @@ const BlogPost: NextPage = () => {
                 but when you consider the immense volume of TSLA it adds up very
                 quickly.
               </p>
-              <figure className="text-center m-md-5">
+              <figure className="centerFigure">
                 <Image
                   src="/images/posts/whatAreMarketMakers/Bid-vs-Ask.webp"
                   className="card-img-top"
@@ -125,9 +123,7 @@ const BlogPost: NextPage = () => {
                   width={576}
                   alt=""
                 />
-                <figcaption className="text-secondary">
-                  Bid vs Ask Spread of TSLA
-                </figcaption>
+                <figcaption>Bid vs Ask Spread of TSLA</figcaption>
               </figure>
               <h2 className="text-dark fw-bold">
                 Are market makers regulated?
@@ -145,7 +141,7 @@ const BlogPost: NextPage = () => {
                 any and all instruments they have agreed to act as market makers
                 for.
               </p>
-              <figure>
+              <figure className="centerFigure">
                 <Image
                   src="/images/posts/whatAreMarketMakers/Finra.webp"
                   className="card-img-top"

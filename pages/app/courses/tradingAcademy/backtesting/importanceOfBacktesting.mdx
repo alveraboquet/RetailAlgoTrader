@@ -22,6 +22,8 @@ strategy will get slaughtered in a market that ranges for a long period of time.
 
 The table below details the different market conditions that your strategy should be tested across.
 
+<div className='postTable'>
+
 | Market Condition | # of Trades | P/L (%) | Max Drawdown |
 | ---------------- | ----------- | ------- | ------------ |
 | Downtrend #1     |             |         |              |
@@ -37,6 +39,8 @@ The table below details the different market conditions that your strategy shoul
 | Black Swan #2    |             |         |              |
 | Black Swan #3    |             |         |              |
 
+</div>
+
 As you learn more about trading, you will gain the skills to develop more technical and advanced strategies than just
 trend-following or mean-reversion strategies. This advanced strategies will focus on more nuanced market conditions than
 just uptrend, downtrend, and ranging.
@@ -47,6 +51,8 @@ In addition to standard market conditions you need to test your strategy across 
 events are freak market conditions that occur unexpectedly and are difficult to prepare for. Some examples of Black Swan events
 are the dot-com bubble, the unpegging of the Swiss Franc, and the March 2020 Covid dip. See below for a more length list of
 Black Swan events.
+
+<div className='postTable'>
 
 | Black Swan Event               | Date |
 | ------------------------------ | ---- |
@@ -63,6 +69,8 @@ Black Swan events.
 | Swiss Franc Unpegging          | 2015 |
 | WTI Futures Going Negative     | 2020 |
 
+</div>
+
 These events happen extremely quickly and cause massive jumps in price. Preparing for these events is very difficult as there
 are so few to test your strategy on. In addition, during these events market conditions you take for granted such as high liquidity
 and minimal slippage may be invalidated.
@@ -73,7 +81,7 @@ pair such as the CHFEUR or CHFUSD experienced huge losses. The price shot up so 
 stoploss at 0.8500 it was not getting fulfilled until .9500. That is a full 100 pips later which resulted in massive losses
 especially with the level of leverage available in the Forex market.
 
-<figure>
+<figure className="centerFigure">
   <Image
     src="/images/courses/tradingAcademy/backtesting/CHFEUR.webp"
     height={2160}
@@ -112,17 +120,25 @@ As you develop your own strategies and discover which market conditions they
 perform well in, these strategies can be combined. If you are trading multiple strategies that all handle different market
 conditions then you can profitably trade in all market conditions.
 
+<div className='postTable'>
+
 | Strategy                                  | P/L during Ranging Market |
 | ----------------------------------------- | ------------------------- |
 | MA Crossover (Trend-Following)            | -$4,000                   |
 | Bollinger Band Reversion (Mean-Reversion) | $10,000                   |
 | News Trading (Breakout)                   | -$2,000                   |
 
+</div>
+
+<div className="postTable">
+
 | Strategy                                  | P/L during Trending Market |
 | ----------------------------------------- | -------------------------- |
 | MA Crossover (Trend-Following)            | $5,000                     |
 | Bollinger Band Reversion (Mean-Reversion) | -$3,000                    |
 | News Trading (Breakout)                   | $1,000                     |
+
+</div>
 
 Many traders create algorithms to weight their different strategies. So if the market is ranging they might invest 75% of their
 capital with their mean-reversion strategy and 25% of their capital with their trend-following strategy. Once the market begins

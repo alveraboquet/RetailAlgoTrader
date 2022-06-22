@@ -1,8 +1,7 @@
+import nextMDX from '@next/mdx';
+import remarkGfm from 'remark-gfm';
+
 /* eslint-disable quotes */
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-};
 
 const prod = process.env.NODE_ENV === 'production';
 
@@ -71,8 +70,22 @@ const securityHeaders = [
   },
 ];
 
-module.exports = {
-  nextConfig,
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const withMDX = nextMDX({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [],
+    // If you use `MDXProvider`, uncomment the following line.
+    // providerImportSource: "@mdx-js/react",
+  },
+});
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  // Append the default value with md extensions
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   poweredByHeader: false,
   async headers() {
     return [
@@ -85,17 +98,4 @@ module.exports = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const withMDX = require('@next/mdx')({
-  extension: /\.mdx?$/,
-  options: {
-    remarkPlugins: [],
-    rehypePlugins: [],
-    // If you use `MDXProvider`, uncomment the following line.
-    // providerImportSource: "@mdx-js/react",
-  },
-});
-module.exports = withMDX({
-  // Append the default value with md extensions
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
-});
+export default withMDX(nextConfig);

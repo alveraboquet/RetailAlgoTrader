@@ -55,7 +55,9 @@ const LayoutLesson = (props: Props) => {
           <ProSignupBanner isPro={session?.user.isPro} />
         </div>
         <div className={`${styles.lessonBody} bg-light`}>
-          <div className="container text-center">{props.children}</div>
+          <div className="container col-12 col-md-8 col-lg-6">
+            {props.children}
+          </div>
         </div>
         <div className={styles.footerHeight}>
           <FooterLesson
