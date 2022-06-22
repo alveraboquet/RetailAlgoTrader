@@ -19,9 +19,22 @@ html {
   background-color: #212529;
 }
 
-table,
-th,
-td {
+.postTable table,
+.postTable th,
+.postTable td {
   border: 1px solid black !important;
   padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.centerFigure {
+  width: 90%;
+  margin: auto !important;
+  margin-bottom: 16px !important;
+}
+
+figcaption {
+  text-align: center;
+  color: grey;
 }

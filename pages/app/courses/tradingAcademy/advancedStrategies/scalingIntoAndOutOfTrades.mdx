@@ -62,11 +62,11 @@ The example below identifies a great potential setup for our Bollinger Band mean
 has been broken and there is a strong bullish bar following. The blue line indicates our entry price for our first order and
 the red line indicates our stoploss for our first order.
 
-<figure>
+<figure className="centerFigure">
   <Image
-    src="/images/courses/tradingAcademy/advancedStrategies/trade1EntryScale.webp"
-    height={1502}
-    width={1411}
+    src="/images/courses/tradingAcademy/advancedStrategies/scalingIntoAndOutOf/trade1EntryScale.webp"
+    height={2160}
+    width={3840}
     alt=""
   />
   <figcaption>Open buy order #1 and place stoploss</figcaption>
@@ -78,11 +78,11 @@ risk of 2%.
 Using our entry price, stoploss price, and risk percentage of 1%, [ChartYourTrade's position size calculator](https://chartyourtrade.com/position-size-calculator/)
 allows you to calculate the correct position size. See below image for example.
 
-<figure>
+<figure className="centerFigure">
   <Image
-    src="/images/courses/tradingAcademy/advancedStrategies/trade1PositionSize.webp"
-    height={2160}
-    width={3840}
+    src="/images/courses/tradingAcademy/advancedStrategies/scalingIntoAndOutOf/trade1PositionSize.webp"
+    height={1502}
+    width={1411}
     alt=""
   />
   <figcaption>Position size of order #1</figcaption>
@@ -91,9 +91,9 @@ allows you to calculate the correct position size. See below image for example.
 We can see that the next bar triggered our entry condition at the 1.0 STD Bollinger Band. Our second buy order is now opened
 with the stoploss placed at the 1.5 STD Bollinger Band.
 
-<figure>
+<figure className="centerFigure">
   <Image
-    src="/images/courses/tradingAcademy/advancedStrategies/trade2EntryScale.webp"
+    src="/images/courses/tradingAcademy/advancedStrategies/scalingIntoAndOutOf/trade2EntryScale.webp"
     height={2160}
     width={3840}
     alt=""
@@ -105,9 +105,9 @@ Below you can see the final result of our trade. As price moved out we slowly ex
 and minimize risk. Now in this case our trade worked out. As a result, the adjusting of the stoplosses is not shown but in
 reality they would have been adjusted throughout the trade.
 
-<figure>
+<figure className="centerFigure">
   <Image
-    src="/images/courses/tradingAcademy/advancedStrategies/trade2Exits.webp"
+    src="/images/courses/tradingAcademy/advancedStrategies/scalingIntoAndOutOf/trade2Exits.webp"
     height={2160}
     width={3840}
     alt=""
@@ -117,13 +117,17 @@ reality they would have been adjusted throughout the trade.
 
 Below we calculate the profit of each order:
 
-| Order                  | Formula                                       | Profit        |
-| ---------------------- | --------------------------------------------- | ------------- |
-| First 1/2 of Order #1  | 0.5 $\times$ 182 $\times$ ($161.41 - $154.96) | $586.95       |
-| Second 1/2 of Order #1 | 0.5 $\times$ 182 $\times$ ($165.60 - $154.96) | $968.24       |
-| First 1/2 of Order #2  | 0.5 $\times$ 337 $\times$ ($168.24 - $157.37) | $1,831.60     |
-| Second 1/2 of Order #2 | 0.5 $\times$ 337 $\times$ ($171.81 - $157.37) | $2,433.14     |
-| **Total Profit**       |                                               | **$5,819.93** |
+<figure className="postTable">
+
+| Order                  | Formula                           | Profit        |
+| ---------------------- | --------------------------------- | ------------- |
+| First 1/2 of Order #1  | 0.5 \* 182 \* ($161.41 - $154.96) | $586.95       |
+| Second 1/2 of Order #1 | 0.5 \* 182 \* ($165.60 - $154.96) | $968.24       |
+| First 1/2 of Order #2  | 0.5 \* 337 \* ($168.24 - $157.37) | $1,831.60     |
+| Second 1/2 of Order #2 | 0.5 \* 337 \* ($171.81 - $157.37) | $2,433.14     |
+| **Total Profit**       |                                   | **$5,819.93** |
+
+</figure>
 
 Total profit of $5,819.93 at a risk of $2,000.
 
@@ -134,9 +138,9 @@ Now let's take a look at the same example; however, we do not use any scaling te
 In this example we simply open one order when our entry conditions are met and exit the order when our
 takeprofit is hit.
 
-<figure>
+<figure className="centerFigure">
   <Image
-    src="/images/courses/tradingAcademy/advancedStrategies/tradeNoScale.webp"
+    src="/images/courses/tradingAcademy/advancedStrategies/scalingIntoAndOutOf/tradeNoScale.webp"
     height={2160}
     width={3840}
     alt=""
@@ -146,10 +150,14 @@ takeprofit is hit.
 
 Below we calculate the total profit from this trade.
 
-| Order            | Formula                          | Profit        |
-| ---------------- | -------------------------------- | ------------- |
-| Order #1         | 370 $\times$ ($161.41 - $154.96) | $2,386.60     |
-| **Total Profit** |                                  | **$2,386.60** |
+<figure className="postTable">
+
+| Order            | Formula                    | Profit        |
+| ---------------- | -------------------------- | ------------- |
+| Order #1         | 370 \* ($161.41 - $154.96) | $2,386.60     |
+| **Total Profit** |                            | **$2,386.60** |
+
+</figure>
 
 Total profit of $2,386.60 at a risk of $2,000. Not a bad trade but we made less than half of the profit and had about a
 1:1 R:R which is not ideal. In this situation the trade worked out in our favor, but if the trade had hit our stoploss instead
