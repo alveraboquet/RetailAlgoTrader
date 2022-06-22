@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import { getSession } from 'next-auth/react';
+import { SubscriptionWithPlan } from '../../../../types/stripe';
 
 // Loads Stripe package for Node environment
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
@@ -44,25 +45,43 @@ export default async function retrieveCustomer(
         res.status(204).send('');
         return;
       }
+
+      let lastFour: string | undefined;
+
       // retrieve Stripe payment method object
       // https://stripe.com/docs/api/payment_methods?lang=node
-      const paymentMethod = await stripe.paymentMethods.retrieve(
-        customer.subscriptions.data[0].default_payment_method
-      );
+      const defaultPaymentMethod =
+        customer.subscriptions.data[0].default_payment_method;
+      if (typeof defaultPaymentMethod === 'string') {
+        lastFour = (await stripe.paymentMethods.retrieve(defaultPaymentMethod))
+          .card?.last4;
+        if (typeof lastFour === 'undefined')
+          throw new Error('Last four cannot be undefined');
+      } else {
+        throw new Error('Failed to retrieve last four of payment method');
+      }
+
       // retrieve Stripe product object
       // https://stripe.com/docs/api/products?lang=node
-      const subscription = await stripe.products.retrieve(
-        customer.subscriptions.data[0].plan.product
-      );
+      const subscription = customer.subscriptions
+        .data[0] as SubscriptionWithPlan;
+      const subscriptionProduct = subscription.plan.product;
+      const product = await stripe.products.retrieve(subscriptionProduct);
+
+      let price: number | null;
       // retrieve Stripe price object
       // https://stripe.com/docs/api/prices?lang=node
-      const subscriptionPrice = await stripe.prices.retrieve(
-        subscription.default_price
-      );
+      if (typeof product.default_price === 'string') {
+        price = (await stripe.prices.retrieve(product.default_price))
+          .unit_amount;
+        if (typeof price === null) throw new Error('price cannot be null');
+      } else {
+        throw new Error('default_price of product object must be string');
+      }
       res.status(200).json({
-        lastFour: paymentMethod.card?.last4,
-        subscription: subscription.name,
-        price: subscriptionPrice.unit_amount,
+        lastFour: lastFour,
+        subscription: product.name,
+        price: price,
       });
       return;
     } catch (err) {
