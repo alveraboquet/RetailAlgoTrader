@@ -57,10 +57,10 @@ const BlogContent = () => {
             imageHeight={1306}
             imageWidth={2295}
             imageAlt="Picture of market candles"
-            cardTitle="article2"
-            cardText="There is a lot of confusion and inaccurate beliefs around market makers
-        and their roles in the market."
-            postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
+            cardTitle="Pinescript Guide"
+            cardText="Learn how to develop your own indicators and strategies in Pinescript effortlessly. Algorithmic trading 
+                      does not have to be difficult. Get started today."
+            postPath="/posts/pinescriptGuide"
           />
         </aside>
         <aside className="col-md-4 mb-3">
