@@ -10,6 +10,7 @@
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:testing-library/react",
+    "plugin:cypress/recommended",
     "plugin:jest-dom/recommended",
     "plugin:react/jsx-runtime",
     "plugin:security/recommended",
@@ -24,7 +25,13 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "testing-library", "jest-dom"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "testing-library",
+    "jest-dom",
+    "cypress"
+  ],
   "rules": {
     "indent": ["error", 2, { "SwitchCase": 1 }],
     "linebreak-style": ["error", "unix"],
