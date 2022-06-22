@@ -1,6 +1,9 @@
 const CreateCustomerPortalSessionForm = () => {
   return (
-    <form method="POST" action="/api/stripe/createCustomerPortalSession">
+    <form
+      method="POST"
+      action="/api/stripe/customer/createCustomerPortalSession"
+    >
       <button type="submit" className="btn btn-warning">
         Manage Billing
       </button>

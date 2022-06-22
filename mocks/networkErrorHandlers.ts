@@ -7,7 +7,7 @@ const networkErrorHandlers = [
       ctx.json({ name: 'Failed to Retrieve', email: 'Failed to Retrieve' })
     );
   }),
-  rest.delete('/api/stripe/deleteCustomer', (req, res, ctx) => {
+  rest.delete('/api/stripe/customer/deleteCustomer', (req, res, ctx) => {
     return res(ctx.status(500));
   }),
 ];

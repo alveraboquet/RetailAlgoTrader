@@ -62,7 +62,7 @@ const handlers = [
       ctx.json({ name: 'testUser', email: 'testUser@email.com' })
     );
   }),
-  rest.get('/api/stripe/retrieveCustomer', (req, res, ctx) => {
+  rest.get('/api/stripe/customer/retrieveCustomer', (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({

@@ -36,7 +36,7 @@ export const fetchAccountDetails = async () => {
  */
 export const fetchStripeDetails = async () => {
   try {
-    const res = await fetch('/api/stripe/retrieveCustomer', {
+    const res = await fetch('/api/stripe/customer/retrieveCustomer', {
       headers: {
         'X-Custom-Header': 'lollipop',
       },
@@ -154,7 +154,7 @@ export const changeAccountInfo = async (event: React.FormEvent) => {
  */
 export const deleteCustomer = async () => {
   try {
-    const res = await fetch('/api/stripe/deleteCustomer', {
+    const res = await fetch('/api/stripe/customer/deleteCustomer', {
       method: 'DELETE',
       headers: {
         'X-Custom-Header': 'lollipop',

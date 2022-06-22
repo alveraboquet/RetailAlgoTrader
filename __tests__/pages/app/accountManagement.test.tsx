@@ -464,7 +464,7 @@ describe('<AccountManagement />', () => {
 
     test('renders billing settings with not paying customer message if not pro', async () => {
       server.use(
-        rest.get('/api/stripe/retrieveCustomer', (req, res, ctx) => {
+        rest.get('/api/stripe/customer/retrieveCustomer', (req, res, ctx) => {
           return res(
             ctx.status(204),
             ctx.json({
@@ -506,7 +506,7 @@ describe('<AccountManagement />', () => {
 
     test('displays alert if no billing information returned', async () => {
       server.use(
-        rest.get('/api/stripe/retrieveCustomer', (req, res, ctx) => {
+        rest.get('/api/stripe/customer/retrieveCustomer', (req, res, ctx) => {
           return res(
             ctx.status(500),
             ctx.json({
