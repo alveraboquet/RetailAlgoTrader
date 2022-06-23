@@ -46,10 +46,9 @@ export default async function retrieveCustomer(
         return;
       }
 
-      let lastFour: string | undefined;
-
       // retrieve Stripe payment method object
       // https://stripe.com/docs/api/payment_methods?lang=node
+      let lastFour: string | undefined;
       const defaultPaymentMethod =
         customer.subscriptions.data[0].default_payment_method;
       if (typeof defaultPaymentMethod === 'string') {
@@ -66,13 +65,13 @@ export default async function retrieveCustomer(
       const subscription = customer.subscriptions
         .data[0] as SubscriptionWithPlan;
       const subscriptionProduct = subscription.plan.product;
-      const product = await stripe.products.retrieve(subscriptionProduct);
+      const productObject = await stripe.products.retrieve(subscriptionProduct);
 
-      let price: number | null;
       // retrieve Stripe price object
       // https://stripe.com/docs/api/prices?lang=node
-      if (typeof product.default_price === 'string') {
-        price = (await stripe.prices.retrieve(product.default_price))
+      let price: number | null;
+      if (typeof productObject.default_price === 'string') {
+        price = (await stripe.prices.retrieve(productObject.default_price))
           .unit_amount;
         if (typeof price === null) throw new Error('price cannot be null');
       } else {
@@ -80,7 +79,7 @@ export default async function retrieveCustomer(
       }
       res.status(200).json({
         lastFour: lastFour,
-        subscription: product.name,
+        subscription: productObject.name,
         price: price,
       });
       return;
