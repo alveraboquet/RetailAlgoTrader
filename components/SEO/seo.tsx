@@ -74,6 +74,10 @@ const socialTags = ({
 const SEO = (props: Props) => {
   const { url, title, description, image, schemaType } = props;
 
+  // This line required to remove title element receiving array warning
+  // https://github.com/vercel/next.js/discussions/38256
+  const stringTitle = `${title} | ezMTO`;
+
   return (
     <>
       <Head>
@@ -87,7 +91,7 @@ const SEO = (props: Props) => {
         <meta name="author" content="Matt Laux" key="author" />
         {/*Update favicon*/}
         <link rel="icon" href="/favicon.ico" />
-        <title>{title} | ezMTO</title>
+        <title>{stringTitle}</title>
         <meta name="description" content={description} />
         <meta itemProp="name" content={title} />
         <meta itemProp="description" content={description} />
