@@ -1,7 +1,6 @@
 /* eslint-disable quotes */
 import nextMDX from '@next/mdx';
 import remarkGfm from 'remark-gfm';
-import securityHeaders from './security/securityHeaders';
 
 // Set up MDX file support
 const withMDX = nextMDX({
