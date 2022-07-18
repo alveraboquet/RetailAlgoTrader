@@ -30,13 +30,13 @@ const contentSecurityPolicy = `
  block-all-mixed-content;
  font-src 'self' https: data:;
  form-action 
-   self 
+   'self' 
    https://dev-bcrf42vl.us.auth0.com 
    http://localhost:3000/api/auth/signin/auth0 
    http://localhost:3000/api/auth/signin/facebook 
    www.facebook.com 
    http://localhost:3000/api/auth/signin/google
-   *.google.com; 
+   *.google.com;
  frame-ancestors 'self';
  img-src 'self' data:;
  object-src 'none';

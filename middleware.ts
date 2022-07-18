@@ -27,7 +27,9 @@ const middleware = (req: NextRequest) => {
     ) {
       NextResponse.next();
     } else {
-      return new Response(null, { status: 401 });
+      return new Response(null, {
+        status: 401,
+      });
     }
   }
 };
