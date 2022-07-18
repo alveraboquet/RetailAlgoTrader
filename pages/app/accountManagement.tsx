@@ -164,7 +164,7 @@ const AccountManagement: NextPage = () => {
           <div className="col-12 col-md-4 text-center text-md-end">
             <form
               method="POST"
-              action="/api/stripe/customer/createCustomerPortalSession"
+              action="/api/stripe/createCustomerPortalSession"
             >
               <button
                 type="submit"
