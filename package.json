@@ -30,7 +30,6 @@
     "next": "^12.2.2",
     "next-auth": "^4.9.0",
     "pg": "^8.7.3",
-    "pg-promise": "^10.11.1",
     "react": "^18.2.0",
     "react-chartjs-2": "^4.2.0",
     "react-dom": "^18.2.0",
