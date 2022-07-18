@@ -15,7 +15,7 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
   }, []);
 
   return (
-    // Wrap in SessionProvider from NextJs. Allows session to be passed through pages
+    // Wrap in SessionProvider from NextJs. Allows session to be passed through components
     // https://next-auth.js.org/getting-started/client#sessionprovider
     <SessionProvider session={session}>
       <Component {...pageProps} />

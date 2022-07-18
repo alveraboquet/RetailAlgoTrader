@@ -2,11 +2,16 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import { getSession } from 'next-auth/react';
 
+// Loads Stripe package for Node environment
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2020-08-27',
 });
 
-// Redirects user to account interface handled by Stripe
+/**
+ *
+ * @param req - POST req to redirect user to account interface handled by Stripe
+ * @param res - 405 if not POST req, 302 if successful redirect to Stripe portal, 500 if error, 401 if non-signed in user
+ */
 export default async function createCustomerPortalSession(
   req: NextApiRequest,
   res: NextApiResponse

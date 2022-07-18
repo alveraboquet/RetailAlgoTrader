@@ -9,6 +9,7 @@ interface Props {
   cardTitle: string;
   cardText: string;
   postPath: string;
+  buttonText: string;
 }
 
 // Bootstrap card component for posts on blog homepage
@@ -20,6 +21,7 @@ const PostCard = ({
   cardTitle,
   cardText,
   postPath,
+  buttonText,
 }: Props) => {
   return (
     <article className="card h-100 m-3 bg-light">
@@ -37,7 +39,7 @@ const PostCard = ({
         <p className="card-text">{cardText}</p>
         <button className="btn btn-warning w-100">
           <Link href={postPath}>
-            <a className="text-decoration-none text-dark">Read More</a>
+            <a className="text-decoration-none text-dark">{buttonText}</a>
           </Link>
         </button>
       </div>

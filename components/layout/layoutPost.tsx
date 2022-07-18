@@ -26,8 +26,8 @@ const LayoutPost = (props: Props) => {
       />
       <Header />
       <div className="container">
-        <article className="row fs-5 m-2" style={{ color: '#3c484e' }}>
-          <div className="container p-0 p-md-5 pt-md-3 pb-md-3 rounded">
+        <article className="row fs-5 m-2">
+          <div className="container p-0 p-md-5 pt-md-3 pb-md-3">
             {props.children}
           </div>
         </article>

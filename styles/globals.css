@@ -19,6 +19,12 @@ html {
   background-color: #212529;
 }
 
+ul,
+ol,
+dd {
+  list-style-position: inside;
+}
+
 .postTable table,
 .postTable th,
 .postTable td {
