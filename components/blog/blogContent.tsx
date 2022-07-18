@@ -14,6 +14,7 @@ const BlogContent = () => {
             cardText="There is a lot of confusion and inaccurate beliefs around market makers
         and their roles in the market."
             postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
+            buttonText="Read More"
           />
         </aside>
         <aside className="col-md-4 mb-3">
@@ -25,6 +26,7 @@ const BlogContent = () => {
             cardTitle="How much money can I make trading?"
             cardText="Many people imagine trading as an easy path to riches. Discover how much money you can reasonably make while trading."
             postPath="/posts/howMuchMoneyCanIMakeTrading"
+            buttonText="Read More"
           />
         </aside>
         <aside className="col-md-4 mb-3">
@@ -36,6 +38,7 @@ const BlogContent = () => {
             cardTitle="The mistake all new retail traders should avoid"
             cardText="Do not repeat one of the most common mistakes we see with novice retail traders."
             postPath="/posts/mistakeAllNewRetailTradersShouldAvoid"
+            buttonText="Read More"
           />
         </aside>
       </div>
@@ -49,6 +52,7 @@ const BlogContent = () => {
             cardTitle="Find out if it is actually possible to succeed as a retail algorithmic trader"
             cardText="Many people seem to believe that it is not possible to succeed long-term at trading. Find out why that is not accurate."
             postPath="/posts/isItActuallyPossibleToSucceedAsARetailTrader"
+            buttonText="Read More"
           />
         </aside>
         <aside className="col-md-4 mb-3">
@@ -61,6 +65,7 @@ const BlogContent = () => {
             cardText="Learn how to develop your own indicators and strategies in Pinescript effortlessly. Algorithmic trading 
                       does not have to be difficult. Get started today."
             postPath="/posts/pinescriptGuide"
+            buttonText="Read More"
           />
         </aside>
         <aside className="col-md-4 mb-3">
@@ -73,6 +78,7 @@ const BlogContent = () => {
             cardText="There is a lot of confusion and inaccurate beliefs around market makers
         and their roles in the market."
             postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
+            buttonText="Read More"
           />
         </aside>
       </div>
