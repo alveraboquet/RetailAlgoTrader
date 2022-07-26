@@ -1,6 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { unstable_getServerSession } from 'next-auth';
 import pool from '../../../../db/index';
-import { getSession } from 'next-auth/react';
+import { validateAlphaNumericData } from '../../../../lib/validateData';
+import { authOptions } from '../../auth/[...nextauth]';
 
 /**
  *
@@ -11,7 +13,7 @@ const updateCurrentLesson = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
-  const session = await getSession({ req });
+  const session = await unstable_getServerSession(req, res, authOptions);
   if (session) {
     if (req.method !== 'PUT') {
       res.status(405).send({ message: 'Only PUT requests allowed' });
@@ -19,16 +21,41 @@ const updateCurrentLesson = async (
     try {
       const { user } = session;
       const lessonData = JSON.parse(req.body);
+
+      // Validate data
+      const validatedNextLesson = validateAlphaNumericData(
+        lessonData.nextLesson,
+        1,
+        255
+      );
+      const validatedNextChapter = validateAlphaNumericData(
+        lessonData.nextChapter,
+        1,
+        255
+      );
+      if (!validatedNextLesson || !validatedNextChapter) {
+        return res.status(400).send('Request failed validation');
+      }
+
       // Generate SQL statement
       const statement = `UPDATE "User_Course"
                           SET current_lesson = $1, current_chapter = $2
                           WHERE user_id = $3`;
-      const values = [lessonData.nextLesson, lessonData.nextChapter, user.id];
+      const values = [validatedNextLesson, validatedNextChapter, user.id];
+
+      const statement2 = `UPDATE "User_Lesson"
+                            SET completed = true
+                            FROM "Lesson"
+                            WHERE "User_Lesson".lesson_id = "Lesson".id 
+                            AND "Lesson".name = $1 
+                            AND "User_Lesson".user_id = $2`;
+      const values2 = [validatedNextLesson, user.id];
 
       // Execute SQL statement
-      const result = await pool.query(statement, values);
+      const result1 = await pool.query(statement, values);
+      const result2 = await pool.query(statement2, values2);
 
-      if (result) {
+      if (result1 && result2) {
         res.status(200).json({ success: 'Current Lesson Updated' });
         return;
       }
