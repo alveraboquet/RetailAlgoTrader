@@ -36,8 +36,8 @@ model Session {
 
 model User {
   id               String         @id @default(cuid())
-  name             String?
-  email            String?        @unique
+  name             String?        @db.VarChar(255)
+  email            String?        @db.VarChar(255) @unique
   emailVerified    DateTime?
   image            String?
   accounts         Account[]
@@ -59,7 +59,7 @@ model VerificationToken {
 
 model Chapter {
   id             Int              @id @default(autoincrement())
-  name           String           @unique
+  name           String           @db.VarChar(255) @unique
   Lesson         Lesson[]
   User_Chapter   User_Chapter[]
   Course_Chapter Course_Chapter[]
@@ -67,7 +67,7 @@ model Chapter {
 
 model Lesson {
   id          Int           @id @default(autoincrement())
-  name        String        @unique
+  name        String        @db.VarChar(255) @unique
   chapter_id  Int
   chapter     Chapter       @relation(fields: [chapter_id], references: [id], onDelete: Cascade)
   User_Lesson User_Lesson[]
@@ -95,7 +95,7 @@ model User_Lesson {
 
 model Course {
   id             Int              @id @default(autoincrement())
-  name           String           @unique
+  name           String           @db.VarChar(255) @unique
   pro_course     Boolean
   User_Course    User_Course[]
   Course_Chapter Course_Chapter[]
