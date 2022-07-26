@@ -1,4 +1,5 @@
 import NextAuth from 'next-auth';
+import type { NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import FacebookProvider from 'next-auth/providers/facebook';
 import Auth0Provider from 'next-auth/providers/auth0';
@@ -12,7 +13,7 @@ import {
 
 // https://next-auth.js.org/getting-started/example
 // https://dev.to/ajones_codes/how-to-add-user-accounts-and-paid-subscriptions-to-your-nextjs-website-585e
-export default NextAuth({
+export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
@@ -77,4 +78,6 @@ export default NextAuth({
         });
     },
   },
-});
+};
+
+export default NextAuth(authOptions);

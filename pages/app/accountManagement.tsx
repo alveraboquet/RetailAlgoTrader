@@ -1,7 +1,9 @@
 import LayoutApp from '../../components/layout/layoutApp';
 import { useEffect, useState } from 'react';
-import { getSession, useSession } from 'next-auth/react';
-import { NextPage, NextPageContext } from 'next';
+import { useSession } from 'next-auth/react';
+import { authOptions } from '../api/auth/[...nextauth]';
+import { unstable_getServerSession } from 'next-auth';
+import { GetServerSideProps, NextPage } from 'next';
 import {
   formatAmountFromStripe,
   formatAmountForDisplay,
@@ -210,8 +212,12 @@ const AccountManagement: NextPage = () => {
 export default AccountManagement;
 
 // Export the `session` prop to use sessions with Server Side Rendering
-export async function getServerSideProps(context: NextPageContext) {
-  const session = await getSession(context);
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await unstable_getServerSession(
+    context.req,
+    context.res,
+    authOptions
+  );
 
   if (!session) {
     return {
@@ -225,4 +231,4 @@ export async function getServerSideProps(context: NextPageContext) {
   return {
     props: { session },
   };
-}
+};

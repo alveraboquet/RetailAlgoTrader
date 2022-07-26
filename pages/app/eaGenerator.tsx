@@ -1,6 +1,8 @@
-import { NextPage, NextPageContext } from 'next';
+import { NextPage, GetServerSideProps } from 'next';
 import LayoutApp from '../../components/layout/layoutApp';
-import { getSession, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
+import { authOptions } from '../api/auth/[...nextauth]';
+import { unstable_getServerSession } from 'next-auth';
 import EaTemplateTool from '../../components/eaGenerator/eaTemplateTool';
 import ProSignupBanner from '../../components/pricing/proSignupBanner';
 
@@ -21,8 +23,12 @@ const EaGenerator: NextPage = () => {
 export default EaGenerator;
 
 // Export the `session` prop to use sessions with Server Side Rendering
-export async function getServerSideProps(context: NextPageContext) {
-  const session = await getSession(context);
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await unstable_getServerSession(
+    context.req,
+    context.res,
+    authOptions
+  );
 
   if (!session) {
     return {
@@ -36,4 +42,4 @@ export async function getServerSideProps(context: NextPageContext) {
   return {
     props: { session },
   };
-}
+};

@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import pool from '../../../../db/index';
-import { getSession } from 'next-auth/react';
+import { unstable_getServerSession } from 'next-auth';
+import { authOptions } from '../../auth/[...nextauth]';
 
 /**
  *
@@ -11,7 +12,7 @@ const findCompletedChaptersByUser = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
-  const session = await getSession({ req });
+  const session = await unstable_getServerSession(req, res, authOptions);
   if (session) {
     if (req.method !== 'GET') {
       res.status(405).send({ message: 'Only GET requests allowed' });

@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getSession } from 'next-auth/react';
+import { unstable_getServerSession } from 'next-auth';
 import prisma from '../../../../prisma/sharedClient';
+import { authOptions } from '../../auth/[...nextauth]';
 
 /**
  *
@@ -12,7 +13,7 @@ const getCompletedLessons = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
-  const session = await getSession({ req });
+  const session = await unstable_getServerSession(req, res, authOptions);
   if (session) {
     if (req.method !== 'GET') {
       res.status(405).send({ message: 'Only GET requests allowed' });

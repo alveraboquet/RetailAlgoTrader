@@ -1,8 +1,10 @@
 import PricingTable from '../../components/pricing/pricingTable';
 import LayoutApp from '../../components/layout/layoutApp';
 import PricingText from '../../components/pricing/pricingText';
-import { NextPage, NextPageContext } from 'next';
-import { getSession, useSession } from 'next-auth/react';
+import { NextPage, GetServerSideProps } from 'next';
+import { useSession } from 'next-auth/react';
+import { authOptions } from '../api/auth/[...nextauth]';
+import { unstable_getServerSession } from 'next-auth';
 import { useEffect, useState } from 'react';
 import { handleCheckout } from '../../lib/proSignupHelpers';
 
@@ -83,8 +85,12 @@ const ProSignup: NextPage = () => {
 export default ProSignup;
 
 // Export the `session` prop to use sessions with Server Side Rendering
-export async function getServerSideProps(context: NextPageContext) {
-  const session = await getSession(context);
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await unstable_getServerSession(
+    context.req,
+    context.res,
+    authOptions
+  );
 
   if (!session) {
     return {
@@ -98,4 +104,4 @@ export async function getServerSideProps(context: NextPageContext) {
   return {
     props: { session },
   };
-}
+};

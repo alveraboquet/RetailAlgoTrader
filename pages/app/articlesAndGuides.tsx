@@ -1,7 +1,9 @@
-import type { NextPage, NextPageContext } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 import LayoutApp from '../../components/layout/layoutApp';
 import PostCard from '../../components/post/postCard';
-import { getSession, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
+import { authOptions } from '../api/auth/[...nextauth]';
+import { unstable_getServerSession } from 'next-auth';
 import ProSignupBanner from '../../components/pricing/proSignupBanner';
 
 // Renders blog page with collection of articles and guides
@@ -26,6 +28,7 @@ const ArticlesAndGuides: NextPage = () => {
                 cardText="There is a lot of confusion and inaccurate beliefs around market makers
         and their roles in the market."
                 postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
+                buttonText="Read More"
               />
             </aside>
             <aside className="col-md-4 mb-3">
@@ -38,6 +41,7 @@ const ArticlesAndGuides: NextPage = () => {
                 cardText="There is a lot of confusion and inaccurate beliefs around market makers
         and their roles in the market."
                 postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
+                buttonText="Read More"
               />
             </aside>
             <aside className="col-md-4 mb-3">
@@ -50,6 +54,7 @@ const ArticlesAndGuides: NextPage = () => {
                 cardText="There is a lot of confusion and inaccurate beliefs around market makers
         and their roles in the market."
                 postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
+                buttonText="Read More"
               />
             </aside>
           </div>
@@ -64,6 +69,7 @@ const ArticlesAndGuides: NextPage = () => {
                 cardText="There is a lot of confusion and inaccurate beliefs around market makers
         and their roles in the market."
                 postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
+                buttonText="Read More"
               />
             </aside>
             <aside className="col-md-4 mb-3">
@@ -76,6 +82,7 @@ const ArticlesAndGuides: NextPage = () => {
                 cardText="There is a lot of confusion and inaccurate beliefs around market makers
         and their roles in the market."
                 postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
+                buttonText="Read More"
               />
             </aside>
             <aside className="col-md-4 mb-3">
@@ -88,6 +95,7 @@ const ArticlesAndGuides: NextPage = () => {
                 cardText="There is a lot of confusion and inaccurate beliefs around market makers
         and their roles in the market."
                 postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
+                buttonText="Read More"
               />
             </aside>
           </div>
@@ -100,8 +108,12 @@ const ArticlesAndGuides: NextPage = () => {
 export default ArticlesAndGuides;
 
 // Export the `session` prop to use sessions with Server Side Rendering
-export async function getServerSideProps(context: NextPageContext) {
-  const session = await getSession(context);
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await unstable_getServerSession(
+    context.req,
+    context.res,
+    authOptions
+  );
 
   if (!session) {
     return {
@@ -115,4 +127,4 @@ export async function getServerSideProps(context: NextPageContext) {
   return {
     props: { session },
   };
-}
+};
