@@ -45,11 +45,8 @@ const updateCurrentLesson = async (
 
       const statement2 = `UPDATE "User_Lesson"
                             SET completed = true
-                            FROM "Lesson"
-                            WHERE "User_Lesson".lesson_id = "Lesson".id 
-                            AND "Lesson".name = $1 
-                            AND "User_Lesson".user_id = $2`;
-      const values2 = [validatedNextLesson, user.id];
+                            WHERE lesson_id = $1`;
+      const values2 = [lessonData.currentLessonId];
 
       // Execute SQL statement
       const result1 = await pool.query(statement, values);
