@@ -12,6 +12,7 @@ import CallToAction from '../../components/post/callToAction';
     height={1288}
     width={2326}
     alt=""
+    priority
   />
 </figure>
 
@@ -131,4 +132,14 @@ RetailAlgoTrader.
 However, there are lots of great resources out there to learn how to trade. Some are better than others so be sure whatever
 resource you choose it is a quality product that covers all of the necessary topics.
 
-export default ({ children }) => <LayoutPost>{children}</LayoutPost>;
+export default ({ children }) => (
+  <LayoutPost
+    url="https://retailalgotrader/posts/mistakeAllNewRetailTradersShouldAvoid"
+    title="Mistake that all new retail traders should avoid"
+    description="Many prospective traders make a huge mistake at the beginning of their journey. If you can avoid this 
+      mistake it will save you significant money and time."
+    image="https://retailalgotrader/images/posts/whatAreMarketMakers/MarketMaker-Cover.webp"
+  >
+    {children}
+  </LayoutPost>
+);

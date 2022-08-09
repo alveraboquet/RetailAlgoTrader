@@ -20,8 +20,100 @@
 .lessonBody {
   height: 100%;
   overflow-y: auto;
+  font-size: 1.25rem;
+  line-height: 2rem;
+  overflow-wrap: break-word;
+  padding-bottom: 2rem;
+}
+
+.lessonBody h1 {
+  text-align: center;
+  line-height: 3rem;
+  margin-bottom: 2.5rem;
+}
+
+.lessonBody figure {
+  width: 90%;
+  margin: auto;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+}
+
+.lessonBody figcaption {
+  text-align: center;
+  color: grey;
+}
+
+.lessonBody h1,
+.lessonBody h2,
+.lessonBody h3,
+.lessonBody h4,
+.lessonBody h5,
+.lessonBody h6 {
+  margin-top: 2.5rem;
+  font-weight: bold;
+}
+
+.lessonBody code {
+  background-color: whitesmoke;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 0 0.2rem;
+}
+
+.code {
+  background-color: whitesmoke;
+  padding: 2rem;
+  border-radius: 1rem;
+  overflow: auto;
+  border: 1px solid lightgray;
+  margin-bottom: 1rem;
+}
+
+.code code {
+  background-color: none;
+  border: none;
+  border-radius: none;
+  padding: 0;
+}
+
+.code * {
+  margin-right: 2rem;
 }
 
 .footerHeight {
   height: 60px;
+}
+
+@media (max-width: 600px) {
+  .lessonBody {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .lessonBody h1 {
+    margin: 1rem 0;
+  }
+
+  .lessonBody h1,
+  .lessonBody h2,
+  .lessonBody h3,
+  .lessonBody h4,
+  .lessonBody h5,
+  .lessonBody h6 {
+    margin-top: 1rem;
+    font-weight: bold;
+  }
+
+  .lessonBody figure {
+    margin: auto;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .lessonBody figcaption {
+    text-align: center;
+    color: grey;
+    font-size: 1rem;
+  }
 }
