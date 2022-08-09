@@ -1,6 +1,5 @@
 // with Nextjs 12.2.2 the below eslint rule no longer applies.
 // https://nextjs.org/docs/messages/nested-middleware
-// eslint-disable-next-line @next/next/no-server-import-in-page
 import { NextRequest, NextResponse } from 'next/server';
 
 /**

@@ -1,5 +1,6 @@
 import alert from './alert';
 import validator from 'validator';
+import { validateAlphaData, validateEmail } from '../lib/validateData';
 
 /**
  *
@@ -103,28 +104,9 @@ export const changeAccountInfo = async (event: React.FormEvent) => {
     if (validator.isEmpty(newEmail)) {
       newEmail = inputs.newEmail.placeholder;
     }
-    // verify user input for name field
-    if (
-      validator.isLength(newName, { min: 1, max: 20 }) &&
-      validator.isAlpha(newName)
-    ) {
-      newName = validator.trim(newName);
-      newName = validator.escape(newName);
-    } else {
-      return false;
-    }
-    // verify user input for email field
-    if (
-      validator.isEmail(newEmail) &&
-      validator.isLength(newEmail, { min: 1, max: 200 })
-    ) {
-      const newNormalizedEmail = validator.normalizeEmail(newEmail);
-      if (!newNormalizedEmail) return false; // returns false if normalization process fails
-      newEmail = validator.trim(newNormalizedEmail);
-      newEmail = validator.escape(newNormalizedEmail);
-    } else {
-      return false;
-    }
+    const validatedNewName = validateAlphaData(newName, 1, 255);
+    const validatedNewEmail = validateEmail(newEmail, 1, 255);
+    if (!validatedNewName || !validatedNewEmail) return false;
     // submit new account into to API route
     const res = await fetch('/api/app/user/changeAccountDetails', {
       method: 'PUT',
@@ -132,8 +114,8 @@ export const changeAccountInfo = async (event: React.FormEvent) => {
         'X-Custom-Header': 'lollipop',
       },
       body: JSON.stringify({
-        newName: newName,
-        newEmail: newEmail,
+        newName: validatedNewName,
+        newEmail: validatedNewEmail,
       }),
     });
     if (res.status === 200) {

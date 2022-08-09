@@ -6,6 +6,7 @@ interface Props {
   nextChapter: string;
   prevLesson: string;
   nextLesson: string;
+  currentLessonId: number;
 }
 
 // Footer component for lesson pages
@@ -15,6 +16,7 @@ const FooterLesson = ({
   nextChapter,
   prevLesson,
   nextLesson,
+  currentLessonId,
 }: Props) => {
   // Update completed lesson in database
   const updateCurrentLesson = async () => {
@@ -30,6 +32,7 @@ const FooterLesson = ({
           nextChapter,
           prevLesson,
           nextLesson,
+          currentLessonId,
         }),
       });
       if (res.status !== 200) {

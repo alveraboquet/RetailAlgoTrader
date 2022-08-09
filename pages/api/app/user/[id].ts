@@ -1,9 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { unstable_getServerSession } from 'next-auth';
 import pool from '../../../../db/index';
-import { getSession } from 'next-auth/react';
+import { validateAlphaNumericData } from '../../../../lib/validateData';
+import { authOptions } from '../../auth/[...nextauth]';
 
+// Not currently used
 const findUserById = async (req: NextApiRequest, res: NextApiResponse) => {
-  const session = await getSession({ req });
+  const session = await unstable_getServerSession(req, res, authOptions);
   if (session) {
     if (req.method !== 'GET') {
       res.status(405).send({ message: 'Only GET requests allowed' });
@@ -12,20 +15,30 @@ const findUserById = async (req: NextApiRequest, res: NextApiResponse) => {
       const {
         query: { id },
       } = req;
-      // Generate SQL statement
-      const statement = `SELECT name
-                           FROM "User"
-                           WHERE id = $1`;
-      const values = [id];
+      if (typeof id === 'string') {
+        // Validate user id
+        const validatedUserId = validateAlphaNumericData(id, 1, 255);
+        if (!validatedUserId) {
+          return res.status(400).send('Request failed validation');
+        }
 
-      // Execute SQL statement
-      const result = await pool.query(statement, values);
+        // Generate SQL statement
+        const statement = `SELECT name
+                              FROM "User"
+                              WHERE id = $1`;
+        const values = [validatedUserId];
 
-      if (result.rows?.length) {
-        res.status(200).json(result.rows[0]);
+        // Execute SQL statement
+        const result = await pool.query(statement, values);
+
+        if (result.rows?.length) {
+          res.status(200).json(result.rows[0]);
+        }
+
+        return null;
+      } else {
+        res.status(400).send('id must be string');
       }
-
-      return null;
     } catch (err) {
       if (typeof err === 'string') {
         throw new Error(err);

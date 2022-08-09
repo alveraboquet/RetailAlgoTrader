@@ -4,7 +4,6 @@ import {
 } from '../../lib/accountManagementHelpers';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
-import validator from 'validator';
 import CheckBeforeDeleteForm from './checkBeforeDeleteForm';
 
 /**
@@ -30,15 +29,7 @@ const CheckBeforeDeleteModal = (confirmationString: {
       };
     }
     const inputs = (e.target as FormInputs).elements;
-    let userInput = inputs.userInput.value;
-    if (
-      validator.isLength(userInput, { min: 1, max: 30 }) &&
-      !validator.isEmpty(userInput) &&
-      validator.isAlphanumeric(userInput)
-    ) {
-      userInput = validator.trim(userInput);
-      userInput = validator.escape(userInput);
-    }
+    const userInput = inputs.userInput.value;
     const stringsMatch = checkBeforeDelete(
       confirmationString.confirmationString,
       userInput

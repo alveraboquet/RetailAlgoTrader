@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { unstable_getServerSession } from 'next-auth';
 import Stripe from 'stripe';
-import { getSession } from 'next-auth/react';
 import { SubscriptionWithPlan } from '../../../../types/stripe';
+import { authOptions } from '../../auth/[...nextauth]';
 
 // Loads Stripe package for Node environment
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
@@ -20,7 +21,7 @@ export default async function retrieveCustomer(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const session = await getSession({ req });
+  const session = await unstable_getServerSession(req, res, authOptions);
 
   if (session) {
     if (req.method !== 'GET') {

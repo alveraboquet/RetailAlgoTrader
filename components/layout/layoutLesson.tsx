@@ -14,6 +14,7 @@ interface Props {
   nextChapter: string;
   prevLesson: string;
   nextLesson: string;
+  currentLessonId: number;
 }
 
 // Layout component for lesson pages
@@ -66,6 +67,7 @@ const LayoutLesson = (props: Props) => {
             nextChapter={props.nextChapter}
             prevLesson={props.prevLesson}
             nextLesson={props.nextLesson}
+            currentLessonId={props.currentLessonId}
           />
         </div>
       </div>

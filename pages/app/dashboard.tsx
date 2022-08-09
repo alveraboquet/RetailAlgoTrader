@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useSession, getSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import LayoutApp from '../../components/layout/layoutApp';
-import { NextPage, NextPageContext } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
+import { authOptions } from '../api/auth/[...nextauth]';
+import { unstable_getServerSession } from 'next-auth';
 import CourseCard from '../../components/course/courseCard';
 import coursesData from '../../components/landingPages/coursesData';
 import ProSignupBanner from '../../components/pricing/proSignupBanner';
@@ -13,6 +15,7 @@ import {
   fetchCompletedChapters,
   percentCompleteByCourse,
 } from '../../lib/dashboardHelpers';
+import DOMPurify from 'isomorphic-dompurify';
 
 // Renders user dashboard page
 const Dashboard: NextPage = () => {
@@ -47,9 +50,9 @@ const Dashboard: NextPage = () => {
       <div className="mt-3 mt-md-0">
         <ProSignupBanner isPro={session?.user.isPro} />
       </div>
-      {session?.user && (
+      {session?.user.name && (
         <p className="text-end">
-          Signed in as {session.user?.name ?? session.user.email}
+          Signed in as {DOMPurify.sanitize(session.user.name)}
         </p>
       )}
       <h1>Course Catalog</h1>
@@ -202,8 +205,12 @@ const Dashboard: NextPage = () => {
 export default Dashboard;
 
 // Export the `session` prop to use sessions with Server Side Rendering
-export async function getServerSideProps(context: NextPageContext) {
-  const session = await getSession(context);
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await unstable_getServerSession(
+    context.req,
+    context.res,
+    authOptions
+  );
 
   if (!session) {
     return {
@@ -217,4 +224,4 @@ export async function getServerSideProps(context: NextPageContext) {
   return {
     props: { session },
   };
-}
+};
