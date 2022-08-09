@@ -40,7 +40,7 @@ That's a 600% return over four years or an annual average return of 150%. That's
 
 Many traders can consistently make 3-4% a week.
 
-<figure className="centerFigure">
+<figure>
   <Image
     src="/images/posts/possibleToSucceedAsRetailTrader/equityCurve.webp"
     height={650}
@@ -163,4 +163,14 @@ their possible return.
 If you spend the time and energy to truly understand the markets and how you can extract some profit then it is completely
 possible to be a successful retail trader.
 
-export default ({ children }) => <LayoutPost>{children}</LayoutPost>;
+export default ({ children }) => (
+  <LayoutPost
+    url="https://retailalgotrader/posts/isItActuallyPossibleToSucceedAsARetailTrader"
+    title="Is it actually possible to succeed as a retail algo trader?"
+    description="Discover how retail algorithmic traders can actually be profitable over the long-term and compete with 
+      hedge funds."
+    image="https://retailalgotrader/images/posts/whatAreMarketMakers/MarketMaker-Cover.webp"
+  >
+    {children}
+  </LayoutPost>
+);
