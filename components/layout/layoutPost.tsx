@@ -2,6 +2,8 @@ import Header from '../header/header';
 import Footer from '../footer/footer';
 import React from 'react';
 import SEO from '../SEO/seo';
+import JumpTopButton from '../post/jumpTopButton';
+import styles from '../../styles/LayoutPost.module.css';
 
 interface Props {
   children: React.ReactNode;
@@ -18,18 +20,18 @@ const LayoutPost = (props: Props) => {
     <div>
       <SEO
         url={props.url}
-        openGraphType="website"
-        schemaType="website"
+        openGraphType="article"
+        schemaType="article"
         title={props.title}
         description={props.description}
         image={props.image}
       />
+      <JumpTopButton />
+      <div id="top"></div>
       <Header />
-      <div className="container">
-        <article className="row fs-5 m-2">
-          <div className="container p-0 p-md-5 pt-md-3 pb-md-3">
-            {props.children}
-          </div>
+      <div className={`${styles.postContainer}`}>
+        <article className={styles.post}>
+          <div>{props.children}</div>
         </article>
       </div>
       <Footer />

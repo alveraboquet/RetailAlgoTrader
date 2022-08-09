@@ -1,0 +1,89 @@
+.postContainer {
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 3rem;
+}
+
+.post {
+  font-size: 1.25rem;
+  line-height: 2rem;
+  overflow-wrap: break-word;
+}
+
+.post h1 {
+  text-align: center;
+  line-height: 3rem;
+}
+
+.post figure {
+  width: 90%;
+  margin: auto;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+}
+
+.post figcaption {
+  text-align: center;
+  color: grey;
+}
+
+.post h1,
+.post h2,
+.post h3,
+.post h4,
+.post h5,
+.post h6 {
+  margin-top: 2.5rem;
+  font-weight: bold;
+}
+
+.post code {
+  background-color: whitesmoke;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 0 0.2rem;
+}
+
+.code {
+  background-color: whitesmoke;
+  padding: 2rem;
+  border-radius: 1rem;
+  overflow: auto;
+  border: 1px solid lightgray;
+  margin-bottom: 1rem;
+}
+
+.code code {
+  background-color: none;
+  border: none;
+  border-radius: none;
+  padding: 0;
+}
+
+.code * {
+  margin-right: 2rem;
+}
+
+@media (max-width: 600px) {
+  .postContainer {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .post h1 {
+    margin-top: 0;
+  }
+
+  .post figure {
+    margin: auto;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  .post figcaption {
+    text-align: center;
+    color: grey;
+    font-size: 1rem;
+  }
+}

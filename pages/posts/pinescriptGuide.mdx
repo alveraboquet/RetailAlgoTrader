@@ -1,24 +1,29 @@
 import LayoutPost from '../../components/layout/layoutPost';
 import Image from 'next/image';
 import CallToAction from '../../components/post/callToAction';
+import styles from '../../styles/LayoutPost.module.css';
 
 <h1 className="text-center mt-3 mt-md-5 fw-bold text-dark">Pinescript Guide</h1>
 
 <CallToAction />
 
-## **What is Pinescript?**
+## What is Pinescript?
 
 Pinescript is TradingView's proprietary coding language. It is a lightweight language designed to allow quick and easy creation
-of strategies and indicators within TradingView's trading platform. A huge advantage of Pinescript is you can then backtest
-your strategies using TradingView's data pipeline. This saves significant time and energy over coding your own backtesting
-engine in Python or something similar. The downside of this is that you are limited to TradingView's platform, assets, and
-data. While TradingView has the vast majority of assets you could wish to trade it is still possible to run into issues where
+of strategies and indicators within TradingView's trading platform.
+
+A huge advantage of Pinescript is you can then backtest your strategies using TradingView's data pipeline. This saves significant
+time and energy over coding your own backtesting engine in Python or something similar. The downside of this is that you are
+limited to TradingView's platform, assets, and data.
+
+While TradingView has the vast majority of assets you could wish to trade it is still possible to run into issues where
 you they do not have the necessary asset or data.
 
 Another downside is that Pinescript is cloud-based. This means TradingView places limits on how much data and resources your
-program can use. This is why Pinescript is ideal for custom indicators or simple strategies. If you are interested in creating
-a complex strategy that requires significant data for analysis and backtesting you are better off with an option such as
-Quantconnect or Python.
+program can use. This is why Pinescript is ideal for custom indicators or simple strategies.
+
+If you are interested in creating a complex strategy that requires significant data for analysis and backtesting you are better
+off with an option such as Quantconnect or Python.
 
 Pinescript allows you to create three different trading tools:
 
@@ -28,7 +33,7 @@ Pinescript allows you to create three different trading tools:
 
 We will spend half of this guide looking at Pinescript indicators and the other half looking at Pinescript strategies.
 
-## **Goals of this guide**
+## Goals of this guide
 
 - Understand how to read and write Pinescript
 - Discover how to backtest using Pinescript
@@ -36,14 +41,15 @@ We will spend half of this guide looking at Pinescript indicators and the other 
 - Create own indicator
 - Develop own trading strategy and backtest it
 
-## **TradingView Indicators**
+## TradingView Indicators
 
 TradingView scripts are the name of indicators and strategies coded using Pinescript. If you have spent any time in TradingView
-you have almost certainly used some of their built-in indicators. The vast majority of these indicators are coded using
-Pinescript. By understanding Pinescript you can evaluate and adjust the inner workings of these indicators to fine-tune your
-strategy.
+you have almost certainly used some of their built-in indicators.
 
-### **Taking a look at the Bollinger Band indicator**
+The vast majority of these indicators are coded using Pinescript. By understanding Pinescript you can evaluate and adjust the
+inner workings of these indicators to fine-tune your strategy.
+
+### Taking a look at the Bollinger Band indicator
 
 As we go through this guide we encourage you to follow-along. This will ensure maximum retention of the content and best
 prepare you to create your own scripts.
@@ -52,7 +58,7 @@ prepare you to create your own scripts.
 
 Below we have opened a daily chart of Microsoft (MSFT).
 
-<figure className="centerFigure">
+<figure>
   <Image
     src="/images/posts/pinescriptGuide/MSFTBlank.webp"
     height={2160}
@@ -62,11 +68,11 @@ Below we have opened a daily chart of Microsoft (MSFT).
   <figcaption>Blank MSFT chart</figcaption>
 </figure>
 
-At the top click on _Indicators_ and type _Bollinger Bands_. A couple of options will pop up separated by Technicals and
-Community Scripts (these are scripts created by individual traders such as yourself). Click on the plain _Bollinger Bands_
+At the top click on `Indicators` and type `Bollinger Bands`. A couple of options will pop up separated by Technicals and
+Community Scripts (these are scripts created by individual traders such as yourself). Click on the plain `Bollinger Bands`
 under technicals.
 
-<figure className="centerFigure">
+<figure>
   <Image
     src="/images/posts/pinescriptGuide/MSFTBBands.webp"
     height={2160}
@@ -78,10 +84,12 @@ under technicals.
 
 You should now see the Bollinger Bands showing on your chart. (If you are unfamiliar with bollinger bands you can read up on
 them [here](investopedia.com/terms/b/bollingerbands.asp). From here click on the three dots on the indicator line in the top
-left. Then click _Source code..._ and you should see the Pinescript code for the Bollinger Bands indicator pop up at the
-bottom under _Pine Editor_.
+left.
 
-<figure className="centerFigure">
+Then click `Source code...` and you should see the Pinescript code for the Bollinger Bands indicator pop up at the
+bottom under `Pine Editor`.
+
+<figure>
   <Image
     src="/images/posts/pinescriptGuide/BBandsCode.webp"
     height={2160}
@@ -103,12 +111,12 @@ specific to Pinescript:
 Due to these built-in advantages of the Pine Editor we recommend writing Pinescript code in the Pine Editor rather than a
 third-party code editor.
 
-#### **Evaluating the Bollinger Band indicator code**
+#### Evaluating the Bollinger Band indicator code
 
 // creates comments in Pinescript. We have added comments to the Bollinger Band source code below to explain what each line
 means. The comments are in black and the source code is in red.
 
-<div className='border p-2 mb-2'>
+<div className={styles.code}>
 
 ```
 //This is simply a comment indicating to TradingView and the user which
@@ -203,16 +211,19 @@ fill(p1, p2, title = "Background", color=color.rgb(33, 150, 243, 95))
 </div>
 
 That was a lot of information that you were probably not very familiar with. Spend some time reviewing the source code, our
-comments, and the documentation with ctrl+click. If you are able to understand how all these lines of code relate then you know
-enough to stumble your way through most Pinescript.
+comments, and the documentation with ctrl+click.
+
+If you are able to understand how all these lines of code relate then you know enough to stumble your way through most Pinescript.
 
 ### Creating our own custom indicator
 
 Before diving into creating your own indicator be sure to check TradingView's built-in indicators as well as the community
-indicators. Somebody may have already created what you are looking for. Start by clicking on Pine Editor at the bottom of your
-screen. This should open up an Untitled script with the following lines of code:
+indicators. Somebody may have already created what you are looking for.
 
-<div className='border p-2 mb-2'>
+Start by clicking on Pine Editor at the bottom of your screen. This should open up an Untitled script with the following lines
+of code:
+
+<div className={styles.code}>
 
 ```
 // This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
@@ -226,11 +237,12 @@ plot(close)
 </div>
 
 We will be creating the RSI oscillator line by line to see what creating our own indicator would look like. If you are
-unfamiliar with RSI or need a refresher check out this [article](investopedia.com/terms/r/rsi.asp) from Investopedia. First you
-need to give the indicator a name and some default values. If you are unsure what arguments indicator takes you can ctrl+click
-on _"indicator"_ in the Pine Editor to open the interactive reference manual.
+unfamiliar with RSI or need a refresher check out this [article](investopedia.com/terms/r/rsi.asp) from Investopedia.
 
-<div className='border p-2 mb-2'>
+First you need to give the indicator a name and some default values. If you are unsure what arguments indicator takes you can
+ctrl+click on `indicator` in the Pine Editor to open the interactive reference manual.
+
+<div className={styles.code}>
 
 ```
 // This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
@@ -245,7 +257,7 @@ plot(close)
 
 RSI has two lines. The RSI line and the MA line. We will give the user six options to choose for their MA line.
 
-<div className='border p-2 mb-2'>
+<div className={styles.code}>
 
 ```
 // This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
@@ -268,13 +280,14 @@ ma(source, length, type) =>
 
 </div>
 
-### **Taking a look at an existing TradingView strategy**
+### Taking a look at an existing TradingView strategy
 
-By clicking on _"Indicator"_ then _"Technicals"_ and then filtering to _"strategies"_ you can see many built-in strategies. These
-are strategies based upon technical indicators and are typically fairly basic. However, that does not mean they are not
-effective and they also serve as a great starting point for your own strategy.
+By clicking on `Indicator` then `Technicals` and then filtering to `strategies` you can see many built-in strategies. These
+are strategies based upon technical indicators and are typically fairly basic.
 
-<figure className="centerFigure">
+However, that does not mean they are not effective and they also serve as a great starting point for your own strategy.
+
+<figure>
   <Image
     src="/images/posts/pinescriptGuide/SelectingStrategy.webp"
     height={2160}
@@ -284,16 +297,18 @@ effective and they also serve as a great starting point for your own strategy.
   <figcaption className="text-secondary">Opening Pine Editor</figcaption>
 </figure>
 
-Go ahead and select the _"MovingAvg Cross"_ strategy. The Strategy Tester tab should automatically open up. The Strategy Tester
+Go ahead and select the `MovingAvg Cross` strategy. The Strategy Tester tab should automatically open up. The Strategy Tester
 tab has three tabs: Overview, Performance Summary, List of Trades.
 
-#### **Overview**
+#### Overview
 
 The overview tab shows a big-picture summary of the strategy's performance. When you load a strategy onto a chart
-TradingView will automatically backtest that strategy on whatever chart you have open. For example, we have the daily MSFT
-chart open so TradingView testing the MovingAvg Cross strategy on this chart all the way back to 1986.
+TradingView will automatically backtest that strategy on whatever chart you have open.
 
-<figure className="centerFigure">
+For example, we have the daily MSFT chart open so TradingView testing the MovingAvg Cross strategy on this chart all the way
+back to 1986.
+
+<figure>
   <Image
     src="/images/posts/pinescriptGuide/StrategyTester.webp"
     height={2160}
@@ -320,12 +335,15 @@ if you closed out of all of your open trades) vs your drawdown (Max equity - cur
 
 On the left axis is the account equity and on the right axis is the drawdown. As the account equity (blue area) increases,
 the drawdown (red area) will decrease. Vice versa as the account equity (blue area) decreases the drawdown (red area) will
-increase. Looking at our example strategy you can see that for the first 1000 trades the strategy started out well. The
-account equity increased while the drawdown stayed at 0. However, after 1000 trades the strategy began to perform poorly. As
-the account equity decreases the drawdown increases proportionally until the final account equity of $999,900.98 and final
+increase.
+
+Looking at our example strategy you can see that for the first 1000 trades the strategy started out well. The
+account equity increased while the drawdown stayed at 0. However, after 1000 trades the strategy began to perform poorly.
+
+As the account equity decreases the drawdown increases proportionally until the final account equity of $999,900.98 and final
 drawdown of $185.13.
 
-#### **Performance summary**
+#### Performance summary
 
 This tab holds in-depth statistics of the strategy. After testing a strategy you will want to evaluate all of these metrics to
 get a proper understanding of your strategy's performance. If you are unfamiliar with some of these metrics check out this
@@ -336,7 +354,7 @@ You will also see three icons in the top left of Strategy Tester next to the nam
 clock, and a download button. We will discuss the gear and alarm clock shortly. The download button can be used to download
 the performance summary to a .csv file if you have a premium plan.
 
-<figure className="centerFigure">
+<figure>
   <Image
     src="/images/posts/pinescriptGuide/StrategyTesterPerformance.webp"
     height={2160}
@@ -348,7 +366,7 @@ the performance summary to a .csv file if you have a premium plan.
   </figcaption>
 </figure>
 
-#### **List of trades**
+#### List of trades
 
 This tab lists every single trade that the strategy took while undergoing backtesting. It includes the following information:
 
@@ -362,7 +380,7 @@ This tab lists every single trade that the strategy took while undergoing backte
 - Run-up (how much profit you would have made if you had sold at the price peak while your trade was open)
 - Drawdown
 
-<figure className="centerFigure">
+<figure>
   <Image
     src="/images/posts/pinescriptGuide/StrategyTesterTradeList.webp"
     height={2160}
@@ -380,32 +398,38 @@ This tab has two major purposes:
 2. It allows you to download all of the trades in a CSV file that can then be used for in-depth analysis with Excel, Python,
    or something similar
 
-#### **Settings**
+#### Settings
 
 By clicking the gear icon in the top left of the Strategy Tester you can adjust the settings and inputs of the strategy.
 
-##### **Inputs**
+##### Inputs
 
 The inputs tab contains two adjustable inputs for the strategy:
 
-- Length: This is how many bars the indicator takes in when plotting
-- ConfirmBars: This is how many bars the indicator requires for confirmation before issuing a trading signal. For example, with
-  the default of 1 then the strategy will issue a trading signal as soon as the moving average crossover occurs. If we adjust
-  the ConfirmBars input to 3 then the trading signal will wait 3 bars after the moving average crossover before issuing a
-  trading signal. If the moving average crossover reverts/crosses back the other direction during those 3 bars no trading
-  signal will be issued.
+###### Length
 
-##### **Properties**
+This is how many bars the indicator takes in when plotting.
 
-##### **Style**
+###### ConfirmBars
 
-##### **Visibility**
+This is how many bars the indicator requires for confirmation before issuing a trading signal. For example, with
+the default of 1 then the strategy will issue a trading signal as soon as the moving average crossover occurs.
 
-#### **Alerts**
+If we adjust the ConfirmBars input to 3 then the trading signal will wait 3 bars after the moving average crossover before
+issuing a trading signal. If the moving average crossover reverts/crosses back the other direction during those 3 bars no
+trading signal will be issued.
 
-### **Creating our own custom strategy**
+##### Properties
 
-#### **Backtesting our strategy**
+##### Style
+
+##### Visibility
+
+#### Alerts
+
+### Creating our own custom strategy
+
+#### Backtesting our strategy
 
 ### Publishing our script to TradingView's community
 
@@ -413,7 +437,7 @@ We will not spend too much time on this topic as it does not directly affect you
 or script with the TradingView community that is certainly an option. Review [TradingView's script publishing rules](tradingview.com/house-rules/?solution=43000590599)
 to ensure you do not violate any rules.
 
-## **Additional resources**
+## Additional resources
 
 This guide is a great foundation for your Pinescript knowledge. Feel free to use our created indicator and strategy as a
 template while developing your own indicators or strategies. However, there is simply too much Pinescript content to cover in
@@ -422,4 +446,14 @@ one guide. If you want to learn more or run into issues while developing your ow
 - [Pine User Manual:](tradingview.com/pine-script-docs/en/v5/index.html) This contains comprehensive info on Pinescript
 - [Pine Reference Manual:](tradingview.com/pine-script-reference/v5/) This specifies what each variable, function, or Pine keyword does
 
-export default ({ children }) => <LayoutPost>{children}</LayoutPost>;
+export default ({ children }) => (
+  <LayoutPost
+    url="https://retailalgotrader/posts/pinescriptGuide"
+    title="Introductory guide to Pinescript"
+    description="Everything you need to know to get started with Pinescript on TradingView. Discover how to create your own 
+      trading algorithms, backtest them on free data, and launch them for live trading."
+    image="https://retailalgotrader/images/posts/whatAreMarketMakers/MarketMaker-Cover.webp"
+  >
+    {children}
+  </LayoutPost>
+);

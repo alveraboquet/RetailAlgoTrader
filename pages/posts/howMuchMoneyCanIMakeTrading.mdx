@@ -12,6 +12,7 @@ import CallToAction from '../../components/post/callToAction';
     height={1288}
     width={2326}
     alt=""
+    priority
   />
 </figure>
 
@@ -25,7 +26,7 @@ markets slingshot back. And then the meme-stocks took over.
 During all of this, people were desperate to take advantage of the crazy volatility. Many people's equity curve most likely
 looked like the below image.
 
-<figure className="centerFigure">
+<figure>
   <Image
     src="/images/posts/howMuchMoney/sampleEquityCurve.webp"
     height={572}
@@ -117,7 +118,7 @@ strategies.
 
 Paper trading is one of the most valuable tools in a trader's arsenal.
 
-<figure className="centerFigure">
+<figure>
   <Image
     src="/images/posts/howMuchMoney/tradingViewPaperTrading.webp"
     height={668}
@@ -130,7 +131,7 @@ Paper trading is one of the most valuable tools in a trader's arsenal.
 In addition to paper trading accounts, there are proprietary trading firms. Proprietary trading firms (more commonly known
 as prop firms) allow you to trade with the firm's money in exchange for a cut of the profits.
 
-<figure className="centerFigure">
+<figure>
   <Image
     src="/images/posts/howMuchMoney/FTMO.webp"
     height={587}
@@ -153,4 +154,13 @@ sure to do your research as there are many scams and unethical prop firms out th
 
 Hopefully this gave you a realistic expectation of how much you can make trading and how to build up your trading capital.
 
-export default ({ children }) => <LayoutPost>{children}</LayoutPost>;
+export default ({ children }) => (
+  <LayoutPost
+    url="https://retailalgotrader/posts/howMuchMoneyCanIMakeTrading"
+    title="How much money can I make trading?"
+    description="Discover how much a retail trader can realistically expect to earn."
+    image="https://retailalgotrader/images/posts/whatAreMarketMakers/MarketMaker-Cover.webp"
+  >
+    {children}
+  </LayoutPost>
+);

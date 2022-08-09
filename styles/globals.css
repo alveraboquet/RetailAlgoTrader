@@ -33,14 +33,3 @@ dd {
   margin-left: auto;
   margin-right: auto;
 }
-
-.centerFigure {
-  width: 90%;
-  margin: auto !important;
-  margin-bottom: 16px !important;
-}
-
-figcaption {
-  text-align: center;
-  color: grey;
-}
