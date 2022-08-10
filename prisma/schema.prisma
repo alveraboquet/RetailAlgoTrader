@@ -60,9 +60,10 @@ model VerificationToken {
 model Chapter {
   id             Int              @id @default(autoincrement())
   name           String           @db.VarChar(255) @unique
-  Lesson         Lesson[]
+  course_id      Int              
+  course         Course           @relation(fields: [course_id], references: [id], onDelete: Cascade)
+  lesson         Lesson[]         
   User_Chapter   User_Chapter[]
-  Course_Chapter Course_Chapter[]
 }
 
 model Lesson {
@@ -98,7 +99,7 @@ model Course {
   name           String           @db.VarChar(255) @unique
   pro_course     Boolean
   User_Course    User_Course[]
-  Course_Chapter Course_Chapter[]
+  chapter        Chapter[]
 }
 
 model User_Course {
@@ -112,13 +113,4 @@ model User_Course {
   course    Course  @relation(fields: [course_id], references: [id], onDelete: Cascade)
 
   @@id([user_id, course_id])
-}
-
-model Course_Chapter {
-  course_id  Int
-  chapter_id Int
-  course     Course  @relation(fields: [course_id], references: [id], onDelete: Cascade)
-  chapter    Chapter @relation(fields: [chapter_id], references: [id], onDelete: Cascade)
-
-  @@id([course_id, chapter_id])
 }
