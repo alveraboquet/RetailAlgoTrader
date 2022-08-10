@@ -20,12 +20,12 @@ const findCompletedChaptersByUser = async (
     try {
       const { user } = session;
       // Generate SQL statement
-      const statement = `SELECT "User_Chapter".chapter_id, "User_Chapter".completed, "Course_Chapter".course_id
+      const statement = `SELECT "User_Chapter".chapter_id, "User_Chapter".completed, "Chapter".course_id
                            FROM "User_Chapter"
-                           INNER JOIN "Course_Chapter"
-                           ON "User_Chapter".chapter_id = "Course_Chapter".chapter_id
+                           INNER JOIN "Chapter"
+                           ON "User_Chapter".chapter_id = "Chapter".id
                            WHERE "User_Chapter".user_id = $1
-                           ORDER BY "Course_Chapter".course_id DESC`;
+                           ORDER BY "Chapter".course_id DESC`;
       const values = [user.id];
 
       // Execute SQL statement
