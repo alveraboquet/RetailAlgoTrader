@@ -60,8 +60,6 @@ const Dashboard: NextPage = () => {
         <div className="col-12 col-md-4">
           <CourseCard
             imagePath={coursesData.tradingAcademy.imagePath}
-            imageHeight={1414}
-            imageWidth={2121}
             imageAlt=""
             cardTitle={coursesData.tradingAcademy.title}
             cardText={coursesData.tradingAcademy.shortDescription}
@@ -86,8 +84,6 @@ const Dashboard: NextPage = () => {
         <div className="col-12 col-md-4 mt-4 mt-md-0">
           <CourseCard
             imagePath={coursesData.algorithmicTradingAcademy.imagePath}
-            imageHeight={1055}
-            imageWidth={1920}
             imageAlt=""
             cardTitle={coursesData.algorithmicTradingAcademy.title}
             cardText={coursesData.algorithmicTradingAcademy.shortDescription}
@@ -116,8 +112,6 @@ const Dashboard: NextPage = () => {
         <div className="col-12 col-md-4 mt-4 mt-md-0">
           <CourseCard
             imagePath={coursesData.equitiesAndCryptoWithTradingview.imagePath}
-            imageHeight={358}
-            imageWidth={1304}
             imageAlt=""
             cardTitle={coursesData.equitiesAndCryptoWithTradingview.title}
             cardText={
@@ -140,8 +134,6 @@ const Dashboard: NextPage = () => {
         <div className="col-12 col-md-4 mt-4 mt-md-0">
           <CourseCard
             imagePath={coursesData.forexTradingWithMT4.imagePath}
-            imageHeight={1414}
-            imageWidth={2121}
             imageAlt=""
             cardTitle={coursesData.forexTradingWithMT4.title}
             cardText={coursesData.forexTradingWithMT4.shortDescription}
@@ -160,8 +152,6 @@ const Dashboard: NextPage = () => {
         <div className="col-12 col-md-4 mt-4 mt-md-0">
           <CourseCard
             imagePath={coursesData.futuresWithQuantconnect.imagePath}
-            imageHeight={1414}
-            imageWidth={2121}
             imageAlt=""
             cardTitle={coursesData.futuresWithQuantconnect.title}
             cardText={coursesData.futuresWithQuantconnect.shortDescription}
@@ -180,8 +170,6 @@ const Dashboard: NextPage = () => {
         <div className="col-12 col-md-4 mt-4 mt-md-0">
           <CourseCard
             imagePath={coursesData.marketResearchWithPython.imagePath}
-            imageHeight={1414}
-            imageWidth={2121}
             imageAlt=""
             cardTitle={coursesData.marketResearchWithPython.title}
             cardText={coursesData.marketResearchWithPython.shortDescription}

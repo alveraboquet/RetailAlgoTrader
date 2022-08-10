@@ -4,8 +4,6 @@ import { useSession } from 'next-auth/react';
 
 interface Props {
   imagePath: string;
-  imageHeight: number;
-  imageWidth: number;
   imageAlt: string;
   cardTitle: string;
   cardText: string;
@@ -18,8 +16,6 @@ interface Props {
 // Bootstrap card component for courses
 const CourseCard = ({
   imagePath,
-  imageHeight,
-  imageWidth,
   imageAlt,
   cardTitle,
   cardText,
@@ -31,18 +27,16 @@ const CourseCard = ({
   const { data: session } = useSession();
   return (
     <article className="card h-100 m-3 bg-light">
-      {isProCourse && (
-        <p className="bg-warning text-center mb-0 pb-0 border-round">
+      {isProCourse ? (
+        <p className="bg-warning text-center mb-0 pb-0 card-img-top">
           Pro Course
         </p>
+      ) : (
+        <p className="bg-dark text-center text-white mb-0 pb-0 card-img-top">
+          Free Course
+        </p>
       )}
-      <Image
-        src={imagePath}
-        className="card-img-top"
-        height={imageHeight}
-        width={imageWidth}
-        alt={imageAlt}
-      />
+      <Image src={imagePath} height={1000} width={1500} alt={imageAlt} />
       <div className="card-body">
         <h3 className="card-title">{cardTitle}</h3>
         <p className="card-text">{cardText}</p>
