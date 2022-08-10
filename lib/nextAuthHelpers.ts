@@ -1,94 +1,45 @@
-import coursesData from '../components/landingPages/coursesData';
+import initialLessonData from '../prisma/initialData/initialLessonData';
+import initialCourseData from '../prisma/initialData/initialCourseData';
+import initialChapterData from '../prisma/initialData/initialChapterData';
 
 export const populateUserCourse = (userId: string) => {
-  return [
-    {
+  const userCourseArray = [];
+  for (const course of initialCourseData) {
+    const userCourse = {
       user_id: userId,
-      course_id: coursesData.tradingAcademy.id,
+      course_id: course.id,
       enrolled: false,
       completed: false,
       current_chapter: 'courseOverview',
       current_lesson: 'syllabus',
-    },
-    {
-      user_id: userId,
-      course_id: coursesData.algorithmicTradingAcademy.id,
-      enrolled: false,
-      completed: false,
-      current_chapter: 'courseOverview',
-      current_lesson: 'syllabus',
-    },
-    {
-      user_id: userId,
-      course_id: coursesData.equitiesAndCryptoWithTradingview.id,
-      enrolled: false,
-      completed: false,
-      current_chapter: 'courseOverview',
-      current_lesson: 'syllabus',
-    },
-    {
-      user_id: userId,
-      course_id: coursesData.forexTradingWithMT4.id,
-      enrolled: false,
-      completed: false,
-      current_chapter: 'courseOverview',
-      current_lesson: 'syllabus',
-    },
-    {
-      user_id: userId,
-      course_id: coursesData.futuresWithQuantconnect.id,
-      enrolled: false,
-      completed: false,
-      current_chapter: 'courseOverview',
-      current_lesson: 'syllabus',
-    },
-    {
-      user_id: userId,
-      course_id: coursesData.marketResearchWithPython.id,
-      enrolled: false,
-      completed: false,
-      current_chapter: 'courseOverview',
-      current_lesson: 'syllabus',
-    },
-  ];
+    };
+    userCourseArray.push(userCourse);
+  }
+  return userCourseArray;
 };
 
 export const populateUserLesson = (userId: string) => {
-  return [
-    {
+  const userLessonArray = [];
+  for (const lesson of initialLessonData) {
+    const userLesson = {
       user_id: userId,
-      lesson_id: 1,
+      lesson_id: lesson.id,
       completed: false,
-    },
-    {
+    };
+    userLessonArray.push(userLesson);
+  }
+  return userLessonArray;
+};
+
+export const populateUserChapter = (userId: string) => {
+  const userChapterArray = [];
+  for (const chapter of initialChapterData) {
+    const userChapter = {
       user_id: userId,
-      lesson_id: 2,
+      chapter_id: chapter.id,
       completed: false,
-    },
-    {
-      user_id: userId,
-      lesson_id: 3,
-      completed: false,
-    },
-    {
-      user_id: userId,
-      lesson_id: 4,
-      completed: false,
-    },
-    {
-      user_id: userId,
-      lesson_id: 5,
-      completed: false,
-    },
-    {
-      user_id: userId,
-      lesson_id: 6,
-      completed: false,
-    },
-    {
-      user_id: userId,
-      lesson_id: 7,
-      completed: false,
-    },
-  ];
+    };
+    userChapterArray.push(userChapter);
+  }
+  return userChapterArray;
 };

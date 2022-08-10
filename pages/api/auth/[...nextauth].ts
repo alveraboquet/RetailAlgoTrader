@@ -9,6 +9,7 @@ import Stripe from 'stripe';
 import {
   populateUserCourse,
   populateUserLesson,
+  populateUserChapter,
 } from '../../../lib/nextAuthHelpers';
 
 // https://next-auth.js.org/getting-started/example
@@ -55,6 +56,10 @@ export const authOptions: NextAuthOptions = {
       const userLessonRows = populateUserLesson(user.id);
       await prisma.user_Lesson.createMany({
         data: userLessonRows,
+      });
+      const userChapterRows = populateUserChapter(user.id);
+      await prisma.user_Chapter.createMany({
+        data: userChapterRows,
       });
 
       // Create stripe API client using the secret key env variable
