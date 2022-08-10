@@ -87,21 +87,27 @@ export const validateStringWithSymbols = (
 };
 
 export const validateNumericData = (
-  data: string,
+  data: string | number,
   minLength: number,
   maxLength: number
 ) => {
+  let convertedData = data;
+  if (typeof data === 'number') {
+    convertedData = data.toString();
+  } else {
+    convertedData = data;
+  }
   if (
-    validator.isEmpty(data) ||
-    !validator.isLength(data, {
+    validator.isEmpty(convertedData) ||
+    !validator.isLength(convertedData, {
       min: minLength,
       max: maxLength,
     }) ||
-    !validator.isNumeric(data)
+    !validator.isNumeric(convertedData)
   ) {
     return false;
   } else {
-    let validatedData = validator.trim(data);
+    let validatedData = validator.trim(convertedData);
     validatedData = validator.escape(validatedData);
     return validatedData;
   }
