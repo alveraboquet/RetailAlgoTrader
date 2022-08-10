@@ -11,6 +11,7 @@ interface Props {
   enrolled: boolean;
   percentComplete: number;
   isProCourse: boolean;
+  courseId: number;
 }
 
 // Bootstrap card component for courses
@@ -23,8 +24,29 @@ const CourseCard = ({
   enrolled,
   percentComplete,
   isProCourse,
+  courseId,
 }: Props) => {
   const { data: session } = useSession();
+
+  const updateEnrollStatus = async () => {
+    try {
+      const res = await fetch('/api/app/courses/updateEnrollStatus', {
+        method: 'PUT',
+        headers: {
+          'X-Custom-Header': 'lollipop',
+        },
+        body: JSON.stringify({
+          courseId,
+        }),
+      });
+      if (res.status !== 200) {
+        throw new Error();
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <article className="card h-100 m-3 bg-light">
       {isProCourse ? (
@@ -43,6 +65,7 @@ const CourseCard = ({
         <button
           className="btn btn-dark w-100"
           disabled={!session?.user.isPro && isProCourse}
+          onClick={updateEnrollStatus}
         >
           <Link href={coursePath}>
             <a className="text-decoration-none text-white">
@@ -52,7 +75,7 @@ const CourseCard = ({
         </button>
         <div className="progress mt-4">
           <div
-            className="progress-bar"
+            className="progress-bar bg-warning text-dark"
             role="progressbar"
             style={{ width: `${percentComplete}%` }}
             aria-valuenow={25}
