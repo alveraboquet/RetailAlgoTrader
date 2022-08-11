@@ -1,18 +1,22 @@
+.page {
+  background-color: whitesmoke;
+}
+
 .postContainer {
   margin-left: 20%;
   margin-right: 20%;
+  margin-top: 2rem;
   margin-bottom: 3rem;
+  padding: 2rem;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 0.5rem;
 }
 
 .post {
   font-size: 1.25rem;
   line-height: 2rem;
   overflow-wrap: break-word;
-}
-
-.post h1 {
-  text-align: center;
-  line-height: 3rem;
 }
 
 .post figure {
@@ -27,7 +31,6 @@
   color: grey;
 }
 
-.post h1,
 .post h2,
 .post h3,
 .post h4,
@@ -65,14 +68,19 @@
 }
 
 @media (max-width: 600px) {
+  .page {
+    background-color: white;
+  }
+
   .postContainer {
     margin-left: 1rem;
     margin-right: 1rem;
-    margin-bottom: 3rem;
-  }
-
-  .post h1 {
     margin-top: 0;
+    margin-bottom: 3rem;
+    padding: 0;
+    background-color: white;
+    border: 0px solid white;
+    border-radius: 0px;
   }
 
   .post figure {

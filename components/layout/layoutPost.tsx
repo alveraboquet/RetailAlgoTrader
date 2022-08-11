@@ -4,6 +4,7 @@ import React from 'react';
 import SEO from '../SEO/seo';
 import JumpTopButton from '../post/jumpTopButton';
 import styles from '../../styles/LayoutPost.module.css';
+import Link from 'next/link';
 
 interface Props {
   children: React.ReactNode;
@@ -17,7 +18,7 @@ interface Props {
 // Children prop is mdx component with blog post material
 const LayoutPost = (props: Props) => {
   return (
-    <div>
+    <div className={styles.page}>
       <SEO
         url={props.url}
         openGraphType="article"
@@ -30,6 +31,11 @@ const LayoutPost = (props: Props) => {
       <div id="top"></div>
       <Header />
       <div className={`${styles.postContainer}`}>
+        <Link href="/blog">
+          <a className="text-decoration-none text-dark">
+            &larr; Return to Articles
+          </a>
+        </Link>
         <article className={styles.post}>
           <div>{props.children}</div>
         </article>
