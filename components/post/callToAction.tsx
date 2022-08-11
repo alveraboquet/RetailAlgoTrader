@@ -9,13 +9,11 @@ const CallToAction = () => {
           Start learning how algorithmic trading can increase your profitability
           and efficiency for free
         </p>
-        <button className="btn btn-dark">
-          <Link href="/signup">
-            <a className="text-decoration-none text-light">
-              Get started for free today
-            </a>
-          </Link>
-        </button>
+        <Link href="/signup">
+          <button className="btn btn-dark text-light">
+            Get started for free today
+          </button>
+        </Link>
       </aside>
     </div>
   );

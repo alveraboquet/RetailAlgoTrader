@@ -37,11 +37,9 @@ const PostCard = ({
       <div className="card-body">
         <h3 className="card-title">{cardTitle}</h3>
         <p className="card-text">{cardText}</p>
-        <button className="btn btn-warning w-100">
-          <Link href={postPath}>
-            <a className="text-decoration-none text-dark">{buttonText}</a>
-          </Link>
-        </button>
+        <Link href={postPath}>
+          <button className="btn btn-warning w-100">{buttonText}</button>
+        </Link>
       </div>
     </article>
   );

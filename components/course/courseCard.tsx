@@ -62,17 +62,15 @@ const CourseCard = ({
       <div className="card-body">
         <h3 className="card-title">{cardTitle}</h3>
         <p className="card-text">{cardText}</p>
-        <button
-          className="btn btn-dark w-100"
-          disabled={!session?.user.isPro && isProCourse}
-          onClick={updateEnrollStatus}
-        >
-          <Link href={coursePath}>
-            <a className="text-decoration-none text-white">
-              {enrolled ? 'Continue Course' : 'Begin Course'}
-            </a>
-          </Link>
-        </button>
+        <Link href={coursePath}>
+          <button
+            className="btn btn-dark w-100"
+            disabled={!session?.user.isPro && isProCourse}
+            onClick={updateEnrollStatus}
+          >
+            {enrolled ? 'Continue Course' : 'Begin Course'}
+          </button>
+        </Link>
         <div className="progress mt-4">
           <div
             className="progress-bar bg-warning text-dark"

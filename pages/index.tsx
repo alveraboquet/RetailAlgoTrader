@@ -30,13 +30,11 @@ const Home: NextPage = () => {
             <p className="text-white mt-3 fs-5">
               Discover how to trade intelligently and sustainably
             </p>
-            <button className="btn btn-warning p-md-3">
-              <Link href="/auth/signup">
-                <a className="text-decoration-none text-dark fs-3">
-                  Sign Up Today! No Credit Card Required
-                </a>
-              </Link>
-            </button>
+            <Link href="/auth/signup">
+              <button className="btn btn-warning p-md-3 fs-3">
+                Sign Up Today! No Credit Card Required
+              </button>
+            </Link>
             <div className="text-white d-none d-md-block fs-5 mt-5 pb-5">
               <h2 className="fw-bold">Our Trading Philosophy</h2>
               <p>
@@ -187,13 +185,11 @@ const Home: NextPage = () => {
                   on TradingView
                 </p>
                 <div>
-                  <button className="btn btn-warning">
-                    <Link href="/">
-                      <a className="text-decoration-none text-dark">
-                        Receive a Free Profitable Algorithm Guide
-                      </a>
-                    </Link>
-                  </button>
+                  <Link href="/">
+                    <button className="btn btn-warning">
+                      Receive a Free Profitable Algorithm Guide
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -242,13 +238,11 @@ const Home: NextPage = () => {
                         If you have no experience with the markets that is fine.
                         Check out our recommended resources to get started.
                       </p>
-                      <button className="btn btn-warning w-100">
-                        <Link href="/quiz/tradingAcademy">
-                          <a className="text-decoration-none text-dark">
-                            Beginner Resources
-                          </a>
-                        </Link>
-                      </button>
+                      <Link href="/quiz/tradingAcademy">
+                        <button className="btn btn-warning w-100">
+                          Beginner Resources
+                        </button>
+                      </Link>
                     </div>
                   </article>
                 </div>
@@ -261,13 +255,11 @@ const Home: NextPage = () => {
                         can create tools to increase your profitability and
                         efficiency.
                       </p>
-                      <button className="btn btn-warning w-100">
-                        <Link href="/quiz/algorithmicTradingAcademy">
-                          <a className="text-decoration-none text-dark">
-                            Experienced Resources
-                          </a>
-                        </Link>
-                      </button>
+                      <Link href="/quiz/algorithmicTradingAcademy">
+                        <button className="btn btn-warning w-100">
+                          Experienced Resources
+                        </button>
+                      </Link>
                     </div>
                   </article>
                 </div>
@@ -280,13 +272,11 @@ const Home: NextPage = () => {
                         your programming skills to use to generate additional
                         income.
                       </p>
-                      <button className="btn btn-warning w-100">
-                        <Link href="/quiz/futuresWithQuantconnect">
-                          <a className="text-decoration-none text-dark">
-                            Programmer Resources
-                          </a>
-                        </Link>
-                      </button>
+                      <Link href="/quiz/futuresWithQuantconnect">
+                        <button className="btn btn-warning w-100">
+                          Programmer Resources
+                        </button>
+                      </Link>
                     </div>
                   </article>
                 </div>

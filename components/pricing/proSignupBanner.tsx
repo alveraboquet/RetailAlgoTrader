@@ -15,19 +15,15 @@ const ProSignupBanner = ({ isPro }: Props) => {
           <div className="d-none d-md-block">
             You currently have a Hobby account. If you would like to upgrade to
             a Pro membership please click here:
-            <button className="btn btn-warning ms-2">
-              <Link href="/app/proSignup">
-                <a className="text-decoration-none text-dark">Upgrade to Pro</a>
-              </Link>
-            </button>
+            <Link href="/app/proSignup">
+              <button className="btn btn-warning ms-2">Upgrade to Pro</button>
+            </Link>
           </div>
           <div className="d-md-none">
             Currently on Hobby account:
-            <button className="btn btn-warning ms-1">
-              <Link href="/app/proSignup">
-                <a className="text-decoration-none text-dark">Upgrade to Pro</a>
-              </Link>
-            </button>
+            <Link href="/app/proSignup">
+              <button className="btn btn-warning ms-1">Upgrade to Pro</button>
+            </Link>
           </div>
         </div>
       )}

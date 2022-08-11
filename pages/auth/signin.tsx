@@ -55,13 +55,11 @@ const SignIn = ({ providers }: { [k: string]: Provider }) => {
           </div>
           <aside className="row mt-3 text-center ps-4 pe-4 mb-3">
             <p className="fs-4">Not a member?</p>
-            <button className="btn btn-warning p-md-3">
-              <Link href="/auth/signup">
-                <a className="text-decoration-none text-dark">
-                  Sign Up Today! No Credit Card Required
-                </a>
-              </Link>
-            </button>
+            <Link href="/auth/signup">
+              <button className="btn btn-warning p-md-3">
+                Sign Up Today! No Credit Card Required
+              </button>
+            </Link>
           </aside>
           <p className="text-center bg-light p-3">
             By signing up for RetailAlgoTrader, you agree to
@@ -107,13 +105,11 @@ const SignIn = ({ providers }: { [k: string]: Provider }) => {
                 </div>
                 <aside className="row mt-3 text-center">
                   <p className="fs-4">Not a member?</p>
-                  <button className="btn btn-warning">
-                    <Link href="/auth/signup">
-                      <a className="text-decoration-none text-dark">
-                        Sign Up Today! No Credit Card Required
-                      </a>
-                    </Link>
-                  </button>
+                  <Link href="/auth/signup">
+                    <button className="btn btn-warning">
+                      Sign Up Today! No Credit Card Required
+                    </button>
+                  </Link>
                 </aside>
               </article>
               <p className="text-center bg-light mt-3">
