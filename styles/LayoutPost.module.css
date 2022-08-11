@@ -31,6 +31,12 @@
   color: grey;
 }
 
+.post h1 {
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
 .post h2,
 .post h3,
 .post h4,
