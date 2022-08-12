@@ -1,6 +1,7 @@
 /* eslint-disable quotes */
 import nextMDX from '@next/mdx';
 import remarkGfm from 'remark-gfm';
+import rehypeSlug from 'rehype-slug';
 
 // Set up MDX file support
 const withMDX = nextMDX({
@@ -8,7 +9,9 @@ const withMDX = nextMDX({
   options: {
     // remarkGfm adds support for markdown tables
     remarkPlugins: [remarkGfm],
-    rehypePlugins: [],
+    rehypePlugins: [
+      rehypeSlug, // add IDs to any h1-h6 tag that doesn't have one, using a slug made from its text
+    ],
     // If you use `MDXProvider`, uncomment the following line.
     // providerImportSource: "@mdx-js/react",
   },
