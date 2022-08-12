@@ -18,6 +18,7 @@ interface Props {
   title: string;
   description: string;
   imagePath: string;
+  altText: string;
   curriculum: Chapters[];
   similar1Course: string;
   similar2Course: string;
@@ -31,6 +32,7 @@ const QuizLandingPage = ({
   title,
   description,
   imagePath,
+  altText,
   curriculum,
   similar1Course,
   similar2Course,
@@ -38,27 +40,46 @@ const QuizLandingPage = ({
   const chapters = curriculum;
 
   return (
-    <div className="p-3">
-      <h1>{title}</h1>
+    <article className="container p-3">
+      <h1 className="mt-3 mb-3">{title}</h1>
       <p>{description}</p>
-      <figure>
-        <Image
-          src={imagePath}
-          className="card-img-top"
-          height={1306}
-          width={2295}
-          alt="Investing nature themed"
-        />
+      <figure className="w-50 mx-auto">
+        <Image src={imagePath} height={1000} width={1500} alt={altText} />
       </figure>
       <p>Check out the curriculum for {title}</p>
-      {chapters.map((chapter) => (
-        <div
-          key={chapter.id}
-          className="ps-4 pe-4 mb-3 bg-secondary rounded text-white w-75 mx-auto"
-        >
-          {chapter.chapter}
-        </div>
-      ))}
+      <div className="accordion" id="curriculumAccordion">
+        {chapters.map((chapter) => (
+          <div key={chapter.id} className="accordion-item">
+            <h2 className="accordion-header" id={chapter.chapter}>
+              <button
+                className="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target={`#chapterId${chapter.id}`}
+                aria-expanded="false"
+                aria-controls={`chapterId${chapter.id}`}
+              >
+                {chapter.chapter}
+              </button>
+            </h2>
+            <div
+              id={`chapterId${chapter.id}`}
+              className="accordion-collapse collapse"
+              aria-labelledby={chapter.chapter}
+              data-bs-parent="#curriculumAccordion"
+            >
+              {chapter.lessons.map((lesson) => (
+                <div
+                  key={lesson.title}
+                  className="accordion-body bg-light border"
+                >
+                  {lesson.title}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
       <div className="p-3">
         <SimilarCourseCard
           title={coursesData[similar1Course].title}
@@ -71,7 +92,7 @@ const QuizLandingPage = ({
           />
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 
