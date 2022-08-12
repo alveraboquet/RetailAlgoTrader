@@ -58,9 +58,9 @@ const EaTemplateTool = () => {
             defaultValue={0}
           >
             <option value="0">Select your Platform</option>
-            <option value="1">Pinescript</option>
-            <option value="2">MT4</option>
-            <option value="3">QuantConnect</option>
+            <option value="PineScript_">Pinescript</option>
+            <option value="MT4_">MT4</option>
+            <option value="QuantConnect_">QuantConnect</option>
           </select>
           {/**Risk management options*/}
           <h2 className="mt-3">Risk Management Rules</h2>
@@ -72,10 +72,12 @@ const EaTemplateTool = () => {
             defaultValue={0}
           >
             <option value="0">Select your Risk Management Rules</option>
-            <option value="1">Risk Percentage</option>
-            <option value="2">Minimum Risk:Reward</option>
-            <option value="3">Max Drawdown</option>
-            <option value="4">Adjust Stoploss to Entry Price</option>
+            <option value="RiskPercentage_">Risk Percentage</option>
+            <option value="MinimumRiskReward_">Minimum Risk:Reward</option>
+            <option value="MaxDrawdown_">Max Drawdown</option>
+            <option value="StoplossToEntry_">
+              Adjust Stoploss to Entry Price
+            </option>
           </select>
           {/**Entry rule options*/}
           <h2 className="mt-3">Entry Rules</h2>
@@ -87,11 +89,11 @@ const EaTemplateTool = () => {
             defaultValue={0}
           >
             <option value="0">Select your Entry Rules</option>
-            <option value="1">Moving-Average Crossover</option>
-            <option value="2">
+            <option value="MACrossover_">Moving-Average Crossover</option>
+            <option value="BBBand_">
               Bollinger Band Mean Reversion with Engulfing Bar
             </option>
-            <option value="3">Cointegration</option>
+            <option value="Cointegration_">Cointegration</option>
           </select>
           {/**Exit rule options*/}
           <h2 className="mt-3">Exit Rules</h2>
@@ -103,13 +105,36 @@ const EaTemplateTool = () => {
             defaultValue={0}
           >
             <option value="0">Select your Exit Rules</option>
-            <option value="1">ATR Stoploss and Takeprofit</option>
-            <option value="2">Turtle Trader Indicator Exit</option>
-            <option value="3">Trailing Stop</option>
+            <option value="ATR">ATR Stoploss and Takeprofit</option>
+            <option value="TurtleTrader">Turtle Trader Indicator Exit</option>
+            <option value="TrailingStop">Trailing Stop</option>
           </select>
           <h2 className="mt-3">Generate Template</h2>
-          {session ? <p>Signed in</p> : <NonUserButton />}
-          <p>Please click here to download your template</p>
+          {session ? (
+            <button
+              className="btn btn-warning"
+              disabled={(
+                platform +
+                riskManagementRules +
+                entryRules +
+                exitRules
+              ).includes('0')}
+            >
+              <a
+                className="text-decoration-none text-dark"
+                href={`http://localhost:3000/eaTemplates/${
+                  platform + riskManagementRules + entryRules + exitRules
+                }.txt`}
+                download={
+                  platform + riskManagementRules + entryRules + exitRules
+                }
+              >
+                Please click here to download your template
+              </a>
+            </button>
+          ) : (
+            <NonUserButton />
+          )}
           {/**Creates unique number to know which file to download */}
           <p>{platform + riskManagementRules + entryRules + exitRules}</p>
         </div>
