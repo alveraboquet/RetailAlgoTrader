@@ -33,50 +33,53 @@ const AccountInfoChangeForm = ({
       noValidate
       id="accountSettings"
     >
-      <div className="row ps-3 pe-3 ps-md-0 pe-md-0">
-        <div className="col-3">
-          <label htmlFor="newName" className="form-label">
-            Name:
-          </label>
-        </div>
-        <div className="col-9 col-md-3">
-          <input
-            id="newName"
-            type="text"
-            autoComplete="given-name"
-            className="form-control"
-            placeholder={DOMPurify.sanitize(accountDetails.name)}
-            maxLength={20}
-            onChange={() => {
-              setAccountSettingsChangeTrue();
-            }}
-          />
-        </div>
-      </div>
-      <div className="row mt-4 ps-3 pe-3 ps-md-0 pe-md-0">
-        <div className="col-3">
-          <label htmlFor="newEmail" className="form-label">
-            Email:
-          </label>
-        </div>
-        <div className="col-9 col-md-3">
-          <input
-            id="newEmail"
-            type="email"
-            autoComplete="email"
-            aria-describedby="emailHelp"
-            className="form-control"
-            placeholder={DOMPurify.sanitize(accountDetails.email)}
-            maxLength={200}
-            onChange={() => {
-              setAccountSettingsChangeTrue();
-            }}
-          />
-          <div className="invalid-feedback">
-            Please ensure email is of form johnsmith@email.com
+      <fieldset>
+        <legend>Account Settings</legend>
+        <div className="row ps-3 pe-3 ps-md-0 pe-md-0">
+          <div className="col-3">
+            <label htmlFor="newName" className="form-label">
+              Name:
+            </label>
+          </div>
+          <div className="col-9 col-md-3">
+            <input
+              id="newName"
+              type="text"
+              autoComplete="given-name"
+              className="form-control"
+              placeholder={DOMPurify.sanitize(accountDetails.name)}
+              maxLength={20}
+              onChange={() => {
+                setAccountSettingsChangeTrue();
+              }}
+            />
           </div>
         </div>
-      </div>
+        <div className="row mt-4 ps-3 pe-3 ps-md-0 pe-md-0">
+          <div className="col-3">
+            <label htmlFor="newEmail" className="form-label">
+              Email:
+            </label>
+          </div>
+          <div className="col-9 col-md-3">
+            <input
+              id="newEmail"
+              type="email"
+              autoComplete="email"
+              aria-describedby="emailHelp"
+              className="form-control"
+              placeholder={DOMPurify.sanitize(accountDetails.email)}
+              maxLength={200}
+              onChange={() => {
+                setAccountSettingsChangeTrue();
+              }}
+            />
+            <div className="invalid-feedback">
+              Please ensure email is of form johnsmith@email.com
+            </div>
+          </div>
+        </div>
+      </fieldset>
       <div id="accountAlertPlaceholder" className="mt-3"></div>
       <div className="text-end ps-3 pe-3 ps-md-0 pe-md-0">
         {isAccountSettingsChanged ? (
