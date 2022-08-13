@@ -24,7 +24,7 @@ const deleteCustomer = async (req: NextApiRequest, res: NextApiResponse) => {
         res.status(204).send('');
       } catch (err) {
         console.log(err);
-        res.status(500).send('Unable to delete Stripe customer');
+        res.status(500).end('Unable to delete Stripe customer');
       }
     } else {
       res.setHeader('Allow', 'DELETE');
@@ -33,7 +33,7 @@ const deleteCustomer = async (req: NextApiRequest, res: NextApiResponse) => {
   } else {
     res
       .status(401)
-      .send('You must be signed-in to view the protected content on this page');
+      .end('You must be signed-in to view the protected content on this page');
   }
 };
 

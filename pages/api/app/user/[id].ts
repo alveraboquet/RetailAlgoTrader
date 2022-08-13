@@ -9,7 +9,7 @@ const findUserById = async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await unstable_getServerSession(req, res, authOptions);
   if (session) {
     if (req.method !== 'GET') {
-      res.status(405).send({ message: 'Only GET requests allowed' });
+      res.status(405).end({ message: 'Only GET requests allowed' });
     }
     try {
       const {
@@ -19,7 +19,7 @@ const findUserById = async (req: NextApiRequest, res: NextApiResponse) => {
         // Validate user id
         const validatedUserId = validateAlphaNumericData(id, 1, 255);
         if (!validatedUserId) {
-          return res.status(400).send('Request failed validation');
+          return res.status(400).end('Request failed validation');
         }
 
         // Generate SQL statement
@@ -37,7 +37,7 @@ const findUserById = async (req: NextApiRequest, res: NextApiResponse) => {
 
         return null;
       } else {
-        res.status(400).send('id must be string');
+        res.status(400).end('id must be string');
       }
     } catch (err) {
       if (typeof err === 'string') {
@@ -47,7 +47,7 @@ const findUserById = async (req: NextApiRequest, res: NextApiResponse) => {
   } else {
     res
       .status(401)
-      .send('You must be signed-in to view the protected content on this page');
+      .end('You must be signed-in to view the protected content on this page');
   }
 };
 

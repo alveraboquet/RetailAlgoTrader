@@ -16,7 +16,7 @@ const retrieveAccountDetails = async (
   const session = await unstable_getServerSession(req, res, authOptions);
   if (session) {
     if (req.method !== 'GET') {
-      res.status(405).send({ message: 'Only GET requests allowed' });
+      res.status(405).end({ message: 'Only GET requests allowed' });
     }
     try {
       const { user } = session;
@@ -38,12 +38,12 @@ const retrieveAccountDetails = async (
       throw new Error('No result returned from DB');
     } catch (err) {
       console.log(err);
-      res.status(500).send('Unable to retrieve account settings');
+      res.status(500).end('Unable to retrieve account settings');
     }
   } else {
     res
       .status(401)
-      .send('You must be signed-in to view the protected content on this page');
+      .end('You must be signed-in to view the protected content on this page');
   }
 };
 

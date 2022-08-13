@@ -58,7 +58,7 @@ const updateCurrentLesson = async (
         throw new Error('No result returned from DB');
       } catch (err) {
         console.log(err);
-        res.status(500).send('Failed to update current lesson');
+        res.status(500).end('Failed to update current lesson');
       }
     } else {
       res.setHeader('Allow', 'PUT');
@@ -67,7 +67,7 @@ const updateCurrentLesson = async (
   } else {
     res
       .status(401)
-      .send('You must be signed-in to view the protected content on this page');
+      .end('You must be signed-in to view the protected content on this page');
   }
 };
 

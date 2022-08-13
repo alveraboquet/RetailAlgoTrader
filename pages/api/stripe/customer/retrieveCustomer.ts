@@ -98,6 +98,6 @@ export default async function retrieveCustomer(
   } else {
     res
       .status(401)
-      .send('You must be signed-in to view the protected content on this page');
+      .end('You must be signed-in to view the protected content on this page');
   }
 }

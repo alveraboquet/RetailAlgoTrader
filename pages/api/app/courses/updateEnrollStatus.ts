@@ -23,7 +23,7 @@ const updateCurrentLesson = async (
         // Validate data
         const validatedCourseId = validateNumericData(reqData.courseId, 1, 3);
         if (!validatedCourseId) {
-          return res.status(400).send('Request failed validation');
+          return res.status(400).end('Request failed validation');
         }
 
         // Generate SQL statement
@@ -43,7 +43,7 @@ const updateCurrentLesson = async (
         throw new Error('No result returned from DB');
       } catch (err) {
         console.log(err);
-        res.status(500).send('Failed to update course enroll status');
+        res.status(500).end('Failed to update course enroll status');
       }
     } else {
       res.setHeader('Allow', 'PUT');
@@ -52,7 +52,7 @@ const updateCurrentLesson = async (
   } else {
     res
       .status(401)
-      .send('You must be signed-in to view the protected content on this page');
+      .end('You must be signed-in to view the protected content on this page');
   }
 };
 

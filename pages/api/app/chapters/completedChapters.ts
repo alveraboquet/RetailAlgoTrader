@@ -37,7 +37,7 @@ const findCompletedChaptersByUser = async (
         throw new Error('No results returned from table');
       } catch (err) {
         console.log(err);
-        res.status(500).send('Failed to retrieve completed chapters data');
+        res.status(500).end('Failed to retrieve completed chapters data');
       }
     } else {
       res.setHeader('Allow', 'GET');
@@ -46,7 +46,7 @@ const findCompletedChaptersByUser = async (
   } else {
     res
       .status(401)
-      .send('You must be signed-in to view the protected content on this page');
+      .end('You must be signed-in to view the protected content on this page');
   }
 };
 

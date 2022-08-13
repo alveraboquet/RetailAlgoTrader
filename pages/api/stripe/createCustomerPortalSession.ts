@@ -29,7 +29,7 @@ export default async function createCustomerPortalSession(
         res.writeHead(302, { Location: stripeSession.url }).end();
       } catch (err) {
         console.log(err);
-        res.status(500).send('Unable to open Stripe customer portal session');
+        res.status(500).end('Unable to open Stripe customer portal session');
       }
     } else {
       res.setHeader('Allow', 'POST');
@@ -38,6 +38,6 @@ export default async function createCustomerPortalSession(
   } else {
     res
       .status(401)
-      .send('You must be signed-in to view the protected content on this page');
+      .end('You must be signed-in to view the protected content on this page');
   }
 }

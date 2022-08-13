@@ -21,7 +21,7 @@ const changeAccountDetails = async (
   const session = await unstable_getServerSession(req, res, authOptions);
   if (session) {
     if (req.method !== 'PUT') {
-      res.status(405).send({ message: 'Only PUT requests allowed' });
+      res.status(405).end({ message: 'Only PUT requests allowed' });
     }
     try {
       const { user } = session;
@@ -34,7 +34,7 @@ const changeAccountDetails = async (
       const validatedNewEmail = validateEmail(newEmail, 1, 255);
 
       if (!validatedUserId || !validatedNewName || !validatedNewEmail) {
-        return res.status(400).send('Invalid name input');
+        return res.status(400).end('Invalid name input');
       }
 
       // Generate SQL statement
@@ -54,12 +54,12 @@ const changeAccountDetails = async (
       throw new Error('No results returned from table');
     } catch (err) {
       console.log(err);
-      res.status(500).send('Unable to update account settings');
+      res.status(500).end('Unable to update account settings');
     }
   } else {
     res
       .status(401)
-      .send('You must be signed-in to view the protected content on this page');
+      .end('You must be signed-in to view the protected content on this page');
   }
 };
 
