@@ -20,18 +20,20 @@ export default async function createCustomerPortalSession(
   const session = await unstable_getServerSession(req, res, authOptions);
 
   if (session) {
-    if (req.method !== 'POST') {
-      res.status(405).send({ message: 'Only POST requests allowed' });
-    }
-    try {
-      const stripeSession = await stripe.billingPortal.sessions.create({
-        customer: session.user.stripeCustomerId,
-        return_url: 'http://localhost:3000/app/accountManagement',
-      });
-      res.writeHead(302, { Location: stripeSession.url }).end();
-    } catch (err) {
-      console.log(err);
-      res.status(500).send('Unable to open Stripe customer portal session');
+    if (req.method === 'POST') {
+      try {
+        const stripeSession = await stripe.billingPortal.sessions.create({
+          customer: session.user.stripeCustomerId,
+          return_url: 'http://localhost:3000/app/accountManagement',
+        });
+        res.writeHead(302, { Location: stripeSession.url }).end();
+      } catch (err) {
+        console.log(err);
+        res.status(500).send('Unable to open Stripe customer portal session');
+      }
+    } else {
+      res.setHeader('Allow', 'POST');
+      res.status(405).end('Method Not Allowed');
     }
   } else {
     res

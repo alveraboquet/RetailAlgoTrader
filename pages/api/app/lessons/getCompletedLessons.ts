@@ -15,24 +15,26 @@ const getCompletedLessons = async (
 ) => {
   const session = await unstable_getServerSession(req, res, authOptions);
   if (session) {
-    if (req.method !== 'GET') {
-      res.status(405).send({ message: 'Only GET requests allowed' });
-    }
-    try {
-      const { user } = session;
-      const result = await prisma.user_Lesson.findMany({
-        where: { user_id: user.id },
-      });
+    if (req.method === 'GET') {
+      try {
+        const { user } = session;
+        const result = await prisma.user_Lesson.findMany({
+          where: { user_id: user.id },
+        });
 
-      if (result.length) {
-        res.status(200).json(result);
-        return;
+        if (result.length) {
+          res.status(200).json(result);
+          return;
+        }
+
+        throw new Error('No results returned from table');
+      } catch (err) {
+        console.log(err);
+        res.status(500).send('Failed to retrieve completed lessons data');
       }
-
-      throw new Error('No results returned from table');
-    } catch (err) {
-      console.log(err);
-      res.status(500).send('Failed to retrieve course data');
+    } else {
+      res.setHeader('Allow', 'GET');
+      res.status(405).end('Method Not Allowed');
     }
   } else {
     res

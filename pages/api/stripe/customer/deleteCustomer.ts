@@ -18,15 +18,17 @@ const deleteCustomer = async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await unstable_getServerSession(req, res, authOptions);
 
   if (session) {
-    if (req.method !== 'DELETE') {
-      res.status(405).send({ message: 'Only DELETE requests allowed' });
-    }
-    try {
-      await stripe.customers.del(session.user.stripeCustomerId);
-      res.status(204).send('');
-    } catch (err) {
-      console.log(err);
-      res.status(500).send('Unable to delete Stripe customer');
+    if (req.method === 'DELETE') {
+      try {
+        await stripe.customers.del(session.user.stripeCustomerId);
+        res.status(204).send('');
+      } catch (err) {
+        console.log(err);
+        res.status(500).send('Unable to delete Stripe customer');
+      }
+    } else {
+      res.setHeader('Allow', 'DELETE');
+      res.status(405).end('Method Not Allowed');
     }
   } else {
     res

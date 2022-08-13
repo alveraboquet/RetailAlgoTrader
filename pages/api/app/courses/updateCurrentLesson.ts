@@ -15,52 +15,54 @@ const updateCurrentLesson = async (
 ) => {
   const session = await unstable_getServerSession(req, res, authOptions);
   if (session) {
-    if (req.method !== 'PUT') {
-      res.status(405).send({ message: 'Only PUT requests allowed' });
-    }
-    try {
-      const { user } = session;
-      const lessonData = JSON.parse(req.body);
+    if (req.method === 'PUT') {
+      try {
+        const { user } = session;
+        const lessonData = JSON.parse(req.body);
 
-      // Validate data
-      const validatedNextLesson = validateAlphaNumericData(
-        lessonData.nextLesson,
-        1,
-        255
-      );
-      const validatedNextChapter = validateAlphaNumericData(
-        lessonData.nextChapter,
-        1,
-        255
-      );
-      if (!validatedNextLesson || !validatedNextChapter) {
-        return res.status(400).send('Request failed validation');
+        // Validate data
+        const validatedNextLesson = validateAlphaNumericData(
+          lessonData.nextLesson,
+          1,
+          255
+        );
+        const validatedNextChapter = validateAlphaNumericData(
+          lessonData.nextChapter,
+          1,
+          255
+        );
+        if (!validatedNextLesson || !validatedNextChapter) {
+          return res.status(400).send('Request failed validation');
+        }
+
+        // Generate SQL statement
+        const statement = `UPDATE "User_Course"
+                            SET current_lesson = $1, current_chapter = $2
+                            WHERE user_id = $3`;
+        const values = [validatedNextLesson, validatedNextChapter, user.id];
+
+        const statement2 = `UPDATE "User_Lesson"
+                              SET completed = true
+                              WHERE lesson_id = $1`;
+        const values2 = [lessonData.currentLessonId];
+
+        // Execute SQL statement
+        const result1 = await pool.query(statement, values);
+        const result2 = await pool.query(statement2, values2);
+
+        if (result1 && result2) {
+          res.status(200).json({ success: 'Current Lesson Updated' });
+          return;
+        }
+
+        throw new Error('No result returned from DB');
+      } catch (err) {
+        console.log(err);
+        res.status(500).send('Failed to update current lesson');
       }
-
-      // Generate SQL statement
-      const statement = `UPDATE "User_Course"
-                          SET current_lesson = $1, current_chapter = $2
-                          WHERE user_id = $3`;
-      const values = [validatedNextLesson, validatedNextChapter, user.id];
-
-      const statement2 = `UPDATE "User_Lesson"
-                            SET completed = true
-                            WHERE lesson_id = $1`;
-      const values2 = [lessonData.currentLessonId];
-
-      // Execute SQL statement
-      const result1 = await pool.query(statement, values);
-      const result2 = await pool.query(statement2, values2);
-
-      if (result1 && result2) {
-        res.status(200).json({ success: 'Current Lesson Updated' });
-        return;
-      }
-
-      throw new Error('No result returned from DB');
-    } catch (err) {
-      console.log(err);
-      res.status(500).send('Failed to update current lesson');
+    } else {
+      res.setHeader('Allow', 'PUT');
+      res.status(405).end('Method Not Allowed');
     }
   } else {
     res
