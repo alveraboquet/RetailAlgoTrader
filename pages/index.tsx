@@ -136,7 +136,7 @@ const Home: NextPage = () => {
                       className="card-img-top"
                       height={1306}
                       width={2295}
-                      alt="Bull Trader"
+                      alt="Daytrader at computer"
                     />
                   </figure>
                   <div className="card-body">
@@ -157,7 +157,7 @@ const Home: NextPage = () => {
                       className="card-img-top"
                       height={1306}
                       width={2295}
-                      alt="Bull Trader"
+                      alt="Project management meeting"
                     />
                   </figure>
                   <div className="card-body">
@@ -301,6 +301,7 @@ const Home: NextPage = () => {
                   cardText="There is a lot of confusion and inaccurate beliefs around market makers
                 and their roles in the market."
                   postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
+                  buttonText="Read more"
                 ></PostCard>
               </div>
               <div className="col-md-4 mt-3 mt-md-0">
@@ -313,6 +314,7 @@ const Home: NextPage = () => {
                   cardText="There is a lot of confusion and inaccurate beliefs around market makers
                 and their roles in the market."
                   postPath="/posts/isItActuallyPossibleToSucceedAsARetailTrader"
+                  buttonText="Read more"
                 ></PostCard>
               </div>
               <div className="col-md-4 mt-3 mt-md-0">
@@ -325,6 +327,7 @@ const Home: NextPage = () => {
                   cardText="There is a lot of confusion and inaccurate beliefs around market makers
                 and their roles in the market."
                   postPath="/posts/howMuchMoneyCanIMakeTrading"
+                  buttonText="Read more"
                 ></PostCard>
               </div>
             </div>
