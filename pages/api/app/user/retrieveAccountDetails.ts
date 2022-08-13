@@ -15,30 +15,32 @@ const retrieveAccountDetails = async (
 ) => {
   const session = await unstable_getServerSession(req, res, authOptions);
   if (session) {
-    if (req.method !== 'GET') {
-      res.status(405).end({ message: 'Only GET requests allowed' });
-    }
-    try {
-      const { user } = session;
-      // Generate SQL statement
-      const statement = `SELECT name, email
-                           FROM "User"
-                           JOIN "Account" ON ("Account"."userId" = "User".id)
-                           WHERE "User".id = $1`;
-      const values = [user.id];
+    if (req.method === 'GET') {
+      try {
+        const { user } = session;
+        // Generate SQL statement
+        const statement = `SELECT name, email
+                             FROM "User"
+                             JOIN "Account" ON ("Account"."userId" = "User".id)
+                             WHERE "User".id = $1`;
+        const values = [user.id];
 
-      // Execute SQL statement
-      const result = await pool.query(statement, values);
+        // Execute SQL statement
+        const result = await pool.query(statement, values);
 
-      if (result.rows?.length) {
-        res.status(200).json(result.rows[0]);
-        return;
+        if (result.rows?.length) {
+          res.status(200).json(result.rows[0]);
+          return;
+        }
+
+        throw new Error('No result returned from DB');
+      } catch (err) {
+        console.log(err);
+        res.status(500).end('Unable to retrieve account settings');
       }
-
-      throw new Error('No result returned from DB');
-    } catch (err) {
-      console.log(err);
-      res.status(500).end('Unable to retrieve account settings');
+    } else {
+      res.setHeader('Allow', 'GET');
+      res.status(405).end('Method Not Allowed');
     }
   } else {
     res
