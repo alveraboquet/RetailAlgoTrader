@@ -293,40 +293,38 @@ const Home: NextPage = () => {
               </h2>
               <div className="col-md-4">
                 <PostCard
-                  imagePath="/images/website/genericStock.webp"
-                  imageHeight={1306}
-                  imageWidth={2295}
-                  imageAlt="Picture of market candles"
-                  cardTitle="What are market makers and how do they work?"
+                  imagePath="/images/posts/whatAreMarketMakers/MarketMaker-Cover.webp"
+                  imageHeight={1000}
+                  imageWidth={1500}
+                  imageAlt=""
+                  cardTitle="Essential Facts of Market Makers in Today's Markets"
                   cardText="There is a lot of confusion and inaccurate beliefs around market makers
-                and their roles in the market."
+                              and their roles in the market."
                   postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
                   buttonText="Read more"
                 ></PostCard>
               </div>
               <div className="col-md-4 mt-3 mt-md-0">
                 <PostCard
-                  imagePath="/images/website/genericStock.webp"
-                  imageHeight={1306}
-                  imageWidth={2295}
-                  imageAlt="Picture of market candles"
-                  cardTitle="Article2"
-                  cardText="There is a lot of confusion and inaccurate beliefs around market makers
-                and their roles in the market."
+                  imagePath="/images/posts/possibleToSucceedAsRetailTrader/banner.webp"
+                  imageHeight={1000}
+                  imageWidth={1500}
+                  imageAlt=""
+                  cardTitle="Find out if it is actually possible to succeed as a retail trader"
+                  cardText="It is absolutely possible to succeed. There are many individual traders with proven track records."
                   postPath="/posts/isItActuallyPossibleToSucceedAsARetailTrader"
                   buttonText="Read more"
                 ></PostCard>
               </div>
               <div className="col-md-4 mt-3 mt-md-0">
                 <PostCard
-                  imagePath="/images/website/genericStock.webp"
-                  imageHeight={1306}
-                  imageWidth={2295}
-                  imageAlt="Picture of market candles"
-                  cardTitle="Article3"
-                  cardText="There is a lot of confusion and inaccurate beliefs around market makers
-                and their roles in the market."
-                  postPath="/posts/howMuchMoneyCanIMakeTrading"
+                  imagePath="/images/posts/pinescriptGuide/pineScriptLogo.webp"
+                  imageHeight={1000}
+                  imageWidth={1500}
+                  imageAlt=""
+                  cardTitle="Pinescript Guide"
+                  cardText="Pinescript is TradingView's proprietary coding language. It is a language designed to allow easy creation of expert advisors."
+                  postPath="/posts/pinescriptGuide"
                   buttonText="Read more"
                 ></PostCard>
               </div>
