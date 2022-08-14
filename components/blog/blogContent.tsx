@@ -68,19 +68,6 @@ const BlogContent = () => {
             buttonText="Read More"
           />
         </aside>
-        <aside className="col-md-4 mb-3">
-          <PostCard
-            imagePath="/images/website/genericStock.webp"
-            imageHeight={1306}
-            imageWidth={2295}
-            imageAlt=""
-            cardTitle="article6"
-            cardText="There is a lot of confusion and inaccurate beliefs around market makers
-        and their roles in the market."
-            postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
-            buttonText="Read More"
-          />
-        </aside>
       </div>
     </article>
   );
