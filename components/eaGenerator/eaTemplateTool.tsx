@@ -122,12 +122,16 @@ const EaTemplateTool = () => {
             >
               <a
                 className="text-decoration-none text-dark"
+                /*
                 href={`http://localhost:3000/eaTemplates/${
                   platform + riskManagementRules + entryRules + exitRules
                 }.txt`}
                 download={
                   platform + riskManagementRules + entryRules + exitRules
                 }
+                */
+                href="http://localhost:3000/eaTemplates/blankTemplate.txt"
+                download="blankTemplate.txt"
               >
                 Please click here to download your template
               </a>
@@ -135,8 +139,6 @@ const EaTemplateTool = () => {
           ) : (
             <NonUserButton />
           )}
-          {/**Creates unique number to know which file to download */}
-          <p>{platform + riskManagementRules + entryRules + exitRules}</p>
         </div>
       </div>
     </div>
