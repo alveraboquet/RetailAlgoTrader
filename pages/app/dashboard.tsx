@@ -15,7 +15,6 @@ import {
   fetchCompletedChapters,
   percentCompleteByCourse,
 } from '../../lib/dashboardHelpers';
-import DOMPurify from 'isomorphic-dompurify';
 
 // Renders user dashboard page
 const Dashboard: NextPage = () => {
@@ -50,12 +49,7 @@ const Dashboard: NextPage = () => {
       <div className="mt-3 mt-md-0">
         <ProSignupBanner isPro={session?.user.isPro} />
       </div>
-      {session?.user.name && (
-        <p className="text-end">
-          Signed in as {DOMPurify.sanitize(session.user.name)}
-        </p>
-      )}
-      <h1>Course Catalog</h1>
+      <h1 className="mt-3">Course Catalog</h1>
       <div className="row">
         <div className="col-12 col-md-4">
           <CourseCard
