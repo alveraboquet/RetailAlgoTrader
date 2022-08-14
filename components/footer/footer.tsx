@@ -145,7 +145,7 @@ const Footer = () => {
             <div className="card-header">Article</div>
             <div className="card-body">
               <h5 className="card-title">
-                What are market makers and how do they work?
+                Essential Facts of Market Makers in Today&apos;s Markets
               </h5>
               <p className="card-text d-none d-md-block">
                 There is a lot of confusion and inaccurate beliefs around market
@@ -159,10 +159,13 @@ const Footer = () => {
           <article className="card mt-3">
             <div className="card-header">Article</div>
             <div className="card-body">
-              <h5 className="card-title">Article2</h5>
+              <h5 className="card-title">
+                Find out if it is actually possible to succeed as a retail
+                trader
+              </h5>
               <p className="card-text d-none d-md-block">
-                There is a lot of confusion and inaccurate beliefs around market
-                makers and their roles in the market.
+                It is absolutely possible to succeed. There are many individual
+                traders with proven track records.
               </p>
               <Link href="/posts/isItActuallyPossibleToSucceedAsARetailTrader">
                 <button className="btn btn-warning">Read More</button>
@@ -170,14 +173,15 @@ const Footer = () => {
             </div>
           </article>
           <article className="card mt-3">
-            <div className="card-header">Article</div>
+            <div className="card-header">Guide</div>
             <div className="card-body">
-              <h5 className="card-title">Article3</h5>
+              <h5 className="card-title">Pinescript Guide</h5>
               <p className="card-text d-none d-md-block">
-                There is a lot of confusion and inaccurate beliefs around market
-                makers and their roles in the market.
+                Pinescript is TradingView&apos;s proprietary coding language. It
+                is a language designed to allow easy creation of expert
+                advisors.
               </p>
-              <Link href="/posts/howMuchMoneyCanIMakeTrading">
+              <Link href="/posts/pinescriptGuide">
                 <button className="btn btn-warning">Read More</button>
               </Link>
             </div>
