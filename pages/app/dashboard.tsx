@@ -50,8 +50,8 @@ const Dashboard: NextPage = () => {
         <ProSignupBanner isPro={session?.user.isPro} />
       </div>
       <h1 className="mt-3">Course Catalog</h1>
-      <div className="row">
-        <div className="col-12 col-md-4">
+      <div className="row mb-5">
+        <div className="col-12 col-md-6 col-lg-4">
           <CourseCard
             imagePath={coursesData.tradingAcademy.imagePath}
             imageAlt=""
@@ -76,7 +76,7 @@ const Dashboard: NextPage = () => {
             courseId={coursesData.tradingAcademy.id}
           ></CourseCard>
         </div>
-        <div className="col-12 col-md-4 mt-4 mt-md-0">
+        <div className="col-12 col-md-6 col-lg-4 mt-4 mt-md-0">
           <CourseCard
             imagePath={coursesData.algorithmicTradingAcademy.imagePath}
             imageAlt=""
@@ -105,7 +105,7 @@ const Dashboard: NextPage = () => {
             courseId={coursesData.algorithmicTradingAcademy.id}
           ></CourseCard>
         </div>
-        <div className="col-12 col-md-4 mt-4 mt-md-0">
+        <div className="col-12 col-md-6 col-lg-4 mt-4 mt-lg-0">
           <CourseCard
             imagePath={coursesData.equitiesAndCryptoWithTradingview.imagePath}
             imageAlt=""
@@ -126,9 +126,7 @@ const Dashboard: NextPage = () => {
             courseId={coursesData.equitiesAndCryptoWithTradingview.id}
           ></CourseCard>
         </div>
-      </div>
-      <div className="row mt-0 mt-md-5 mb-5">
-        <div className="col-12 col-md-4 mt-4 mt-md-0">
+        <div className="col-12 col-md-6 col-lg-4 mt-4">
           <CourseCard
             imagePath={coursesData.forexTradingWithMT4.imagePath}
             imageAlt=""
@@ -147,7 +145,7 @@ const Dashboard: NextPage = () => {
             courseId={coursesData.forexTradingWithMT4.id}
           ></CourseCard>
         </div>
-        <div className="col-12 col-md-4 mt-4 mt-md-0">
+        <div className="col-12 col-md-6 col-lg-4 mt-4">
           <CourseCard
             imagePath={coursesData.futuresWithQuantconnect.imagePath}
             imageAlt=""
@@ -166,7 +164,7 @@ const Dashboard: NextPage = () => {
             courseId={coursesData.futuresWithQuantconnect.id}
           ></CourseCard>
         </div>
-        <div className="col-12 col-md-4 mt-4 mt-md-0">
+        <div className="col-12 col-md-6 col-lg-4 mt-4">
           <CourseCard
             imagePath={coursesData.marketResearchWithPython.imagePath}
             imageAlt=""
