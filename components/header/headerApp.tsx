@@ -40,13 +40,6 @@ const HeaderApp = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link href="/app/articlesAndGuides">
-                <a className="nav-link text-white active" aria-current="page">
-                  Articles & Guides
-                </a>
-              </Link>
-            </li>
-            <li className="nav-item">
               <Link href="/app/accountManagement">
                 <a className="nav-link text-white active" aria-current="page">
                   Account Info
