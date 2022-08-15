@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app';
 import 'bootstrap/dist/css/bootstrap.css';
 import { useEffect } from 'react';
 import { SessionProvider } from 'next-auth/react';
+import '../styles/stackoverflow-dark.min.css';
 
 // Top level component for Next that initializes pages
 // https://nextjs.org/docs/advanced-features/custom-app

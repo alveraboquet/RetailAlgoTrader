@@ -2,6 +2,7 @@
 import nextMDX from '@next/mdx';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
+import rehypeHighlight from 'rehype-highlight';
 
 // Set up MDX file support
 const withMDX = nextMDX({
@@ -11,6 +12,7 @@ const withMDX = nextMDX({
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
       rehypeSlug, // add IDs to any h1-h6 tag that doesn't have one, using a slug made from its text
+      rehypeHighlight, // add synax highlighting for code blocks
     ],
     // If you use `MDXProvider`, uncomment the following line.
     // providerImportSource: "@mdx-js/react",

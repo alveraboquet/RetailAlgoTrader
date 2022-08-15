@@ -48,31 +48,11 @@
   font-weight: bold;
 }
 
-.post code {
+.post mark {
   background-color: whitesmoke;
   border: 1px solid lightgray;
   border-radius: 5px;
   padding: 0 0.2rem;
-}
-
-.code {
-  background-color: whitesmoke;
-  padding: 2rem;
-  border-radius: 1rem;
-  overflow: auto;
-  border: 1px solid lightgray;
-  margin-bottom: 1rem;
-}
-
-.code code {
-  background-color: none;
-  border: none;
-  border-radius: none;
-  padding: 0;
-}
-
-.code * {
-  margin-right: 2rem;
 }
 
 @media (max-width: 600px) {
