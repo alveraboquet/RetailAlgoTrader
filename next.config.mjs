@@ -3,13 +3,14 @@ import nextMDX from '@next/mdx';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
 import rehypeHighlight from 'rehype-highlight';
+import remarkToc from 'remark-toc';
 
 // Set up MDX file support
 const withMDX = nextMDX({
   extension: /\.mdx?$/,
   options: {
     // remarkGfm adds support for markdown tables
-    remarkPlugins: [remarkGfm],
+    remarkPlugins: [remarkGfm, remarkToc],
     rehypePlugins: [
       rehypeSlug, // add IDs to any h1-h6 tag that doesn't have one, using a slug made from its text
       rehypeHighlight, // add synax highlighting for code blocks
