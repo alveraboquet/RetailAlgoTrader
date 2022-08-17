@@ -41,7 +41,6 @@ const SignIn = ({ providers }: { [k: string]: Provider }) => {
               <div key={provider.name} className="w-100 ps-3 pe-3">
                 <button
                   className="btn btn-warning btn-block w-100 mt-4"
-                  id={provider.name}
                   onClick={() =>
                     // Nextauth function to initiate signin flow
                     // https://next-auth.js.org/getting-started/client#signin
@@ -91,7 +90,7 @@ const SignIn = ({ providers }: { [k: string]: Provider }) => {
                     <div key={provider.name} className="w-100">
                       <button
                         className="btn btn-warning btn-block w-100 mt-4"
-                        id={provider.name}
+                        data-testid={provider.name}
                         onClick={() =>
                           // Nextauth function to initiate signin flow
                           // https://next-auth.js.org/getting-started/client#signin

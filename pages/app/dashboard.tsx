@@ -49,7 +49,9 @@ const Dashboard: NextPage = () => {
       <div className="mt-3 mt-md-0">
         <ProSignupBanner isPro={session?.user.isPro} />
       </div>
-      <h1 className="mt-3">Course Catalog</h1>
+      <h1 className="mt-3" data-testid="dashboard">
+        Course Catalog
+      </h1>
       <div className="row mb-5">
         <div className="col-12 col-md-6 col-lg-4">
           <CourseCard
