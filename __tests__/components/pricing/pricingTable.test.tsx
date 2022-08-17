@@ -1,5 +1,6 @@
 import { screen, render } from '@testing-library/react';
 import PricingTable from '../../../components/pricing/pricingTable';
+import React from 'react';
 
 describe('<PricingTable />', () => {
   test('renders signup buttons and annual pricing for non-session user', () => {

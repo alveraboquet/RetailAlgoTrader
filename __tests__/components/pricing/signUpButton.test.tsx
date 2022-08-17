@@ -1,5 +1,6 @@
 import { screen, render } from '@testing-library/react';
 import SignUpButton from '../../../components/pricing/signUpButton';
+import React from 'react';
 
 describe('<SignUpButton />', () => {
   test('renders correctly', () => {

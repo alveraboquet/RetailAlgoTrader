@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import CreateCustomerPortalSessionForm from '../../../components/accountManagement/createCustomerPortalSessionForm';
 import { SessionProvider } from 'next-auth/react';
+import React from 'react';
 
 describe('<CreateCustomerPortalSessionForm />', () => {
   test('renders manage billing button', () => {

@@ -1,6 +1,7 @@
 import { screen, render } from '@testing-library/react';
 import FooterApp from '../../../components/footer/footerApp';
 import { SessionProvider } from 'next-auth/react';
+import React from 'react';
 
 describe('<FooterApp />', () => {
   test('renders correctly with no pro signup banner', () => {

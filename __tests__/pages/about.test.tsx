@@ -1,5 +1,6 @@
 import { screen, render } from '@testing-library/react';
 import About from '../../pages/about';
+import React from 'react';
 
 describe('<About />', () => {
   test('renders header, footer, and articles correctly', () => {

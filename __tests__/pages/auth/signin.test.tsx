@@ -1,6 +1,7 @@
 import { screen, render } from '@testing-library/react';
 import SignIn from '../../../pages/auth/signin';
 import mockRouter from 'next-router-mock';
+import React from 'react';
 
 jest.mock('next/dist/client/router', () => require('next-router-mock'));
 

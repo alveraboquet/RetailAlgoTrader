@@ -1,5 +1,6 @@
 import { screen, render } from '@testing-library/react';
 import ProSignupBanner from '../../../components/pricing/proSignupBanner';
+import React from 'react';
 
 describe('<ProSignupBanner />', () => {
   test('renders for non pro user', () => {

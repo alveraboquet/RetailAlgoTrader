@@ -1,5 +1,6 @@
 import { screen, render } from '@testing-library/react';
 import Blog from '../../pages/blog';
+import React from 'react';
 
 describe('<Blog />', () => {
   test('renders header, footer, and articles correctly', () => {

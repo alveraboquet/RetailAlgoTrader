@@ -3,6 +3,7 @@ import EaTemplateTool from '../../../components/eaGenerator/eaTemplateTool';
 import { SessionProvider } from 'next-auth/react';
 import userEvent from '@testing-library/user-event';
 import 'bootstrap/dist/css/bootstrap.css';
+import React from 'react';
 
 describe('<EaTemplateTool />', () => {
   test('renders correctly and delete account button disabled unless inputs match', () => {

@@ -3,6 +3,7 @@ import LayoutLesson from '../../../components/layout/layoutLesson';
 import { SessionProvider } from 'next-auth/react';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import mockRouter from 'next-router-mock';
+import React from 'react';
 
 jest.mock('next/dist/client/router', () => require('next-router-mock'));
 

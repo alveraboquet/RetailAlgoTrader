@@ -1,5 +1,6 @@
 import { screen, render } from '@testing-library/react';
-import BlogPost from '../../../pages/posts/whatAreMarketMakersAndHowDoTheyWork';
+import BlogPost from '../../../pages/posts/whatAreMarketMakersAndHowDoTheyWork.mdx';
+import React from 'react';
 
 describe('<BlogPost />', () => {
   test('renders correctly', () => {

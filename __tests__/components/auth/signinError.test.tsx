@@ -1,5 +1,6 @@
 import { screen, render } from '@testing-library/react';
 import SignInError from '../../../components/auth/signinError';
+import React from 'react';
 
 describe('<SignInError />', () => {
   test('renders nothing if no error', () => {

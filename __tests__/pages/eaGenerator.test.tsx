@@ -1,6 +1,7 @@
 import { screen, render } from '@testing-library/react';
 import EaGenerator from '../../pages/eaGenerator';
 import { SessionProvider } from 'next-auth/react';
+import React from 'react';
 
 describe('<EaGenerator />', () => {
   test('renders page correctly', () => {

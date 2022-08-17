@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import ProSignup from '../../../pages/app/proSignup';
 import { SessionProvider } from 'next-auth/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
 
 describe('<ProSignup />', () => {
   test('renders page and monthly/annual buttons change price', async () => {

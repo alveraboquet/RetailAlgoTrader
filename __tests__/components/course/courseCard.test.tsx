@@ -1,6 +1,7 @@
 import { screen, render } from '@testing-library/react';
 import CourseCard from '../../../components/course/courseCard';
 import { SessionProvider } from 'next-auth/react';
+import React from 'react';
 
 describe('<CourseCard />', () => {
   test('renders 0 progress and begin course button', () => {

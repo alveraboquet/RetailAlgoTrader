@@ -1,5 +1,6 @@
 import { screen, render } from '@testing-library/react';
 import PostCard from '../../../components/post/postCard';
+import React from 'react';
 
 describe('<PostCard />', () => {
   test('renders correctly', () => {

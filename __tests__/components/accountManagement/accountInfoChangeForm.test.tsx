@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import AccountInfoChangeForm from '../../../components/accountManagement/accountInfoChangeForm';
 import { SessionProvider } from 'next-auth/react';
+import React from 'react';
 
 describe('<AccountInfoChangeForm />', () => {
   test('renders account settings change form with buttons disabled', () => {

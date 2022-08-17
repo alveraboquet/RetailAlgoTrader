@@ -1,5 +1,6 @@
 import { screen, render } from '@testing-library/react';
 import QuizLandingPage from '../../../components/landingPages/quizLandingPage';
+import React from 'react';
 
 describe('<QuizLandingPage />', () => {
   test('renders correctly', () => {

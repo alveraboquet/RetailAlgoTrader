@@ -1,5 +1,6 @@
 import { screen, render } from '@testing-library/react';
 import StrategyChart from '../../../components/charts/strategyChartContainer';
+import React from 'react';
 
 describe('<StrategyChart />', () => {
   test('renders correctly', () => {
