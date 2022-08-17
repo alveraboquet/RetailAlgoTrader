@@ -34,6 +34,7 @@ const contentSecurityPolicy = `
  default-src 'self' ${isProd ? '' : "* data: 'unsafe-eval' 'unsafe-inline'"};
  base-uri 'self';
  block-all-mixed-content;
+ child-src 'self';
  font-src 'self' https: data:;
  form-action 
    'self' 
@@ -43,7 +44,7 @@ const contentSecurityPolicy = `
    www.facebook.com 
    http://localhost:3000/api/auth/signin/google
    *.google.com;
- frame-ancestors 'self';
+ frame-ancestors 'none';
  img-src 'self' data:;
  object-src 'none';
  script-src 'self' ${isProd ? '' : "* data: 'unsafe-eval' 'unsafe-inline'"};;
@@ -62,7 +63,7 @@ const securityHeaders = [
   },
   {
     key: 'Strict-Transport-Security',
-    value: 'max-age=63072000; includeSubDomains; preload',
+    value: 'max-age=31536000; includeSubDomains; preload',
   },
   {
     key: 'X-XSS-Protection',
@@ -70,7 +71,7 @@ const securityHeaders = [
   },
   {
     key: 'X-Frame-Options',
-    value: 'SAMEORIGIN',
+    value: 'deny',
   },
   {
     key: 'X-Content-Type-Options',
@@ -78,11 +79,11 @@ const securityHeaders = [
   },
   {
     key: 'Referrer-Policy',
-    value: 'strict-origin-when-cross-origin',
+    value: 'no-referrer',
   },
   {
     key: 'Content-Security-Policy',
-    value: contentSecurityPolicy.replace(/\s{2,}/g, ' ').trim(),
+    value: contentSecurityPolicy.replace(/\s{2,}/g, ' ').trim(), // Removes whitespace
   },
   {
     key: 'X-Download-Options',
@@ -96,21 +97,47 @@ const securityHeaders = [
     key: 'X-Permitted-Cross-Domain-Policies',
     value: 'none',
   },
+  {
+    key: 'Cross-Origin-Embedder-Policy',
+    value: 'require-corp',
+  },
+  {
+    key: 'Cross-Origin-Opener-Policy',
+    value: 'same-origin',
+  },
+  {
+    key: 'Cross-Origin-Resource-Policy',
+    value: 'same-origin',
+  },
+  {
+    key: 'Permissions-Policy',
+    value:
+      'accelerometer=(),autoplay=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),geolocation=(),gyroscope=(),magnetometer=(),microphone=(),midi=(),payment=(),picture-in-picture=(),publickey-credentials-get=(),screen-wake-lock=(),sync-xhr=(self),usb=(),web-share=(),xr-spatial-tracking=()',
+  },
 ];
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Append the default value with md extensions
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
-  // removes x-powered-by header to restrict sensitive info from attackers
-  poweredByHeader: false,
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'], // Append the default value with md extensions
+  poweredByHeader: false, // removes x-powered-by header to restrict sensitive info from attackers
   async headers() {
     return [
       {
         // Apply these headers to all routes in your application
         source: '/:path*',
         headers: securityHeaders,
+      },
+      {
+        // Only applies Clear-Site-Data header to deleteCustomer path
+        // Above headers still apply
+        source: '/api/stripe/customer/deleteCustomer',
+        headers: [
+          {
+            key: 'Clear-Site-Data',
+            value: '"cache", "cookies", "storage"',
+          },
+        ],
       },
     ];
   },
