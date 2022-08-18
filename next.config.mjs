@@ -33,8 +33,8 @@ const isProd = process.env.NODE_ENV === 'production';
 const contentSecurityPolicy = `
  default-src 'self' ${isProd ? '' : "* data: 'unsafe-eval' 'unsafe-inline'"};
  base-uri 'self';
- block-all-mixed-content;
  child-src 'self';
+ connect-src 'self' https://checkout.stripe.com https://api.stripe.com;
  font-src 'self' https: data:;
  form-action 
    'self' 
@@ -45,9 +45,14 @@ const contentSecurityPolicy = `
    http://localhost:3000/api/auth/signin/google
    *.google.com;
  frame-ancestors 'none';
- img-src 'self' data:;
+ frame-src 'self' https://checkout.stripe.com https://js.stripe.com https://hooks.stripe.com https://hooks.stripe.com;
+ img-src 'self' https://*.stripe.com data:;
  object-src 'none';
- script-src 'self' ${isProd ? '' : "* data: 'unsafe-eval' 'unsafe-inline'"};;
+ script-src 
+  'self' 
+  ${isProd ? '' : "* data: 'unsafe-eval' 'unsafe-inline'"} 
+  https://checkout.stripe.com  
+  https://js.stripe.com ;
  script-src-attr 'none';
  style-src 'self' https: 'unsafe-inline';
  upgrade-insecure-requests
@@ -136,6 +141,15 @@ const nextConfig = {
           {
             key: 'Clear-Site-Data',
             value: '"cache", "cookies", "storage"',
+          },
+        ],
+      },
+      {
+        source: '/app/proSignup',
+        headers: [
+          {
+            key: 'Cross-Origin-Embedder-Policy',
+            value: 'unsafe-none',
           },
         ],
       },
