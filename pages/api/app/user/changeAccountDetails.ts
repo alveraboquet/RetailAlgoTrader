@@ -25,7 +25,7 @@ const changeAccountDetails = async (
       .end('You must be signed-in to view the protected content on this page');
   }
 
-  if (req.method === 'PUT') {
+  if (req.method !== 'PUT') {
     res.setHeader('Allow', 'PUT');
     return res.status(405).end('Method Not Allowed');
   }

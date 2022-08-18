@@ -20,7 +20,7 @@ const retrieveAccountDetails = async (
       .end('You must be signed-in to view the protected content on this page');
   }
 
-  if (req.method === 'GET') {
+  if (req.method !== 'GET') {
     res.setHeader('Allow', 'GET');
     return res.status(405).end('Method Not Allowed');
   }
