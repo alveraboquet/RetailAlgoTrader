@@ -19,25 +19,25 @@ export default async function createCustomerPortalSession(
 ) {
   const session = await unstable_getServerSession(req, res, authOptions);
 
-  if (session) {
-    if (req.method === 'POST') {
-      try {
-        const stripeSession = await stripe.billingPortal.sessions.create({
-          customer: session.user.stripeCustomerId,
-          return_url: 'http://localhost:3000/app/accountManagement',
-        });
-        res.writeHead(302, { Location: stripeSession.url }).end();
-      } catch (err) {
-        console.log(err);
-        res.status(500).end('Unable to open Stripe customer portal session');
-      }
-    } else {
-      res.setHeader('Allow', 'POST');
-      res.status(405).end('Method Not Allowed');
-    }
-  } else {
-    res
+  if (!session) {
+    return res
       .status(401)
       .end('You must be signed-in to view the protected content on this page');
+  }
+
+  if (req.method === 'POST') {
+    res.setHeader('Allow', 'POST');
+    return res.status(405).end('Method Not Allowed');
+  }
+
+  try {
+    const stripeSession = await stripe.billingPortal.sessions.create({
+      customer: session.user.stripeCustomerId,
+      return_url: 'http://localhost:3000/app/accountManagement',
+    });
+    res.writeHead(302, { Location: stripeSession.url }).end();
+  } catch (err) {
+    console.log(err);
+    res.status(500).end('Unable to open Stripe customer portal session');
   }
 }

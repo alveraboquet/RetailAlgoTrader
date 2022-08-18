@@ -17,23 +17,23 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 const deleteCustomer = async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await unstable_getServerSession(req, res, authOptions);
 
-  if (session) {
-    if (req.method === 'DELETE') {
-      try {
-        await stripe.customers.del(session.user.stripeCustomerId);
-        res.status(204).send('');
-      } catch (err) {
-        console.log(err);
-        res.status(500).end('Unable to delete Stripe customer');
-      }
-    } else {
-      res.setHeader('Allow', 'DELETE');
-      res.status(405).end('Method Not Allowed');
-    }
-  } else {
-    res
+  if (!session) {
+    return res
       .status(401)
       .end('You must be signed-in to view the protected content on this page');
+  }
+
+  if (req.method === 'DELETE') {
+    res.setHeader('Allow', 'DELETE');
+    return res.status(405).end('Method Not Allowed');
+  }
+
+  try {
+    await stripe.customers.del(session.user.stripeCustomerId);
+    res.status(204).send('');
+  } catch (err) {
+    console.log(err);
+    res.status(500).end('Unable to delete Stripe customer');
   }
 };
 
