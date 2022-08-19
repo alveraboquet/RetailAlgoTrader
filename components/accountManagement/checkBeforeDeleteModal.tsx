@@ -23,6 +23,7 @@ const CheckBeforeDeleteModal = (confirmationString: {
    */
   const handleDeleteAccount = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsDeleteButtonDisabled(true);
     interface FormInputs extends EventTarget {
       elements: {
         userInput: HTMLInputElement;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 type ConfirmationString = {
   confirmationString: string;
@@ -19,6 +19,8 @@ const CheckBeforeDeleteForm = ({
   changeIsDeleteButtonDisabled,
   isDeleteButtonDisabled,
 }: Props) => {
+  const [isDeleteClicked, setIsDeleteClicked] = useState(false);
+
   return (
     <form onSubmit={handleDeleteAccount}>
       <fieldset>
@@ -50,10 +52,23 @@ const CheckBeforeDeleteForm = ({
         </button>
         <button
           type="submit"
-          className="btn btn-warning"
+          className="btn btn-warning d-flex"
           disabled={isDeleteButtonDisabled}
+          onClick={() => setIsDeleteClicked(true)}
         >
           Delete Account
+          {isDeleteClicked ? (
+            <div>
+              <span
+                className="spinner-border spinner-border-sm"
+                role="status"
+                aria-hidden="true"
+              ></span>
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          ) : (
+            <></>
+          )}
         </button>
       </div>
     </form>
