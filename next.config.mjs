@@ -30,33 +30,66 @@ const isProd = process.env.NODE_ENV === 'production';
  * defualt-src and script-src must allow "unsafe-eval" and "unsafe-inline" to properly work in development environment with oAuth providers
  * form-action includes auth0, facebook, and google access to support oAuth logins
  */
-const contentSecurityPolicy = `
- default-src 'self' ${isProd ? '' : "* data: 'unsafe-eval' 'unsafe-inline'"};
- base-uri 'self';
- child-src 'self';
- connect-src 'self' https://checkout.stripe.com https://api.stripe.com;
- font-src 'self' https: data:;
- form-action 
-   'self' 
-   https://dev-bcrf42vl.us.auth0.com 
-   http://localhost:3000/api/auth/signin/auth0 
-   http://localhost:3000/api/auth/signin/facebook 
-   www.facebook.com 
-   http://localhost:3000/api/auth/signin/google
-   *.google.com;
- frame-ancestors 'none';
- frame-src 'self' https://checkout.stripe.com https://js.stripe.com https://hooks.stripe.com https://hooks.stripe.com;
- img-src 'self' https://*.stripe.com data:;
- object-src 'none';
- script-src 
-  'self' 
-  ${isProd ? '' : "* data: 'unsafe-eval' 'unsafe-inline'"} 
-  https://checkout.stripe.com  
-  https://js.stripe.com ;
- script-src-attr 'none';
- style-src 'self' https: 'unsafe-inline';
- upgrade-insecure-requests
-`;
+let contentSecurityPolicy;
+if (isProd) {
+  contentSecurityPolicy = `
+    default-src 'self' ${isProd ? '' : "* data: 'unsafe-eval' 'unsafe-inline'"};
+    base-uri 'self';
+    child-src 'self';
+    connect-src 'self' https://checkout.stripe.com https://api.stripe.com;
+    font-src 'self' https: data:;
+    form-action 
+      'self' 
+      https://dev-bcrf42vl.us.auth0.com 
+      http://localhost:3000/api/auth/signin/auth0 
+      http://localhost:3000/api/auth/signin/facebook 
+      www.facebook.com 
+      http://localhost:3000/api/auth/signin/google
+      *.google.com
+      https://billing.stripe.com;
+    frame-ancestors 'none';
+    frame-src 'self' https://checkout.stripe.com https://js.stripe.com https://hooks.stripe.com https://hooks.stripe.com;
+    img-src 'self' https://*.stripe.com data:;
+    object-src 'none';
+    script-src 
+      'self' 
+      ${isProd ? '' : "* data: 'unsafe-eval' 'unsafe-inline'"} 
+      https://checkout.stripe.com  
+      https://js.stripe.com ;
+    script-src-attr 'none';
+    style-src 'self' https: 'unsafe-inline';
+    upgrade-insecure-requests
+  `;
+} else {
+  contentSecurityPolicy = `
+    default-src 'self' ${isProd ? '' : "* data: 'unsafe-eval' 'unsafe-inline'"};
+    base-uri 'self';
+    child-src 'self';
+    connect-src 'self' https://checkout.stripe.com https://api.stripe.com;
+    font-src 'self' https: data:;
+    form-action 
+      'self' 
+      https://dev-bcrf42vl.us.auth0.com 
+      http://localhost:3000/api/auth/signin/auth0 
+      http://localhost:3000/api/auth/signin/facebook 
+      www.facebook.com 
+      http://localhost:3000/api/auth/signin/google
+      *.google.com
+      https://billing.stripe.com;
+    frame-ancestors 'none';
+    frame-src 'self' https://checkout.stripe.com https://js.stripe.com https://hooks.stripe.com https://hooks.stripe.com;
+    img-src 'self' https://*.stripe.com data:;
+    object-src 'none';
+    script-src 
+      'self' 
+      ${isProd ? '' : "* data: 'unsafe-eval' 'unsafe-inline'"} 
+      https://checkout.stripe.com  
+      https://js.stripe.com ;
+    script-src-attr 'none';
+    style-src 'self' https: 'unsafe-inline';
+    upgrade-insecure-requests
+  `;
+}
 
 /**
  * Security headers to be used with all API routes in application
@@ -146,6 +179,15 @@ const nextConfig = {
       },
       {
         source: '/app/proSignup',
+        headers: [
+          {
+            key: 'Cross-Origin-Embedder-Policy',
+            value: 'unsafe-none',
+          },
+        ],
+      },
+      {
+        source: '/app/dashboard',
         headers: [
           {
             key: 'Cross-Origin-Embedder-Policy',
