@@ -70,6 +70,7 @@ const AccountManagement: NextPage = () => {
 
   // Handle form submit for user changing account information
   const handleAccountInfoChange = async (e: React.FormEvent) => {
+    e.preventDefault();
     const validInput = await verifyAccountInfoChange(e);
     if (validInput) {
       fetchAccountDetails().then((data) => setAccountDetails(data));
