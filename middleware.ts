@@ -30,8 +30,8 @@ const middleware = (req: NextRequest) => {
 
     if (
       xCustomHeader === 'lollipop' &&
-      originHeader === acceptedOrigin &&
-      referrerHeader === acceptedReferrer
+      (originHeader === acceptedOrigin || originHeader === null) &&
+      (referrerHeader === acceptedReferrer || referrerHeader === null)
     ) {
       NextResponse.next();
     } else {
