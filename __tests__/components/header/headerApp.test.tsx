@@ -1,6 +1,5 @@
 import { screen, render } from '@testing-library/react';
 import HeaderApp from '../../../components/header/headerApp';
-import React from 'react';
 
 describe('<HeaderApp />', () => {
   test('renders correctly', () => {

@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import Pricing from '../../pages/pricing';
 import userEvent from '@testing-library/user-event';
-import React from 'react';
 
 describe('<Pricing />', () => {
   test('renders page and monthly/annual buttons change price', async () => {

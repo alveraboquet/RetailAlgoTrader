@@ -1,6 +1,5 @@
 import { screen, render } from '@testing-library/react';
 import Home from '../../pages/index';
-import React from 'react';
 
 describe('<Home />', () => {
   test('renders components correctly', () => {
@@ -30,10 +29,12 @@ describe('<Home />', () => {
       name: /programmer resources/i,
     });
     const article1 = screen.getAllByText(
-      /what are market makers and how do they work?/i
+      /essential facts of market makers in today's markets?/i
     );
-    const article2 = screen.getAllByText(/article2/i);
-    const article3 = screen.getAllByText(/article3/i);
+    const article2 = screen.getAllByText(
+      /find out if it is actually possible to succeed as a retail trader/i
+    );
+    const article3 = screen.getAllByText(/pinescript guide/i);
     const readMoreButtons = screen.getAllByRole('button', {
       name: /read more/i,
     });

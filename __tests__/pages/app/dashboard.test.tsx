@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import Dashboard from '../../../pages/app/dashboard';
 import { SessionProvider } from 'next-auth/react';
-import React from 'react';
 
 describe('<Dashboard />', () => {
   // Trading Academy course card will be enrolled and completed at 50%

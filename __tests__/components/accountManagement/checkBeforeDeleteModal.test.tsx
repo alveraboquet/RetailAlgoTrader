@@ -3,7 +3,6 @@ import CheckBeforeDeleteModal from '../../../components/accountManagement/checkB
 import userEvent from '@testing-library/user-event';
 import server from '../../../mocks/server';
 import networkErrorHandlers from '../../../mocks/networkErrorHandlers';
-import React from 'react';
 
 describe('<CheckBeforeDeleteModal />', () => {
   test('renders correctly and delete account button disabled unless inputs match', async () => {

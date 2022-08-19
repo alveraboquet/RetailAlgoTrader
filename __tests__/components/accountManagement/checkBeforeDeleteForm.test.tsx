@@ -1,6 +1,5 @@
 import { screen, render } from '@testing-library/react';
 import CheckBeforeDeleteForm from '../../../components/accountManagement/checkBeforeDeleteForm';
-import React from 'react';
 
 describe('<CheckBeforeDeleteForm />', () => {
   test('renders form correctly and delete account button disabled', () => {

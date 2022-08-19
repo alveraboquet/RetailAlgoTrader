@@ -1,6 +1,5 @@
 import { screen, render } from '@testing-library/react';
 import FooterLesson from '../../../components/footer/footerLesson';
-import React from 'react';
 
 describe('<FooterLesson />', () => {
   test('renders correctly', () => {

@@ -5,7 +5,6 @@ import userEvent from '@testing-library/user-event';
 import server from '../../../mocks/server';
 import networkErrorHandlers from '../../../mocks/networkErrorHandlers';
 import { rest } from 'msw';
-import React from 'react';
 
 describe('<AccountManagement />', () => {
   describe('General Page', () => {

@@ -1,6 +1,5 @@
 import { screen, render } from '@testing-library/react';
 import CallToAction from '../../../components/post/callToAction';
-import React from 'react';
 
 describe('<CallToAction />', () => {
   test('renders correctly', () => {

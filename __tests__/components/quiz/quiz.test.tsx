@@ -3,7 +3,6 @@ import Quiz from '../../../components/quiz/quiz';
 import userEvent from '@testing-library/user-event';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import mockRouter from 'next-router-mock';
-import React from 'react';
 
 jest.mock('next/dist/client/router', () => require('next-router-mock'));
 

@@ -1,6 +1,5 @@
 import { screen, render } from '@testing-library/react';
 import PricingText from '../../../components/pricing/pricingText';
-import React from 'react';
 
 describe('<PricingText />', () => {
   test('renders correctly', () => {

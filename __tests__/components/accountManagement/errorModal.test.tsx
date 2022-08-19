@@ -1,6 +1,5 @@
 import { screen, render } from '@testing-library/react';
 import ErrorModal from '../../../components/accountManagement/errorModal';
-import React from 'react';
 
 describe('<ErrorModal />', () => {
   test('renders correctly and delete account button disabled unless inputs match', () => {

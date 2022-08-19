@@ -1,6 +1,5 @@
 import { screen, render } from '@testing-library/react';
 import SimilarCourseCard from '../../../components/landingPages/similarCourseCard';
-import React from 'react';
 
 describe('<QuizLandingPage />', () => {
   test('renders correctly', () => {

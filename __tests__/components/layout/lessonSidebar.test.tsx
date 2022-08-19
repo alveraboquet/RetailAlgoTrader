@@ -2,7 +2,6 @@ import { screen, render } from '@testing-library/react';
 import LessonSidebar from '../../../components/layout/lessonSidebar';
 import userEvent from '@testing-library/user-event';
 import 'bootstrap/dist/css/bootstrap.css';
-import React from 'react';
 
 describe('<LessonSidebar />', () => {
   test('renders chapters, lessons, and completed badge', async () => {

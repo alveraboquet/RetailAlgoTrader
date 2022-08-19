@@ -1,6 +1,5 @@
 import { screen, render } from '@testing-library/react';
 import QuizLandingPage from '../../../components/landingPages/quizLandingPage';
-import React from 'react';
 
 describe('<QuizLandingPage />', () => {
   test('renders correctly', () => {
@@ -9,9 +8,27 @@ describe('<QuizLandingPage />', () => {
         title={'Test title'}
         description="Test description"
         imagePath="/images/website/bullTrader.webp"
+        altText="alt text"
         similar1Course="forexTradingWithMT4"
         similar2Course="futuresWithQuantconnect"
-        curriculum={['chapter1', 'chapter2']}
+        curriculum={[
+          {
+            id: '1',
+            chapter: 'Chapter 1: Course Overview',
+            lessons: [
+              {
+                id: 1,
+                title: 'Syllabus',
+                path: '/tradingAcademy/courseOverview/syllabus',
+              },
+              {
+                id: 2,
+                title: 'Goals',
+                path: '/tradingAcademy/courseOverview/goals',
+              },
+            ],
+          },
+        ]}
       />
     );
 
