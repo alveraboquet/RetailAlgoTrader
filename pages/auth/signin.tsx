@@ -12,8 +12,10 @@ interface Provider {
   callbackUrl: string;
 }
 
+type Providers = Record<Provider['id'], Provider>;
+
 // Custom signin page used with NextAuth
-const SignIn = ({ providers }: { [k: string]: Provider }) => {
+const SignIn = ({ providers }: Providers) => {
   // Retrieves error if one returned by NextAuth signin flow
   const { error } = useRouter().query;
 
