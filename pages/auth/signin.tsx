@@ -2,8 +2,8 @@ import { getProviders } from 'next-auth/react';
 import SEO from '../../components/SEO/seo';
 import { useRouter } from 'next/router';
 import { useMediaQuery } from 'react-responsive';
-import MobileSignInContent from '../../components/signin/mobileSignInContent';
-import DesktopSignInContent from '../../components/signin/desktopSignInContent';
+import MobileSignInContent from '../../components/auth/signin/mobileSignInContent';
+import DesktopSignInContent from '../../components/auth/signin/desktopSignInContent';
 import { useState, useEffect } from 'react';
 
 interface Provider {

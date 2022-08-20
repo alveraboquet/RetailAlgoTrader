@@ -1,4 +1,4 @@
-import SignInError from '../../components/auth/signinError';
+import SignInError from '../signinError';
 import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 
