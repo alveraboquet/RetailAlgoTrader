@@ -16,6 +16,7 @@ const Blog: NextPage = () => {
         Explore in-depth guides that cover topics ranging from basic trading algorithms in Pinescript to webscrapping 
         bots with Python"
         image="https://retailalgotrader.com/images/website/bulltrader.webp"
+        keywords="RetailAlgoTrader guides, Algorithmic trading guides, Algorithmic trading articles"
       />
       <Layout>
         <BlogContent />

@@ -15,6 +15,7 @@ const FuturesWithQuantconnectLandingPage: NextPage = () => {
         title="Futures with QuantConnect quiz result"
         description={coursesData.futuresWithQuantconnect.shortDescription}
         image={`https://retailalgotrader.com/${coursesData.futuresWithQuantconnect.imagePath}`}
+        keywords="Algorithmic trading with QuantConnect, Trading futures with QuantConnect, Python with QuantConnect"
       />
       <Layout>
         <QuizLandingPage

@@ -15,6 +15,7 @@ const ForexTradingWithMT4LandingPage: NextPage = () => {
         title="Forex Trading with MT4 quiz result"
         description={coursesData.forexTradingWithMT4.shortDescription}
         image={`https://retailalgotrader.com/${coursesData.forexTradingWithMT4.imagePath}`}
+        keywords="Algorithmic trading with MT4, forex algorithmic trading, MQL4 algorithmic trading"
       />
       <Layout>
         <QuizLandingPage

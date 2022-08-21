@@ -19,6 +19,7 @@ const Home: NextPage = () => {
         title="Algorithmic Trading for Retail Traders"
         description="Discover how to intelligently and profitably trade as a retail algorithmic trader."
         image="https://retailalgotrader.com/images/website/bullTraderSocial.webp"
+        keywords="RetailAlgoTrader, RetailAlgoTrader benefits, Algorithmic trading courses"
       />
       <Layout>
         {/*Banner Section */}

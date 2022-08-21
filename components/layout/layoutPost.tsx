@@ -14,6 +14,7 @@ interface Props {
   image: string;
   createdAt: string;
   updatedAt: string;
+  keywords: string;
 }
 
 // Layout component for blog posts
@@ -30,6 +31,7 @@ const LayoutPost = (props: Props) => {
         image={props.image}
         createdAt={props.createdAt}
         updatedAt={props.updatedAt}
+        keywords={props.keywords}
       />
       <JumpTopButton />
       <div id="top"></div>

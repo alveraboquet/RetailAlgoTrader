@@ -17,6 +17,7 @@ const EquitiesAndCryptoWithTradingviewLandingPage: NextPage = () => {
           coursesData.equitiesAndCryptoWithTradingView.shortDescription
         }
         image={`https://retailalgotrader.com/${coursesData.equitiesAndCryptoWithTradingView.imagePath}`}
+        keywords="Crypto with TradingView, Algorithmic trading with TradingView, Pinescript and TradingView"
       />
       <Layout>
         <QuizLandingPage

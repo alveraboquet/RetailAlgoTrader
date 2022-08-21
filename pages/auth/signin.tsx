@@ -55,6 +55,7 @@ const SignIn = ({ providers }: Providers) => {
         title="Sign-in"
         description="Sign-in for RetailAlgoTrader application. Allows access to courses and EA Template generator."
         image="https://retailalgotrader.com/images/website/bulltrader.webp"
+        keywords="RetailAlgoTrader signin, RetailAlgoTrader login"
       />
       {isMobile && <MobileSignInContent error={error} providers={providers} />}
       {isDesktop && (

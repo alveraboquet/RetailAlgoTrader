@@ -53,6 +53,7 @@ const SignUp = ({ providers }: { [k: string]: Provider }) => {
         title="Sign-up"
         description="Sign-up for RetailAlgoTrader application. Allows access to courses and EA Template generator."
         image="https://retailalgotrader.com/images/website/bulltrader.webp"
+        keywords="RetailAlgoTrader signup, RetailAlgoTrader create account"
       />
       {isMobile && <MobileSignUpContent error={error} providers={providers} />}
       {isDesktop && (

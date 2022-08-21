@@ -15,6 +15,7 @@ const TradingAcademyLandingPage: NextPage = () => {
         title="Trading Academy quiz result"
         description={coursesData.tradingAcademy.shortDescription}
         image={`https://retailalgotrader.com/${coursesData.tradingAcademy.imagePath}`}
+        keywords="Day trading course, day trading basics, day trading for beginners"
       />
       <Layout>
         <QuizLandingPage

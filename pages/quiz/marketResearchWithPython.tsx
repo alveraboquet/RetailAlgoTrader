@@ -15,6 +15,7 @@ const marketResearchWithPythonLandingPage: NextPage = () => {
         title="Market Research with Python quiz result"
         description={coursesData.marketResearchWithPython.shortDescription}
         image={`https://retailalgotrader.com/${coursesData.marketResearchWithPython.imagePath}`}
+        keywords="Algorithmic trading Python, market research with Python, trading with Jupyter Notebooks"
       />
       <Layout>
         <QuizLandingPage
