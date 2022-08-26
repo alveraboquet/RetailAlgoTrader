@@ -9,21 +9,21 @@ const FuturesWithQuantconnectLandingPage: NextPage = () => {
   return (
     <div className="text-center">
       <SEO
-        url="http://retailalgotrader/quiz/futuresWithQuantconnect"
+        url="http://retailalgotrader/quiz/futuresWithQuantConnect"
         openGraphType="website"
         schemaType="website"
         title="Futures with QuantConnect quiz result"
-        description={coursesData.futuresWithQuantconnect.shortDescription}
-        image={`https://retailalgotrader.com/${coursesData.futuresWithQuantconnect.imagePath}`}
+        description={coursesData.futuresWithQuantConnect.shortDescription}
+        image={`https://retailalgotrader.com/${coursesData.futuresWithQuantConnect.imagePath}`}
         keywords="Algorithmic trading with QuantConnect, Trading futures with QuantConnect, Python with QuantConnect"
       />
       <Layout>
         <QuizLandingPage
-          title={coursesData.futuresWithQuantconnect.title}
-          description={coursesData.futuresWithQuantconnect.longDescription}
-          imagePath={coursesData.futuresWithQuantconnect.imagePath}
+          title={coursesData.futuresWithQuantConnect.title}
+          description={coursesData.futuresWithQuantConnect.longDescription}
+          imagePath={coursesData.futuresWithQuantConnect.imagePath}
           altText="QuantConnect logo"
-          curriculum={coursesData.futuresWithQuantconnect.curriculum}
+          curriculum={coursesData.futuresWithQuantConnect.curriculum}
           similar1Course="algorithmicTradingAcademy"
           similar2Course="marketResearchWithPython"
         />

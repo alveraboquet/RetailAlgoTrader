@@ -21,13 +21,13 @@ const EquitiesAndCryptoWithTradingviewLandingPage: NextPage = () => {
       />
       <Layout>
         <QuizLandingPage
-          title={coursesData.equitiesAndCryptoWithTradingview.title}
+          title={coursesData.equitiesAndCryptoWithTradingView.title}
           description={
-            coursesData.equitiesAndCryptoWithTradingview.longDescription
+            coursesData.equitiesAndCryptoWithTradingView.longDescription
           }
-          imagePath={coursesData.equitiesAndCryptoWithTradingview.imagePath}
+          imagePath={coursesData.equitiesAndCryptoWithTradingView.imagePath}
           altText="TradingView logo"
-          curriculum={coursesData.equitiesAndCryptoWithTradingview.curriculum}
+          curriculum={coursesData.equitiesAndCryptoWithTradingView.curriculum}
           similar1Course="tradingAcademy"
           similar2Course="forexTradingWithMT4"
         />

@@ -6,9 +6,9 @@ const questions = [
       { answerText: '$0-$1000', answerCategory: 'forexTradingWithMT4' },
       {
         answerText: '$1000-$20000',
-        answerCategory: 'equitiesAndCryptoWithTradingview',
+        answerCategory: 'equitiesAndCryptoWithTradingView',
       },
-      { answerText: '$20000+', answerCategory: 'futuresWithQuantconnect' },
+      { answerText: '$20000+', answerCategory: 'futuresWithQuantConnect' },
     ],
   },
   {
@@ -25,7 +25,7 @@ const questions = [
       },
       {
         answerText: 'Trading full-time',
-        answerCategory: 'futuresWithQuantconnect',
+        answerCategory: 'futuresWithQuantConnect',
       },
     ],
   },
@@ -44,7 +44,7 @@ const questions = [
       {
         answerText:
           'Program frequently in my free time but not a programmer by profession',
-        answerCategory: 'equitiesAndCryptoWithTradingview',
+        answerCategory: 'equitiesAndCryptoWithTradingView',
       },
       {
         answerText: 'Full-time programming or data science job',
@@ -62,7 +62,7 @@ const questions = [
       {
         answerText:
           'Work during the day but have the time/freedom to trade while at work',
-        answerCategory: 'equitiesAndCryptoWithTradingview',
+        answerCategory: 'equitiesAndCryptoWithTradingView',
       },
       {
         answerText:

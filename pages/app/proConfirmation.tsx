@@ -33,9 +33,9 @@ const ProConfirmation = () => {
               imageHeight={1000}
               imageWidth={1500}
               imageAlt="TradingView logo"
-              cardTitle={coursesData.equitiesAndCryptoWithTradingview.title}
+              cardTitle={coursesData.equitiesAndCryptoWithTradingView.title}
               cardText={
-                coursesData.equitiesAndCryptoWithTradingview.longDescription
+                coursesData.equitiesAndCryptoWithTradingView.longDescription
               }
               postPath="/app/dashboard"
               buttonText="Get started with TradingView"
@@ -59,8 +59,8 @@ const ProConfirmation = () => {
               imageHeight={1000}
               imageWidth={1500}
               imageAlt="QuantConnect logo"
-              cardTitle={coursesData.futuresWithQuantconnect.title}
-              cardText={coursesData.futuresWithQuantconnect.longDescription}
+              cardTitle={coursesData.futuresWithQuantConnect.title}
+              cardText={coursesData.futuresWithQuantConnect.longDescription}
               postPath="/app/dashboard"
               buttonText="Get started with QuantConnect"
             />

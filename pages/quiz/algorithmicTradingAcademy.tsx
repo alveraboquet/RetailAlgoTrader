@@ -25,7 +25,7 @@ const AlgorithmicTradingAcademyLandingPage: NextPage = () => {
           altText="Screen with code"
           curriculum={coursesData.algorithmicTradingAcademy.curriculum}
           similar1Course="forexTradingWithMT4"
-          similar2Course="futuresWithQuantconnect"
+          similar2Course="futuresWithQuantConnect"
         />
       </Layout>
     </div>

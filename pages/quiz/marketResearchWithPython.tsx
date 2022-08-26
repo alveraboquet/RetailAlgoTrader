@@ -25,7 +25,7 @@ const marketResearchWithPythonLandingPage: NextPage = () => {
           altText="Jupyter Notebook logo"
           curriculum={coursesData.marketResearchWithPython.curriculum}
           similar1Course="algorithmicTradingAcademy"
-          similar2Course="futuresWithQuantconnect"
+          similar2Course="futuresWithQuantConnect"
         />
       </Layout>
     </div>

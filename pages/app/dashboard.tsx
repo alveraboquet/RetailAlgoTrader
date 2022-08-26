@@ -109,23 +109,23 @@ const Dashboard: NextPage = () => {
         </div>
         <div className="col-12 col-md-6 col-lg-4 mt-4 mt-lg-0">
           <CourseCard
-            imagePath={coursesData.equitiesAndCryptoWithTradingview.imagePath}
+            imagePath={coursesData.equitiesAndCryptoWithTradingView.imagePath}
             imageAlt=""
-            cardTitle={coursesData.equitiesAndCryptoWithTradingview.title}
+            cardTitle={coursesData.equitiesAndCryptoWithTradingView.title}
             cardText={
-              coursesData.equitiesAndCryptoWithTradingview.shortDescription
+              coursesData.equitiesAndCryptoWithTradingView.shortDescription
             }
             coursePath="/app/courses/tradingAcademy"
             enrolled={getCourseEnrolled(
-              coursesData.equitiesAndCryptoWithTradingview.id,
+              coursesData.equitiesAndCryptoWithTradingView.id,
               enrolledCourses
             )}
             percentComplete={getPercentComplete(
-              coursesData.equitiesAndCryptoWithTradingview.id,
+              coursesData.equitiesAndCryptoWithTradingView.id,
               coursesPercentComplete
             )}
             isProCourse={true}
-            courseId={coursesData.equitiesAndCryptoWithTradingview.id}
+            courseId={coursesData.equitiesAndCryptoWithTradingView.id}
           ></CourseCard>
         </div>
         <div className="col-12 col-md-6 col-lg-4 mt-4">
@@ -149,21 +149,21 @@ const Dashboard: NextPage = () => {
         </div>
         <div className="col-12 col-md-6 col-lg-4 mt-4">
           <CourseCard
-            imagePath={coursesData.futuresWithQuantconnect.imagePath}
+            imagePath={coursesData.futuresWithQuantConnect.imagePath}
             imageAlt=""
-            cardTitle={coursesData.futuresWithQuantconnect.title}
-            cardText={coursesData.futuresWithQuantconnect.shortDescription}
+            cardTitle={coursesData.futuresWithQuantConnect.title}
+            cardText={coursesData.futuresWithQuantConnect.shortDescription}
             coursePath="/app/courses/tradingAcademy"
             enrolled={getCourseEnrolled(
-              coursesData.futuresWithQuantconnect.id,
+              coursesData.futuresWithQuantConnect.id,
               enrolledCourses
             )}
             percentComplete={getPercentComplete(
-              coursesData.futuresWithQuantconnect.id,
+              coursesData.futuresWithQuantConnect.id,
               coursesPercentComplete
             )}
             isProCourse={true}
-            courseId={coursesData.futuresWithQuantconnect.id}
+            courseId={coursesData.futuresWithQuantConnect.id}
           ></CourseCard>
         </div>
         <div className="col-12 col-md-6 col-lg-4 mt-4">

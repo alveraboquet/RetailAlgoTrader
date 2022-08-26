@@ -21,7 +21,7 @@ const initialCourseData = [
   },
   {
     id: 5,
-    name: 'futuresWithQuantconnect',
+    name: 'futuresWithQuantConnect',
     pro_course: true,
   },
   {

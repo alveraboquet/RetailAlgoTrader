@@ -715,7 +715,7 @@ const coursesData: Courses = {
       { id: '20', chapter: 'Chapter 20: Review', lessons: [] },
     ],
   },
-  equitiesAndCryptoWithTradingview: {
+  equitiesAndCryptoWithTradingView: {
     title: 'Equities and Crypto with TradingView',
     id: 3,
     isProCourse: true,
@@ -901,7 +901,7 @@ const coursesData: Courses = {
       { id: '20', chapter: 'Chapter 20: Review', lessons: [] },
     ],
   },
-  futuresWithQuantconnect: {
+  futuresWithQuantConnect: {
     title: 'Futures with QuantConnect',
     id: 5,
     isProCourse: true,

@@ -25,7 +25,7 @@ const ForexTradingWithMT4LandingPage: NextPage = () => {
           altText="MT4 logo"
           curriculum={coursesData.forexTradingWithMT4.curriculum}
           similar1Course="algorithmicTradingAcademy"
-          similar2Course="equitiesAndCryptoWithTradingview"
+          similar2Course="equitiesAndCryptoWithTradingView"
         />
       </Layout>
     </div>

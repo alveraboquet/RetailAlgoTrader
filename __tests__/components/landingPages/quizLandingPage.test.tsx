@@ -10,7 +10,7 @@ describe('<QuizLandingPage />', () => {
         imagePath="/images/website/bullTrader.webp"
         altText="alt text"
         similar1Course="forexTradingWithMT4"
-        similar2Course="futuresWithQuantconnect"
+        similar2Course="futuresWithQuantConnect"
         curriculum={[
           {
             id: '1',

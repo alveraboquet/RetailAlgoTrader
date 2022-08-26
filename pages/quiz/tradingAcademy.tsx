@@ -25,7 +25,7 @@ const TradingAcademyLandingPage: NextPage = () => {
           altText="Day trader"
           curriculum={coursesData.tradingAcademy.curriculum}
           similar1Course="algorithmicTradingAcademy"
-          similar2Course="equitiesAndCryptoWithTradingview"
+          similar2Course="equitiesAndCryptoWithTradingView"
         />
       </Layout>
     </div>

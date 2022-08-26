@@ -273,7 +273,7 @@ const Home: NextPage = () => {
                         your programming skills to use to generate additional
                         income.
                       </p>
-                      <Link href="/quiz/futuresWithQuantconnect">
+                      <Link href="/quiz/futuresWithQuantConnect">
                         <button className="btn btn-warning w-100">
                           Programmer Resources
                         </button>
