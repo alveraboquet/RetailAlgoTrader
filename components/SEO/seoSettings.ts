@@ -1,9 +1,6 @@
 /**
  * Establishes default settings for the seo component
  * https://cheatcode.co/tutorials/how-to-handle-seo-metadata-in-next-js
- *
- * TODOS:
- *  1. Update social twitter to proper values
  */
 const settings = {
   /*
