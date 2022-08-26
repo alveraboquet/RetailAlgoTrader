@@ -1,0 +1,16 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Resources
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="preparingForCourse"
+    prevLesson="timeline"
+    nextLesson="schedule"
+    currentLessonId={4}
+  >
+    {children}
+  </LayoutLesson>
+);

@@ -1,0 +1,16 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Timeline
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="courseOverview"
+    prevLesson="goals"
+    nextLesson="resources"
+    currentLessonId={3}
+  >
+    {children}
+  </LayoutLesson>
+);
