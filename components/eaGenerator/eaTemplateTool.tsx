@@ -5,6 +5,7 @@ import ExitRules from './exitRules';
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import NonUserButton from './nonUserButton';
+import routerConfig from '../../lib/routerConfig';
 
 // Component for the expert advisor template generation tool
 const EaTemplateTool = () => {
@@ -123,15 +124,15 @@ const EaTemplateTool = () => {
               <a
                 className="text-decoration-none text-dark"
                 /*
-                href={`http://localhost:3000/eaTemplates/${
+                href={`${routerConfig()}/files/eaTemplates/${
                   platform + riskManagementRules + entryRules + exitRules
                 }.txt`}
                 download={
                   platform + riskManagementRules + entryRules + exitRules
                 }
                 */
-                href="http://localhost:3000/eaTemplates/blankTemplate.txt"
-                download="blankTemplate.txt"
+                href={`${routerConfig()}/files/eaTemplates/blankTemplate.txt`}
+                download="EA Template"
               >
                 Please click here to download your template
               </a>

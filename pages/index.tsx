@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Quiz from '../components/quiz/quiz';
 import StrategyChart from '../components/charts/strategyChartContainer';
 import PostCard from '../components/post/postCard';
+import routerConfig from '../lib/routerConfig';
 
 // Homepage
 const Home: NextPage = () => {
@@ -186,11 +187,15 @@ const Home: NextPage = () => {
                   on TradingView
                 </p>
                 <div>
-                  <Link href="/">
-                    <button className="btn btn-warning">
+                  <button className="btn btn-warning">
+                    <a
+                      className="text-decoration-none text-dark"
+                      href={`${routerConfig()}/files/freeAlgoGuide.txt`}
+                      download="Free Algorithmic Trading Guide"
+                    >
                       Receive a Free Profitable Algorithm Guide
-                    </button>
-                  </Link>
+                    </a>
+                  </button>
                 </div>
               </div>
             </div>
