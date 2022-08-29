@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import settings from './seoSettings';
 import Script from 'next/script';
-import DOMPurify from 'isomorphic-dompurify';
+import escape from 'escape-html';
 
 interface Props {
   openGraphType: string;
@@ -119,10 +119,10 @@ const SEO = (props: Props) => {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'http://schema.org',
-            '@type': DOMPurify.sanitize(schemaType),
-            name: DOMPurify.sanitize(title),
-            about: DOMPurify.sanitize(description),
-            url: DOMPurify.sanitize(url),
+            '@type': escape(schemaType),
+            name: escape(title),
+            about: escape(description),
+            url: escape(url),
           }),
         }}
       />
