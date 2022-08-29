@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "npx rimraf node_modules/canvas/",
     "start": "next start",
     "lint": "next lint",
     "test": "jest --watch",
