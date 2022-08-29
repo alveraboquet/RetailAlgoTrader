@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && npx prisma db seed",
+    "vercel-build": "prisma generate && prisma migrate deploy && next build",
     "start": "next start",
     "lint": "next lint",
     "test": "jest --watch",
