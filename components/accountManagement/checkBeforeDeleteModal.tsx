@@ -2,7 +2,7 @@ import {
   checkBeforeDelete,
   deleteCustomer,
 } from '../../lib/accountManagementHelpers';
-//import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import CheckBeforeDeleteForm from './checkBeforeDeleteForm';
 
@@ -15,7 +15,7 @@ const CheckBeforeDeleteModal = (confirmationString: {
 }) => {
   const [error, setError] = useState(false);
   const [isDeleteButtonDisabled, setIsDeleteButtonDisabled] = useState(true);
-  //const router = useRouter();
+  const router = useRouter();
 
   /**
    *
@@ -37,8 +37,7 @@ const CheckBeforeDeleteModal = (confirmationString: {
     );
     if (stringsMatch) {
       const isCustomerDeleted = await deleteCustomer();
-      if (isCustomerDeleted) console.log('customer deleted');
-      //router.push('/');
+      if (isCustomerDeleted) router.push('/');
       else setError(true);
     } else {
       setError(true);
