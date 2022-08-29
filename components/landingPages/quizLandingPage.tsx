@@ -1,3 +1,5 @@
+/* eslint-disable security/detect-object-injection */
+// Object injection is not an issue here as there is no user input
 import SimilarCourseCard from './similarCourseCard';
 import coursesData from './coursesData';
 import Image from 'next/image';

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+// The non-null-assertions marked by eslint are the recommended methods in Stripes documentation
 import { NextApiRequest, NextApiResponse } from 'next';
 import { MONTHLY_AMOUNT, ANNUAL_AMOUNT } from '../../../../stripe.config';
 import Stripe from 'stripe';

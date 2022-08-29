@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+// The non-null-assertions marked by eslint are the recommended methods in Stripes documentation
 import { buffer } from 'micro';
 import Cors from 'micro-cors';
 import { NextApiRequest, NextApiResponse } from 'next';
@@ -105,4 +107,6 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// Below line taken directly from Vercel Stripe documentation
 export default cors(webhookHandler as any);

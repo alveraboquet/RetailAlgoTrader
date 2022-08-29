@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+// The non-null-assertions marked by eslint are the recommended methods in Stripes documentation
 import NextAuth from 'next-auth';
 import type { NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
