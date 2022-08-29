@@ -33,7 +33,7 @@ const isProd = process.env.NODE_ENV === 'production';
 let contentSecurityPolicy;
 if (isProd) {
   contentSecurityPolicy = `
-    default-src 'self' ${isProd ? '' : "* data: 'unsafe-eval' 'unsafe-inline'"};
+    default-src 'self';
     base-uri 'self';
     child-src 'self';
     connect-src 'self' https://checkout.stripe.com https://api.stripe.com;
@@ -52,8 +52,7 @@ if (isProd) {
     img-src 'self' https://*.stripe.com data:;
     object-src 'none';
     script-src 
-      'self' 
-      ${isProd ? '' : "* data: 'unsafe-eval' 'unsafe-inline'"} 
+      'self'
       https://checkout.stripe.com  
       https://js.stripe.com ;
     script-src-attr 'none';
@@ -62,7 +61,7 @@ if (isProd) {
   `;
 } else {
   contentSecurityPolicy = `
-    default-src 'self' ${isProd ? '' : "* data: 'unsafe-eval' 'unsafe-inline'"};
+    default-src 'self' "* data: 'unsafe-eval' 'unsafe-inline'";
     base-uri 'self';
     child-src 'self';
     connect-src 'self' https://checkout.stripe.com https://api.stripe.com;
@@ -82,7 +81,7 @@ if (isProd) {
     object-src 'none';
     script-src 
       'self' 
-      ${isProd ? '' : "* data: 'unsafe-eval' 'unsafe-inline'"} 
+      "* data: 'unsafe-eval' 'unsafe-inline'" 
       https://checkout.stripe.com  
       https://js.stripe.com ;
     script-src-attr 'none';
