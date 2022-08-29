@@ -1,10 +1,10 @@
 import { getProviders } from 'next-auth/react';
 import SEO from '../../components/SEO/seo';
 import { useRouter } from 'next/router';
-import { useMediaQuery } from 'react-responsive';
-import MobileSignInContent from '../../components/auth/signin/mobileSignInContent';
+//import { useMediaQuery } from 'react-responsive';
+//import MobileSignInContent from '../../components/auth/signin/mobileSignInContent';
 import DesktopSignInContent from '../../components/auth/signin/desktopSignInContent';
-import { useState, useEffect } from 'react';
+//import { useState, useEffect } from 'react';
 
 interface Provider {
   id: string;
@@ -20,10 +20,11 @@ type Providers = Record<Provider['id'], Provider>;
 const SignIn = ({ providers }: Providers) => {
   // Retrieves error if one returned by NextAuth signin flow
   const { error } = useRouter().query;
-  const router = useRouter();
-  const [isMobile, setIsMobile] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
+  //const router = useRouter();
+  //const [isMobile, setIsMobile] = useState(false);
+  //const [isDesktop, setIsDesktop] = useState(false);
 
+  /*
   const handleMediaQueryChange = (matches: boolean) => {
     if (matches) {
       router.reload();
@@ -45,6 +46,7 @@ const SignIn = ({ providers }: Providers) => {
     if (isMobileCheck) setIsMobile(true);
     if (isDesktopCheck) setIsDesktop(true);
   }, [isMobileCheck, isDesktopCheck]);
+  */
 
   return (
     <div>
@@ -57,10 +59,13 @@ const SignIn = ({ providers }: Providers) => {
         image="https://retailalgotrader.com/images/website/bulltrader.webp"
         keywords="RetailAlgoTrader signin, RetailAlgoTrader login"
       />
+      {/* 
       {isMobile && <MobileSignInContent error={error} providers={providers} />}
       {isDesktop && (
         <DesktopSignInContent error={error} providers={providers} />
       )}
+      */}
+      <DesktopSignInContent error={error} providers={providers} />
     </div>
   );
 };
