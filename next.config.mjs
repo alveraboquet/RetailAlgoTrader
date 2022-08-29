@@ -5,6 +5,18 @@ import rehypeSlug from 'rehype-slug';
 import rehypeHighlight from 'rehype-highlight';
 import remarkToc from 'remark-toc';
 
+// For building on vercel: https://github.com/Automattic/node-canvas/issues/1779
+if (
+  process.env.LD_LIBRARY_PATH == null ||
+  !process.env.LD_LIBRARY_PATH.includes(
+    `${process.env.PWD}/node_modules/canvas/build/Release:`
+  )
+) {
+  process.env.LD_LIBRARY_PATH = `${
+    process.env.PWD
+  }/node_modules/canvas/build/Release:${process.env.LD_LIBRARY_PATH || ''}`;
+}
+
 // Set up MDX file support
 const withMDX = nextMDX({
   extension: /\.mdx?$/,
