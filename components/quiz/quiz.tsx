@@ -1,3 +1,10 @@
+/* eslint-disable security/detect-object-injection */
+// Object injection is not an issue here as there is no user input
+import { useState } from 'react';
+import questions from './quizQuestions';
+import getMaxValueKey from '../../lib/getMaxValueKey';
+import { useRouter } from 'next/router';
+
 /**
  * Quiz component that renders on the home page
  * Consists of five questions. Answers to the questions add a value to specified categories.
@@ -5,11 +12,6 @@
  * Quiz cateogories: tradingAcademy, algorithmicTradingAcademy, forexTradingWithMT4,
  *    equitiesAndCryptoWithTradingView, marketResearchWithPython, futuresWithQuantConnect
  */
-import { useState } from 'react';
-import questions from './quizQuestions';
-import getMaxValueKey from '../../lib/getMaxValueKey';
-import { useRouter } from 'next/router';
-
 const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [result, setResult] = useState<Array<string>>([]);
