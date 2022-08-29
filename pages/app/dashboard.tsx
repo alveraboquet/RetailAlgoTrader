@@ -84,7 +84,7 @@ const Dashboard: NextPage = () => {
             imageAlt=""
             cardTitle={coursesData.algorithmicTradingAcademy.title}
             cardText={coursesData.algorithmicTradingAcademy.shortDescription}
-            coursePath={`/app/courses/tradingAcademy/${
+            coursePath={`/app/courses/algorithmicTradingAcademy/${
               getCourseObject(
                 coursesData.algorithmicTradingAcademy.id,
                 enrolledCourses
@@ -115,7 +115,17 @@ const Dashboard: NextPage = () => {
             cardText={
               coursesData.equitiesAndCryptoWithTradingView.shortDescription
             }
-            coursePath="/app/courses/tradingAcademy"
+            coursePath={`/app/courses/equitiesAndCryptoWithTradingView/${
+              getCourseObject(
+                coursesData.equitiesAndCryptoWithTradingView.id,
+                enrolledCourses
+              ).current_chapter
+            }/${
+              getCourseObject(
+                coursesData.equitiesAndCryptoWithTradingView.id,
+                enrolledCourses
+              ).current_lesson
+            }`}
             enrolled={getCourseEnrolled(
               coursesData.equitiesAndCryptoWithTradingView.id,
               enrolledCourses
@@ -134,7 +144,17 @@ const Dashboard: NextPage = () => {
             imageAlt=""
             cardTitle={coursesData.forexTradingWithMT4.title}
             cardText={coursesData.forexTradingWithMT4.shortDescription}
-            coursePath="/app/courses/tradingAcademy"
+            coursePath={`/app/courses/forexTradingWithMT4/${
+              getCourseObject(
+                coursesData.forexTradingWithMT4.id,
+                enrolledCourses
+              ).current_chapter
+            }/${
+              getCourseObject(
+                coursesData.forexTradingWithMT4.id,
+                enrolledCourses
+              ).current_lesson
+            }`}
             enrolled={getCourseEnrolled(
               coursesData.forexTradingWithMT4.id,
               enrolledCourses
@@ -153,7 +173,17 @@ const Dashboard: NextPage = () => {
             imageAlt=""
             cardTitle={coursesData.futuresWithQuantConnect.title}
             cardText={coursesData.futuresWithQuantConnect.shortDescription}
-            coursePath="/app/courses/tradingAcademy"
+            coursePath={`/app/courses/futuresWithQuantConnect/${
+              getCourseObject(
+                coursesData.futuresWithQuantConnect.id,
+                enrolledCourses
+              ).current_chapter
+            }/${
+              getCourseObject(
+                coursesData.futuresWithQuantConnect.id,
+                enrolledCourses
+              ).current_lesson
+            }`}
             enrolled={getCourseEnrolled(
               coursesData.futuresWithQuantConnect.id,
               enrolledCourses
@@ -172,7 +202,17 @@ const Dashboard: NextPage = () => {
             imageAlt=""
             cardTitle={coursesData.marketResearchWithPython.title}
             cardText={coursesData.marketResearchWithPython.shortDescription}
-            coursePath="/app/courses/tradingAcademy"
+            coursePath={`/app/courses/marketResearchWithPython/${
+              getCourseObject(
+                coursesData.marketResearchWithPython.id,
+                enrolledCourses
+              ).current_chapter
+            }/${
+              getCourseObject(
+                coursesData.marketResearchWithPython.id,
+                enrolledCourses
+              ).current_lesson
+            }`}
             enrolled={getCourseEnrolled(
               coursesData.marketResearchWithPython.id,
               enrolledCourses
