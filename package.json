@@ -7,8 +7,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && npx prisma db seed",
-    "vercel-build": "prisma generate && prisma migrate deploy && prisma db seed && next build",
+    "build": "next build",
+    "prisma-build": "prisma generate && prisma migrate deploy && prisma db seed && next build",
     "start": "next start",
     "lint": "next lint",
     "test": "jest --watch",
