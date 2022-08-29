@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && npx rimraf node_modules/canvas/src",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "test": "jest --watch",
