@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import pool from '../../../../db/index';
+import pool from '../../../../dbConfig';
 import { unstable_getServerSession } from 'next-auth';
 import { authOptions } from '../../auth/[...nextauth]';
 
