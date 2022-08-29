@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import settings from './seoSettings';
 import Script from 'next/script';
-import DOMPurify from 'dompurify';
+import DOMPurify from 'isomorphic-dompurify';
 
 interface Props {
   openGraphType: string;
