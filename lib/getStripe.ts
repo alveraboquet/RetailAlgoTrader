@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+// The non-null-assertions marked by eslint are the recommended methods in Stripes documentation
 import { Stripe, loadStripe } from '@stripe/stripe-js';
 
 // This is a singleton to ensure we only instantiate Stripe once on the frontend
