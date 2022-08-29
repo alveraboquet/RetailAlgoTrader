@@ -19,6 +19,7 @@ const Pricing: NextPage = () => {
         description="Create a free hobby account to get started. When the more advanced courses and tools interest you
         upgrade to a Pro account for just $30/mo"
         image="https://retailalgotrader.com/images/website/bulltrader.webp"
+        keywords="RetailAlgoTrader pricing, RetailAlgoTrader pro membership, RetailAlgoTrader cose"
       />
       <Layout>
         <section className="text-center">

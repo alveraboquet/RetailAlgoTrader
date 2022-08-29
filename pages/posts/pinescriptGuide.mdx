@@ -3,9 +3,21 @@ import Image from 'next/image';
 import CallToAction from '../../components/post/callToAction';
 import styles from '../../styles/LayoutPost.module.css';
 
-<h1 className="text-center mt-3 mt-md-5 fw-bold text-dark">Pinescript Guide</h1>
+# Pinescript Guide
+
+<figure>
+  <Image
+    src="/images/posts/pinescriptGuide/pineScriptLogo.webp"
+    height={1000}
+    width={1500}
+    alt=""
+    priority
+  />
+</figure>
 
 <CallToAction />
+
+## Table of Contents
 
 ## What is Pinescript?
 
@@ -41,7 +53,7 @@ We will spend half of this guide looking at Pinescript indicators and the other 
 - Create own indicator
 - Develop own trading strategy and backtest it
 
-## TradingView Indicators
+## TradingView indicators
 
 TradingView scripts are the name of indicators and strategies coded using Pinescript. If you have spent any time in TradingView
 you have almost certainly used some of their built-in indicators.
@@ -115,8 +127,6 @@ third-party code editor.
 
 // creates comments in Pinescript. We have added comments to the Bollinger Band source code below to explain what each line
 means. The comments are in black and the source code is in red.
-
-<div className={styles.code}>
 
 ```
 //This is simply a comment indicating to TradingView and the user which
@@ -208,8 +218,6 @@ p2 = plot(lower, "Lower", color=#2962FF, offset = offset)
 fill(p1, p2, title = "Background", color=color.rgb(33, 150, 243, 95))
 ```
 
-</div>
-
 That was a lot of information that you were probably not very familiar with. Spend some time reviewing the source code, our
 comments, and the documentation with ctrl+click.
 
@@ -223,8 +231,6 @@ indicators. Somebody may have already created what you are looking for.
 Start by clicking on Pine Editor at the bottom of your screen. This should open up an Untitled script with the following lines
 of code:
 
-<div className={styles.code}>
-
 ```
 // This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
 // © YourUsername
@@ -234,15 +240,11 @@ indicator("My script")
 plot(close)
 ```
 
-</div>
-
 We will be creating the RSI oscillator line by line to see what creating our own indicator would look like. If you are
 unfamiliar with RSI or need a refresher check out this [article](investopedia.com/terms/r/rsi.asp) from Investopedia.
 
 First you need to give the indicator a name and some default values. If you are unsure what arguments indicator takes you can
 ctrl+click on `indicator` in the Pine Editor to open the interactive reference manual.
-
-<div className={styles.code}>
 
 ```
 // This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
@@ -253,11 +255,7 @@ indicator(title="Relative Strength Index", shorttitle="RSI", format=format.price
 plot(close)
 ```
 
-</div>
-
 RSI has two lines. The RSI line and the MA line. We will give the user six options to choose for their MA line.
-
-<div className={styles.code}>
 
 ```
 // This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
@@ -278,8 +276,6 @@ ma(source, length, type) =>
         "VWMA" => ta.vwma(source, length)
 ```
 
-</div>
-
 ### Taking a look at an existing TradingView strategy
 
 By clicking on `Indicator` then `Technicals` and then filtering to `strategies` you can see many built-in strategies. These
@@ -294,7 +290,7 @@ However, that does not mean they are not effective and they also serve as a grea
     width={3840}
     alt=""
   />
-  <figcaption className="text-secondary">Opening Pine Editor</figcaption>
+  <figcaption>Opening Pine Editor</figcaption>
 </figure>
 
 Go ahead and select the `MovingAvg Cross` strategy. The Strategy Tester tab should automatically open up. The Strategy Tester
@@ -315,9 +311,7 @@ back to 1986.
     width={3840}
     alt=""
   />
-  <figcaption className="text-secondary">
-    Overview tab of Strategy Tester
-  </figcaption>
+  <figcaption>Overview tab of Strategy Tester</figcaption>
 </figure>
 
 Overview will display the following metrics for you:
@@ -361,9 +355,7 @@ the performance summary to a .csv file if you have a premium plan.
     width={3840}
     alt=""
   />
-  <figcaption className="text-secondary">
-    Performance summary of Strategy Tester
-  </figcaption>
+  <figcaption>Performance summary of Strategy Tester</figcaption>
 </figure>
 
 #### List of trades
@@ -387,9 +379,7 @@ This tab lists every single trade that the strategy took while undergoing backte
     width={3840}
     alt=""
   />
-  <figcaption className="text-secondary">
-    List of trades from Strategy Tester
-  </figcaption>
+  <figcaption>List of trades from Strategy Tester</figcaption>
 </figure>
 
 This tab has two major purposes:
@@ -453,6 +443,9 @@ export default ({ children }) => (
     description="Everything you need to know to get started with Pinescript on TradingView. Discover how to create your own 
       trading algorithms, backtest them on free data, and launch them for live trading."
     image="https://retailalgotrader/images/posts/whatAreMarketMakers/MarketMaker-Cover.webp"
+    createdAt="08-11-22"
+    modifiedAt="08-11-22"
+    keywords="Pinescript guide, learn Pinescript, create trading algorithm with Pinescript"
   >
     {children}
   </LayoutPost>

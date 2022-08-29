@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  min-width: 300px;
 }
 
 a {
@@ -23,13 +24,4 @@ ul,
 ol,
 dd {
   list-style-position: inside;
-}
-
-.postTable table,
-.postTable th,
-.postTable td {
-  border: 1px solid black !important;
-  padding: 5px;
-  margin-left: auto;
-  margin-right: auto;
 }

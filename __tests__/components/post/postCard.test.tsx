@@ -12,6 +12,7 @@ describe('<PostCard />', () => {
         cardTitle="What are market makers and how do they work?"
         cardText="There is a lot of confusion and inaccurate beliefs around market makers and their roles in the market."
         postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
+        buttonText="Read more"
       />
     );
 

@@ -9,6 +9,7 @@ import Stripe from 'stripe';
 import {
   populateUserCourse,
   populateUserLesson,
+  populateUserChapter,
 } from '../../../lib/nextAuthHelpers';
 
 // https://next-auth.js.org/getting-started/example
@@ -56,10 +57,14 @@ export const authOptions: NextAuthOptions = {
       await prisma.user_Lesson.createMany({
         data: userLessonRows,
       });
+      const userChapterRows = populateUserChapter(user.id);
+      await prisma.user_Chapter.createMany({
+        data: userChapterRows,
+      });
 
       // Create stripe API client using the secret key env variable
       const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-        apiVersion: '2020-08-27',
+        apiVersion: '2022-08-01',
       });
 
       // Create a stripe customer for the user with their email address

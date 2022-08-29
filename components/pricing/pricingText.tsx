@@ -25,73 +25,34 @@ const PricingText = () => {
           </div>
         </div>
       </section>
-      <section className="bg-light p-3 text-center d-none d-md-block">
+      <section className="bg-light p-3 text-center">
         <h2>Discover how to master the following skills</h2>
-        <div className="row">
-          <div className="col-4">
+        <div className="d-flex flex-wrap">
+          <div className="col-6 col-md-4">
             <p>Equities</p>
           </div>
-          <div className="col-4">
+          <div className="col-6 col-md-4">
             <p>Forex</p>
           </div>
-          <div className="col-4">
+          <div className="col-6 col-md-4">
             <p>Futures</p>
           </div>
-        </div>
-        <div className="row">
-          <div className="col-4">
+          <div className="col-6 col-md-4">
             <p>TradingView</p>
           </div>
-          <div className="col-4">
+          <div className="col-6 col-md-4">
             <p>MT4</p>
           </div>
-          <div className="col-4">
+          <div className="col-6 col-md-4">
             <p>QuantConnect</p>
           </div>
-        </div>
-        <div className="row">
-          <div className="col-4">
+          <div className="col-6 col-md-4">
             <p>Python</p>
           </div>
-          <div className="col-4">
+          <div className="col-6 col-md-4">
             <p>Jupyter Notebooks</p>
           </div>
-          <div className="col-4">
-            <p>Crypto</p>
-          </div>
-        </div>
-      </section>
-      <section className="bg-light p-3 text-center d-md-none">
-        <h2>Discover how to master the following skills</h2>
-        <div className="row">
-          <div className="col-6">
-            <p>Equities</p>
-          </div>
-          <div className="col-6">
-            <p>Forex</p>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-6">
-            <p>Futures</p>
-          </div>
-          <div className="col-6">
-            <p>TradingView</p>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-6">
-            <p>MT4</p>
-          </div>
-          <div className="col-6">
-            <p>QuantConnect</p>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-6">
-            <p>Python</p>
-          </div>
-          <div className="col-6">
+          <div className="col-6 col-md-4">
             <p>Crypto</p>
           </div>
         </div>

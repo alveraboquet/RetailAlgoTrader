@@ -177,7 +177,6 @@ export const checkBeforeDelete = (
  * @returns - true if valid input and false if not valid input
  */
 export const verifyAccountInfoChange = async (e: React.FormEvent) => {
-  e.preventDefault();
   const formValidation = (await import('../lib/formValidation')).default;
   const validated = formValidation(e);
   if (validated) {

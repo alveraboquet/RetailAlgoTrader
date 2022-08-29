@@ -1,14 +1,20 @@
 /* eslint-disable quotes */
 import nextMDX from '@next/mdx';
 import remarkGfm from 'remark-gfm';
+import rehypeSlug from 'rehype-slug';
+import rehypeHighlight from 'rehype-highlight';
+import remarkToc from 'remark-toc';
 
 // Set up MDX file support
 const withMDX = nextMDX({
   extension: /\.mdx?$/,
   options: {
     // remarkGfm adds support for markdown tables
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [],
+    remarkPlugins: [remarkGfm, remarkToc],
+    rehypePlugins: [
+      rehypeSlug, // add IDs to any h1-h6 tag that doesn't have one, using a slug made from its text
+      rehypeHighlight, // add synax highlighting for code blocks
+    ],
     // If you use `MDXProvider`, uncomment the following line.
     // providerImportSource: "@mdx-js/react",
   },
@@ -24,27 +30,66 @@ const isProd = process.env.NODE_ENV === 'production';
  * defualt-src and script-src must allow "unsafe-eval" and "unsafe-inline" to properly work in development environment with oAuth providers
  * form-action includes auth0, facebook, and google access to support oAuth logins
  */
-const contentSecurityPolicy = `
- default-src 'self' ${isProd ? '' : "* data: 'unsafe-eval' 'unsafe-inline'"};
- base-uri 'self';
- block-all-mixed-content;
- font-src 'self' https: data:;
- form-action 
-   'self' 
-   https://dev-bcrf42vl.us.auth0.com 
-   http://localhost:3000/api/auth/signin/auth0 
-   http://localhost:3000/api/auth/signin/facebook 
-   www.facebook.com 
-   http://localhost:3000/api/auth/signin/google
-   *.google.com;
- frame-ancestors 'self';
- img-src 'self' data:;
- object-src 'none';
- script-src 'self' ${isProd ? '' : "* data: 'unsafe-eval' 'unsafe-inline'"};;
- script-src-attr 'none';
- style-src 'self' https: 'unsafe-inline';
- upgrade-insecure-requests
-`;
+let contentSecurityPolicy;
+if (isProd) {
+  contentSecurityPolicy = `
+    default-src 'self' ${isProd ? '' : "* data: 'unsafe-eval' 'unsafe-inline'"};
+    base-uri 'self';
+    child-src 'self';
+    connect-src 'self' https://checkout.stripe.com https://api.stripe.com;
+    font-src 'self' https: data:;
+    form-action 
+      'self' 
+      https://dev-bcrf42vl.us.auth0.com 
+      http://localhost:3000/api/auth/signin/auth0 
+      http://localhost:3000/api/auth/signin/facebook 
+      www.facebook.com 
+      http://localhost:3000/api/auth/signin/google
+      *.google.com
+      https://billing.stripe.com;
+    frame-ancestors 'none';
+    frame-src 'self' https://checkout.stripe.com https://js.stripe.com https://hooks.stripe.com https://hooks.stripe.com;
+    img-src 'self' https://*.stripe.com data:;
+    object-src 'none';
+    script-src 
+      'self' 
+      ${isProd ? '' : "* data: 'unsafe-eval' 'unsafe-inline'"} 
+      https://checkout.stripe.com  
+      https://js.stripe.com ;
+    script-src-attr 'none';
+    style-src 'self' https: 'unsafe-inline';
+    upgrade-insecure-requests
+  `;
+} else {
+  contentSecurityPolicy = `
+    default-src 'self' ${isProd ? '' : "* data: 'unsafe-eval' 'unsafe-inline'"};
+    base-uri 'self';
+    child-src 'self';
+    connect-src 'self' https://checkout.stripe.com https://api.stripe.com;
+    font-src 'self' https: data:;
+    form-action 
+      'self' 
+      https://dev-bcrf42vl.us.auth0.com 
+      http://localhost:3000/api/auth/signin/auth0 
+      http://localhost:3000/api/auth/signin/facebook 
+      www.facebook.com 
+      http://localhost:3000/api/auth/signin/google
+      *.google.com
+      https://billing.stripe.com;
+    frame-ancestors 'none';
+    frame-src 'self' https://checkout.stripe.com https://js.stripe.com https://hooks.stripe.com https://hooks.stripe.com;
+    img-src 'self' https://*.stripe.com data:;
+    object-src 'none';
+    script-src 
+      'self' 
+      ${isProd ? '' : "* data: 'unsafe-eval' 'unsafe-inline'"} 
+      https://checkout.stripe.com  
+      https://js.stripe.com ;
+    script-src-attr 'none';
+    style-src 'self' https: 'unsafe-inline';
+    upgrade-insecure-requests
+  `;
+}
 
 /**
  * Security headers to be used with all API routes in application
@@ -56,7 +101,7 @@ const securityHeaders = [
   },
   {
     key: 'Strict-Transport-Security',
-    value: 'max-age=63072000; includeSubDomains; preload',
+    value: 'max-age=31536000; includeSubDomains; preload',
   },
   {
     key: 'X-XSS-Protection',
@@ -64,7 +109,7 @@ const securityHeaders = [
   },
   {
     key: 'X-Frame-Options',
-    value: 'SAMEORIGIN',
+    value: 'deny',
   },
   {
     key: 'X-Content-Type-Options',
@@ -72,11 +117,11 @@ const securityHeaders = [
   },
   {
     key: 'Referrer-Policy',
-    value: 'strict-origin-when-cross-origin',
+    value: 'no-referrer',
   },
   {
     key: 'Content-Security-Policy',
-    value: contentSecurityPolicy.replace(/\s{2,}/g, ' ').trim(),
+    value: contentSecurityPolicy.replace(/\s{2,}/g, ' ').trim(), // Removes whitespace
   },
   {
     key: 'X-Download-Options',
@@ -90,21 +135,65 @@ const securityHeaders = [
     key: 'X-Permitted-Cross-Domain-Policies',
     value: 'none',
   },
+  {
+    key: 'Cross-Origin-Embedder-Policy',
+    value: 'require-corp',
+  },
+  {
+    key: 'Cross-Origin-Opener-Policy',
+    value: 'same-origin',
+  },
+  {
+    key: 'Cross-Origin-Resource-Policy',
+    value: 'same-origin',
+  },
+  {
+    key: 'Permissions-Policy',
+    value:
+      'accelerometer=(),autoplay=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),geolocation=(),gyroscope=(),magnetometer=(),microphone=(),midi=(),payment=(),picture-in-picture=(),publickey-credentials-get=(),screen-wake-lock=(),sync-xhr=(self),usb=(),web-share=(),xr-spatial-tracking=()',
+  },
 ];
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Append the default value with md extensions
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
-  // removes x-powered-by header to restrict sensitive info from attackers
-  poweredByHeader: false,
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'], // Append the default value with md extensions
+  poweredByHeader: false, // removes x-powered-by header to restrict sensitive info from attackers
   async headers() {
     return [
       {
         // Apply these headers to all routes in your application
         source: '/:path*',
         headers: securityHeaders,
+      },
+      {
+        // Only applies Clear-Site-Data header to deleteCustomer path
+        // Above headers still apply
+        source: '/api/stripe/customer/deleteCustomer',
+        headers: [
+          {
+            key: 'Clear-Site-Data',
+            value: '"cache", "cookies", "storage"',
+          },
+        ],
+      },
+      {
+        source: '/app/proSignup',
+        headers: [
+          {
+            key: 'Cross-Origin-Embedder-Policy',
+            value: 'unsafe-none',
+          },
+        ],
+      },
+      {
+        source: '/app/dashboard',
+        headers: [
+          {
+            key: 'Cross-Origin-Embedder-Policy',
+            value: 'unsafe-none',
+          },
+        ],
       },
     ];
   },

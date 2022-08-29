@@ -15,6 +15,7 @@ const About: NextPage = () => {
         description="Learn why RetailAlgoTrading was started. Discover how we are providing retail traders the opportunity to
         trade algorithmically"
         image="https://retailalgotrader.com/images/website/bulltrader.webp"
+        keywords="About algorithmic trading, About RetailAlgoTrading, What is algorithmic trading"
       />
       <Layout>
         <article className="container fs-5">

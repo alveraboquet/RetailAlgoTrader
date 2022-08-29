@@ -1,7 +1,16 @@
+.page {
+  background-color: whitesmoke;
+}
+
 .postContainer {
   margin-left: 20%;
   margin-right: 20%;
+  margin-top: 2rem;
   margin-bottom: 3rem;
+  padding: 2rem;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 0.5rem;
 }
 
 .post {
@@ -10,14 +19,11 @@
   overflow-wrap: break-word;
 }
 
-.post h1 {
-  text-align: center;
-  line-height: 3rem;
-}
-
 .post figure {
   width: 90%;
-  margin: auto;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 3rem;
   margin-top: 3rem;
 }
@@ -27,7 +33,12 @@
   color: grey;
 }
 
-.post h1,
+.post h1 {
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
 .post h2,
 .post h3,
 .post h4,
@@ -37,42 +48,33 @@
   font-weight: bold;
 }
 
-.post code {
-  background-color: whitesmoke;
-  border: 1px solid lightgray;
-  border-radius: 5px;
-  padding: 0 0.2rem;
+.post table,
+.post th,
+.post td {
+  border: 1px solid black;
+  padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.code {
-  background-color: whitesmoke;
-  padding: 2rem;
-  border-radius: 1rem;
-  overflow: auto;
-  border: 1px solid lightgray;
-  margin-bottom: 1rem;
-}
-
-.code code {
-  background-color: none;
-  border: none;
-  border-radius: none;
-  padding: 0;
-}
-
-.code * {
-  margin-right: 2rem;
+.post li p {
+  display: inline;
 }
 
 @media (max-width: 600px) {
+  .page {
+    background-color: white;
+  }
+
   .postContainer {
     margin-left: 1rem;
     margin-right: 1rem;
-    margin-bottom: 3rem;
-  }
-
-  .post h1 {
     margin-top: 0;
+    margin-bottom: 3rem;
+    padding: 0;
+    background-color: white;
+    border: 0px solid white;
+    border-radius: 0px;
   }
 
   .post figure {

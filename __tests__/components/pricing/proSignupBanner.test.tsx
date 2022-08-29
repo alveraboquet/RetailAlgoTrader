@@ -6,7 +6,7 @@ describe('<ProSignupBanner />', () => {
     render(<ProSignupBanner isPro={false} />);
 
     const text = screen.getByText(
-      'You currently have a Hobby account. If you would like to upgrade to a Pro membership please click'
+      'You currently have a Hobby account. If you would like to upgrade to a Pro membership please click here:'
     );
     const button = screen.getByRole('button', { name: /upgrade to pro/i });
 
@@ -18,7 +18,7 @@ describe('<ProSignupBanner />', () => {
     render(<ProSignupBanner isPro={true} />);
 
     const text = screen.queryByText(
-      'You currently have a Hobby account. If you would like to upgrade to a Pro membership please click'
+      'You currently have a Hobby account. If you would like to upgrade to a Pro membership please click here:'
     );
     const button = screen.queryByRole('button', { name: /upgrade to pro/i });
 

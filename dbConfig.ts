@@ -1,24 +1,11 @@
-interface DB {
-  PGHOST: string | undefined;
-  PGUSER: string | undefined;
-  PGDATABASE: string | undefined;
-  PGPASSWORD: string | undefined;
-  PGPORT: number | undefined;
-}
+import { Pool } from 'pg';
 
-// .env returns string but ClientConfig.port from pg package requires number
-// Below code segment changes PGPORT from string to number
-let pgPort = undefined;
-if (process.env.PGPORT) {
-  pgPort = parseInt(process.env.PGPORT);
-}
-
-const DB: DB = {
-  PGHOST: process.env.PGHOST,
-  PGUSER: process.env.PGUSER,
-  PGDATABASE: process.env.PGDATABASE,
-  PGPASSWORD: process.env.PGPASSWORD,
-  PGPORT: pgPort,
+const config = {
+  connectionString: process.env.DB_CONNECTION_STRING,
 };
 
-export default DB;
+// Creates new pool instance for Postgres from .env
+// Import this pool into all API routes that require a pool connection
+const pool = new Pool(config);
+
+export default pool;

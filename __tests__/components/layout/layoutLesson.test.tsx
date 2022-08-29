@@ -29,6 +29,7 @@ describe('<LayoutLesson />', () => {
           nextChapter="nextChapter"
           prevLesson="prevLesson"
           nextLesson="nextLesson"
+          currentLessonId={1}
         >
           {children}
         </LayoutLesson>

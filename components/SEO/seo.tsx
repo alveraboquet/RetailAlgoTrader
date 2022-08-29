@@ -13,6 +13,7 @@ interface Props {
   createdAt?: string;
   updatedAt?: string;
   schemaType: string;
+  keywords: string;
 }
 
 // Creates all social tags to be used with SEO component
@@ -72,7 +73,7 @@ const socialTags = ({
 // Creates SEO component to be used on all internat-facing pages
 // https://cheatcode.co/tutorials/how-to-handle-seo-metadata-in-next-js
 const SEO = (props: Props) => {
-  const { url, title, description, image, schemaType } = props;
+  const { url, title, description, image, schemaType, keywords } = props;
 
   // This line required to remove title element receiving array warning
   // https://github.com/vercel/next.js/discussions/38256
@@ -83,11 +84,7 @@ const SEO = (props: Props) => {
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-          name="keywords"
-          content="retail trader, algorithmic trading, day trading"
-          key="keywords"
-        />
+        <meta name="keywords" content={keywords} key="keywords" />
         <meta name="author" content="Matt Laux" key="author" />
         <link
           rel="apple-touch-icon"

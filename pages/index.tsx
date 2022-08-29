@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Quiz from '../components/quiz/quiz';
 import StrategyChart from '../components/charts/strategyChartContainer';
 import PostCard from '../components/post/postCard';
+import routerConfig from '../lib/routerConfig';
 
 // Homepage
 const Home: NextPage = () => {
@@ -19,6 +20,7 @@ const Home: NextPage = () => {
         title="Algorithmic Trading for Retail Traders"
         description="Discover how to intelligently and profitably trade as a retail algorithmic trader."
         image="https://retailalgotrader.com/images/website/bullTraderSocial.webp"
+        keywords="RetailAlgoTrader, RetailAlgoTrader benefits, Algorithmic trading courses"
       />
       <Layout>
         {/*Banner Section */}
@@ -30,13 +32,11 @@ const Home: NextPage = () => {
             <p className="text-white mt-3 fs-5">
               Discover how to trade intelligently and sustainably
             </p>
-            <button className="btn btn-warning p-md-3">
-              <Link href="/auth/signup">
-                <a className="text-decoration-none text-dark fs-3">
-                  Sign Up Today! No Credit Card Required
-                </a>
-              </Link>
-            </button>
+            <Link href="/auth/signup">
+              <button className="btn btn-warning p-md-3 fs-3">
+                Sign Up Today! No Credit Card Required
+              </button>
+            </Link>
             <div className="text-white d-none d-md-block fs-5 mt-5 pb-5">
               <h2 className="fw-bold">Our Trading Philosophy</h2>
               <p>
@@ -138,7 +138,7 @@ const Home: NextPage = () => {
                       className="card-img-top"
                       height={1306}
                       width={2295}
-                      alt="Bull Trader"
+                      alt="Daytrader at computer"
                     />
                   </figure>
                   <div className="card-body">
@@ -159,7 +159,7 @@ const Home: NextPage = () => {
                       className="card-img-top"
                       height={1306}
                       width={2295}
-                      alt="Bull Trader"
+                      alt="Project management meeting"
                     />
                   </figure>
                   <div className="card-body">
@@ -188,11 +188,13 @@ const Home: NextPage = () => {
                 </p>
                 <div>
                   <button className="btn btn-warning">
-                    <Link href="/">
-                      <a className="text-decoration-none text-dark">
-                        Receive a Free Profitable Algorithm Guide
-                      </a>
-                    </Link>
+                    <a
+                      className="text-decoration-none text-dark"
+                      href={`${routerConfig()}/files/freeAlgoGuide.txt`}
+                      download="Free Algorithmic Trading Guide"
+                    >
+                      Receive a Free Profitable Algorithm Guide
+                    </a>
                   </button>
                 </div>
               </div>
@@ -242,13 +244,11 @@ const Home: NextPage = () => {
                         If you have no experience with the markets that is fine.
                         Check out our recommended resources to get started.
                       </p>
-                      <button className="btn btn-warning w-100">
-                        <Link href="/quiz/tradingAcademy">
-                          <a className="text-decoration-none text-dark">
-                            Beginner Resources
-                          </a>
-                        </Link>
-                      </button>
+                      <Link href="/quiz/tradingAcademy">
+                        <button className="btn btn-warning w-100">
+                          Beginner Resources
+                        </button>
+                      </Link>
                     </div>
                   </article>
                 </div>
@@ -261,13 +261,11 @@ const Home: NextPage = () => {
                         can create tools to increase your profitability and
                         efficiency.
                       </p>
-                      <button className="btn btn-warning w-100">
-                        <Link href="/quiz/algorithmicTradingAcademy">
-                          <a className="text-decoration-none text-dark">
-                            Experienced Resources
-                          </a>
-                        </Link>
-                      </button>
+                      <Link href="/quiz/algorithmicTradingAcademy">
+                        <button className="btn btn-warning w-100">
+                          Experienced Resources
+                        </button>
+                      </Link>
                     </div>
                   </article>
                 </div>
@@ -280,13 +278,11 @@ const Home: NextPage = () => {
                         your programming skills to use to generate additional
                         income.
                       </p>
-                      <button className="btn btn-warning w-100">
-                        <Link href="/quiz/futuresWithQuantconnect">
-                          <a className="text-decoration-none text-dark">
-                            Programmer Resources
-                          </a>
-                        </Link>
-                      </button>
+                      <Link href="/quiz/futuresWithQuantConnect">
+                        <button className="btn btn-warning w-100">
+                          Programmer Resources
+                        </button>
+                      </Link>
                     </div>
                   </article>
                 </div>
@@ -303,38 +299,39 @@ const Home: NextPage = () => {
               </h2>
               <div className="col-md-4">
                 <PostCard
-                  imagePath="/images/website/genericStock.webp"
-                  imageHeight={1306}
-                  imageWidth={2295}
-                  imageAlt="Picture of market candles"
-                  cardTitle="What are market makers and how do they work?"
+                  imagePath="/images/posts/whatAreMarketMakers/MarketMaker-Cover.webp"
+                  imageHeight={1000}
+                  imageWidth={1500}
+                  imageAlt=""
+                  cardTitle="Essential Facts of Market Makers in Today's Markets"
                   cardText="There is a lot of confusion and inaccurate beliefs around market makers
-                and their roles in the market."
+                              and their roles in the market."
                   postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
+                  buttonText="Read more"
                 ></PostCard>
               </div>
               <div className="col-md-4 mt-3 mt-md-0">
                 <PostCard
-                  imagePath="/images/website/genericStock.webp"
-                  imageHeight={1306}
-                  imageWidth={2295}
-                  imageAlt="Picture of market candles"
-                  cardTitle="Article2"
-                  cardText="There is a lot of confusion and inaccurate beliefs around market makers
-                and their roles in the market."
+                  imagePath="/images/posts/possibleToSucceedAsRetailTrader/banner.webp"
+                  imageHeight={1000}
+                  imageWidth={1500}
+                  imageAlt=""
+                  cardTitle="Find out if it is actually possible to succeed as a retail trader"
+                  cardText="It is absolutely possible to succeed. There are many individual traders with proven track records."
                   postPath="/posts/isItActuallyPossibleToSucceedAsARetailTrader"
+                  buttonText="Read more"
                 ></PostCard>
               </div>
               <div className="col-md-4 mt-3 mt-md-0">
                 <PostCard
-                  imagePath="/images/website/genericStock.webp"
-                  imageHeight={1306}
-                  imageWidth={2295}
-                  imageAlt="Picture of market candles"
-                  cardTitle="Article3"
-                  cardText="There is a lot of confusion and inaccurate beliefs around market makers
-                and their roles in the market."
-                  postPath="/posts/howMuchMoneyCanIMakeTrading"
+                  imagePath="/images/posts/pinescriptGuide/pineScriptLogo.webp"
+                  imageHeight={1000}
+                  imageWidth={1500}
+                  imageAlt=""
+                  cardTitle="Pinescript Guide"
+                  cardText="Pinescript is TradingView's proprietary coding language. It is a language designed to allow easy creation of expert advisors."
+                  postPath="/posts/pinescriptGuide"
+                  buttonText="Read more"
                 ></PostCard>
               </div>
             </div>

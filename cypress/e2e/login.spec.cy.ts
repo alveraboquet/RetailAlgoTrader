@@ -1,4 +1,5 @@
 describe('The Login Page', () => {
+  /*
   beforeEach(() => {
     // reset and seed the database prior to every test
     cy.exec('npm run db:reset && npm run db:seed');
@@ -9,17 +10,20 @@ describe('The Login Page', () => {
       .its('body')
       .as('currentUser');
   });
+  */
 
   it('sets auth cookie when logging in via form submission', function () {
     // destructuring assignment of the this.currentUser object
-    const { username, password } = this.currentUser;
+    //const { username, password } = this.currentUser;
 
-    cy.visit('/login');
+    cy.visit('/auth/signin');
 
-    cy.get('input[name=username]').type(username);
+    cy.contains('Sign in with Google').click();
+
+    cy.get('input[name=username]').type('bob');
 
     // {enter} causes the form to submit
-    cy.get('input[name=password]').type(`${password}{enter}`);
+    cy.get('input[name=password]').type(`${'testpassword'}{enter}`);
 
     // we should be redirected to /dashboard
     cy.url().should('include', '/dashboard');

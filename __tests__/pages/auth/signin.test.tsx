@@ -31,7 +31,7 @@ describe('<SignIn />', () => {
       },
     };
 
-    render(<SignIn providers={providers} />);
+    render(<SignIn providers={providers} />); // Not an issue
 
     const loginTitle = screen.getAllByText(/user login/i);
     const googleButton = screen.getAllByRole('button', {
@@ -49,9 +49,6 @@ describe('<SignIn />', () => {
     const privacyPolicy = screen.getAllByRole('link', {
       name: /privacy policy/i,
     });
-    const imageText = screen.getByText(
-      /create a free account. No payment info necessary/i
-    );
 
     expect(loginTitle).toHaveLength(2);
     expect(googleButton).toHaveLength(2);
@@ -59,6 +56,5 @@ describe('<SignIn />', () => {
     expect(auth0Button).toHaveLength(2);
     expect(termsOfServiceLink).toHaveLength(2);
     expect(privacyPolicy).toHaveLength(2);
-    expect(imageText).toBeInTheDocument();
   });
 });

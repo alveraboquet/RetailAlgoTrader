@@ -16,10 +16,8 @@ const SimilarCourseCard = ({ title, description }: Props) => {
       <div className="card-body">
         <h5 className="card-title">{title}</h5>
         <p className="card-text">{description}</p>
-        <Link href="/signup">
-          <a>
-            <button className="btn btn-warning">Start {title}</button>
-          </a>
+        <Link href="/auth/signup">
+          <button className="btn btn-warning">Start {title}</button>
         </Link>
       </div>
     </div>

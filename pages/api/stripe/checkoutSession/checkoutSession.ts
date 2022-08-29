@@ -6,7 +6,7 @@ import { authOptions } from '../../auth/[...nextauth]';
 
 // Load Stripe package for Node environment
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2020-08-27',
+  apiVersion: '2022-08-01',
 });
 
 /**
@@ -23,52 +23,52 @@ export default async function handler(
 ) {
   const session = await unstable_getServerSession(req, res, authOptions);
 
-  if (session) {
-    if (req.method === 'POST') {
-      const amount: number = req.body.amount;
-      try {
-        let subscriptionType;
-        // Validate the amount that was passed from the client.
-        if (amount === MONTHLY_AMOUNT)
-          subscriptionType = process.env.STRIPE_MONTHLY_SUBSCRIPTION;
-        else if (amount === ANNUAL_AMOUNT)
-          subscriptionType = process.env.STRIPE_ANNUAL_SUBSCRIPTION;
-        else throw new Error();
-        // Create Checkout Sessions from body params.
-        const params: Stripe.Checkout.SessionCreateParams = {
-          mode: 'subscription',
-          customer: session.user.stripeCustomerId,
-          payment_method_types: ['card'],
-          line_items: [
-            {
-              price: subscriptionType, // Product API Key from Stripe
-              quantity: 1,
-            },
-          ],
-          success_url: `${req.headers.origin}/app/proConfirmation`,
-          cancel_url: `${req.headers.origin}/app/proSignup`,
-          subscription_data: {
-            metadata: {
-              // Adds note on Stripe so we can manually check if a user is Pro member
-              payingUserId: session.user.id,
-            },
-          },
-        };
-        const checkoutSession: Stripe.Checkout.Session =
-          await stripe.checkout.sessions.create(params);
-        res.status(200).json(checkoutSession);
-      } catch (err) {
-        const errorMessage =
-          err instanceof Error ? err.message : 'Internal server error';
-        res.status(500).json({ statusCode: 500, message: errorMessage });
-      }
-    } else {
-      res.setHeader('Allow', 'POST');
-      res.status(405).end('Method Not Allowed');
-    }
-  } else {
-    res
+  if (!session) {
+    return res
       .status(401)
-      .send('You must be signed-in to view the protected content on this page');
+      .end('You must be signed-in to view the protected content on this page');
+  }
+
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', 'POST');
+    return res.status(405).end('Method Not Allowed');
+  }
+
+  try {
+    const amount: number = req.body.amount;
+    let subscriptionType;
+    // Validate the amount that was passed from the client.
+    if (amount === MONTHLY_AMOUNT)
+      subscriptionType = process.env.STRIPE_MONTHLY_SUBSCRIPTION;
+    else if (amount === ANNUAL_AMOUNT)
+      subscriptionType = process.env.STRIPE_ANNUAL_SUBSCRIPTION;
+    else throw new Error();
+    // Create Checkout Sessions from body params.
+    const params: Stripe.Checkout.SessionCreateParams = {
+      mode: 'subscription',
+      customer: session.user.stripeCustomerId,
+      payment_method_types: ['card'],
+      line_items: [
+        {
+          price: subscriptionType, // Product API Key from Stripe
+          quantity: 1,
+        },
+      ],
+      success_url: `${req.headers.origin}/app/proConfirmation`,
+      cancel_url: `${req.headers.origin}/app/proSignup`,
+      subscription_data: {
+        metadata: {
+          // Adds note on Stripe so we can manually check if a user is Pro member
+          payingUserId: session.user.id,
+        },
+      },
+    };
+    const checkoutSession: Stripe.Checkout.Session =
+      await stripe.checkout.sessions.create(params);
+    res.status(200).json(checkoutSession);
+  } catch (err) {
+    const errorMessage =
+      err instanceof Error ? err.message : 'Internal server error';
+    res.status(500).json({ statusCode: 500, message: errorMessage });
   }
 }

@@ -1,0 +1,632 @@
+openapi: 3.0.1
+info:
+  title: RetailAlgoTrader API
+  version: 1.0.0
+  description: >-
+    API for session handling, Stripe payments, CRUD operations of
+    RetailAlgoTrader database.
+paths:
+  /api/app/chapters/completedChapters:
+    summary: Get completed chapters by user
+    get:
+      summary: Gets a user's completed chapters
+      description: Gets a user's completed chapters
+      operationId: /api/app/chapters/completedChapters
+      responses:
+        '200':
+          description: Successful retrieval of completed chapters
+          content:
+            application/json:
+              examples:
+                Successful retrieval of completed chapters:
+                  value:
+                    - chapter_id: 1
+                      completed: false
+                      course_id: 1
+                    - chapter_id: 2
+                      completed: false
+                      course_id: 1
+                    - chapter_id: 3
+                      completed: false
+                      course_id: 1
+                    - ...
+        '401':
+          description: User not signed-in
+          content:
+            application/json:
+              examples:
+                User not signed-in:
+                  value: >-
+                    You must be signed-in to view the protected content of this
+                    page
+        '405':
+          description: Invalid request type
+          content:
+            application/json:
+              examples:
+                Invalid request type:
+                  value: Method Not Allowed
+        '500':
+          description: Failed to retrieve completed chapters data
+          content:
+            application/json:
+              examples:
+                Failed to retrieve completed chapters data:
+                  value: Failed to retrieve completed chapters data
+        default:
+          description: Default error sample response
+      tags:
+        - App
+  /api/app/courses/enrolledCourses:
+    summary: Get user's currently enrolled courses
+    get:
+      summary: Get user's currently enrolled courses
+      description: Get user's currently enrolled courses
+      operationId: /api/app/courses/enrolledCourses
+      responses:
+        '200':
+          description: Successful retrieval of enrolled courses
+          content:
+            application/json:
+              examples:
+                Successful retrieval of enrolled courses:
+                  value:
+                    - course_id: 2
+                      enrolled: false
+                      current_chapter: courseOverview
+                      current_lesson: syllabus
+                    - course_id: 3
+                      enrolled: false
+                      current_chapter: courseOverview
+                      current_lesson: syllabus
+                    - course_id: 4
+                      enrolled: false
+                      current_chapter: courseOverview
+                      current_lesson: syllabus
+                    - course_id: 5
+                      enrolled: false
+                      current_chapter: courseOverview
+                      current_lesson: syllabus
+                    - course_id: 6
+                      enrolled: false
+                      current_chapter: courseOverview
+                      current_lesson: syllabus
+                    - course_id: 1
+                      enrolled: true
+                      current_chapter: courseOverview
+                      current_lesson: syllabus
+        '401':
+          description: User not signed-in
+          content:
+            application/json:
+              examples:
+                User not signed-in:
+                  value: >-
+                    You must be signed-in to view the protected content of this
+                    page
+        '405':
+          description: Invalid request type
+          content:
+            application/json:
+              examples:
+                Invalid request type:
+                  value: Method Not Allowed
+        '500':
+          description: Failed to retrieve enrolled courses data
+          content:
+            application/json:
+              examples:
+                Failed to retrieve enrolled courses data:
+                  value: Failed to retrieve enrolled courses data
+        default:
+          description: Default error sample response
+      tags:
+        - App
+  /api/app/courses/updateCurrentLesson:
+    summary: Update user's current lesson
+    description: Update user's current lesson
+    put:
+      summary: Update user's current lesson
+      description: Update user's current lesson
+      operationId: /api/app/courses/updateCurrentLesson
+      requestBody:
+        description: Lesson object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCurrentLesson'
+      responses:
+        '200':
+          description: Successful update of current lesson
+          content:
+            application/json:
+              examples:
+                Successful update of current lesson:
+                  value:
+                    success: Current Lesson Updated
+        '400':
+          description: Request failed validation
+          content:
+            application/json:
+              examples:
+                Request failed validation:
+                  value: Request failed validation
+        '401':
+          description: User not signed-in
+          content:
+            application/json:
+              examples:
+                User not signed-in:
+                  value: >-
+                    You must be signed-in to view the protected content of this
+                    page
+        '405':
+          description: Invalid request type
+          content:
+            application/json:
+              examples:
+                Invalid request type:
+                  value: Method Not Allowed
+        '500':
+          description: Failed to update current lesson
+          content:
+            application/json:
+              examples:
+                Failed to update current lesson:
+                  value: Failed to update current lesson
+        default:
+          description: Default error sample response
+      tags:
+        - App
+  /api/app/courses/updateEnrollStatus:
+    summary: Update course enroll status
+    put:
+      summary: Update enroll status of course
+      description: Update enroll status of course
+      operationId: /api/app/courses/updateEnrollStatus
+      requestBody:
+        description: Course Id
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateEnrollStatus'
+      responses:
+        '200':
+          description: Successful update of course enroll status
+          content:
+            application/json:
+              examples:
+                Successful update of course enroll status:
+                  value:
+                    success: Course enroll status updated
+        '400':
+          description: Request failed validation
+          content:
+            application/json:
+              examples:
+                Request failed validation:
+                  value: Request failed validation
+        '401':
+          description: User not signed-in
+          content:
+            application/json:
+              examples:
+                User not signed-in:
+                  value: >-
+                    You must be signed-in to view the protected content of this
+                    page
+        '405':
+          description: Invalid request type
+          content:
+            application/json:
+              examples:
+                Invalid request type:
+                  value: Method Not Allowed
+        '500':
+          description: Failed to update course enroll status
+          content:
+            application/json:
+              examples:
+                Failed to update course enroll status:
+                  value: Failed to update course enroll status
+        default:
+          description: Default error sample response
+      tags:
+        - App
+  /api/app/lessons/getCompletedLessons:
+    summary: Get user's completed lessons
+    get:
+      summary: Get user's completed lessons
+      description: Get user's completed lessons
+      operationId: /api/app/lessons/getCompletedLessons
+      responses:
+        '200':
+          description: Successful retrieval of completed lessons
+          content:
+            application/json:
+              examples:
+                Successful retrieval of completed lessons:
+                  value:
+                    - user_id: fjkdf93kfjdlfda8f9fdakd89
+                      lesson_id: 1
+                      completed: false
+                    - user_id: fjkdf93kfjdlfda8f9fdakd89
+                      lesson_id: 2
+                      completed: false
+                    - user_id: fjkdf93kfjdlfda8f9fdakd89
+                      lesson_id: 3
+                      completed: false
+                    - ...
+        '401':
+          description: User not signed-in
+          content:
+            application/json:
+              examples:
+                User not signed-in:
+                  value: >-
+                    You must be signed-in to view the protected content of this
+                    page
+        '405':
+          description: Invalid request type
+          content:
+            application/json:
+              examples:
+                Invalid request type:
+                  value: Method Not Allowed
+        '500':
+          description: Failed to retrieve completed lessons data
+          content:
+            application/json:
+              examples:
+                Failed to retrieve completed lessons data:
+                  value: Failed to retrieve completed lessons data
+        default:
+          description: Default error sample response
+      tags:
+        - App
+  /api/auth/signin:
+    summary: NextAuth sign-in router
+    get:
+      summary: Redirects to NextAuth sign-in page
+      description: >-
+        Redirects to NextAuth api service. Refer to NextAuth's documentation for
+        further information.
+      operationId: /api/auth/signin
+      responses:
+        default:
+          description: Default error sample response
+      tags:
+        - Auth
+  /api/auth/signout:
+    summary: NextAuth sign-in router
+    get:
+      summary: Redirects to NextAuth sign-out page
+      description: >-
+        Redirects to NextAuth api service. Refer to NextAuth's documentation for
+        further information.
+      operationId: /api/auth/signout
+      responses:
+        default:
+          description: Default error sample response
+      tags:
+        - Auth
+  /api/stripe/checkoutSession/checkoutSession:
+    summary: Create checkout session with Stripe API
+    post:
+      summary: Create checkout session with Stripe API
+      description: Create checkout session with Stripe API
+      operationId: /api/stripe/checkoutSession/checkoutSession
+      responses:
+        '200':
+          description: Successful creation of checkout session
+          content:
+            application/json:
+              examples:
+                Successful creation of checkout session:
+                  value: Successful creation of checkout session
+        '401':
+          description: User not signed-in
+          content:
+            application/json:
+              examples:
+                User not signed-in:
+                  value: >-
+                    You must be signed-in to view the protected content of this
+                    page
+        '405':
+          description: Invalid request type
+          content:
+            application/json:
+              examples:
+                Invalid request type:
+                  value: Method Not Allowed
+        '500':
+          description: Failed to create checkout session
+          content:
+            application/json:
+              examples:
+                Failed to create checkout session:
+                  value:
+                    statusCode: 500
+                    message: error message
+        default:
+          description: Default error sample response
+      tags:
+        - Stripe
+  /api/stripe/customer/deleteCustomer:
+    summary: Delete customer from Stripe
+    delete:
+      summary: Delete customer from Stripe
+      description: Delete customer from Stripe
+      operationId: /api/stripe/customer/deleteCustomer
+      responses:
+        '204':
+          description: Successful stripe customer deletion
+          content:
+            application/json:
+              examples:
+                Successful stripe customer deletion:
+                  value: ''
+        '401':
+          description: User not signed-in
+          content:
+            application/json:
+              examples:
+                User not signed-in:
+                  value: >-
+                    You must be signed-in to view the protected content of this
+                    page
+        '405':
+          description: Invalid request type
+          content:
+            application/json:
+              examples:
+                Invalid request type:
+                  value: Method Not Allowed
+        '500':
+          description: Failed to delete Stripe customer
+          content:
+            application/json:
+              examples:
+                Failed to delete Stripe customer:
+                  value: Unable to delete Stripe customer
+        default:
+          description: Default error sample response
+      tags:
+        - Stripe
+  /api/stripe/customer/retrieveCustomer:
+    summary: Get Stripe customer information
+    get:
+      summary: Get Stripe customer information
+      description: Get Stripe customer information
+      operationId: /api/stripe/customer/retrieveCustomer
+      responses:
+        '200':
+          description: Successful customer retrieval
+          content:
+            application/json:
+              examples:
+                Successful customer retrieval:
+                  value:
+                    lastFour: 4242
+                    subscriptions: Pro Subscription - Monthly
+                    price: 4000
+        '204':
+          description: Successful customer retrieval but no subscription data
+          content:
+            application/json:
+              examples:
+                Successful customer retrieval but no subscription data:
+                  value: ''
+        '401':
+          description: User not signed-in
+          content:
+            application/json:
+              examples:
+                User not signed-in:
+                  value: >-
+                    You must be signed-in to view the protected content of this
+                    page
+        '405':
+          description: Invalid request type
+          content:
+            application/json:
+              examples:
+                Invalid request type:
+                  value: Method Not Allowed
+        '500':
+          description: Failed to retrieve Stripe customer
+          content:
+            application/json:
+              examples:
+                Failed to retrieve Stripe customer:
+                  value:
+                    statusCode: 500
+                    message: error message
+        default:
+          description: Default error sample response
+      tags:
+        - Stripe
+  /api/stripe/webhooks/webhooks:
+    summary: Stripe webhooks
+    post:
+      summary: Hosts Stripe webhooks
+      description: Hosts Stripe webhooks to ensure database and Stripe API stay synced
+      operationId: /api/stripe/webhooks/webhooks
+      responses:
+        '400':
+          description: Webhook Error
+          content:
+            application/json:
+              examples:
+                Webhook Error:
+                  value: Webhook Error
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              examples:
+                Method Not Allowed:
+                  value: Method Not Allowed
+        default:
+          description: Default error sample response
+      tags:
+        - Stripe
+  /api/stripe/createCustomerPortalSession:
+    summary: Create Stripe customer portal session
+    post:
+      summary: Create Stripe customer portal session
+      description: Create Stripe customer portal session
+      operationId: /api/stripe/createCustomerPortalSession
+      responses:
+        '302':
+          description: Redirect to Stripe portal
+          content:
+            application/json:
+              examples:
+                Redirect to Stripe portal:
+                  value: Redirect to Stripe hosted customer portal page
+        '401':
+          description: User not signed-in
+          content:
+            application/json:
+              examples:
+                User not signed-in:
+                  value: >-
+                    You must be signed-in to view the protected content of this
+                    page
+        '405':
+          description: Invalid request type
+          content:
+            application/json:
+              examples:
+                Invalid request type:
+                  value: Method Not Allowed
+        '500':
+          description: Failed to retrieve Stripe customer
+          content:
+            application/json:
+              examples:
+                Failed to retrieve Stripe customer:
+                  value: Unable to open Stripe customer portal session
+        default:
+          description: Default error sample response
+      tags:
+        - Stripe
+  /api/app/user/changeAccountDetails:
+    summary: Allows user to change name and email
+    put:
+      summary: Allows user to change name and email
+      description: Allows user to change name and email
+      operationId: /api/app/user/changeAccountDetails
+      responses:
+        '200':
+          description: Successfully updated account settings
+          content:
+            application/json:
+              examples:
+                Successfully updated account settings:
+                  value:
+                    success: Account settings updated
+        '400':
+          description: Invalid name input
+          content:
+            application/json:
+              examples:
+                Invalid name input:
+                  value: Invalid name input
+        '401':
+          description: User not signed-in
+          content:
+            application/json:
+              examples:
+                User not signed-in:
+                  value: >-
+                    You must be signed-in to view the protected content of this
+                    page
+        '405':
+          description: Invalid request type
+          content:
+            application/json:
+              examples:
+                Invalid request type:
+                  value: Method Not Allowed
+        '500':
+          description: Failed to update account settings
+          content:
+            application/json:
+              examples:
+                Failed to update account settings:
+                  value: Unable to update account settings
+        default:
+          description: Default error sample response
+      tags:
+        - App
+  /api/app/user/retrieveAccountDetails:
+    summary: Get account details from DB
+    get:
+      summary: Get account details from DB
+      description: Get account details from DB
+      operationId: /api/app/user/retrieveAccountDetails
+      responses:
+        '200':
+          description: Successfully retrieved account settings
+          content:
+            application/json:
+              examples:
+                Successfully retrieved account settings:
+                  value: { 'name': 'testuser', 'email': 'testuser@email.com' }
+        '401':
+          description: User not signed-in
+          content:
+            application/json:
+              examples:
+                User not signed-in:
+                  value: >-
+                    You must be signed-in to view the protected content of this
+                    page
+        '405':
+          description: Invalid request type
+          content:
+            application/json:
+              examples:
+                Invalid request type:
+                  value: Method Not Allowed
+        '500':
+          description: Failed to retrieve account settings
+          content:
+            application/json:
+              examples:
+                Failed to retrieve account settings:
+                  value: Unable to retrieve account settings
+        default:
+          description: Default error sample response
+      tags:
+        - App
+externalDocs:
+  url: https://next-auth.js.org/getting-started/introduction
+  description: NextAuth API documentation
+components:
+  schemas:
+    UpdateCurrentLesson:
+      type: object
+      properties:
+        course:
+          type: string
+        prevChapter:
+          type: string
+        nextChapter:
+          type: string
+        prevLesson:
+          type: string
+        nextLesson:
+          type: string
+        currentLessonId:
+          type: string
+      xml:
+        name: UpdateCurrentLesson
+    UpdateEnrollStatus:
+      type: object
+      properties:
+        courseId:
+          type: number

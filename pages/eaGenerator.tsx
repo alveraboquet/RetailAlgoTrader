@@ -15,6 +15,7 @@ const EaGenerator: NextPage = () => {
         description="With just a few clicks download an algorithmic trading template for your chosen trading platform. This tool
         saves traders months of work and ensures no vital features are missed."
         image="https://retailalgotrader.com/images/website/bulltrader.webp"
+        keywords="Algorithmic trading templates, Expert advisor generator, Algorithmic trading generator"
       />
       <Layout>
         <div className="container">

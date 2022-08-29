@@ -19,47 +19,49 @@ const changeAccountDetails = async (
   res: NextApiResponse
 ) => {
   const session = await unstable_getServerSession(req, res, authOptions);
-  if (session) {
-    if (req.method !== 'PUT') {
-      res.status(405).send({ message: 'Only PUT requests allowed' });
-    }
-    try {
-      const { user } = session;
-      const reqData = JSON.parse(req.body);
-      const newName = reqData.newName;
-      const newEmail = reqData.newEmail;
-
-      const validatedUserId = validateAlphaNumericData(user.id, 1, 255);
-      const validatedNewName = validateAlphaData(newName, 1, 255);
-      const validatedNewEmail = validateEmail(newEmail, 1, 255);
-
-      if (!validatedUserId || !validatedNewName || !validatedNewEmail) {
-        return res.status(400).send('Invalid name input');
-      }
-
-      // Generate SQL statement
-      const statement = `UPDATE "User"
-                           SET name = $1, email = $2
-                           WHERE "User".id = $3`;
-      const values = [validatedNewName, validatedNewEmail, validatedUserId];
-
-      // Execute SQL statement
-      const result = await pool.query(statement, values);
-
-      if (result) {
-        res.status(200).json({ success: 'Account settings updated' });
-        return;
-      }
-
-      throw new Error('No results returned from table');
-    } catch (err) {
-      console.log(err);
-      res.status(500).send('Unable to update account settings');
-    }
-  } else {
-    res
+  if (!session) {
+    return res
       .status(401)
-      .send('You must be signed-in to view the protected content on this page');
+      .end('You must be signed-in to view the protected content on this page');
+  }
+
+  if (req.method !== 'PUT') {
+    res.setHeader('Allow', 'PUT');
+    return res.status(405).end('Method Not Allowed');
+  }
+
+  try {
+    const { user } = session;
+    const reqData = JSON.parse(req.body);
+    const newName = reqData.newName;
+    const newEmail = reqData.newEmail;
+
+    const validatedUserId = validateAlphaNumericData(user.id, 1, 255);
+    const validatedNewName = validateAlphaData(newName, 1, 255);
+    const validatedNewEmail = validateEmail(newEmail, 1, 255);
+
+    if (!validatedUserId || !validatedNewName || !validatedNewEmail) {
+      return res.status(400).end('Invalid name input');
+    }
+
+    // Generate SQL statement
+    const statement = `UPDATE "User"
+                             SET name = $1, email = $2
+                             WHERE "User".id = $3`;
+    const values = [validatedNewName, validatedNewEmail, validatedUserId];
+
+    // Execute SQL statement
+    const result = await pool.query(statement, values);
+
+    if (result) {
+      res.status(200).json({ success: 'Account settings updated' });
+      return;
+    }
+
+    throw new Error('No results returned from table');
+  } catch (err) {
+    console.log(err);
+    res.status(500).end('Unable to update account settings');
   }
 };
 

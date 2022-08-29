@@ -19,8 +19,6 @@ describe('<CourseCard />', () => {
       >
         <CourseCard
           imagePath="/images/website/genericStock.webp"
-          imageHeight={1306}
-          imageWidth={2295}
           imageAlt="Picture of market candles"
           cardTitle="Example Course Title"
           cardText="Example Course Text"
@@ -28,6 +26,7 @@ describe('<CourseCard />', () => {
           enrolled={false}
           percentComplete={0}
           isProCourse={true}
+          courseId={1}
         />
       </SessionProvider>
     );
@@ -65,8 +64,6 @@ describe('<CourseCard />', () => {
       >
         <CourseCard
           imagePath="/images/website/genericStock.webp"
-          imageHeight={1306}
-          imageWidth={2295}
           imageAlt="Picture of market candles"
           cardTitle="Example Course Title"
           cardText="Example Course Text"
@@ -74,6 +71,7 @@ describe('<CourseCard />', () => {
           enrolled={true}
           percentComplete={50}
           isProCourse={false}
+          courseId={1}
         />
       </SessionProvider>
     );
@@ -103,8 +101,6 @@ describe('<CourseCard />', () => {
       >
         <CourseCard
           imagePath="/images/website/genericStock.webp"
-          imageHeight={1306}
-          imageWidth={2295}
           imageAlt="Picture of market candles"
           cardTitle="Example Course Title"
           cardText="Example Course Text"
@@ -112,6 +108,7 @@ describe('<CourseCard />', () => {
           enrolled={true}
           percentComplete={50}
           isProCourse={true}
+          courseId={1}
         />
       </SessionProvider>
     );

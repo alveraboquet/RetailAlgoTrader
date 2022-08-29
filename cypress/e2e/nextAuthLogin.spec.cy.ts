@@ -1,11 +1,9 @@
 import { Cookie } from 'next-auth/core/lib/cookie';
 
-describe('Login page', () => {
+describe('Login to dashboard', () => {
   before(() => {
-    cy.log('Visiting https://company.tld');
+    cy.log('Visiting http://localhost:3000');
     cy.visit('/auth/signin');
-  });
-  it('Login with Google', () => {
     const username = Cypress.env('GOOGLE_USER');
     const password = Cypress.env('GOOGLE_PW');
     const loginUrl = `${Cypress.env('SITE_NAME')}/auth/signin`;
@@ -17,8 +15,8 @@ describe('Login page', () => {
       headless: true,
       logs: false,
       isPopup: true,
-      loginSelector: '.col-8 > :nth-child(2) > :nth-child(1) > #Google',
-      postLoginSelector: ':nth-child(4) > :nth-child(2) > .card > .bg-warning',
+      loginSelector: '[data-testid=Google]',
+      postLoginSelector: '[data-testid=dashboard]',
     };
 
     return cy
@@ -45,12 +43,17 @@ describe('Login page', () => {
           Cypress.Cookies.defaults({
             preserve: cookieName,
           });
-
-          // remove the two lines below if you need to stay logged in
-          // for your remaining tests
-          cy.visit('/api/auth/signout');
-          cy.get('form').submit();
         }
       });
+  });
+
+  after(() => {
+    cy.visit('/api/auth/signout');
+    cy.get('form').submit();
+  });
+
+  it('dashboard', () => {
+    cy.visit('/app/dashboard'); // login-protected page that will redirect to homepage if no session cookie
+    cy.get('h1').should('contain', 'Course Catalog'); // check to ensure we could actually navigate to the dashboard page
   });
 });

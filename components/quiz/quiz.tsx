@@ -3,7 +3,7 @@
  * Consists of five questions. Answers to the questions add a value to specified categories.
  * After the final question the quiz routes the user to a landing page for the category with the highest value
  * Quiz cateogories: tradingAcademy, algorithmicTradingAcademy, forexTradingWithMT4,
- *    equitiesAndCryptoWithTradingView, marketResearchWithPython, futuresWithQuantconnect
+ *    equitiesAndCryptoWithTradingView, marketResearchWithPython, futuresWithQuantConnect
  */
 import { useState } from 'react';
 import questions from './quizQuestions';
@@ -27,9 +27,9 @@ const Quiz = () => {
         tradingAcademy: 0,
         algorithmicTradingAcademy: 0,
         forexTradingWithMT4: 0,
-        equitiesAndCryptoWithTradingview: 0,
+        equitiesAndCryptoWithTradingView: 0,
         marketResearchWithPython: 0,
-        futuresWithQuantconnect: 0,
+        futuresWithQuantConnect: 0,
       };
       // iterate through each answerCategory in result array and sum number of appearances
       result.forEach((answerCategory) => {
@@ -46,17 +46,17 @@ const Quiz = () => {
             answerCategorySums.forexTradingWithMT4 =
               answerCategorySums.forexTradingWithMT4 + 1;
             break;
-          case 'equitiesAndCryptoWithTradingview':
-            answerCategorySums.equitiesAndCryptoWithTradingview =
-              answerCategorySums.equitiesAndCryptoWithTradingview + 1;
+          case 'equitiesAndCryptoWithTradingView':
+            answerCategorySums.equitiesAndCryptoWithTradingView =
+              answerCategorySums.equitiesAndCryptoWithTradingView + 1;
             break;
           case 'marketResearchWithPython':
             answerCategorySums.marketResearchWithPython =
               answerCategorySums.marketResearchWithPython + 1;
             break;
-          case 'futuresWithQuantconnect':
-            answerCategorySums.futuresWithQuantconnect =
-              answerCategorySums.futuresWithQuantconnect + 1;
+          case 'futuresWithQuantConnect':
+            answerCategorySums.futuresWithQuantConnect =
+              answerCategorySums.futuresWithQuantConnect + 1;
             break;
         }
       });

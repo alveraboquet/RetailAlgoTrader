@@ -5,7 +5,7 @@ import { authOptions } from '../auth/[...nextauth]';
 
 // Loads Stripe package for Node environment
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2020-08-27',
+  apiVersion: '2022-08-01',
 });
 
 /**
@@ -19,23 +19,25 @@ export default async function createCustomerPortalSession(
 ) {
   const session = await unstable_getServerSession(req, res, authOptions);
 
-  if (session) {
-    if (req.method !== 'POST') {
-      res.status(405).send({ message: 'Only POST requests allowed' });
-    }
-    try {
-      const stripeSession = await stripe.billingPortal.sessions.create({
-        customer: session.user.stripeCustomerId,
-        return_url: 'http://localhost:3000/app/accountManagement',
-      });
-      res.writeHead(302, { Location: stripeSession.url }).end();
-    } catch (err) {
-      console.log(err);
-      res.status(500).send('Unable to open Stripe customer portal session');
-    }
-  } else {
-    res
+  if (!session) {
+    return res
       .status(401)
-      .send('You must be signed-in to view the protected content on this page');
+      .end('You must be signed-in to view the protected content on this page');
+  }
+
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', 'POST');
+    return res.status(405).end('Method Not Allowed');
+  }
+
+  try {
+    const stripeSession = await stripe.billingPortal.sessions.create({
+      customer: session.user.stripeCustomerId,
+      return_url: 'http://localhost:3000/app/accountManagement',
+    });
+    res.writeHead(302, { Location: stripeSession.url }).end();
+  } catch (err) {
+    console.log(err);
+    res.status(500).end('Unable to open Stripe customer portal session');
   }
 }

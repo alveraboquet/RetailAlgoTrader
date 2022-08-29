@@ -10,6 +10,7 @@ describe('<FooterLesson />', () => {
         nextChapter="nextChpater"
         prevLesson="prevLesson"
         nextLesson="nextLesson"
+        currentLessonId={1}
       />
     );
 
