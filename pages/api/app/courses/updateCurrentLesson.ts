@@ -3,6 +3,7 @@ import { unstable_getServerSession } from 'next-auth';
 import pool from '../../../../dbConfig';
 import { validateAlphaNumericData } from '../../../../lib/validateData';
 import { authOptions } from '../../auth/[...nextauth]';
+import coursesData from '../../../../components/landingPages/coursesData';
 
 /**
  *
@@ -44,11 +45,18 @@ const updateCurrentLesson = async (
       return res.status(400).send('Request failed validation');
     }
 
+    const courseId = coursesData[lessonData.course].id;
+
     // Generate SQL statement
     const statement = `UPDATE "User_Course"
                             SET current_lesson = $1, current_chapter = $2
-                            WHERE user_id = $3`;
-    const values = [validatedNextLesson, validatedNextChapter, user.id];
+                            WHERE user_id = $3 AND course_id = $4`;
+    const values = [
+      validatedNextLesson,
+      validatedNextChapter,
+      user.id,
+      courseId,
+    ];
 
     const statement2 = `UPDATE "User_Lesson"
                               SET completed = true
