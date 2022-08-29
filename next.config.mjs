@@ -61,7 +61,7 @@ if (isProd) {
   `;
 } else {
   contentSecurityPolicy = `
-    default-src 'self' "* data: 'unsafe-eval' 'unsafe-inline'";
+    default-src 'self' 'unsafe-eval' 'unsafe-inline';
     base-uri 'self';
     child-src 'self';
     connect-src 'self' https://checkout.stripe.com https://api.stripe.com;
@@ -81,7 +81,7 @@ if (isProd) {
     object-src 'none';
     script-src 
       'self' 
-      "* data: 'unsafe-eval' 'unsafe-inline'" 
+      'unsafe-eval' 'unsafe-inline'
       https://checkout.stripe.com  
       https://js.stripe.com ;
     script-src-attr 'none';
