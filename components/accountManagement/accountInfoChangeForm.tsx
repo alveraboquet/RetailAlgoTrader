@@ -1,4 +1,4 @@
-import DOMPurify from 'isomorphic-dompurify';
+//import DOMPurify from 'isomorphic-dompurify';
 import React from 'react';
 
 type SetAccountSettingsChange = () => void;
@@ -47,7 +47,8 @@ const AccountInfoChangeForm = ({
               type="text"
               autoComplete="given-name"
               className="form-control"
-              placeholder={DOMPurify.sanitize(accountDetails.name)}
+              //placeholder={DOMPurify.sanitize(accountDetails.name)}
+              placeholder={accountDetails.name}
               maxLength={20}
               onChange={() => {
                 setAccountSettingsChangeTrue();
@@ -68,7 +69,8 @@ const AccountInfoChangeForm = ({
               autoComplete="email"
               aria-describedby="emailHelp"
               className="form-control"
-              placeholder={DOMPurify.sanitize(accountDetails.email)}
+              //placeholder={DOMPurify.sanitize(accountDetails.email)}
+              placeholder={accountDetails.email}
               maxLength={200}
               onChange={() => {
                 setAccountSettingsChangeTrue();
