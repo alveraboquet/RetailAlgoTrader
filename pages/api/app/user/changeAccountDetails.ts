@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { unstable_getServerSession } from 'next-auth';
-import pool from '../../../../db/index';
+import pool from '../../../../dbConfig';
 import {
   validateAlphaData,
   validateEmail,
