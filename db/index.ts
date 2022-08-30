@@ -16,7 +16,8 @@ if (process.env.NODE_ENV === 'production') {
     password: process.env.PGPASSWORD,
     port: pgPort,
     ssl: {
-      rejectUnauthorized: false,
+      rejectUnauthorized: true,
+      ca: process.env.CACERT,
     },
   };
 } else {
