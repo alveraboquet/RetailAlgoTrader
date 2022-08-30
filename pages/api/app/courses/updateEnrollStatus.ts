@@ -14,6 +14,7 @@ const updateCurrentLesson = async (
   res: NextApiResponse
 ) => {
   const session = await unstable_getServerSession(req, res, authOptions);
+  console.log(`session: ${session}`);
   if (!session) {
     return res
       .status(401)
