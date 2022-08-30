@@ -14,14 +14,11 @@ const updateEnrollStatus = async (
   res: NextApiResponse
 ) => {
   const session = await unstable_getServerSession(req, res, authOptions);
-  /*
-  console.log(`session: ${session}`);
   if (!session) {
     return res
       .status(401)
       .end('You must be signed-in to view the protected content on this page');
   }
-  */
 
   if (req.method !== 'PUT') {
     res.setHeader('Allow', 'PUT');
@@ -29,7 +26,7 @@ const updateEnrollStatus = async (
   }
 
   try {
-    //const { user } = session;
+    const { user } = session;
     const reqData = JSON.parse(req.body);
 
     // Validate data
@@ -42,8 +39,7 @@ const updateEnrollStatus = async (
     const statement = `UPDATE "User_Course"
                             SET enrolled = true
                             WHERE course_id = $1 AND user_id = $2`;
-    //const values = [validatedCourseId, user.id];
-    const values = [validatedCourseId, 'fdsafdsa'];
+    const values = [validatedCourseId, user.id];
 
     // Execute SQL statement
     const result = await pool.query(statement, values);
