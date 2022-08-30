@@ -174,24 +174,6 @@ const nextConfig = {
             key: 'Clear-Site-Data',
             value: '"cache", "cookies", "storage"',
           },
-          {
-            source: '/app/proSignup',
-            headers: [
-              {
-                key: 'Cross-Origin-Embedder-Policy',
-                value: 'unsafe-none',
-              },
-            ],
-          },
-          {
-            source: '/app/dashboard',
-            headers: [
-              {
-                key: 'Cross-Origin-Embedder-Policy',
-                value: 'unsafe-none',
-              },
-            ],
-          },
         ],
       },
     ];
