@@ -1,4 +1,4 @@
-import DOMPurify from 'dompurify';
+import escapeHTML from 'escape-html';
 import React from 'react';
 
 type SetAccountSettingsChange = () => void;
@@ -47,7 +47,7 @@ const AccountInfoChangeForm = ({
               type="text"
               autoComplete="given-name"
               className="form-control"
-              placeholder={DOMPurify.sanitize(accountDetails.name)}
+              placeholder={escapeHTML(accountDetails.name)}
               maxLength={20}
               onChange={() => {
                 setAccountSettingsChangeTrue();
@@ -68,7 +68,7 @@ const AccountInfoChangeForm = ({
               autoComplete="email"
               aria-describedby="emailHelp"
               className="form-control"
-              placeholder={DOMPurify.sanitize(accountDetails.email)}
+              placeholder={escapeHTML(accountDetails.email)}
               maxLength={200}
               onChange={() => {
                 setAccountSettingsChangeTrue();
