@@ -30,8 +30,12 @@ const middleware = (req: NextRequest) => {
 
     if (
       xCustomHeader === 'lollipop' &&
-      (originHeader === acceptedOrigin || originHeader === null) &&
-      (referrerHeader === acceptedReferrer || referrerHeader === null)
+      (originHeader === acceptedOrigin ||
+        originHeader === 'https://staging.retailalgotrader' ||
+        originHeader === null) &&
+      (referrerHeader === acceptedReferrer ||
+        referrerHeader === 'https://staging.retailalgotrader/' ||
+        referrerHeader === null)
     ) {
       NextResponse.next();
     } else {
