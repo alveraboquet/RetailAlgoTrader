@@ -176,24 +176,6 @@ const nextConfig = {
           },
         ],
       },
-      {
-        source: '/app/proSignup',
-        headers: [
-          {
-            key: 'Cross-Origin-Embedder-Policy',
-            value: 'unsafe-none',
-          },
-        ],
-      },
-      {
-        source: '/app/dashboard',
-        headers: [
-          {
-            key: 'Cross-Origin-Embedder-Policy',
-            value: 'unsafe-none',
-          },
-        ],
-      },
     ];
   },
 };
