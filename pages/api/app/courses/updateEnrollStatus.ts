@@ -9,17 +9,19 @@ import { authOptions } from '../../auth/[...nextauth]';
  * @param req - PUT req from dashboard to update enroll status of course
  * @param res - 405 if not PUT req, 200 if successful,
  */
-const updateCurrentLesson = async (
+const updateEnrollStatus = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
   const session = await unstable_getServerSession(req, res, authOptions);
+  /*
   console.log(`session: ${session}`);
   if (!session) {
     return res
       .status(401)
       .end('You must be signed-in to view the protected content on this page');
   }
+  */
 
   if (req.method !== 'PUT') {
     res.setHeader('Allow', 'PUT');
@@ -27,7 +29,7 @@ const updateCurrentLesson = async (
   }
 
   try {
-    const { user } = session;
+    //const { user } = session;
     const reqData = JSON.parse(req.body);
 
     // Validate data
@@ -40,7 +42,8 @@ const updateCurrentLesson = async (
     const statement = `UPDATE "User_Course"
                             SET enrolled = true
                             WHERE course_id = $1 AND user_id = $2`;
-    const values = [validatedCourseId, user.id];
+    //const values = [validatedCourseId, user.id];
+    const values = [validatedCourseId, 'fdsafdsa'];
 
     // Execute SQL statement
     const result = await pool.query(statement, values);
@@ -57,4 +60,4 @@ const updateCurrentLesson = async (
   }
 };
 
-export default updateCurrentLesson;
+export default updateEnrollStatus;
