@@ -3,21 +3,29 @@ import { Pool } from 'pg';
 // .env returns string but ClientConfig.port from pg package requires number
 // Below code segment changes PGPORT from string to number
 let pgPort = undefined;
-if (process.env.PGPORT) {
-  pgPort = parseInt(process.env.PGPORT);
+if (process.env.PG_PORT) {
+  pgPort = parseInt(process.env.PG_PORT);
 }
 
 let config;
 if (process.env.NODE_ENV === 'production') {
   config = {
-    connectionString: process.env.DATABASE_URL,
+    host: process.env.PG_HOST,
+    user: process.env.PG_USER,
+    database: process.env.PG_DATABASE,
+    password: process.env.PG_PASSWORD,
+    port: pgPort,
+    ssl: {
+      rejectUnauthorized: true,
+      ca: process.env.CA_CERT,
+    },
   };
 } else {
   config = {
-    host: process.env.PGHOST,
-    user: process.env.PGUSER,
-    database: process.env.PGDATABASE,
-    password: process.env.PGPASSWORD,
+    host: process.env.PG_HOST,
+    user: process.env.PG_USER,
+    database: process.env.PG_DATABASE,
+    password: process.env.PG_PASSWORD,
     port: pgPort,
   };
 }

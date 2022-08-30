@@ -9,7 +9,7 @@ import { authOptions } from '../../auth/[...nextauth]';
  * @param req - PUT req from dashboard to update enroll status of course
  * @param res - 405 if not PUT req, 200 if successful,
  */
-const updateCurrentLesson = async (
+const updateEnrollStatus = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
@@ -56,4 +56,4 @@ const updateCurrentLesson = async (
   }
 };
 
-export default updateCurrentLesson;
+export default updateEnrollStatus;

@@ -22,16 +22,20 @@ const middleware = (req: NextRequest) => {
     const referrerHeader = req.headers.get('referrer');
     const xCustomHeader = req.headers.get('X-Custom-Header');
     const acceptedOrigin = isProd
-      ? 'https://retailalgotrader'
+      ? 'https://retailalgotrader.com'
       : 'http://localhost:3000';
     const acceptedReferrer = isProd
-      ? 'https://retailalgotrader/'
+      ? 'https://retailalgotrader.com/'
       : 'http://localhost:3000/';
 
     if (
       xCustomHeader === 'lollipop' &&
-      (originHeader === acceptedOrigin || originHeader === null) &&
-      (referrerHeader === acceptedReferrer || referrerHeader === null)
+      (originHeader === acceptedOrigin ||
+        originHeader === 'https://staging.retailalgotrader.com' ||
+        originHeader === null) &&
+      (referrerHeader === acceptedReferrer ||
+        referrerHeader === 'https://staging.retailalgotrader.com/' ||
+        referrerHeader === null)
     ) {
       NextResponse.next();
     } else {
