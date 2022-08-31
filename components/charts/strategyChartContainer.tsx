@@ -9,7 +9,7 @@ const StrategyChart = () => {
       options={options}
       data={data}
       className={styles.chartHeight}
-      data-testid="portfolioChartPhone"
+      data-testid="portfolioChart"
     />
   );
 };

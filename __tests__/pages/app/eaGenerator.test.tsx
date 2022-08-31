@@ -44,7 +44,7 @@ describe('<EaGenerator />', () => {
     });
 
     expect(proSignupBanner).toHaveLength(2);
-    expect(proUpgradeButton).toHaveLength(2);
+    expect(proUpgradeButton).toHaveLength(4);
   });
 
   test('does not render pro signup banner for pro user', () => {

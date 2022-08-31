@@ -17,8 +17,7 @@ describe('<Home />', () => {
     const freeGuideButton = screen.getByRole('button', {
       name: /receive a free profitable algorithm guide/i,
     });
-    const portfolioChartPhone = screen.getByTestId('portfolioChartPhone');
-    const portfolioChartDesktop = screen.getByTestId('portfolioChartDesktop');
+    const portfolioChart = screen.getByTestId('portfolioChart');
     const noviceResourcesButton = screen.getByRole('button', {
       name: /beginner resources/i,
     });
@@ -45,8 +44,7 @@ describe('<Home />', () => {
     expect(quiz).toBeInTheDocument();
     expect(cardText).toBeInTheDocument();
     expect(freeGuideButton).toBeInTheDocument();
-    expect(portfolioChartPhone).toBeInTheDocument();
-    expect(portfolioChartDesktop).toBeInTheDocument();
+    expect(portfolioChart).toBeInTheDocument();
     expect(noviceResourcesButton).toBeInTheDocument();
     expect(experiencedResourcesButton).toBeInTheDocument();
     expect(programmerResourcesButton).toBeInTheDocument();

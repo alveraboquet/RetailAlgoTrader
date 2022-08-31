@@ -62,7 +62,7 @@ describe('<AccountManagement />', () => {
       });
 
       expect(proSignupBanner).toHaveLength(2);
-      expect(proUpgradeButton).toHaveLength(2);
+      expect(proUpgradeButton).toHaveLength(4);
     });
 
     test('does not render pro upgrade banner if pro user', () => {
@@ -115,7 +115,9 @@ describe('<AccountManagement />', () => {
         </SessionProvider>
       );
 
-      const sectionHeader = screen.getByText(/account settings/i);
+      const sectionHeader = screen.getByRole('heading', {
+        name: /account settings/i,
+      });
       let nameInput = await screen.findByPlaceholderText('testUser');
       let emailInput = await screen.findByPlaceholderText('testUser@email.com');
       const saveButton = screen.getByRole('button', { name: /save/i });

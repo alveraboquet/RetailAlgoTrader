@@ -64,14 +64,13 @@ const ProSignup: NextPage = () => {
       <PricingTable signedIn={true} monthly={monthly} />
       {session && !session?.user.isPro ? (
         <div className="alert alert-success text-center">
-          You currently have a Hobby account. If you would like to upgrade to a
-          Pro membership please click
+          Gain access to pro courses and EA generator:
           <button
             className="btn btn-warning ms-3"
             onClick={() => setIsStripeLoading(true)}
             disabled={isStripeLoading}
           >
-            Upgrade to Pro
+            Upgrade to Pro Account
           </button>
         </div>
       ) : (

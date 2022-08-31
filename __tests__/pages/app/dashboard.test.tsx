@@ -27,20 +27,18 @@ describe('<Dashboard />', () => {
     // Header, Footer, Body, and pro upgrade bar
     const header = screen.getByRole('link', { name: /ea generator/i });
     const logoutButton = screen.getByRole('button', { name: /logout/i });
-    const signedInAs = screen.getByText(/signed in as testUser/i);
     const courseCatalog = screen.getByRole('heading', {
       name: /course catalog/i,
     });
     const footer = screen.getByRole('heading', { name: /about us/i });
-    const proUpgradeBar = screen.getByRole('button', {
+    const proUpgradeBar = screen.getAllByRole('button', {
       name: /upgrade to pro/i,
     });
     expect(header).toBeInTheDocument();
     expect(logoutButton).toBeInTheDocument();
-    expect(signedInAs).toBeInTheDocument();
     expect(courseCatalog).toBeInTheDocument();
     expect(footer).toBeInTheDocument();
-    expect(proUpgradeBar).toBeInTheDocument();
+    expect(proUpgradeBar).toHaveLength(4);
 
     // Course Cards
     const tradingAcademy = screen.getByText(/if you have no or little/i);

@@ -17,7 +17,10 @@ describe('<CreateCustomerPortalSessionForm />', () => {
           },
         }}
       >
-        <CreateCustomerPortalSessionForm />
+        <CreateCustomerPortalSessionForm
+          buttonText="Manage Billing"
+          buttonColor="btn-danger"
+        />
       </SessionProvider>
     );
 
