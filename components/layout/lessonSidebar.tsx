@@ -29,7 +29,7 @@ const LessonSidebar = ({ curriculum }: Props) => {
     fetchCompletedLessons(curriculum).then((lessonData) => {
       setCompletedLessons(lessonData);
     });
-  }, [curriculum]);
+  });
 
   return (
     <div className="offcanvas offcanvas-start" id="lessonSidebar">
