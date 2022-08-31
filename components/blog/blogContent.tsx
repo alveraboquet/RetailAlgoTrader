@@ -10,7 +10,7 @@ const BlogContent = () => {
             imageHeight={1000}
             imageWidth={1500}
             imageAlt=""
-            cardTitle="What are market makers and how do they work?"
+            cardTitle="Essential Facts of Market Makers in Today's Markets"
             cardText="There is a lot of confusion and inaccurate beliefs around market makers
         and their roles in the market."
             postPath="/posts/whatAreMarketMakersAndHowDoTheyWork"
