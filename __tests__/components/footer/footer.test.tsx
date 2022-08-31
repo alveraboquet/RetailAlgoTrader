@@ -31,7 +31,7 @@ describe('<Footer />', () => {
       name: /top blog posts/i,
     });
     const article1 = screen.getByText(
-      'What are market makers and how do they work?'
+      /Essential Facts of Market Makers in Today's Markets/i
     );
     const articleButtons = screen.getAllByRole('button', {
       name: /read more/i,

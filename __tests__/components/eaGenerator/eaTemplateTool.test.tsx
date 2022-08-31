@@ -52,12 +52,10 @@ describe('<EaTemplateTool />', () => {
     expect(exitRulesInputOptions).toHaveLength(4);
 
     // no download button renders because session is valid
-    const signedInText = screen.getByText(/signed in/i);
     const downloadButton = screen.queryByRole('button', {
       name: /click here to download your template/i,
     });
-    expect(signedInText).toBeInTheDocument();
-    expect(downloadButton).not.toBeInTheDocument();
+    expect(downloadButton).toBeDisabled();
   });
 
   test('renders download button for non signed in user', () => {
@@ -97,7 +95,7 @@ describe('<EaTemplateTool />', () => {
     );
 
     const accordionButtons = screen.getAllByRole('button');
-    expect(accordionButtons).toHaveLength(13);
+    expect(accordionButtons).toHaveLength(14);
 
     const maxDrawdownButton = screen.getByRole('button', {
       name: /max drawdown/i,
@@ -162,9 +160,5 @@ describe('<EaTemplateTool />', () => {
       name: /turtle trader indicator exit/i,
     });
     await user.selectOptions(exitRulesInput, exitRulesOption);
-
-    // Confirm correct number is displayed
-    const number = screen.getByText('2132');
-    expect(number).toBeInTheDocument();
   });
 });

@@ -28,6 +28,17 @@ describe('<QuizLandingPage />', () => {
               },
             ],
           },
+          {
+            id: '2',
+            chapter: 'Chapter 2: Second chapter',
+            lessons: [
+              {
+                id: 3,
+                title: 'chapter 2 lesson',
+                path: '/tradingAcademy/secondChapter/chapter2Lesson',
+              },
+            ],
+          },
         ]}
       />
     );
@@ -35,8 +46,11 @@ describe('<QuizLandingPage />', () => {
     const title = screen.getByRole('heading', { name: /test title/i });
     const description = screen.getByText(/test description/i);
     const image = screen.getByRole('img');
-    const chapter1 = screen.getByText(/chapter1/i);
-    const chapter2 = screen.getByText(/chapter2/i);
+    const chapter1 = screen.getByText(/chapter 1: course overview/i);
+    const lesson1 = screen.getByText(/syllabus/i);
+    const lesson2 = screen.getByText(/goals/i);
+    const chapter2 = screen.getByText(/chapter 2: second chapter/i);
+    const lesson3 = screen.getByText(/chapter 2 lesson/i);
     const similar1Course = screen.getByRole('heading', {
       name: /forex trading with mt4/i,
     });
@@ -48,7 +62,10 @@ describe('<QuizLandingPage />', () => {
     expect(description).toBeInTheDocument();
     expect(image).toBeInTheDocument();
     expect(chapter1).toBeInTheDocument();
+    expect(lesson1).toBeInTheDocument();
+    expect(lesson2).toBeInTheDocument();
     expect(chapter2).toBeInTheDocument();
+    expect(lesson3).toBeInTheDocument();
     expect(similar1Course).toBeInTheDocument();
     expect(similar2Course).toBeInTheDocument();
   });

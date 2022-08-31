@@ -95,11 +95,11 @@ describe('<FooterApp />', () => {
     const proSignupBanner = screen.getByText(
       /if you would like to upgrade to a pro membership please click/i
     );
-    const proUpgradeButton = screen.getByRole('button', {
+    const proUpgradeButton = screen.getAllByRole('button', {
       name: /upgrade to pro/i,
     });
 
     expect(proSignupBanner).toBeInTheDocument();
-    expect(proUpgradeButton).toBeInTheDocument();
+    expect(proUpgradeButton).toHaveLength(2);
   });
 });

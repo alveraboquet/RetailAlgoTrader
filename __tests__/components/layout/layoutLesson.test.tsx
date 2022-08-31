@@ -24,7 +24,7 @@ describe('<LayoutLesson />', () => {
         }}
       >
         <LayoutLesson
-          course="testCourse"
+          course="tradingAcademy"
           prevChapter="prevChapter"
           nextChapter="nextChapter"
           prevLesson="prevLesson"
@@ -43,7 +43,7 @@ describe('<LayoutLesson />', () => {
     const sidebarTitle = screen.getByRole('heading', {
       name: /lessons/i,
     });
-    const proUpgradeBanner = screen.getByRole('button', {
+    const proUpgradeBanner = screen.getAllByRole('button', {
       name: /upgrade to pro/i,
     });
 
@@ -52,6 +52,6 @@ describe('<LayoutLesson />', () => {
     expect(markdown).toBeInTheDocument();
     expect(lessonsButton).toBeInTheDocument();
     expect(sidebarTitle).toBeInTheDocument();
-    expect(proUpgradeBanner).toBeInTheDocument();
+    expect(proUpgradeBanner).toHaveLength(2);
   });
 });

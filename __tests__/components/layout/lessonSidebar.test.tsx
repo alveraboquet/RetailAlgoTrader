@@ -1,4 +1,4 @@
-import { screen, render } from '@testing-library/react';
+import { screen, render, waitFor } from '@testing-library/react';
 import LessonSidebar from '../../../components/layout/lessonSidebar';
 import userEvent from '@testing-library/user-event';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -6,28 +6,18 @@ import 'bootstrap/dist/css/bootstrap.css';
 describe('<LessonSidebar />', () => {
   test('renders chapters, lessons, and completed badge', async () => {
     require('bootstrap/dist/js/bootstrap');
-    const curriculum = [
-      { id: '7', chapter: 'Chapter 7: Technical Analysis', lessons: [] },
-      {
-        id: '19',
-        chapter: 'Chapter 19: Advanced Strategies',
-        lessons: [
-          {
-            id: 1,
-            title: 'Intro',
-            path: '/tradingAcademy/advancedStrategies/intro',
-          },
-          {
-            id: 2,
-            title: 'Scaling Into and Out of Trades',
-            path: '/tradingAcademy/advancedStrategies/scalingIntoAndOutOfTrades',
-          },
-        ],
-      },
-    ];
 
     const user = userEvent.setup();
-    render(<LessonSidebar curriculum={curriculum} />);
+    render(<LessonSidebar />);
+
+    await waitFor(
+      async () => {
+        expect(
+          await screen.findByText('Chapter 1: Course Overview')
+        ).toBeInTheDocument();
+      },
+      { timeout: 1100 }
+    );
 
     const sidebarHeader = screen.getByText(/lessons/i);
     const chapter7 = await screen.findByRole('button', {
@@ -38,10 +28,10 @@ describe('<LessonSidebar />', () => {
       name: /chapter 19: advanced strategies/i,
       expanded: false,
     });
-    const lesson1 = await screen.findByText(/intro/i);
+    const lesson1 = await screen.findByText(/turtle traders/i);
     const lesson2 = await screen.findByText(/scaling into and out of trades/i);
     const completedBadge = await screen.findByText(/completed/i);
-    const incompleteBadge = await screen.findByText(/incomplete/i);
+    const incompleteBadge = await screen.findAllByText(/incomplete/i);
 
     expect(sidebarHeader).toBeInTheDocument();
     expect(chapter7).toBeInTheDocument();
@@ -49,7 +39,7 @@ describe('<LessonSidebar />', () => {
     expect(lesson1).toBeInTheDocument();
     expect(lesson2).toBeInTheDocument();
     expect(completedBadge).toBeInTheDocument();
-    expect(incompleteBadge).toBeInTheDocument();
+    expect(incompleteBadge).toHaveLength(91);
 
     await user.click(chapter19);
     chapter19 = await screen.findByRole('button', {

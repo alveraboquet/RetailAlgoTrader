@@ -8,10 +8,10 @@ describe('<ProSignupBanner />', () => {
     const text = screen.getByText(
       'You currently have a Hobby account. If you would like to upgrade to a Pro membership please click here:'
     );
-    const button = screen.getByRole('button', { name: /upgrade to pro/i });
+    const button = screen.getAllByRole('button', { name: /upgrade to pro/i });
 
     expect(text).toBeInTheDocument();
-    expect(button).toBeInTheDocument();
+    expect(button).toHaveLength(2);
   });
 
   test('does not render for pro user', () => {

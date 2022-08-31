@@ -39,7 +39,7 @@ describe('<ProSignup />', () => {
       name: /learn how to properly trade/i,
     });
     const footer = screen.getByRole('heading', { name: /about us/i });
-    const proUpgradeBar = screen.getByRole('button', {
+    const proUpgradeBar = screen.getAllByRole('button', {
       name: /upgrade to pro/i,
     });
     expect(header).toBeInTheDocument();
@@ -50,7 +50,7 @@ describe('<ProSignup />', () => {
     expect(pricingTable).toBeInTheDocument();
     expect(pricingText).toBeInTheDocument();
     expect(footer).toBeInTheDocument();
-    expect(proUpgradeBar).toBeInTheDocument();
+    expect(proUpgradeBar).toHaveLength(3);
 
     // Displayed price defaults to $40/mo
     let displayedPrice = screen.getByText('$40/mo');
@@ -87,7 +87,7 @@ describe('<ProSignup />', () => {
     const user = userEvent.setup();
 
     const proSignupButton = screen.getByRole('button', {
-      name: /upgrade to pro/i,
+      name: /upgrade to pro account/i,
     });
     expect(proSignupButton).toBeInTheDocument();
     await user.click(proSignupButton);
