@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { updateCurrentLesson } from '../../lib/lessonSidebarHelpers';
 
 interface Props {
   course: string;
@@ -6,7 +7,7 @@ interface Props {
   nextChapter: string;
   prevLesson: string;
   nextLesson: string;
-  setUpdateLessons: any;
+  currentLessonId: number;
 }
 
 // Footer component for lesson pages
@@ -16,7 +17,7 @@ const FooterLesson = ({
   nextChapter,
   prevLesson,
   nextLesson,
-  setUpdateLessons,
+  currentLessonId,
 }: Props) => {
   return (
     <footer className="bg-dark fixed-bottom" style={{ zIndex: '1' }}>
@@ -29,7 +30,16 @@ const FooterLesson = ({
         <Link href={`/app/courses/${course}/${nextChapter}/${nextLesson}`}>
           <button
             className="btn btn-warning ms-3 mb-1 fs-5"
-            onClick={() => setUpdateLessons(true)}
+            onClick={() =>
+              updateCurrentLesson({
+                course,
+                prevChapter,
+                nextChapter,
+                prevLesson,
+                nextLesson,
+                currentLessonId,
+              })
+            }
           >
             Next
           </button>

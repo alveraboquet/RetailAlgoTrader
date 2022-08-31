@@ -22,6 +22,11 @@ interface DatabaseLesson {
   lesson: ChapterId;
 }
 
+/**
+ *
+ * @param curriculum - Curriculum object from coursesData. Includes all chapters and all lessons within each chapter
+ * @returns - Curriculum object with lessons completed status updated
+ */
 export const fetchCompletedLessons = async (curriculum: Chapters[]) => {
   try {
     const res = await fetch('/api/app/lessons/getCompletedLessons', {
@@ -69,7 +74,10 @@ interface UpdateCurrentLessonProps {
   currentLessonId: number;
 }
 
-// Update completed lesson in database
+/**
+ * Updates current lesson in database
+ * @param props - course, prevChapter, nextChapter, prevLesson, nextLesson, and currentLessonId
+ */
 export const updateCurrentLesson = async ({
   course,
   prevChapter,

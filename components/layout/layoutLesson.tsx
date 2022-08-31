@@ -6,11 +6,6 @@ import ProSignupBanner from '../pricing/proSignupBanner';
 import { useRouter } from 'next/router';
 import LessonSidebar from './lessonSidebar';
 import styles from '../../styles/LayoutLesson.module.css';
-import {
-  fetchCompletedLessons,
-  updateCurrentLesson,
-} from '../../lib/lessonSidebarHelpers';
-import { useEffect, useState } from 'react';
 
 interface Props {
   children: React.ReactNode;
@@ -22,48 +17,11 @@ interface Props {
   currentLessonId: number;
 }
 
-interface Lessons {
-  id: number;
-  title: string;
-  path: string;
-  completed?: boolean;
-}
-
-interface Chapters {
-  chapter: string;
-  lessons: Lessons[];
-  id: string;
-}
-
 // Layout component for lesson pages
 // Children prop is mdx component with lesson material
 const LayoutLesson = (props: Props) => {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const [completedLessons, setCompletedLessons] = useState<Chapters[]>([]);
-  const [updateLessons, setUpdateLessons] = useState(false);
-  const [lessonsFetched, setLessonsFetched] = useState(false);
-
-  useEffect(() => {
-    if (updateLessons) {
-      updateCurrentLesson(props);
-      setUpdateLessons(false);
-      fetchCompletedLessons(coursesData.tradingAcademy.curriculum).then(
-        (lessonData) => {
-          setCompletedLessons(lessonData);
-        }
-      );
-      setLessonsFetched(true);
-    }
-    if (lessonsFetched === false) {
-      fetchCompletedLessons(coursesData.tradingAcademy.curriculum).then(
-        (lessonData) => {
-          setCompletedLessons(lessonData);
-        }
-      );
-      setLessonsFetched(true);
-    }
-  }, [updateLessons]);
 
   if (status === 'loading') {
     return null;
@@ -89,7 +47,7 @@ const LayoutLesson = (props: Props) => {
       >
         Lessons
       </button>
-      <LessonSidebar completedLessons={completedLessons} />
+      <LessonSidebar />
       <div className={styles.pageLayout}>
         <div className={styles.headerHeight}>
           <HeaderApp />
@@ -109,7 +67,7 @@ const LayoutLesson = (props: Props) => {
             nextChapter={props.nextChapter}
             prevLesson={props.prevLesson}
             nextLesson={props.nextLesson}
-            setUpdateLessons={setUpdateLessons}
+            currentLessonId={props.currentLessonId}
           />
         </div>
       </div>

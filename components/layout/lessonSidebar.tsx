@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import styles from '../../styles/LessonSidebar.module.css';
+import { useEffect, useState } from 'react';
+import { fetchCompletedLessons } from '../../lib/lessonSidebarHelpers';
+import coursesData from '../landingPages/coursesData';
 
 interface Lessons {
   id: number;
@@ -14,13 +17,22 @@ interface Chapters {
   id: string;
 }
 
-interface Props {
-  completedLessons: Chapters[];
-}
-
 // Sidebar containing all chapters and lessons for the current course
 // https://getbootstrap.com/docs/5.2/components/offcanvas/
-const LessonSidebar = ({ completedLessons }: Props) => {
+const LessonSidebar = () => {
+  const [completedLessons, setCompletedLessons] = useState<Chapters[]>([]);
+
+  // Fetches completed lessons. Delay of 1sec to allow database to update current lesson before retrieving
+  useEffect(() => {
+    setTimeout(() => {
+      fetchCompletedLessons(coursesData.tradingAcademy.curriculum).then(
+        (lessonData) => {
+          setCompletedLessons(lessonData);
+        }
+      );
+    }, 1000);
+  }, []);
+
   return (
     <div className="offcanvas offcanvas-start" id="lessonSidebar">
       <div className="offcanvas-header">
