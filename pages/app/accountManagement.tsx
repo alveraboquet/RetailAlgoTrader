@@ -121,7 +121,10 @@ const AccountManagement: NextPage = () => {
           <h2 className="mb-4">Billing Settings</h2>
         </div>
         <div className="col-6 col-md-4 text-end">
-          <CreateCustomerPortalSessionForm />
+          <CreateCustomerPortalSessionForm
+            buttonText="Manage Billing"
+            buttonColor="btn-warning"
+          />
         </div>
       </div>
       <div className="row">
@@ -165,19 +168,10 @@ const AccountManagement: NextPage = () => {
             </p>
           </div>
           <div className="col-12 col-md-4 text-center text-md-end">
-            <form
-              method="POST"
-              action="/api/stripe/createCustomerPortalSession"
-            >
-              <button
-                type="submit"
-                className="btn btn-danger"
-                data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop"
-              >
-                Cancel Subscription
-              </button>
-            </form>
+            <CreateCustomerPortalSessionForm
+              buttonText="Cancel Subscription"
+              buttonColor="btn-danger"
+            />
           </div>
         </div>
         <hr />

@@ -7,15 +7,25 @@ import { authOptions } from '../api/auth/[...nextauth]';
 import { unstable_getServerSession } from 'next-auth';
 import { useEffect, useState } from 'react';
 import { handleCheckout } from '../../lib/proSignupHelpers';
+import { useRouter } from 'next/router';
 
 const ProSignup: NextPage = () => {
   const { data: session } = useSession();
+  const router = useRouter();
   const [isStripeLoading, setIsStripeLoading] = useState(false);
   const [monthly, setMonthly] = useState(true);
 
   useEffect(() => {
-    if (isStripeLoading) handleCheckout(monthly);
-  }, [isStripeLoading, monthly]);
+    const redirectToCheckout = async () => {
+      if (isStripeLoading) {
+        const checkoutUrl = await handleCheckout(monthly);
+        router.push(checkoutUrl);
+      }
+    };
+    redirectToCheckout();
+    // Only want it to fire when isStripeLoading changes
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isStripeLoading]);
 
   return (
     <LayoutApp>
