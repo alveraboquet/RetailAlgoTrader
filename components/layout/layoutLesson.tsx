@@ -48,6 +48,12 @@ const LayoutLesson = (props: Props) => {
     if (updateLessons) {
       updateCurrentLesson(props);
       setUpdateLessons(false);
+      fetchCompletedLessons(coursesData.tradingAcademy.curriculum).then(
+        (lessonData) => {
+          setCompletedLessons(lessonData);
+        }
+      );
+      setLessonsFetched(true);
     }
     if (lessonsFetched === false) {
       fetchCompletedLessons(coursesData.tradingAcademy.curriculum).then(
