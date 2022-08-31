@@ -37,6 +37,7 @@
     "rehype-slug": "^5.0.1",
     "remark-gfm": "^3.0.1",
     "remark-toc": "^8.0.1",
+    "sharp": "^0.30.7",
     "stripe": "^10.0.0",
     "validator": "^13.7.0"
   },
@@ -58,6 +59,7 @@
     "@types/validator": "^13.7.3",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
+    "canvas": "^2.9.3",
     "cypress": "^10.2.0",
     "cypress-social-logins": "^1.14.0",
     "eslint": "8.13.0",
