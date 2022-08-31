@@ -1,7 +1,5 @@
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 import styles from '../../styles/LessonSidebar.module.css';
-import { fetchCompletedLessons } from '../../lib/lessonSidebarHelpers';
 
 interface Lessons {
   id: number;
@@ -17,20 +15,12 @@ interface Chapters {
 }
 
 interface Props {
-  curriculum: Chapters[];
+  completedLessons: Chapters[];
 }
 
 // Sidebar containing all chapters and lessons for the current course
 // https://getbootstrap.com/docs/5.2/components/offcanvas/
-const LessonSidebar = ({ curriculum }: Props) => {
-  const [completedLessons, setCompletedLessons] = useState<Chapters[]>([]);
-
-  useEffect(() => {
-    fetchCompletedLessons(curriculum).then((lessonData) => {
-      setCompletedLessons(lessonData);
-    });
-  });
-
+const LessonSidebar = ({ completedLessons }: Props) => {
   return (
     <div className="offcanvas offcanvas-start" id="lessonSidebar">
       <div className="offcanvas-header">

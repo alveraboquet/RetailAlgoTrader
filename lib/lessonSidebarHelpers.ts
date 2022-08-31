@@ -59,3 +59,44 @@ export const fetchCompletedLessons = async (curriculum: Chapters[]) => {
     return curriculum;
   }
 };
+
+interface UpdateCurrentLessonProps {
+  course: string;
+  prevChapter: string;
+  nextChapter: string;
+  prevLesson: string;
+  nextLesson: string;
+  currentLessonId: number;
+}
+
+// Update completed lesson in database
+export const updateCurrentLesson = async ({
+  course,
+  prevChapter,
+  nextChapter,
+  prevLesson,
+  nextLesson,
+  currentLessonId,
+}: UpdateCurrentLessonProps) => {
+  try {
+    const res = await fetch('/api/app/courses/updateCurrentLesson', {
+      method: 'PUT',
+      headers: {
+        'X-Custom-Header': 'lollipop',
+      },
+      body: JSON.stringify({
+        course,
+        prevChapter,
+        nextChapter,
+        prevLesson,
+        nextLesson,
+        currentLessonId,
+      }),
+    });
+    if (res.status !== 200) {
+      throw new Error();
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
