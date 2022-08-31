@@ -1,5 +1,4 @@
 import { Html, Head, Main, NextScript } from 'next/document';
-import Script from 'next/script';
 
 // Sets up the HTMl template for Nextjs pages
 export default function Document() {
@@ -9,12 +8,6 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
-        <Script
-          src="https://js.stripe.com/v3/"
-          async
-          strategy="lazyOnload"
-          crossOrigin="anonymous"
-        />
       </body>
     </Html>
   );
