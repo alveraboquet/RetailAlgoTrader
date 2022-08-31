@@ -11,7 +11,8 @@ export const getPercentComplete = (
   const coursePercentComplete = coursesPercentComplete.find(
     (course) => course.courseID === courseID
   );
-  if (coursePercentComplete) return coursePercentComplete.percentComplete;
+  if (coursePercentComplete)
+    return Math.round(coursePercentComplete.percentComplete);
   else return 0;
 };
 
@@ -89,9 +90,9 @@ export const fetchEnrolledCourses = async () => {
  *
  * @returns - user's completed chapters for a course
  */
-export const fetchCompletedChapters = async () => {
+export const fetchCompletedLessonsByCourse = async () => {
   try {
-    const res = await fetch('/api/app/chapters/completedChapters', {
+    const res = await fetch('/api/app/lessons/getCompletedLessonsByCourse', {
       headers: {
         'X-Custom-Header': 'lollipop',
       },
@@ -107,25 +108,27 @@ export const fetchCompletedChapters = async () => {
 
 /**
  *
- * @param completedChapters - array of all chapters with completion status from fetchCompleteChapters
+ * @param completedLessons - array of all lessons with completion status from fetchCompletedLessons
  * @returns - array of courses with percent complete for each course
  */
 export const percentCompleteByCourse = (
-  completedChapters: {
-    chapter_id: number;
+  completedLessons: {
+    user_id: string;
+    lesson_id: number;
     completed: boolean;
+    chapter_id: number;
     course_id: number;
   }[]
 ) => {
   const coursesPercentComplete = [];
-  // fetchCompletedChapters returns array of objects ordered by descending course_id
+  // fetchCompletedLessons returns array of objects ordered by descending course_id
   // Max course_id will be in first object
-  const numCourses = completedChapters[0].course_id;
+  const numCourses = completedLessons[0].course_id;
   for (let i = 1; i <= numCourses; i++) {
-    const totalChaptersByCourse = completedChapters
+    const totalChaptersByCourse = completedLessons
       .filter((chapter) => chapter.course_id === i)
       .map((chapter) => chapter.chapter_id);
-    const completedChaptersByCourse = completedChapters
+    const completedChaptersByCourse = completedLessons
       .filter((chapter) => chapter.course_id === i)
       .filter((chapter) => chapter.completed)
       .map((chapter) => chapter.chapter_id);

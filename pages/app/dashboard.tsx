@@ -12,7 +12,7 @@ import {
   getCourseEnrolled,
   getCourseObject,
   fetchEnrolledCourses,
-  fetchCompletedChapters,
+  fetchCompletedLessonsByCourse,
   percentCompleteByCourse,
 } from '../../lib/dashboardHelpers';
 
@@ -22,8 +22,14 @@ const Dashboard: NextPage = () => {
   const [enrolledCourses, setEnrolledCourses] = useState([
     { course_id: 0, enrolled: false, current_chapter: 0, current_lesson: 0 },
   ]);
-  const [completedChapters, setCompletedChapters] = useState([
-    { chapter_id: 0, completed: false, course_id: 0 },
+  const [completedLessons, setCompletedLessons] = useState([
+    {
+      user_id: '',
+      lesson_id: 0,
+      completed: false,
+      chapter_id: 0,
+      course_id: 0,
+    },
   ]);
   const [coursesPercentComplete, setCoursesPercentComplete] = useState([
     { courseID: 0, percentComplete: 0 },
@@ -34,15 +40,15 @@ const Dashboard: NextPage = () => {
     fetchEnrolledCourses().then((enrolledCourses) => {
       if (enrolledCourses) setEnrolledCourses(enrolledCourses);
     });
-    fetchCompletedChapters().then((completedChapters) => {
-      if (completedChapters) setCompletedChapters(completedChapters);
+    fetchCompletedLessonsByCourse().then((completedLessons) => {
+      if (completedLessons) setCompletedLessons(completedLessons);
     });
   }, [session]);
 
   // Calculate percent complete for each course
   useEffect(() => {
-    setCoursesPercentComplete(percentCompleteByCourse(completedChapters));
-  }, [completedChapters]);
+    setCoursesPercentComplete(percentCompleteByCourse(completedLessons));
+  }, [completedLessons]);
 
   return (
     <LayoutApp>
