@@ -22,10 +22,10 @@ const middleware = (req: NextRequest) => {
     const referrerHeader = req.headers.get('referrer');
     const xCustomHeader = req.headers.get('X-Custom-Header');
     const acceptedOrigin = isProd
-      ? 'https://retailalgotrader.com'
+      ? 'https://www.retailalgotrader.com'
       : 'http://localhost:3000';
     const acceptedReferrer = isProd
-      ? 'https://retailalgotrader.com/'
+      ? 'https://www.retailalgotrader.com/'
       : 'http://localhost:3000/';
 
     if (
