@@ -3,7 +3,6 @@
 import { fetchPostJSON } from './fetchJSON';
 import { MONTHLY_AMOUNT, ANNUAL_AMOUNT } from '../stripe.config';
 import alert from './alert';
-import getStripe from './getStripe';
 
 /**
  *
@@ -32,10 +31,5 @@ export const handleCheckout = async (monthly: boolean) => {
       return;
     }
   }
-  // Redirect to Checkout.
-  const stripe = await getStripe();
-  const { error } = await stripe!.redirectToCheckout({
-    sessionId: response.id,
-  });
-  console.warn(error.message);
+  return response.url;
 };
