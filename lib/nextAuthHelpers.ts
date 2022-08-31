@@ -1,6 +1,5 @@
 import initialLessonData from '../prisma/initialData/initialLessonData';
 import initialCourseData from '../prisma/initialData/initialCourseData';
-import initialChapterData from '../prisma/initialData/initialChapterData';
 
 export const populateUserCourse = (userId: string) => {
   const userCourseArray = [];
@@ -29,17 +28,4 @@ export const populateUserLesson = (userId: string) => {
     userLessonArray.push(userLesson);
   }
   return userLessonArray;
-};
-
-export const populateUserChapter = (userId: string) => {
-  const userChapterArray = [];
-  for (const chapter of initialChapterData) {
-    const userChapter = {
-      user_id: userId,
-      chapter_id: chapter.id,
-      completed: false,
-    };
-    userChapterArray.push(userChapter);
-  }
-  return userChapterArray;
 };
