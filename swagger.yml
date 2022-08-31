@@ -6,29 +6,35 @@ info:
     API for session handling, Stripe payments, CRUD operations of
     RetailAlgoTrader database.
 paths:
-  /api/app/chapters/completedChapters:
-    summary: Get completed chapters by user
+  /api/app/lessons/getCompletedLessonsByCourse:
+    summary: Get user's completed lessons by course
     get:
-      summary: Gets a user's completed chapters
-      description: Gets a user's completed chapters
-      operationId: /api/app/chapters/completedChapters
+      summary: Get user's completed lessons by course
+      description: Get user's completed lessons by course
+      operationId: /api/app/lessons/getCompletedLessonsByCourse
       responses:
         '200':
-          description: Successful retrieval of completed chapters
+          description: Successful retrieval of completed lessons by course
           content:
             application/json:
               examples:
-                Successful retrieval of completed chapters:
+                Successful retrieval of completed lessons:
                   value:
-                    - chapter_id: 1
+                    - user_id: fjkdf93kfjdlfda8f9fdakd89
+                      lesson_id: 1
                       completed: false
+                      chapter_id: 1
                       course_id: 1
-                    - chapter_id: 2
+                    - user_id: fjkdf93kfjdlfda8f9fdakd89
+                      lesson_id: 2
                       completed: false
-                      course_id: 1
-                    - chapter_id: 3
+                      chapter_id: 1
+                      course_id: 2
+                    - user_id: fjkdf93kfjdlfda8f9fdakd89
+                      lesson_id: 3
                       completed: false
-                      course_id: 1
+                      chapter_id: 2
+                      course_id: 2
                     - ...
         '401':
           description: User not signed-in
@@ -47,12 +53,12 @@ paths:
                 Invalid request type:
                   value: Method Not Allowed
         '500':
-          description: Failed to retrieve completed chapters data
+          description: Failed to retrieve completed lessons data
           content:
             application/json:
               examples:
-                Failed to retrieve completed chapters data:
-                  value: Failed to retrieve completed chapters data
+                Failed to retrieve completed lessons data:
+                  value: Failed to retrieve completed lessons data
         default:
           description: Default error sample response
       tags:
