@@ -47,7 +47,7 @@ const LayoutLesson = (props: Props) => {
       >
         Lessons
       </button>
-      <LessonSidebar curriculum={coursesData.tradingAcademy.curriculum} />
+      <LessonSidebar />
       <div className={styles.pageLayout}>
         <div className={styles.headerHeight}>
           <HeaderApp />

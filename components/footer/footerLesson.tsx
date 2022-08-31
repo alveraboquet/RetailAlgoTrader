@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { updateCurrentLesson } from '../../lib/lessonSidebarHelpers';
 
 interface Props {
   course: string;
@@ -18,31 +19,6 @@ const FooterLesson = ({
   nextLesson,
   currentLessonId,
 }: Props) => {
-  // Update completed lesson in database
-  const updateCurrentLesson = async () => {
-    try {
-      const res = await fetch('/api/app/courses/updateCurrentLesson', {
-        method: 'PUT',
-        headers: {
-          'X-Custom-Header': 'lollipop',
-        },
-        body: JSON.stringify({
-          course,
-          prevChapter,
-          nextChapter,
-          prevLesson,
-          nextLesson,
-          currentLessonId,
-        }),
-      });
-      if (res.status !== 200) {
-        throw new Error();
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   return (
     <footer className="bg-dark fixed-bottom" style={{ zIndex: '1' }}>
       <div className="container text-end text-md-center pt-1">
@@ -54,7 +30,16 @@ const FooterLesson = ({
         <Link href={`/app/courses/${course}/${nextChapter}/${nextLesson}`}>
           <button
             className="btn btn-warning ms-3 mb-1 fs-5"
-            onClick={updateCurrentLesson}
+            onClick={() =>
+              updateCurrentLesson({
+                course,
+                prevChapter,
+                nextChapter,
+                prevLesson,
+                nextLesson,
+                currentLessonId,
+              })
+            }
           >
             Next
           </button>

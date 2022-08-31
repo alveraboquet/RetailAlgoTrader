@@ -22,6 +22,11 @@ interface DatabaseLesson {
   lesson: ChapterId;
 }
 
+/**
+ *
+ * @param curriculum - Curriculum object from coursesData. Includes all chapters and all lessons within each chapter
+ * @returns - Curriculum object with lessons completed status updated
+ */
 export const fetchCompletedLessons = async (curriculum: Chapters[]) => {
   try {
     const res = await fetch('/api/app/lessons/getCompletedLessons', {
@@ -57,5 +62,49 @@ export const fetchCompletedLessons = async (curriculum: Chapters[]) => {
   } catch (err) {
     console.log(err);
     return curriculum;
+  }
+};
+
+interface UpdateCurrentLessonProps {
+  course: string;
+  prevChapter: string;
+  nextChapter: string;
+  prevLesson: string;
+  nextLesson: string;
+  currentLessonId: number;
+}
+
+/**
+ * Updates current lesson in database
+ * @param props - course, prevChapter, nextChapter, prevLesson, nextLesson, and currentLessonId
+ */
+export const updateCurrentLesson = async ({
+  course,
+  prevChapter,
+  nextChapter,
+  prevLesson,
+  nextLesson,
+  currentLessonId,
+}: UpdateCurrentLessonProps) => {
+  try {
+    const res = await fetch('/api/app/courses/updateCurrentLesson', {
+      method: 'PUT',
+      headers: {
+        'X-Custom-Header': 'lollipop',
+      },
+      body: JSON.stringify({
+        course,
+        prevChapter,
+        nextChapter,
+        prevLesson,
+        nextLesson,
+        currentLessonId,
+      }),
+    });
+    if (res.status !== 200) {
+      throw new Error();
+    }
+  } catch (err) {
+    console.log(err);
   }
 };
