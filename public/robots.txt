@@ -2,7 +2,6 @@ User-agent: *
 Disallow: /app
 Disallow: /api
 Disallow: /files
-Disallow: /images
 
 Host: https://www.retailalgotrader.com
 
