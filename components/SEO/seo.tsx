@@ -47,7 +47,7 @@ const socialTags = ({
         settings.meta.social &&
         settings.meta.social.twitter,
     },
-    { name: 'twitter:image:src', content: image },
+    { name: 'twitter:image', content: image },
     { name: 'og:title', content: title },
     { name: 'og:type', content: openGraphType },
     { name: 'og:url', content: url },
