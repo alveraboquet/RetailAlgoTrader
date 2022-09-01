@@ -2,7 +2,7 @@
 const sitemapConfig = {
   siteUrl: process.env.NEXTAUTH_URL || 'http://localhost:3000',
   generateRobotsTxt: false,
-  exclude: ['/app'],
+  exclude: ['/app/*'],
 };
 
 export default sitemapConfig;
