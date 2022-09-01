@@ -8,7 +8,7 @@ import { authOptions } from '../../auth/[...nextauth]';
  * @param req - GET req to retrieve a user's completed chapters
  * @param res - 405 if not GET req, 200 if successful, 500 if error, 401 if non-signed in user
  */
-const findCompletedChaptersByUser = async (
+const getCompletedLessonsByCourse = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
@@ -27,12 +27,14 @@ const findCompletedChaptersByUser = async (
   try {
     const { user } = session;
     // Generate SQL statement
-    const statement = `SELECT "User_Chapter".chapter_id, "User_Chapter".completed, "Chapter".course_id
-                             FROM "User_Chapter"
-                             INNER JOIN "Chapter"
-                             ON "User_Chapter".chapter_id = "Chapter".id
-                             WHERE "User_Chapter".user_id = $1
-                             ORDER BY "Chapter".course_id DESC`;
+    const statement = `SELECT "User_Lesson".*, "Lesson".chapter_id, "Chapter".course_id
+                            FROM "User_Lesson"
+                            INNER JOIN "Lesson"
+                            ON "User_Lesson".lesson_id = "Lesson".id
+                            INNER JOIN "Chapter"
+                            ON "Lesson".chapter_id = "Chapter".id
+                            WHERE "User_Lesson".user_id = $1
+                            ORDER BY "Chapter".course_id DESC`;
     const values = [user.id];
 
     // Execute SQL statement
@@ -49,4 +51,4 @@ const findCompletedChaptersByUser = async (
   }
 };
 
-export default findCompletedChaptersByUser;
+export default getCompletedLessonsByCourse;

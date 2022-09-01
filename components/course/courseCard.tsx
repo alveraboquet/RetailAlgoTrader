@@ -73,7 +73,7 @@ const CourseCard = ({
         </Link>
         <div className="progress mt-4">
           <div
-            className="progress-bar bg-warning text-dark"
+            className="progress-bar progress-bar-striped bg-warning text-dark"
             role="progressbar"
             style={{ width: `${percentComplete}%` }}
             aria-valuenow={25}
