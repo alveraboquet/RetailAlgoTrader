@@ -1,1 +1,11 @@
-Sitemap: https://retailalgotrader/sitemap.xml
+User-agent: *
+Disallow: /app
+Disallow: /api
+Disallow: /files
+Disallow: /images
+
+Host: https://www.retailalgotrader.com
+
+Sitemap: https://www.retailalgotrader.com/sitemap.xml
+
+

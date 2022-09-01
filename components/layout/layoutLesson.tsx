@@ -6,6 +6,7 @@ import ProSignupBanner from '../pricing/proSignupBanner';
 import { useRouter } from 'next/router';
 import LessonSidebar from './lessonSidebar';
 import styles from '../../styles/LayoutLesson.module.css';
+import NoIndexNoFollowMeta from '../SEO/noIndexNoFollowMeta';
 
 interface Props {
   children: React.ReactNode;
@@ -39,6 +40,7 @@ const LayoutLesson = (props: Props) => {
 
   return (
     <div>
+      <NoIndexNoFollowMeta />
       <button
         className={`${styles.lessonButton} position-fixed bottom-0 start-0 m-2 btn btn-light`}
         type="button"
