@@ -56,6 +56,7 @@ const About: NextPage = () => {
                   height={1280}
                   width={1920}
                   alt="Screen with Algorithmic Trading Code"
+                  priority
                 />
               </figure>
             </div>
