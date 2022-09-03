@@ -94,7 +94,7 @@ const FooterApp = () => {
               </Link>
             </div>
             <div className="col-3 p-0 d-flex justify-content-center">
-              <Link href="https://www.quora.com/profile/Matt-Laux">
+              <Link href="https://www.quora.com/">
                 <a>
                   <Image
                     src="/images/svgs/quora.svg"
