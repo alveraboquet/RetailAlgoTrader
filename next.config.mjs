@@ -64,7 +64,7 @@ if (isProd) {
     default-src 'self' 'unsafe-eval' 'unsafe-inline';
     base-uri 'self';
     child-src 'self';
-    connect-src 'self' https://checkout.stripe.com https://api.stripe.com;
+    connect-src 'self' https://checkout.stripe.com https://api.stripe.com ws://localhost:3000/;
     font-src 'self' https: data:;
     form-action 
       'self' 
@@ -86,7 +86,6 @@ if (isProd) {
       https://js.stripe.com ;
     script-src-attr 'none';
     style-src 'self' https: 'unsafe-inline';
-    upgrade-insecure-requests
   `;
 }
 
