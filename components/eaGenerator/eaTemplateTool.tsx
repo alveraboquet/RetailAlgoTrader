@@ -123,14 +123,6 @@ const EaTemplateTool = () => {
             >
               <a
                 className="text-decoration-none text-dark"
-                /*
-                href={`${routerConfig()}/files/eaTemplates/${
-                  platform + riskManagementRules + entryRules + exitRules
-                }.txt`}
-                download={
-                  platform + riskManagementRules + entryRules + exitRules
-                }
-                */
                 href={`${routerConfig()}/files/eaTemplates/blankTemplate.txt`}
                 download="EA Template"
               >
