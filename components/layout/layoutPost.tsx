@@ -5,6 +5,7 @@ import SEO from '../SEO/seo';
 import JumpTopButton from '../post/jumpTopButton';
 import styles from '../../styles/LayoutPost.module.css';
 import Link from 'next/link';
+import MockSiteBanner from '../mockSiteBanner';
 
 interface Props {
   children: React.ReactNode;
@@ -35,6 +36,7 @@ const LayoutPost = (props: Props) => {
       />
       <JumpTopButton />
       <div id="top"></div>
+      <MockSiteBanner />
       <Header />
       <div className={`${styles.postContainer}`}>
         <Link href="/blog">
