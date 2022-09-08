@@ -83,7 +83,8 @@ if (isProd) {
       'self' 
       'unsafe-eval' 'unsafe-inline'
       https://checkout.stripe.com  
-      https://js.stripe.com ;
+      https://js.stripe.com
+      https://khan.github.io/tota11y/dist/tota11y.min.js;
     script-src-attr 'none';
     style-src 'self' https: 'unsafe-inline';
     upgrade-insecure-requests
