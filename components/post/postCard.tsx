@@ -35,7 +35,7 @@ const PostCard = ({
         />
       </figure>
       <div className="card-body">
-        <h3 className="card-title">{cardTitle}</h3>
+        <p className="card-title fs-3 fw-bold">{cardTitle}</p>
         <p className="card-text">{cardText}</p>
         <Link href={postPath}>
           <button className="btn btn-warning w-100">{buttonText}</button>
