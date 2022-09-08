@@ -1,0 +1,68 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Bollinger Bands
+
+## What are Bollinger Bands?
+
+Bollinger bands consist of a simple moving average (SMA) with an upper band and a lower band. The line seen in the middle is just a simple moving average which we have already looked at. The upper band and the lower band are plotted at a chosen standard deviation from the SMA.
+
+The standard inputs for Bollinger bands are 20 periods for the SMA and 2 STD for the upper and lower bands. So if you are familiar with statistics this means that about 95% of trading is between the upper band and the lower band.
+
+Bollinger bands are one of the most popular indicators. This is because it provides very clear and reliable trading signals. It is the foundation for many trading strategies.
+
+Below is an example of Bollinger bands on the daily chart for TSLA. The orange line in the center is a 20 SMA. The blue lines on the top and bottom are the upper and lower bands. All of the area in blue contains roughly 95% of the trading action.
+
+{image}
+
+## How to trade Bollinger Bands?
+
+Bollinger bands are primarily traded as a mean-reverting strategy. Mean-reverting strategies assume that price is going to return to a central price when it gets too far away. In this case our central price is that 20 SMA. When price gets to one of the extremes whether it be the lower band or the upper band it is a good bet that price will reverse course and return to center.
+
+When price reaches or breaks the upper-band it can be considered to be overbought. This is a sell signal as you expect price to change direction and head back towards the central SMA. When prices reaches or breaks the lower-band it can be considered to be oversold. This is a buy signal as you expect price to change direction and head back towards the central SMA.
+
+Below the two green arrows indicate times when price reached outside the lower band and then reversed back to the SMA. The two red arrows indicate times when price reached outside the upper band and then reversed back to the SMA.
+
+{image}
+
+Some people prefer to enter a trade as soon as price breaks out of the upper or lower band. This will provide more trading signals and get you into your trade quicker; however, it also has a much higher risk of fake-outs. Many traders prefer to wait for price to break the upper or lower band and continue to wait until they get further confirmation price is changing direction.
+
+Let's take a look at the example below. Price has broken the upper band; however, we do not enter a trade. We instead wait for a strong red candlestick that closes inside of the bands.
+
+We have not discussed chart patterns or the different types of candlesticks yet but for now just understand that a strong red candlestick is large and its closing price is near its low. A strong red candlestick indicates bearish sentimentality from the markets.
+
+A great way to trade our example below would be to place a sell stop order (the purple line) (remember a sell stop order will not trigger until price reaches the price chosen by you) just below the strong red candlesticks low. By placing your order just below the candlestick's low you help prevent fakeouts. If the next candlestick's price trades below the previous candlestick's low there is a good chance price will continue lower.
+
+You could then place a stop loss (the red line) above the candlestick's high. This will give your trade room to breathe. In this case after the strong red candlestick price continued to drop. But sometimes price will retrace which means go back up some before continuing down.
+
+If you place your stop loss to close to your entry price your stoploss may get triggered on a price retrace and then when price continues downward you miss out on profits. Placing the stoploss above the high of the strong red candle is frequently a good place. If price breaks the high of the strong red candle that is a decent signal that price may continue upwards in which case it is good you have a stoploss to get you out of your trade.
+
+You could then place a take profit order (the green line) at the SMA. Once price reaches that level your order will automatically close and you will get your profit.
+
+Spend some time on TradingView looking at how price and Bollinger bands interact. You will see that sometimes price reverts back to the SMA and sometimes it continues all the way through the SMA to the opposite band. Some traders prefer to play it safe and place their take profits at the SMA while some prefer to play it a little more risky and place their take profits at the opposite band. It all depends on your trading strategy.
+
+Some more advanced techniques are placing multiple take profits so maybe half your order closes at the SMA and the other half closes at the opposite band. This can incorporate trailing stop losses or breakeven stops to limit the downside as well. Some people even use the SMA as a dynamic take profit line.
+
+I know there were some topics here that we have not discussed in detail such as candlestick patterns, stoplosses, and takeprofits but we will discuss this in more detail. This is just a good introduction. After going through the lessons on chart patterns and stoplosses it is a good idea to review all of these indicators and see how you could use those techniques to increase your profitability.
+
+{image}
+
+The primary risk with this strategy is that price does not return to the center. If price is caught in a strong downtrend then price will continue down even after it has broken the lower band. And if price is caught in a strong uptrend then price will continue up even after it has broken the upper band.
+
+Below is the same chart but with two yellow arrows. These arrows indicate two instances when price broke the lower band but instead of return to the center it continued to drop. If you had submitted a buy order at either of these points without including a stoploss you would have lost a lot of money. This is why many people use the strategy discussed above of waiting for further trade confirmation in the form of a strong green (aka bullish) candlestick.
+
+{image}
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="courseOverview"
+    prevLesson="syllabus"
+    nextLesson="goals"
+    currentLessonId={1}
+  >
+    {children}
+  </LayoutLesson>
+);
+
+;

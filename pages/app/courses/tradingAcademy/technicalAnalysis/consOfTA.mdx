@@ -1,0 +1,22 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Cons of Technical Analysis
+
+Technical analysis will have many losing trades. History does not repeat itself exactly but it does tend to resemble itself. Even if a pattern has held true in the past it is not a guarantee it will hold true in the future. Technical analysis is all about gaining a slight edge so that over a long time span you come out positive. This can be tough to handle psychologically.
+
+TA can provide signals that are opposite of what the fundamentals suggest. When this occurs it can be very difficult to determine which direction to trade.
+
+If you exclusively practice TA you can get blindsided by news events. News events tend to have a large impact on price. This is why even as a TA trader it is important to pay attention to the fundamentals to a degree.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="courseOverview"
+    prevLesson="syllabus"
+    nextLesson="goals"
+    currentLessonId={1}
+  >
+    {children}
+  </LayoutLesson>
+);

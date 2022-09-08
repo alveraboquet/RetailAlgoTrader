@@ -1,0 +1,72 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Account Values
+
+For this exercise we will be using MT4s interface as this is the program we will mostly be using later on. This chapter will follow a real-life trade placed in MT4 so you can gain an understanding of how all of these different values relate to each other.
+
+## Account Balance
+
+Deposit 100,000 USD. Your account balance is how much trading capital you have in your account. If you open a new account and deposit 100,000 USD your account balance is now 100,000 USD.
+
+{image}
+
+## Floating Profit / Loss
+
+Aka unrealized P/L. Submit a buy order for 5 standard lots at 1:100 leverage. This is the profit / loss you would receive if you were to close out of a trade right now.
+
+It is the profit / loss of your open orders. This value will constantly change as the value of your open trades fluctuates as price changes. Can see that floating P/L is -95 USD on the far right. That means if we were to close out of this trade we would have a loss of 95 USD.
+
+Floating P/L or unrealized P/L only become realized once you close out of your trade. When you close out of your trade the floating P/L is adjusted to cash and either added to or withdrawn from the Account Balance.
+
+{image}
+
+## Account Equity
+
+You will notice that even after opening a trade balance is still at 100,000 USD. Your account balance will not change until you close out an order or deposit more money (Technically swap fees will impact account balance but they have such a small impact we will not worry about that right now).
+
+However account equity has decreased to 99,905.00 USD. Account equity shows what your account balance would be if you were to close out of all of your trades right now. Since the unrealized P/L of your open trades is constantly changing as the exchange rates of different pairs changes account equity is constantly changing.
+
+Account equity is the real-time value of your account; whereas, account balance lags as it only updates when orders are closed. If you have zero open orders then account equity will equal account balance. Account equity is account balance - floating P/L 100,000 - 95 = 99,905 USD.
+
+{image}
+
+## Margin
+
+Also known as used margin. Margin is how much total margin you have deposited with your broker for all open orders. In this example we submitted an order for 5 standard lots or 500,000 units of EUR/USD.
+
+Since the base currency of EUR/USD is Euros you need to multiply the 500,000 units of EUR/USD by the exchange rate of 1.13601 to get the USD value of this trade. 500,000 \* 1.13601 = 568,005 USD.
+
+With a leverage of 1:100 or a margin requirement of 1% we had to put up 5,680.05 USD as collateral 568,005 \* .01 = 5,680.05 USD.
+
+## Free Margin
+
+Also known as usable margin. Free margin is how much cash you have available to open additional trades. Another way to think of free margin is it is how much your open positions can move against you before receiving a margin call. Margin calls will be explained in the next chapter.
+
+Free margin = Account Equity - Margin = Account Balance - Floating P/L - Margin
+
+## Margin Level
+
+Account Equity / Margin _ 100. 99,905.00 / 5680.05 _ 100 = 1,758.88%. Margin Level is representative of how much cash you have available to trade vs how much margin you are using.
+
+This becomes significant when it gets down to 200% or so. This indicates that you have almost as much money tied up in margin as you do available to trade. This means you are nearing a margin call which we will go in depth into the next lesson.
+
+Most brokers set a margin level limit of 100% which means that if your margin level drops below 100% your broker will not allow you to open new orders.
+
+Essentially the larger this number the better as it means you have more than enough cash to back up your open orders if there are large price swings.
+
+After closing out of the below trade Account Balance, Account Equity, and Free Margin will all equal 99,905.00 USD. This is because when you close a trade the unrealized P/L becomes realized and it is applied to the Account Balance.
+
+{image}
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="courseOverview"
+    prevLesson="syllabus"
+    nextLesson="goals"
+    currentLessonId={1}
+  >
+    {children}
+  </LayoutLesson>
+);

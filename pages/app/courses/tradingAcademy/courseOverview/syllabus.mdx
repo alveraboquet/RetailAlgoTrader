@@ -1,6 +1,73 @@
 import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import coursesData from '../../../../../components/landingPages/coursesData';
 
 # Syllabus
+
+The following lesson details all the essential information you should know before starting this course.
+
+## Structure of Course
+
+This course is broken up into 34 chapters with anywhere from 2 to 10 lessons. Each chapter will have a quiz to work through. This is to encourage note-taking and completion of the exercises.
+
+The majority of lessons will include additional tasks and examples for you to work through. It is extremely important to reinforce the concepts from each lesson with your own work. Answer keys are provided; however, we encourage you to try and complete each lesson without the answer key. Using Google is highly encouraged.
+
+Working through the early examples will be difficult but by spending the time upfront to properly learn the knowledge and skills you will be in a much better situation later on.
+
+Throughout much of this course you will be following along with the Turtle Trader strategy which will be discussed shortly. We found that it helps our learners to have one large project they are able to progress through simultaneously with the course.
+
+## Chapters and lessons
+
+<div className="accordion" id="sidebarAccordion">
+  {completedLessons.map((chapter) => (
+    <div key={chapter.id} className="accordion-item">
+      <h2 className="accordion-header" id={chapter.chapter}>
+        <button
+          className="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target={`#chapterId${chapter.id}`}
+          aria-expanded="false"
+          aria-controls={`chapterId${chapter.id}`}
+        >
+          {chapter.chapter}
+        </button>
+      </h2>
+      <div
+        id={`chapterId${chapter.id}`}
+        className="accordion-collapse collapse"
+        aria-labelledby={chapter.chapter}
+        data-bs-parent="#sidebarAccordion"
+      >
+        {chapter.lessons.map((lesson) => (
+          <Link href={`/app/courses${lesson.path}`} key={lesson.title} passHref>
+            <div className={`accordion-body border ${styles.lesson}`}>
+              <a className="text-decoration-none text-dark">{lesson.title}</a>
+              {lesson.completed ? (
+                <p className="badge bg-success ms-1">Completed</p>
+              ) : (
+                <p className="badge bg-danger ms-1">Incomplete</p>
+              )}
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>
+
+## Features of Course
+
+- Video and text lessons
+- Variety of tasks and examples to work through
+- Links to additional resources
+- Templates for various popular indicators and trading strategies
+- Forum to post questions and discuss potential strategies
+
+## How to Contact
+
+If you have any questions regarding trading or market knowledge or skills please post these in the forum so that all of our users can benefit.
+
+If you are having technical difficulties or take issue with some aspect of the course please reach out to us at contact@retailalgotrading.com and we can assist you one-on-one.
 
 export default ({ children }) => (
   <LayoutLesson

@@ -1,0 +1,58 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Types of Candlesticks
+
+## Candlestick Basics
+
+As previously discussed every candlestick has a high, low, open, and close. If the close price is below the open price the candlestick will be red. If the close price is above the open price the candlestick will be green.
+
+Every candlestick has a body and two wicks. The body is the area between the open and the close. The wicks are the area between the high and open/close and the low and open/close.
+
+{image}
+
+Below we will discuss a couple of the more common shapes that candlesticks can take. By themselves these candlestick shapes are not very useful; however, when combined to create chart patterns they can become very powerful.
+
+## Doji
+
+A doji has an equally sized wick on the top and the bottom with a very thin body. Dojis can be either green or red. Dojis are considered indecision candles. Buyers and sellers are waiting to see what will happen. Dojis frequently indicated a price reversal.
+
+{image}
+
+## Gravestone
+
+A gravestone has an almost entirely absent body at the very bottom of the candlestick with a large wick above the body. They indicate that buyers attempted to push the price higher but failed.
+
+{image}
+
+## Dragonfly
+
+A dragonfly is the opposite of a gravestone. It has a small body at the very top of the candlestick with a large wick below the body. They indicate that sellers attempted to push the price lower but failed.
+
+{image}
+
+## Shooting Star
+
+A gravestone has a small body at the very bottom of the candlestick with a large wick above the body.
+
+{image}
+
+## Hammer
+
+A hammer is the opposite of a shooting star. It has a small body at the very top of the candlestick with a large wick below the body.
+
+{image}
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="courseOverview"
+    prevLesson="syllabus"
+    nextLesson="goals"
+    currentLessonId={1}
+  >
+    {children}
+  </LayoutLesson>
+);
+
+;

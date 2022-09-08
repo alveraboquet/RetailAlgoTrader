@@ -1,0 +1,88 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# MACD
+
+## What is MACD?
+
+MACD (Moving average convergence divergence) consists of the MACD line, a 9-period EMA known as the signal line, and a histogram. It can be used as either a trend-following or momentum indicator. The MACD line is the graph of the difference of a 26-period EMA from a 12-period EMA.
+
+The signal line if a simple 9-period EMA. It is one of the most popular indicators due to the variety of ways that the indicator can be used.
+
+Below is an example of MACD on the daily chart for TSLA. The orange line is the signal line (a 9-period EMA). The blue line is the MACD line constructed of the difference of a 26-period EMA and a 12-period EMA.
+
+The red and green bars are the MACD's histogram. The histogram is representative of the difference between the signal line and the MACD line. A red bar shows that the signal line is above the MACD line.
+
+A green bar shows that the MACD line is above the signal line. A large bar indicates that there is a large difference between the signal line and the MACD line. While a small bar indicates that the signal line and the MACD line are very close together.
+
+{image}
+
+## How to trade MACD?
+
+As stated earlier MACD can be traded as a trend-following or momentum indicator.
+
+### Cross-over
+
+The most common way to trade MACD is the cross-over. A cross-over trading signal occurs when the MACD crosses over the signal line. This indicates that the trend may be reversing.
+
+When the MACD crosses the signal line from below this is treated as a buy signal. When the MACD crosses the signal line from above this is treated as a sell signal.
+
+Below the yellow arrows and vertical lines indicate trading signals provided by the MACD indicator. A downward arrow indicates a sell signal and an upward arrow indicates a buy signal. You can see how the crossovers of the MACD reflect the upward and downward movements of the price pretty well.
+
+{image}
+
+### Oscillator
+
+MACD can also be used as an oversold and overbought oscillator similar to RSI or Stochastic. This is how MACD is used as a momentum indicator. On the right-hand side of the MACD indicator you can see that the vertical axis has numbers. 0 is the baseline with positive numbers above and negative numbers below.
+
+0 is representative of the “average or typical” price. As price gets further and further away from this “average” price the MACD line and the signal line will get further away from 0. Once the lines reach a certain threshold it can be considered overbought or oversold.
+
+Lets look at the example below. On our oscillator that we have setup in TradingView our chosen threshold is 40. This means that when the MACD line breaks 40 on the vertical axis we will consider it overbought. When the MACD line breaks -40 on the vertical axis we will consider it oversold. The threshold for overbought and oversold is up to each individual trader. You want the threshold to be at a level that is not typically reached.
+
+In this example the MACD line is hovering up around 40 for quite some time. This means that we should be prepared price to reverse direction and drop which you can see it does shortly after MACD breaks 40 for the second time.
+
+Remember that using MACD as an oscillator means you are using it as a momentum indicator. Momentum indicators are leading indicators which means their trading signals are not as strong as a lagging indicator.
+
+In the example below you can see that even after breaking the 40 threshold for the first time price continued to rise for a little bit before dropping down. This is why it is important to use leading and lagging indicators together to get trade confirmation.
+
+{image}
+
+In the second example below the MACD line breaks -40. At this point we should be watching for price to reverse direction and jump up. You can see that immediately after breaking -40 there was a short price jump upwards.
+
+{image}
+
+Finally if price is not making any major moves the MACD line and the signal line will be hovering around 0. This can be seen in the example below. In this example you can see that multiple crossovers occur; however, these are not trading signals we would want to act on.
+
+When the MACD is hovering around 0 it is best to stay away from trading as there is not enough volatility to make any profit. You can see in this example while MACD is hovering around 0 price is just trading sideways.
+
+{image}
+
+### Divergence
+
+Finally MACD can be used to trade divergences. A divergence occurs when the price action is trending in one direction and the MACD line / signal line are trending in another direction. A divergence signals a potential trend reversal.
+
+In the example below you can see that while price is trending downwards, MACD is actually trending upwards. This is an example of a bullish divergence. Shortly after this divergence price broke out of the downtrend and jumped upwards.
+
+{image}
+
+In the second example below you can see that while price is trending upwards, MACD is actually trending downwards. This is an example of a bearish divergence. Shortly after this divergence price broke out of the uptrend and dropped.
+
+{image}
+
+The primary risk with this strategy is that price does not return to the center. If price is caught in a strong downtrend then price will continue down even after it has broken the lower band. And if price is caught in a strong uptrend then price will continue up even after it has broken the upper band.
+
+Below is the same chart but with two yellow arrows. These arrows indicate two instances when price broke the lower band but instead of return to the center it continued to drop. If you had submitted a buy order at either of these points without including a stoploss you would have lost a lot of money.
+
+This is why many people use the strategy discussed above of waiting for further trade confirmation in the form of a strong green (aka bullish) candlestick
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="courseOverview"
+    prevLesson="syllabus"
+    nextLesson="goals"
+    currentLessonId={1}
+  >
+    {children}
+  </LayoutLesson>
+);

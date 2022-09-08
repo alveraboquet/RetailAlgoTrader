@@ -1,0 +1,20 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Preventing a Margin Call
+
+Understand how margin works. Know your broker's margin call and stop-out levels.
+
+Use stoplosses on all orders (this will be discussed in a later chapter). Create a proper risk management strategy that calculates proper lot sizing (this will be discussed in a later chapter)
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="courseOverview"
+    prevLesson="syllabus"
+    nextLesson="goals"
+    currentLessonId={1}
+  >
+    {children}
+  </LayoutLesson>
+);

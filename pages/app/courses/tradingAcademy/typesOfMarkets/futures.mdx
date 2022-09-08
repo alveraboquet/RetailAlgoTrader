@@ -1,0 +1,51 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Futures Market
+
+## Overview
+
+Futures are similar to options in that they are part of the derivatives market. Futures are a contract agreement to buy or sell a certain asset at a certain date in the future.
+
+Futures can be bought and sold prior to their expiration date but whoever holds the future at expiration date must fulfill the contract. Most futures are cash settled which means that you do not have to take physical delivery of the asset at expiration. Your profit and loss is determined purely by price and either deposited or deducted directly from your trading account.
+
+Some futures actually require the buyer of the future to take delivery of the asset. For example a corn future may require the holder of the contract at expiration to take physical delivery of a shipment of corn. So be careful when purchasing futures to ensure that they are cash settled.
+
+Futures are frequently used by large corporations for hedging purposes. If they are worried that the price of a certain resource will become very volatile in the future they will purchase a futures contract to ensure that they can receive the resource at a certain price in the future.
+
+The other primary use for futures is speculation which is what retail traders focus on. Futures are a very advanced trading topic and are not a focus of this course. If you would like to learn more check out trading futures with Quantconnect.
+
+Futures are available for nearly everything that can be bought and sold. Agricultural products, metals, stock exchanges, currencies, etc.
+
+## Size of Market
+
+Futures trade on the derivatives market which includes other types of contracts such as futures. It is difficult to estimate the size of the derivatives market; however, some estimates range as high as one quadrillion USD. This is due to the fact that nearly all assets have a wide variety of contracts (options, futures, etc) available on them.
+
+## Market Participants
+
+- Retail Traders
+- Government
+- Hedge Funds
+- Retirement Funds
+- Pension Funds
+- Banks
+
+## When are Markets Open
+
+One of the most popular Futures exchanges is the Chicago Mercantile Exchange (CME). Futures trade from 6:00 pm Sunday to 5:00 pm Friday EST in the US. Since futures trade nearly 24/7 this is a good option for people with busy schedules.
+
+## Recommended Capital
+
+As stated earlier it is not recommended to begin trading futures until one has significant experience in the markets. Hopefully by this time you have saved up sufficient capital. Ideally you will want at least $10,000 to begin futures trading. There are a wide variety of futures strategies but $10,000 should provide enough to execute most of them.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="courseOverview"
+    prevLesson="syllabus"
+    nextLesson="goals"
+    currentLessonId={1}
+  >
+    {children}
+  </LayoutLesson>
+);

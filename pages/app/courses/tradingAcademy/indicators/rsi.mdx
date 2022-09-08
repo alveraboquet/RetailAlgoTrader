@@ -1,0 +1,62 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# RSI
+
+## What is RSI?
+
+The Relative Strength Index (RSI) is an oscillator or relative strength indicator. It is called an oscillator because it will oscillate back and forth from overbought to oversold as price action unfolds.
+
+RSI consists of the RSI line (the purple line below) and an SMA of the RSI line (the yellow line below). This SMA is not a moving average of price action but a moving average of the actual RSI line see on the indicator. Traders do not typically use the SMA of the RSI line too much. They typically just pay attention to the actual RSI line.
+
+{image}
+
+## How to trade MACD?
+
+The RSI vertical axis has a baseline of 50. As buying pressure increases the RSI line will rise above 50. If it breaks 70 this can be considered overbought. As selling pressure increases the RSI line will fall below 50. If it breaks 30 this can be considered oversold.
+
+When price enters this area of overbought or oversold you want to be looking out for potential price reversals. The default period for RSI is 14.
+
+Below is an example of RSI on the daily chart for TSLA. The purple line is the RSI line while the yellow line is the SMA of the RSI line. The overbought and oversold threshold automatically populates at 70 and 30 respectfully.
+
+You can see two trading signals shown in yellow. The first one the RSI line breaks 70, trades sideways for a bit, and then drops. If you had shorted when the RSI broke 70 this would have been a very profitable trade.
+
+The second example trading signal occurs when the RSI line dips below 30. Price immediately shoots up.
+
+{image}
+
+As an oscillator this indicator provides leading trading signals. Remember that these are less reliable than lagging trading signals. There can be times when RSI shows overbought and price continues to rise. If price gets caught in an unusually strong uptrend RSI may show overbought for quite a while before price actually reverses course and drops.
+
+Here is an extreme example of that. This is when TSLA had its' crazy run up (one of its crazy runups) in the Summer of 2020. You can see that in July 2020 RSI was showing the stock as overbought. However, price continued to rise all the way into September 2020 before taking a small dip and balancing out. If you had just blindly shorted when the RSI broke 70 you would have taken massive losses.
+
+You should never use an oscillator such as RSI as your sole trading signal. Oscillators should be used as trade confirmation for a trading signal. In other words use oscillators in combination with other indicators or methodologies to confirm what the other indicator or method is showing.
+
+{image}
+
+## Trading Divergence with RSI
+
+Divergence occurs when the trend of price action and the trend of the indicator are moving in opposite directions.
+
+Bullish Divergence: Price is setting a lower low while the oscillator is setting a higher low. In this situation while price is still continuing downward the selling pressure is decreasing. This indicates a reversal may occur.
+
+In the example below EUR/USD is in a strong downtrend. Price is making lower lows from January 2021 until April 2021. RSI is making lower lows from January 2021 until March 2021 shown by the red dashed line. However, from March 2021 to April 2021 RSI made a higher low as indicated by the blue dashed line. March 2021 to April 2021 is a bullish divergence. Price is making lower lows while RSI is making a higher low. You can see that right after this divergence price shot up.
+
+{image}
+
+Bearish Divergence: Price is setting a higher high while the oscillator is setting a lower high. In this situation while price is still continuing upward the buying pressure is decreasing. This indicates a reversal may occur.
+
+This can be seen in the example below. Price is making higher highs while RSI is making lower highs. Price then enters a strong downtrend.
+
+{image}
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="courseOverview"
+    prevLesson="syllabus"
+    nextLesson="goals"
+    currentLessonId={1}
+  >
+    {children}
+  </LayoutLesson>
+);

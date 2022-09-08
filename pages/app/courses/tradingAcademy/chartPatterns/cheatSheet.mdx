@@ -1,0 +1,39 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Cheatsheet
+
+## Head and Shoulders
+
+{image}
+{image}
+
+## Double Top and Bottom
+
+{image}
+{image}
+
+## Rounding Bottom
+
+{image}
+
+## Cup and Handle
+
+{image}
+
+## Wedges / Pennants
+
+{image}
+{image}
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="courseOverview"
+    prevLesson="syllabus"
+    nextLesson="goals"
+    currentLessonId={1}
+  >
+    {children}
+  </LayoutLesson>
+);

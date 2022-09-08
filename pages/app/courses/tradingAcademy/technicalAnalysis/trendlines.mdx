@@ -1,0 +1,68 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Trendlines and Channels
+
+Price can move in one of three patterns: Uptrend, downtrend, or flat. Trendlines and channels are lines drawn on the chart to help trade these trends.
+
+## Uptrend
+
+An uptrend is when price is consistently moving upwards over a certain period of time. This occurs when there is more buying pressure than there is selling pressure.
+
+{Insert Picture of uptrend}
+
+When price is an uptrend drawing upward sloping trendlines can provide good trading opportunities. During an uptrend it is preferable to trade with the trend. In other words it is smarter to submit buy orders during an uptrend. This is called trading with the trend and it provides a better chance of having a winning trade.
+
+Trading with the trend is a trend-following strategy. These will be discussed more in-depth in a later chapter.
+
+As you get more advanced you can try trading against the trend which is known as a mean-reversion strategy. Mean-reversion strategies assume price will return back to some value which in this case would be the trendline. Mean-reversion strategies will be discussed more in-depth in a few chapters. For now just stick with trading with the trend. Do not try and fight the trend.
+
+A trendline requires at least two points but really you should have three points to be confident. You can extend this trendline into the future and as price approaches it once again you know to pay attention.
+
+{Insert couple of picture of trendline}
+
+If your trendline is drawn properly then there is a good chance that price will rebound off of the trendline. However, trendlines must be broken at some point. Similar to S/R levels when trendlines are broke price tends to make big moves known as a breakout.
+
+{Insert trendline with breakout}
+
+NOTE: Breakouts do not necessarily occur because a trendline has been broken. Typically a major news event will occur which will cause price to break the trendline. However, because you drew that trendline you were paying attention and were able to enter a trade and ride out the big price movement for some profit.
+
+If it is a very strong and obvious trendline many institutions and traders will be watching it. Once price starts to break the trendline many traders may place orders which can actually cause a breakout to occur without any fundamental reasons behind it.
+
+## Downtrend
+
+A downtrend is when price is consistently moving downwards over a certain period of time. This occurs when there is more selling pressure than there is buying pressure. Drawing trendlines works the same way as for uptrends except you draw a downward sloping line acting as resistance.
+
+During a downtrend you want to focus mostly on sell orders (remember this is called trading with the trend).
+
+{Insert couple of pictures of downtrend trendlines}
+
+## Flat
+
+A price is considered flat or trading sideways when price is in neither an uptrend or a downtrend. It is hovering around the same price area. This usually occurs when traders are uncertain or when nothing of note has happened in a little while with the asset.
+
+This is also known as consolidation. Traders are sitting out and waiting to see what the market does before opening a large position.
+
+{Insert example picture}
+
+However this does not mean there are no trading opportunities. When price is trading sideways (also known as trading in a channel) this is primetime for a mean reverting strategy. As can be seen below you want to draw both a support and a resistance line that captures the majority of the trading action for the consolidation period.
+
+Together these two lines form a channel. When price approaches the bottom of the channel you want to go long (open buy orders) and when price approaches the top of the channel you want to go short (open sell orders). Remember you are assuming that since price has been trading sideways for a while it will continue to do so.
+
+So when it gets too far from the average there is a good chance it will return which is why we want to open trades at the extremes of the channel.
+
+{Insert couple pictures of channels}
+
+Note that periods of consolidation frequently occur during trends. An asset may spend three months trending upwards and then trade sideways for a month before continuing the uptrend.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="courseOverview"
+    prevLesson="syllabus"
+    nextLesson="goals"
+    currentLessonId={1}
+  >
+    {children}
+  </LayoutLesson>
+);
