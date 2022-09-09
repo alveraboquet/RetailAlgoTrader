@@ -125,15 +125,14 @@ export const percentCompleteByCourse = (
   // Max course_id will be in first object
   const numCourses = completedLessons[0].course_id;
   for (let i = 1; i <= numCourses; i++) {
-    const totalChaptersByCourse = completedLessons
-      .filter((chapter) => chapter.course_id === i)
-      .map((chapter) => chapter.chapter_id);
-    const completedChaptersByCourse = completedLessons
-      .filter((chapter) => chapter.course_id === i)
-      .filter((chapter) => chapter.completed)
-      .map((chapter) => chapter.chapter_id);
+    const totalLessonsByCourse = completedLessons.filter(
+      (lesson) => lesson.course_id === i
+    );
+    const completedLessonsByCourse = completedLessons
+      .filter((lesson) => lesson.course_id === i)
+      .filter((lesson) => lesson.completed);
     const coursePercentComplete =
-      (completedChaptersByCourse.length / totalChaptersByCourse.length) * 100;
+      (completedLessonsByCourse.length / totalLessonsByCourse.length) * 100;
     coursesPercentComplete.push({
       courseID: i,
       percentComplete: coursePercentComplete ? coursePercentComplete : 0,
