@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import LessonSidebar from './lessonSidebar';
 import styles from '../../styles/LayoutLesson.module.css';
 import NoIndexNoFollowMeta from '../SEO/noIndexNoFollowMeta';
+import MockSiteBanner from '../mockSiteBanner';
 
 interface Props {
   children: React.ReactNode;
@@ -51,6 +52,7 @@ const LayoutLesson = (props: Props) => {
       </button>
       <LessonSidebar />
       <div className={styles.pageLayout}>
+        <MockSiteBanner />
         <div className={styles.headerHeight}>
           <HeaderApp />
         </div>
