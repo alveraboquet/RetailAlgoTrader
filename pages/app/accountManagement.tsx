@@ -115,6 +115,7 @@ const AccountManagement: NextPage = () => {
       />
       <hr />
       <h2 className="mb-4">Mail Settings</h2>
+      <p>No email service currently implemented.</p>
       <hr />
       <div className="row">
         <div className="col-6 col-md-8">

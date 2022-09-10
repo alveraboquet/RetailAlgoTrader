@@ -1,8 +1,9 @@
 import LayoutApp from '../../components/layout/layoutApp';
 import PostCard from '../../components/post/postCard';
 import coursesData from '../../components/landingPages/coursesData';
+import { NextPage } from 'next';
 
-const ProConfirmation = () => {
+const ProConfirmation: NextPage = () => {
   return (
     <LayoutApp>
       <div className="text-center">
