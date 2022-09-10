@@ -12,7 +12,7 @@ describe('<Footer />', () => {
     const phoneCTA = screen.getByRole('button', {
       name: /get started for free/i,
     });
-    const aboutUs = screen.getByText(/about us/i);
+    const aboutUs = screen.getAllByText(/about us/i);
     const aboutUsText = screen.getByText(
       /retailalgotrading is a resource and community dedicated to retail/i
     );
@@ -37,15 +37,14 @@ describe('<Footer />', () => {
       name: /read more/i,
     });
     const homeLink = screen.getByRole('link', { name: /home/i });
-    const aboutLink = screen.getByRole('link', { name: /about/i });
     const blogLink = screen.getByRole('link', { name: /blog/i });
     const loginLink = screen.getByRole('link', { name: /login/i });
 
     expect(slogan).toBeInTheDocument();
     expect(desktopCTA).toBeInTheDocument();
     expect(phoneCTA).toBeInTheDocument();
-    expect(aboutUs).toBeInTheDocument();
     expect(aboutUsText).toBeInTheDocument();
+    expect(aboutUs).toHaveLength(2);
     expect(contactUs).toHaveLength(2);
     expect(emailIcon).toBeInTheDocument();
     expect(emailLink).toHaveLength(2);
@@ -59,7 +58,6 @@ describe('<Footer />', () => {
     expect(article1).toBeInTheDocument();
     expect(articleButtons).toHaveLength(3);
     expect(homeLink).toBeInTheDocument();
-    expect(aboutLink).toBeInTheDocument();
     expect(blogLink).toBeInTheDocument();
     expect(loginLink).toBeInTheDocument();
   });

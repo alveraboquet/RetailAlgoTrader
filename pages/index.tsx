@@ -230,7 +230,7 @@ const Home: NextPage = () => {
                 <div className="col-md-4">
                   <article className="card bg-dark text-white mb-3 mb-md-0">
                     <div className="card-body">
-                      <h5 className="card-title">Novice Traders</h5>
+                      <p className="card-title fw-bold">Novice Traders</p>
                       <p className="card-text">
                         If you have no experience with the markets that is fine.
                         Check out our recommended resources to get started.
@@ -246,7 +246,7 @@ const Home: NextPage = () => {
                 <div className="col-md-4">
                   <article className="card bg-dark text-white mb-3 mb-md-0">
                     <div className="card-body">
-                      <h5 className="card-title">Experienced Traders</h5>
+                      <p className="card-title fw-bold">Experienced Traders</p>
                       <p className="card-text">
                         Do you have experience trading already? Discover how you
                         can create tools to increase your profitability and
@@ -263,7 +263,7 @@ const Home: NextPage = () => {
                 <div className="col-md-4">
                   <article className="card bg-dark text-white">
                     <div className="card-body">
-                      <h5 className="card-title">Programmers</h5>
+                      <p className="card-title fw-bold">Programmers</p>
                       <p className="card-text">
                         Already know how to program? Discover how you can put
                         your programming skills to use to generate additional

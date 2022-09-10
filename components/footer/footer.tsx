@@ -67,52 +67,44 @@ const Footer = () => {
           </section>
           <section className="row mt-md-3 mb-md-3">
             <div className="col-3 p-0 d-flex justify-content-center">
-              <Link href="https://www.facebook.com/RetailAlgoTrading">
-                <a>
-                  <Image
-                    src="/images/svgs/facebook.svg"
-                    alt="Facebook Logo"
-                    width={144}
-                    height={32}
-                  />
-                </a>
-              </Link>
+              <a href="https://www.facebook.com/RetailAlgoTrading">
+                <Image
+                  src="/images/svgs/facebook.svg"
+                  alt="Facebook Logo"
+                  width={144}
+                  height={32}
+                />
+              </a>
             </div>
             <div className="col-3 p-0 d-flex justify-content-center">
-              <Link href="https://twitter.com/RetailAlgoTrade">
-                <a>
-                  <Image
-                    src="/images/svgs/twitter.svg"
-                    alt="Twitter Logo"
-                    width={144}
-                    height={32}
-                  />
-                </a>
-              </Link>
+              <a href="https://twitter.com/RetailAlgoTrade">
+                <Image
+                  src="/images/svgs/twitter.svg"
+                  alt="Twitter Logo"
+                  width={144}
+                  height={32}
+                />
+              </a>
             </div>
             <div className="col-3 p-0 d-flex justify-content-center">
-              <Link href="https://www.instagram.com/retailalgotrader/">
-                <a>
-                  <Image
-                    src="/images/svgs/instagram.svg"
-                    alt="Instagram Logo"
-                    width={144}
-                    height={32}
-                  />
-                </a>
-              </Link>
+              <a href="https://www.instagram.com/retailalgotrader/">
+                <Image
+                  src="/images/svgs/instagram.svg"
+                  alt="Instagram Logo"
+                  width={144}
+                  height={32}
+                />
+              </a>
             </div>
             <div className="col-3 p-0 d-flex justify-content-center">
-              <Link href="https://www.quora.com/">
-                <a>
-                  <Image
-                    src="/images/svgs/quora.svg"
-                    alt="Quora Logo"
-                    width={144}
-                    height={32}
-                  />
-                </a>
-              </Link>
+              <a href="https://www.quora.com/">
+                <Image
+                  src="/images/svgs/quora.svg"
+                  alt="Quora Logo"
+                  width={144}
+                  height={32}
+                />
+              </a>
             </div>
           </section>
           <section className="d-md-none">
@@ -144,9 +136,9 @@ const Footer = () => {
           <article className="card">
             <div className="card-header">Article</div>
             <div className="card-body">
-              <h5 className="card-title">
+              <p className="card-title fs-5 fw-bold">
                 Essential Facts of Market Makers in Today&apos;s Markets
-              </h5>
+              </p>
               <p className="card-text d-none d-md-block">
                 There is a lot of confusion and inaccurate beliefs around market
                 makers and their roles in the market.
@@ -159,10 +151,10 @@ const Footer = () => {
           <article className="card mt-3">
             <div className="card-header">Article</div>
             <div className="card-body">
-              <h5 className="card-title">
+              <p className="card-title fs-5 fw-bold">
                 Find out if it is actually possible to succeed as a retail
                 trader
-              </h5>
+              </p>
               <p className="card-text d-none d-md-block">
                 It is absolutely possible to succeed. There are many individual
                 traders with proven track records.
@@ -175,7 +167,7 @@ const Footer = () => {
           <article className="card mt-3">
             <div className="card-header">Guide</div>
             <div className="card-body">
-              <h5 className="card-title">Pinescript Guide</h5>
+              <p className="card-title fs-5 fw-bold">Pinescript Guide</p>
               <p className="card-text d-none d-md-block">
                 Pinescript is TradingView&apos;s proprietary coding language. It
                 is a language designed to allow easy creation of expert
@@ -195,7 +187,7 @@ const Footer = () => {
           </Link>
           <Link href="/about">
             <a className="nav-link text-light" aria-current="page">
-              About
+              About Us
             </a>
           </Link>
           <Link href="/blog">
