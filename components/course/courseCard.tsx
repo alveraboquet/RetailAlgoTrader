@@ -51,7 +51,7 @@ const CourseCard = ({
     <article className="card h-100 m-3 bg-light">
       {isProCourse ? (
         <p className="bg-warning text-center mb-0 pb-0 card-img-top">
-          Pro Course
+          Pro Course - Coming Soon
         </p>
       ) : (
         <p className="bg-dark text-center text-white mb-0 pb-0 card-img-top">

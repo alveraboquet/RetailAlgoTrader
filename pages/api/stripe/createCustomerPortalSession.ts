@@ -4,6 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { unstable_getServerSession } from 'next-auth';
 import Stripe from 'stripe';
 import { authOptions } from '../auth/[...nextauth]';
+import routerConfig from '../../../lib/routerConfig';
 
 // Loads Stripe package for Node environment
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
@@ -35,7 +36,7 @@ export default async function createCustomerPortalSession(
   try {
     const stripeSession = await stripe.billingPortal.sessions.create({
       customer: session.user.stripeCustomerId,
-      return_url: 'http://localhost:3000/app/accountManagement',
+      return_url: `${routerConfig()}/app/accountManagement`,
     });
     res.writeHead(302, { Location: stripeSession.url }).end();
   } catch (err) {
