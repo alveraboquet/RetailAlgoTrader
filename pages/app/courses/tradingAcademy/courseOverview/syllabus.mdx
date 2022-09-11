@@ -1,5 +1,6 @@
 import LayoutLesson from '../../../../../components/layout/layoutLesson';
 import coursesData from '../../../../../components/landingPages/coursesData';
+import Link from 'next/link';
 
 # Syllabus
 
@@ -17,38 +18,15 @@ Throughout much of this course you will be following along with the Turtle Trade
 
 ## Chapters and lessons
 
-<div className="accordion" id="sidebarAccordion">
-  {completedLessons.map((chapter) => (
-    <div key={chapter.id} className="accordion-item">
-      <h2 className="accordion-header" id={chapter.chapter}>
-        <button
-          className="accordion-button collapsed"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target={`#chapterId${chapter.id}`}
-          aria-expanded="false"
-          aria-controls={`chapterId${chapter.id}`}
-        >
-          {chapter.chapter}
-        </button>
-      </h2>
-      <div
-        id={`chapterId${chapter.id}`}
-        className="accordion-collapse collapse"
-        aria-labelledby={chapter.chapter}
-        data-bs-parent="#sidebarAccordion"
-      >
+<div className="text-center">
+  {coursesData.tradingAcademy.curriculum.map((chapter) => (
+    <div key={chapter.id}>
+      <h3>{chapter.chapter}</h3>
+      <div>
         {chapter.lessons.map((lesson) => (
-          <Link href={`/app/courses${lesson.path}`} key={lesson.title} passHref>
-            <div className={`accordion-body border ${styles.lesson}`}>
-              <a className="text-decoration-none text-dark">{lesson.title}</a>
-              {lesson.completed ? (
-                <p className="badge bg-success ms-1">Completed</p>
-              ) : (
-                <p className="badge bg-danger ms-1">Incomplete</p>
-              )}
-            </div>
-          </Link>
+          <div key={lesson.title} className="border rounded">
+            {lesson.title}
+          </div>
         ))}
       </div>
     </div>
