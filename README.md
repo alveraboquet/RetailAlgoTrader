@@ -4,7 +4,7 @@ Next.js web application hosted on Vercel. RetailAlgoTrader offers educational re
 
 A live demo of the application can be seen [here](https://www.retailalgotrader.com/).
 
-![RetailAlgoTrader Homepage!](/images/website/ratDashboard.webp)
+![RetailAlgoTrader Homepage!](/public/images/website/ratDashboard.webp)
 
 ## Table of Contents
 
