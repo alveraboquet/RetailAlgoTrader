@@ -1,0 +1,86 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# What are technical indicators?
+
+Technical indicators are the foundation of technical analysis which is one of the two major methodologies for trading the markets with the other being fundamental analysis.
+
+If you have spent any time researching or experimenting with the markets then you have definitely heard of or interacted with technical indicators. Technical indicators are different formulas that take price action as an input, manipulate the price action, and produce some sort of actionable trading signal.
+
+Some indicators produce a number ranging from 0 to 100 and some provide a line that overlays on the chart. We will dive into each of these and what they all mean in the next couple of chapters.
+
+NOTE: Indicators do not create new information. They merely take the price action information that you see on the chart and manipulate it into a useful trading signal. Very skilled traders have enough experience that they could theoretically trade off of just the charts without any indicators.
+
+However indicators make the charts significantly easier to understand and are also essential for creating a rules-based trading system.
+
+For all of the indicators it is not very important to understand the formulas behind them. It will require a lot of time and effort for little reward. As long as you understand how to properly apply them and interpret them you will be golden
+
+## Indicator Periods
+
+The majority of indicators only have one input and that is price action. They restructure the price action you see on the chart into a useful trading signal. When you set up an indicator you will have to choose the period.
+
+The period is how far back the indicator is going to collect data from. This is universal across all indicators. One period will be equivalent to whatever timeframe you have chosen. For example if you are looking at a daily chart each candlestick will represent one day. A period of nine would mean that the past nine candlesticks (or past nine days since we are trading the daily chart) are being included in the indicator.
+
+All indicators have a default period they use; however, you can change it to whatever you want. Starting out we recommend you stick with the default periods. Within the industry these are accepted as the most balanced and reliable inputs.
+
+Shortening the period of an indicator makes the indicator more responsive to price action. This means that the indicator will respond much quicker to changes in price action and provide more trading signals. However, the quality or strength of the trading signal will not be as reliable as it is considering less information.
+
+Lengthening the period of an indicator makes the indicator less responsive to price action. This means that the indicator will respond much slower to changes in price action and provide less trading signals. However, the quality or strength of the trading signal will be much more reliable as it is considering more information.
+
+In the next lesson moving averages we will explore some examples of this to illustrate how the period affects the quality of trading signal produced by the indicator.
+
+Some indicators are a combination of multiple other indicators which means they will have multiple periods you need to select. We will discuss these.
+
+## Indicator Price Input
+
+So if one period is equal to one candle on the chart than what price does the indicator use? Afterall one candle can have four different prices: open, high, low, and close.
+
+An indicator can use any one of these four prices. An indicator can take the open price of the past nine candlesticks and create a moving average.
+
+The default price input is the closing price and this is what you should stick with. Closing price is largely considered to be the most 'impactful' price of a trading period. In addition using the close price ensures your indicator does not use data from the current trading period.
+
+For example if you used the high price for your indicator than your indicator would include the high price from the current trading period. However this high price would not be accurate as the current period is still trading and there may very well be multiple higher prices that occur this period.
+
+So in summary you should pretty much always use closing period.
+
+## Categories of Indicators
+
+### Leading vs lagging
+
+The five types of indicators discussed below are either lagging or leading. Lagging indicators “lag” behind current price action. They will not provide a trading signal until the price action has already started to make its move. These indicators are more reliable but will get you into the trade later.
+
+Leading indicators “lead” current price action. They attempt to predict future price movements based on the current price action. These indicators are less reliable but will get you into the trade earlier.
+
+Both leading and lagging indicators are valuable and are particularly effective when combined. This will provide you the best of both worlds.
+
+### Trend-following
+
+Lagging. Trend-following indicators are used to determine the direction of the current trend. Simple and exponential moving averages.
+
+### Mean reversion
+
+Lagging. Mean-reversion indicators are used to determine how far price has moved from its' “typical” price. Bollinger Bands.
+
+### Momentum
+
+Leading. Momentum indicators are used to determine the strength of a price action movement. MACD.
+
+### Volume
+
+Leading or lagging. Volume indicators are used to determine overall market sentimentality. Volume weighted average price (VWAP) and On balance volume (OBV).
+
+### Relative Strength
+
+Leading. Relative strength indicators are used to determine the change in buying and selling pressure. Also known as oscillators. RSI and Stochastic.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="technicalAnalysis"
+    nextChapter="indicators"
+    prevLesson="trendlines"
+    nextLesson="movingAverages"
+    currentLessonId={31}
+  >
+    {children}
+  </LayoutLesson>
+);

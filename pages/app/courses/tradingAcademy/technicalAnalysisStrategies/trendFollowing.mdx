@@ -1,0 +1,106 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+# Trend Following
+
+## Crossover Strategy with MACD Crossover
+
+There are an infinite number of strategies that can be developed with technical analysis. Ever since the creation of technical analysis people have been combining indicators to try and gain an edge.
+
+The goal of this lesson is not to discuss every possible combination of indicators. Rather we have one fairly common strategy we will discuss in-depth. You will want to take the lessons from this strategy and apply them to other potential strategies.
+
+While many technical analysis strategies out there may seem simple you need to be careful. You need to have a proper understanding of why the strategy works and how to trade the strategy in different market conditions. If you are expecting to just slap a couple of indicators on a chart and make thousands then you will be disappointed.
+
+Spend time experimenting with different combinations of indicators to see how they complement each other. Focus on combining different types of indicators. Ex) a trend-following indicator with a momentum indicator. The strategy discussed below is fairly simple but has worked in the past for many traders.
+
+The Crossover Strategy with MACD Crossover consists of two moving averages (one short and one long) in combination with MACD.
+
+## Long Signal
+
+A long trading signal is triggered when the fast moving average crosses the slow moving average from below.
+
+## Short Signal
+
+A short trading signal is triggered when the fast moving average crosses the slow moving average from above.
+
+## Exit Conditions
+
+### Long exit strategy
+
+- Stoploss placed below recent low at moving average crossover
+- MACD line crosses the signal line from above
+
+### Short exit strategy
+
+- Stoploss placed above recent high at moving average crossover
+- MACD line crosses the signal line from below
+
+## When to Trade This Strategy
+
+This strategy is ideal to use when price is trending. When price trends moving average crossovers are a very simple but reliable entry method.
+
+## When not to Trade This Strategy
+
+This strategy performs very poorly when price is ranging. When price is ranging the slow and fast moving averages frequently cross each other without trends actually starting.
+
+In a ranging market it would be better to use a mean-reversion strategy.
+
+## Examples
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/technicalAnalysisStrategies/crossoverExample1.webp"
+    height={804}
+    width={1429}
+    alt=""
+  />
+  <figcaption>Crossover example 1</figcaption>
+</figure>
+
+1. The fast MA (blue line) crosses the slow MA (orange line) from below (bullish signal)
+2. Enter the trade at the close of the bar after the MA crossover (indicated by the purple line)
+3. Place the stoploss below the recent low before the MA crossover (indicated by the red line)
+4. Exit the trade when the MACD line crosses the signal line from above (indicated by the green line)
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/technicalAnalysisStrategies/crossoverExample2.webp"
+    height={804}
+    width={1429}
+    alt=""
+  />
+  <figcaption>Crossover example 2</figcaption>
+</figure>
+
+1. The fast MA crosses the slow MA from above (bearish signal)
+2. Enter the trade at the close of the bar after the MA crossover
+3. Place the stoploss above the recent high before the MA crossover
+4. In this case the trade did not work out and you exited at the stoploss
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/technicalAnalysisStrategies/crossoverExample3.webp"
+    height={804}
+    width={1429}
+    alt=""
+  />
+  <figcaption>Crossover example 3</figcaption>
+</figure>
+
+1. The fast MA crosses the slow MA from above (bearish signal)
+2. Enter the trade at the close of the bar after the MA crossover
+3. Place the stoploss above the recent high before the MA crossover
+4. Exit the trade when the MACD line crosses the signal line from below
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="chartPatterns"
+    nextChapter="technicalAnalysisStrategies"
+    prevLesson="cheatSheet"
+    nextLesson="meanReverting"
+    currentLessonId={44}
+  >
+    {children}
+  </LayoutLesson>
+);

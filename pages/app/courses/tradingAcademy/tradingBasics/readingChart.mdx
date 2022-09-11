@@ -1,0 +1,116 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+# Reading a Chart
+
+## Basics of Candlestick Charts
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/tradingBasics/candleStickExample.webp"
+    height={584}
+    width={1499}
+    alt=""
+  />
+  <figcaption>Candlestick chart</figcaption>
+</figure>
+
+This is a screenshot of a candlestick chart from TradingView. Across the top you have the instrument being shown, the timeframe, the broker quoting the price, the bid and ask prices.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/tradingBasics/greenBar.webp"
+    height={121}
+    width={41}
+    alt=""
+  />
+  <figcaption>Green candlestick</figcaption>
+</figure>
+
+This is what is known as a candlestick (mark OHLC). A candlestick is representative of one period of trading. So if you have your timeframe set to 1 hour than the candlestick will represent 1 hour of trading. If you have your timeframe set to 1 day than the candlestick will represent 1 day of trading.
+
+Since the candlestick is green that means price closed higher than it opened. Also known as an up or a green day. Every candlestick has four prices: open, high, low, close.
+
+- Open: This is the price that the trading period starts at. So if you are trading a 1 hour timeframe then the start of every hour will have a new candlestick with an open price of whatever the price is when the new hour starts.
+- High: This is the highest price that is traded during the timeframe
+- Low: This is the lowest price that is traded during the timeframe
+- Close: This is the price that the trading period ends at. Close price is typically considered the most significant
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/tradingBasics/redBar.webp"
+    height={86}
+    width={37}
+    alt=""
+  />
+  <figcaption>Red candlestick</figcaption>
+</figure>
+
+Since the candlestick is red that means price closed lower than it opened. Also known as a down or a red day.
+
+## Axis
+
+Across the bottom is time. In this case we are looking at a daily chart so each bar represents a day of trading. Across the right is price.
+
+## Volume
+
+A lot of times on candlestick charts you will see red and green bars across the bottom. These are volume bars. They correspond to the candlestick bar above them. They indicate the number of trades that occurred during a certain candlestick.
+
+The volume bar will be green if price closed higher than it opened. The volume bar will be red if price closed lower than it opened. This is extremely useful for most markets. Forex is an exception as it is a decentralized market so there is no way to track volume.
+
+## Bid vs Ask Spread
+
+All forex pairs are quoted at two prices: the bid price and the ask price. The bid price is the price that the broker is willing to pay for a certain pair. If you are selling then the broker will buy from you at the bid price.
+
+The ask price is the price that the broker is willing to sell for a certain pair. If you are buying then the broker will sell to you at the ask price. In summary if you buy a pair you pay the Ask price and if you sell the pair you receive the bid price.
+
+The Ask price - the bid price is what is known as the spread. The spread is how brokers make their money. They buy at a price slightly lower and sell at a price slightly higher. This is how they make profit off of no-commission trading.
+
+The spread is measured in pips. For a liquid pair such as EUR/USD it is usually only 2 or 3 pips. The existence of the spread actually means that when you initially open a position you will already be in the red.
+
+Bid price of EUR/USD is 1.2453 and ask price of EUR/USD is 1.2457. This is a spread of 4 pips. If you were to place a buy order of 10,000 units (a mini lot) of EUR/USD your order would be fulfilled at 1.2457. And let's say immediately after opening the trade you decide you want to sell it.
+
+Well your order will be fulfilled at the bid price of 1.2453. So even though you immediately sold before any price movement could occur you still took a loss of 4 pips.
+
+This sounds not ideal but in reality it is not that big of an issue especially if you are trading liquid pairs such as the majors. The spread will frequently only be 2 or 3 pips. The brokers are still able to make a profit off of such small spreads because the volume of majors is so high.
+
+There are two types of spreads offered by brokers: variable and fixed.
+
+## Variable Spreads
+
+Most popular brokers offer variable spreads. This means that depending on the liquidity and volatility of a pair the spread will change. Liquidity is essentially the supply and demand of a certain pair.
+
+For example when trading volume on EUR/USD is high (high liquidity) the spread might only be 2 pips but later that day when trading volume has decreased (low liquidity) the spread might jump up to 8 pips. This happens because as trading volume decreases the liquidity of the pair decreases.
+
+There are less people trading and therefore it is more difficult for your broker to find the best prices. They have to increase the spreads in order to account for having to fill your order at less than ideal prices.
+
+Variable spreads can also increase during increased volatility such as major news events. This is because high volatility results in large quick price jumps and increasing the spread is a way for the broker to ensure they do not take a large hit on any trades you place through them.
+
+Variable spread brokers are not ideal for scalpers and high frequency trading strategies. These strategies rely on lots of trades with small profit. With variable spreads there is no guarantee or consistency on transactions costs which can completely wipe out your profits with scalping and high frequency strategies.
+
+## Fixed Spreads
+
+Some brokers offer fixed spreads. For example FXCM, a popular forex broker, offers fixed spreads of 1.3 pips on EUR/USD. So if you are trading EUR/USD with FXCM you will always pay a spread of 1.3 pips.
+
+Fixed spreads are great for scalping and high frequency strategies where you need transaction costs to be as small as possible.
+
+An issue with fixed spreads is that your order can frequently be rejected. This is due to the fact that you are guaranteed a certain spread and if the broker cannot honor the spread at that moment they will not be able to fulfill your order. With variable spreads this is not an issue as the broker will simply increase the spread to fulfill your order.
+
+This becomes an issue when price is moving quickly and it can lead to slippage. Slippage is when the broker waits to fulfill your order until they can honor the fixed spread.
+
+However, this moment may not occur until price has made a large move which results in the price your order fulfills at being significantly different than what you intended.
+
+Our algorithms will have a module to handle rejected orders and slippage to ensure that our trade is still able to go through The bid price is the price that is shown on the charts.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="marginTrading"
+    nextChapter="tradingBasics"
+    prevLesson="preventingMarginCall"
+    nextLesson="timeframeAnalysis"
+    currentLessonId={19}
+  >
+    {children}
+  </LayoutLesson>
+);

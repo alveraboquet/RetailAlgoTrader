@@ -1,0 +1,31 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+# Rounding Bottom
+
+A rounding bottom is a bullish signal that forms when a downtrend reverses direction and begins to trend upward. Rounding bottoms take a long time to form so require a lot of patience from the trader.
+
+Rounding bottoms is a less popular chart pattern to trade as by the time it forms it is typically already very evident that price has reversed direction.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/chartPatterns/roundingBottom.webp"
+    height={2160}
+    width={3840}
+    alt=""
+  />
+  <figcaption>Rounding bottom</figcaption>
+</figure>
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="chartPatterns"
+    nextChapter="chartPatterns"
+    prevLesson="doubleTopAndBottom"
+    nextLesson="cupAndHandle"
+    currentLessonId={40}
+  >
+    {children}
+  </LayoutLesson>
+);

@@ -1,0 +1,81 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Margin Trading
+
+## What is margin?
+
+You have already gone through this lesson once before when you were gaining a broad overview of forex. This chapter is an in-depth dive into margin trading. It will go into much more detail than we did previously. This has been included so you can refer the margin basics before we get into some of the more advanced topics.
+
+Margin trading can be a difficult concept to grasp; however, it is absolutely vital that you understand it. This is why it is included so early in the course. If you do not understand margin you will almost certainly blow up your account
+
+Margin is the use of leverage to purchase a lot of something with a small amount of capital. It is making a small deposit from your trading capital in return for a lot of buying power from your broker. Once you close the trade your deposit is returned to you plus any profit you made. Or if it is a losing trade the deposit is returned to you minus any losses.
+
+It is similar to using the cash you have in your account as collateral for a loan from your broker. You can then use this loan to purchase a greater amount of assets than you would otherwise be able to
+
+Margin is used in nearly all markets to increase potential gains. However, it can also result in much larger losses. Let's look at an example of why margin is useful:
+
+You have developed an intelligent proven trading strategy that is outputting a buy signal of EUR/USD. Let’s look at how your order lot size will affect your profit.
+
+- Scenario 1: You buy a standard lot (100,000 units) of EUR/USD at 1.1000 and it rises 100 pips to 1.1100. You would have made $1,000.
+- Scenario 2: You buy a micro lot (1,000 units of EUR/USD at 1.1000 and it rises 100 pips to 1.1100. You would have made $10.
+
+Each scenario is the exact same; however, the micro lot makes you a fraction of the profit that the standard lot does. The larger the lot size you can trade the more profit you can make. The flip side this also increases the losses you can take as well.
+
+If you have a trusted trading strategy you always want to increase your lot size (to levels that align with your risk-management strategy) so that you increase your potential profits. If you are going to put in the work you might as well reap larger benefits.
+
+And this is ultimately why margin trading is useful. Margin makes use of leverage to allow you to purchase larger lot sizes with less money.
+
+## Why Forex trades on margin
+
+One of the reasons forex is so popular especially with beginners is that you can trade significant amounts of currency with a small amount of trading capital due to the large amount of leverage available in forex.
+
+A forex broker typically offers 50:1 or 100:1 leverage. This is also known as a 2% or 1% margin requirement respectively. In other words with a 100:1 leverage you could trade $100,000 worth of a currency with only $1,000.
+
+For perspective the equities markets in the US only offer 2:1 leverage. To make money in the US equities market you need to be starting out with a large amount of trading capital.
+
+Some people when first starting out question that high level of leverage. However, with a standard lot size of $100,000 can you imagine trying to trade without leverage? Nobody except for the banks and hedge funds would be able to trade forex.
+
+Even with a micro lot worth $1,000 many people still need leverage to trade this. Without leverage retail traders would be unable to trade forex.
+
+## Margin Trading Examples
+
+Let's look at the hypothetical scenario again where you want to buy EUR/USD. Let's say you have a trading account with $8,000 and you want to buy 1 mini lot (10,000 units) worth of EUR/USD. At a EUR/USD price of 1.2000 your trade would cost $12,000 USD.
+
+(10,000 EUR) \* (1.2000 USD / 1 EUR) = 12,000 USD
+
+Your broker has a 2% margin requirement (aka 50:1 leverage). When you purchase that 1 mini lot or EUR/USD worth $12,000 only $240 will be taken out of your account. ($12,000 \* .02 = $240)
+
+Lets say you are right and EUR/USD increases to 1.2500 (A 500 pip increase. Which is quite a bit by the way but it makes the example easier to follow along with).
+
+(10,000 EUR) \* (1.2500 USD / 1 EUR) = 12,500 USD
+
+You sell for a profit of $500. By just risking $240 you were able to achieve a profit of $500 on an $8,000 account. That is a 6.25% return on just one trade. This is the true power of margin.
+
+Unfortunately margin works both ways. You can also lose large amounts of money. Lets look at the same example from above but instead of the price rising 500 pips lets say it drops 500 pips.
+
+(10,000 EUR) \* (1.1500 USD / 1 EUR) = 11,500 USD
+
+You sell for a loss of $500. You deposited $240 from your account for this trade but lost $500.
+
+## Benefits of Margin
+
+You can greatly amplify your returns by trading a larger lot size. Eliminates the need for settlement. This is not very important but technically it takes a trade 2 days to settle. With a margin account this does not affect you so don't worry about it.
+
+If you want to read up some more on settlement dates check out this article: https://www.investopedia.com/terms/s/settlementdate.asp.
+
+## Risks of Margin
+
+Just as you can greatly amplify your returns by trading a larger lot size you can also increase your losses as we saw in the earlier examples. This is why proper lot sizing and risk management is so important which we will address shortly.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="typesOfMarkets"
+    nextChapter="marginTrading"
+    prevLesson="comparison"
+    nextLesson="accountValues"
+    currentLessonId={15}
+  >
+    {children}
+  </LayoutLesson>
+);

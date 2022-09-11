@@ -1,0 +1,57 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Timeframe Analysis
+
+## What are timeframes?
+
+Price data continuously comes from your broker. However by itself this data is not very useful. There would be way too many data points for you to conduct any meaningful analysis.
+
+Instead when you begin trading you have to choose a timeframe to set your candlestick chart to. When you choose a timeframe the broker's program will breakup the price data into candlestick bars based on the timeframe you chose.
+
+Typical timeframes offered by most brokers: 1m, 5m, 15m, 30m, 1h, 4h, 8h, 12h, 1d, 1w, 1month. Choosing a different timeframe does not change the data. It is all the same data. It merely changes how the data is shown on your chart.
+
+For example yesterday will have 1 day of price data:
+
+- If you choose a timeframe of 1d you will have 1 candlestick bar
+- If you choose a timeframe of 1h you will have 24 candlestick bars
+- If you choose a timeframe of 1m you will have 1440 candlestick bars
+- Your timeframe will be determined by your trading strategy and how often you wish to trade
+
+## Short-Term Timeframe Analysis
+
+If you have a scalping strategy and want to make lots of trades you will want to focus on the small timeframes such as 5m. This is ideal for full-time traders who have some experience.
+
+Short timeframes require quicker decision making. This can be very stressful for new traders. It is recommended that new traders learning stick to longer timeframes such as 1h or 1d.
+
+Short timeframes tend to have a lot of noise. This means that will see more trading signals that do not result in a profitable trade.
+
+## Long-Term Timeframe Analysis
+
+If you are learning or do not have much time to trade it is better to focus on longer timeframes such as 1h or 1d. This will lower the stress and allow you to conduct proper analysis of the charts.
+
+In addition the longer the timeframe the stronger the signal. Longer timeframes ultimately have more data included in each bar. This means that the trading signals from longer timeframe candlesticks are stronger signals.
+
+## What timeframe should you trade?
+
+Weekly and monthly take way too long. You will spend a year waiting for a trading signal and then spend another year waiting for the trade to play out.
+
+When you are first beginning trading focus on the daily timeframe. This will provide a couple of signals a week and trades should not take longer than a week to play out. This provides plenty of time to conduct proper analysis and will not overwhelm you with data.
+
+In addition you need to analyze every trade after it is complete. Look at the entry conditions, exit conditions, and overall quality of trade. It is easier to do this when you only have a couple of trades a week to analyze.
+
+As you become more comfortable analyzing the charts you can move to 12h then 1h then 30m. Hold off on moving to 5m until you have a good grasp on your trading skills. 5m is a very fast pace and can stress out even the most skilled traders.
+
+Stay away from 1m. At the 1m TF there is simply too much noise to discern any valuable trading signals.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="tradingBasics"
+    nextChapter="tradingBasics"
+    prevLesson="readingChart"
+    nextLesson="typesOfOrders"
+    currentLessonId={20}
+  >
+    {children}
+  </LayoutLesson>
+);
