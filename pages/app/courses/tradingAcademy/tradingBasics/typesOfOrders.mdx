@@ -1,0 +1,75 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Types of Orders
+
+## Market Orders
+
+Market orders are by far the simplest types of orders. A market order is immediately executed when you click the buy or sell button. The broker will fill your order at the best price they can find at that moment
+
+Most of the time this is fine especially with highly liquid pairs such as the majors. However if for whatever reason the liquidity for the pair is very low your broker may fill you at a less than ideal price.
+
+This becomes more of an issue with scalping and high-frequency strategies when you need to fill your order at an exact price. If you are holding your order for a couple of hours or more market orders are usually fine.
+
+Market orders do not guarantee what price your transaction occurs at. You are putting your faith in your broker to find you the best price.
+
+## Pending Orders
+
+Pending orders are used for two primary reasons:
+
+- You want your order filled at a specific price.
+- You want to set an order to trigger sometime in the future when a specific price is reached
+
+### Limit Orders
+
+These and stop orders are the most commonly seen pending orders. Limit orders can be broken up into Buy Limit orders and Sell Limit orders. A buy limit order means your buy order will only trigger if the price reaches below your specified price.
+
+Let's say you think long-term the price of EUR/USD is going to increase but you think today it is going to drop slightly later today before shooting up. If EUR/USD is currently trading at 1.3452 you could set a buy limit order at 1.3143. Later on in the day price reaches 1.3142 and your buy order is triggered.
+
+A day or two later price has risen to 1.3542 just like you expected and you sell for a profit. By setting a buy limit order you are able to enter your order at a much lower price than if you just submitted a market order. This will allow you to maximize your profits.
+
+A sell limit order works the same way but in reverse. Your position will only be sold if price reaches at least the specified price of your sell limit order. Expanding on the previous example you have decided you only want to sell if price reaches 1.3589.
+
+Previously you sold with a market order at 1.3542. But this time you set a sell limit order at 1.3589. Next week price reaches 1.3590 and your order sells. By setting a sell limit order you were able to sell at a higher price than if you had just submitted a market order.
+
+Other than improving entry and exit prices limit orders are primarily used so that you do not have to sit there all day watching the price action. You can set a sell limit order and just walk away. Once price reaches the level you were waiting for the order will sell.
+
+The downside of limit orders is that the market may never reach your price before shooting up and you miss out on the entire move as your order was never triggered.
+
+### Stop Orders
+
+These are similar to limit orders but have a key difference. Buy stop orders are placed above current market price. These orders will only trigger once your specified price is reached. For example EUR/USD is trading at 1.1834.
+
+You believe that if it reaches 1.1875 price will shoot up. You set a buy stop order for 1.1875. Your entry trade will not trigger until price reaches 1.1875 or until you cancel it.
+
+Sell stop orders are placed below current market price. For example EUR/USD is trading at 1.1834. You believe that if it drops to 1.1800 price will plummet. You set a sell stop order for 1.1800. Your entry trade will not trigger until price reaches 1.1800 or until you cancel it.
+
+### Stop Loss Orders
+
+This is a version of a stop order. In the previous examples we used stop orders as entry conditions. However, it is much more common to use stop orders as exit conditions.
+
+Stop loss orders are the most important order in your toolbox. A stoploss order is set to close out of an open position once a certain price is reached. If you are in a buy order the stop loss order is placed below current market price.
+
+Once price reaches the level you set your stop loss your order will automatically be closed out. This is to limit the max loss that your order can experience. For example you place a EUR/USD buy order at 1.2503 thinking price will rise. However, as an intelligent trader you also place a stop loss order at 1.2480 just in case you are wrong.
+
+Ends up this time you are wrong and price drops to 1.2479. Your order will automatically be closed out before you can take anymore losses.
+
+If you are in a sell order the stop loss order is placed above current market price. Once price reaches the level you set your stop loss your order will automatically be closed out. This is to limit the max loss that your order can experience. For example you place a EUR/USD sell order at 1.2503 thinking price will drop.
+
+However, as an intelligent trader you also place a stop loss order at 1.2520 just in case you are wrong. Ends up this time you are wrong and price rises to 1.2521. Your order will automatically be closed out before you can take anymore losses.
+
+NOTE: In this case the stop loss order is above your entry price because you placed a sell order. Sell orders are placed when you believe price will drop. It is similar to shorting a stock.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="tradingBasics"
+    nextChapter="tradingView"
+    prevLesson="timeframeAnalysis"
+    nextLesson="whyTradingView"
+    currentLessonId={21}
+  >
+    {children}
+  </LayoutLesson>
+);
+
+;

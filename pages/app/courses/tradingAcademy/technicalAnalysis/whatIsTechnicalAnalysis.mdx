@@ -1,0 +1,89 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+# What is Technical Analysis?
+
+## Technical Analysis Definition
+
+What is technical analysis? Is it science? It is nonsense? Is it natural law? Is it magic? You will get a different answer from every trader you ask.
+
+What matters is that it works. There is a reason technical analysis is so popular. It is a consistent and tested methodology for creating trading strategies.
+
+Technical analysis is the use of mathematical relationships and charting techniques to develop trading systems. These types of traders rely purely on price action and volume to make their trading decisions. They do not care about the fundamentals of the asset such as over-valuation or P/E ratios. All of their decision-making is determined by what they can visually see on the charts.
+
+When you see a chart with all kinds of lines and arrows drawn on it this is technical analysis. Below is an example chart of a technical analyst's EUR/USD chart. Don't worry about all those specific lines right now but just recognize what technical analysis looks like.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/technicalAnalysis/technicalAnalysisExample.webp"
+    height={1386}
+    width={2288}
+    alt=""
+  />
+  <figcaption>Technical analysis example</figcaption>
+</figure>
+
+Practitioners of technical analysis believe that past trends and price movements can give a hint to how future price will move. They believe that the markets consist of patterns that repeat themselves. They use technical analysis in an attempt to discover and understand these patterns.
+
+Nearly all short-term traders rely on technical analysis as the business fundamentals of an asset do not really affect the price action outside of major news events.
+
+Another way to think about technical analysis is the evaluation of supply and demand of an asset and how this compares to the past.
+
+Trading is all about probabilities. The use of technical analysis can give you a slight edge in predicting future price movements. Over time this slight advantage adds up and can give you significant profits.
+
+Technical analysis can really be broken up into two different categories.
+
+### Indicators
+
+Indicators are the use of mathematical formulas to create visual aids on the charts. Applying an indicator to a chart is a very straight-forward process. You simply turn it on and the formula takes care of the rest. However, interpreting the results is not so straight-forward.
+
+Indicators take in price action, run it through a mathematical formula, and spit out a result. There are all kinds of different indicators out there that we will go in depth into in the next chapter.
+
+Below you will see two examples of indicators: Bollinger Bands and MACD. The lines and shading you see below are auto-generated based on price action.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/technicalAnalysis/indicatorExample.webp"
+    height={1386}
+    width={2310}
+    alt=""
+  />
+  <figcaption>Indicator example</figcaption>
+</figure>
+
+### Charting
+
+Unlike indicators charting does not use any mathematical formulas. Charting is simply the use of drawings to help make trading decisions.
+
+This makes it a much more subjective technique than using indicators. If you give a group of traders a chart and ask them to draw trendlines and chart patterns you will most likely get a couple variations of the chart. Each trader prefers to mark up their charts in different ways. There is no one right way to do it. As long as it provides you consistent and actionable signals it is fine.
+
+Charting can be broken up into a couple of smaller categories:
+
+- Trendlines
+- Support / Resistance Lines
+- Chart Patterns
+
+These will all be explored in depth in two chapters from now. Below you can see two examples of charting: a support/resistance line and a trendline. As you can tell, these are physically drawn onto the charts by the trader.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/technicalAnalysis/chartExample.webp"
+    height={1376}
+    width={2200}
+    alt=""
+  />
+  <figcaption>Chart example</figcaption>
+</figure>
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="tradingView"
+    nextChapter="technicalAnalysis"
+    prevLesson="tradingViewBrokers"
+    nextLesson="prosOfTA"
+    currentLessonId={26}
+  >
+    {children}
+  </LayoutLesson>
+);

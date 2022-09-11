@@ -1,0 +1,23 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Review
+
+- Do not obsess too much over these strategies
+- Spend some time experimenting with these strategies on TradingView to see if they work with your trading personality.
+- Spend some time backtesting (backtesting will be discussed in-depth) these strategies to learn when they work and when they do not work
+- Feel free to modify these strategies with more advanced entry and exit rules. Add additional indicators to provide stronger trade signals. Etc
+- These are not the holy grail of strategies. They are decent technical analysis strategies that provide a good starting point for you to develop your own profitable trading strategy portfolio.
+- These strategies are not full-proof. They do not always work. Sometimes you will have the perfect setup and the trade will still turn out to be a loser. That is unfortunately part of trading.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="technicalAnalysisStrategies"
+    nextChapter="fundamentalAnalysis"
+    prevLesson="breakouts"
+    nextLesson="whatIsFundamentalAnalysis"
+    currentLessonId={47}
+  >
+    {children}
+  </LayoutLesson>
+);

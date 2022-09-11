@@ -1,0 +1,45 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+# Double Top
+
+A double top pattern is formed when price peaks twice. It is a strong bearish signal. Price will peak after an uptrend. It will then drop before shooting back up. Price will then peak again at roughly the same price as the previous peak. Price will then drop.
+
+Once price breaks the support created between the two peaks (purple line below) it will frequently make a strong downward movement. The uptrend has lost momentum. Price has attempted to push higher twice but met strong resistance. After a double top price frequently makes a strong downward movement.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/chartPatterns/doubleTop.webp"
+    height={2160}
+    width={3840}
+    alt=""
+  />
+  <figcaption>Double top</figcaption>
+</figure>
+
+## Double Bottom
+
+A double bottom is the same as the double top just reversed. It is a strong bullish signal as price will frequently rise after this chart pattern.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/chartPatterns/doubleBottom.webp"
+    height={2160}
+    width={3840}
+    alt=""
+  />
+  <figcaption>Double bottom</figcaption>
+</figure>
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="chartPatterns"
+    nextChapter="chartPatterns"
+    prevLesson="headAndShoulders"
+    nextLesson="roundingBottom"
+    currentLessonId={39}
+  >
+    {children}
+  </LayoutLesson>
+);

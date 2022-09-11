@@ -1,6 +1,51 @@
 import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import coursesData from '../../../../../components/landingPages/coursesData';
+import Link from 'next/link';
 
 # Syllabus
+
+The following lesson details all the essential information you should know before starting this course.
+
+## Structure of Course
+
+This course is broken up into 34 chapters with anywhere from 2 to 10 lessons. Each chapter will have a quiz to work through. This is to encourage note-taking and completion of the exercises.
+
+The majority of lessons will include additional tasks and examples for you to work through. It is extremely important to reinforce the concepts from each lesson with your own work. Answer keys are provided; however, we encourage you to try and complete each lesson without the answer key. Using Google is highly encouraged.
+
+Working through the early examples will be difficult but by spending the time upfront to properly learn the knowledge and skills you will be in a much better situation later on.
+
+Throughout much of this course you will be following along with the Turtle Trader strategy which will be discussed shortly. We found that it helps our learners to have one large project they are able to progress through simultaneously with the course.
+
+## Chapters and lessons
+
+<div className="text-center">
+  {coursesData.tradingAcademy.curriculum.map((chapter) => (
+    <div key={chapter.id}>
+      <h3>{chapter.chapter}</h3>
+      <div>
+        {chapter.lessons.map((lesson) => (
+          <div key={lesson.title} className="border rounded">
+            {lesson.title}
+          </div>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>
+
+## Features of Course
+
+- Video and text lessons
+- Variety of tasks and examples to work through
+- Links to additional resources
+- Templates for various popular indicators and trading strategies
+- Forum to post questions and discuss potential strategies
+
+## How to Contact
+
+If you have any questions regarding trading or market knowledge or skills please post these in the forum so that all of our users can benefit.
+
+If you are having technical difficulties or take issue with some aspect of the course please reach out to us at contact@retailalgotrading.com and we can assist you one-on-one.
 
 export default ({ children }) => (
   <LayoutLesson

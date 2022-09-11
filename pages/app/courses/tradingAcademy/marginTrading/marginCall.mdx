@@ -1,0 +1,52 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Margin Call
+
+A margin call is a trader's worst nightmare. It means that you have drastically overleveraged yourself and are in danger of no longer being able to afford to keep your positions open.
+
+Margin calls occur when your margin level reaches a certain trigger point that is set by each broker. Typically it is a margin level of 100%. This means that your unrealized losses are now larger then your used margin. You no longer have enough cash to use as collateral for your trades opened on margin.
+
+## Example
+
+1. You have account balance of 10,000 USD
+2. You bought a standard lot of USD/GBP (100,000 USD) at a margin requirement of 2%
+3. Your used margin now equals 2,000 USD
+4. It was a terrible trade and you have a floating P/L of 8,001 USD
+5. Your account equity = 1,999 USD while your used margin = 2,000 USD
+6. You have more cash tied up as collateral than you do available in your account. Since your broker is the one offering you the margin loans they issue a margin call in order to protect themselves.
+7. When this occurs your broker will notify you that you either need to close out of some of your positions until your margin level is back at an acceptable level. Another option is that you can deposit more money so that your account balance increases which will cause your margin level to rise (Remember having a large margin level is good. This means you have plenty of cash to back up your open trades that are on margin)
+
+NOTE: Brokers are not required to provide you a margin call. It is ultimately up to you to keep track of your various account values. Even if they say they provide a margin call they have the right to just skip straight to the stop out level below.
+
+## Stop Out
+
+If you ignore your broker's margin call or price is simply moving too fast for you to deposit more money then your broker will automatically close out of your positions to protect themselves. This will result in you losing vast quantities of money.
+
+Typically brokers set a stop out threshold at 20%; however this can vary from broker to broker.
+
+Continuing the example from above:
+
+- Say you do not close out of your position and you do not deposit more money
+- And you trade continues to go against you
+- You now have a floating P/L of 9,600 USD
+- Your account equity = 400 USD while your used margin = 2,000 USD
+- This results in a margin level of 20% and your broker closes out of your position. That unrealized P/L of 9,600 USD now becomes realized and results in an account balance of 400 USD.
+
+This is the reason we teach margin so early and put so much emphasize on it. If you understand how margin works you will be fine. However, if you do not have a good grasp on it there is a decent possibility that you blow up your account.
+
+As terrible as stop outs are they are actually a good thing for both you and the broker. If the broker did not automatically close out of your positions and you continued to take losses your account balance could actually go negative. This means that not only are you taking a lose but so is the broker. And now you actually owe the broker money.
+
+This is why some people say it is possible to lose more than you wagered with a margin account. While this is technically true if you have actually spent the time to understand how to intelligently trade you will never be anywhere close to a margin call or stop out.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="marginTrading"
+    nextChapter="marginTrading"
+    prevLesson="accountValues"
+    nextLesson="preventingMarginCall"
+    currentLessonId={17}
+  >
+    {children}
+  </LayoutLesson>
+);

@@ -1,0 +1,31 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+# Cup and Handle
+
+A cup and handle is a bullish signal that consists of a strong downtrend, a strong uptrend, and a short weak downtrend. This chart pattern frequently results in a strong uptrend.
+
+Cup and handles take a long time to form so require a lot of patience from the trader.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/chartPatterns/cupAndHandle.webp"
+    height={2160}
+    width={3840}
+    alt=""
+  />
+  <figcaption>Cup and handle</figcaption>
+</figure>
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="chartPatterns"
+    nextChapter="chartPatterns"
+    prevLesson="roundingBottom"
+    nextLesson="wedges"
+    currentLessonId={41}
+  >
+    {children}
+  </LayoutLesson>
+);

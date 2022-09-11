@@ -1,0 +1,220 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+# Moving Averages
+
+A moving average takes price action for a certain period of time and converts it into a line representing the long-term average price.
+
+Moving averages are perfect for determining trends as they filter out the daily noise in order to provide a consistent trading signal.
+
+Here is a years worth of data for EURUSD. The blue line in the center is the moving average. Determining the current trend of the price is as simple as glancing at the slope of the moving average line. In this time period we had two downtrends and one uptrend.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/indicators/movingAverage.webp"
+    height={869}
+    width={1815}
+    alt=""
+  />
+  <figcaption>Moving average example</figcaption>
+</figure>
+
+It even works for consolidations. Below you can see that for Dec 2022 through March 2022 the moving average line was almost horizontal. This indicates that price is trading sideways. There is no major trend currently occurring. When the moving average is horizontal or frequently flipping back and forth from sloping upwards to downwards this is a good sign that price is trading sideways.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/indicators/consolidations.webp"
+    height={561}
+    width={595}
+    alt=""
+  />
+  <figcaption>Moving average in consolidation</figcaption>
+</figure>
+
+Moving averages are some of the most basic indicators; however, they are very powerful.
+
+Moving average bitcoin strategy.
+
+Moving averages function as the building blocks for many other indicators. For moving averages and the remaining indicators it is not very important to understand the formulas behind them. It will require a lot of time and effort for little reward. As long as you understand how to properly apply them and interpret them you will be golden
+
+## Impact of Periods on Moving Average
+
+Moving averages have two major inputs. Price action and the period. Price action is determined by the market but the period is chosen by you.
+
+The period is how far back the indicator is going to collect data from. This is universal across all indicators. One period will be equivalent to whatever timeframe you have chosen. For example if you are looking at a daily chart each candlestick will represent one day. A period of nine would mean that the past nine candlesticks (or past nine days since we are trading the daily chart) are being included in the indicator.
+
+All indicators have a default period they use; however, you can change it to whatever you want. Here is TradingView with a moving average with the default period of 9.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/indicators/maPeriodOf9.webp"
+    height={1386}
+    width={2658}
+    alt=""
+  />
+  <figcaption>Moving average with period of 9</figcaption>
+</figure>
+
+Shortening the period will make the indicator more sensitive to current price action. This will provide more trading signals and opportunities but the quality of the signal is also lower since it is taking in less data as an input. Trading a short period can allow you to get in on trades early to maximize profit but it can also make you vulnerable to fakeouts.
+
+Below is the exact same chart except the moving average period has been changed to two. See how much more sensitive the moving average is to price. If you attempted to trade this you would have many false trading signals.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/indicators/maPeriodOf2.webp"
+    height={1396}
+    width={2662}
+    alt=""
+  />
+  <figcaption>Moving average with period of 2</figcaption>
+</figure>
+
+Lengthening the period will make the indicator less sensitive to current price action. This will provide less trading signals and opportunities but the quality of the signal is much higher since it is taking in more data as an input.
+
+Trading a long period means you will get into trades much later which will eat into your profits. However the chance of getting faked-out on a trend is also much lower. Below is the same chart a third time except the moving average period has been change to fifty.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/indicators/maPeriodOf50.webp"
+    height={1396}
+    width={2666}
+    alt=""
+  />
+  <figcaption>Moving average with period of 50</figcaption>
+</figure>
+
+## Simple Moving Average (SMA)
+
+A simple moving average takes the prices for the entire specified period and averages them out to get the line. A simple moving average treats all prices for the period the same. A nine period moving average on a daily chart will give the same weighting to 9 days ago as it will to 1 day ago.
+
+## Exponential Moving Average (EMA)
+
+An exponential moving average differs from a simple moving average in that it applies greater weight to recent price action.Some traders prefer to use exponential moving averages as they believe the greater weighting to recent price action provides more useful signals as to what future price action will do.
+
+There is no right or wrong choice. It is largely up to individual preference. Try messing around with both of them on TradingView and see what you prefer.
+
+As you can see before they are very similar. The standard Moving Average is the blue line and the exponential Moving Average is the orange line. As said before the orange line differs slightly from the blue line due to the EMA giving greater weight to more recent candlesticks.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/indicators/exponentialMovingAverage.webp"
+    height={1392}
+    width={2666}
+    alt=""
+  />
+  <figcaption>Exponential moving average</figcaption>
+</figure>
+
+## How to trade Moving Averages
+
+### Wait for moving average to change slopes
+
+When a moving average changes slope this is an indication that the trend could be trading. If there is currently an uptrend and the moving average changes direction and is now sloping down a downtrend may be beginning. You could submit sell orders and try to ride the trend.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/indicators/tradingMovingAverage.webp"
+    height={1386}
+    width={2654}
+    alt=""
+  />
+  <figcaption>How to trade moving averages</figcaption>
+</figure>
+
+Using this as your sole trading signal is a bad idea. This is much too simplistic on its own to be consistently profitable but in combination with other techniques it can be very useful.
+
+For example below at the green arrow the moving average begins to slope up but quickly dropped back down. This would have been a losing trade.
+
+And then at the red arrow the moving average flattens out with a large red candle. This may cause you to think the trend is reversing but as you can see the uptrend and the moving average continued going up.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/indicators/losingTrades.webp"
+    height={1464}
+    width={2662}
+    alt=""
+  />
+  <figcaption>Losing trades with moving averages</figcaption>
+</figure>
+
+### Treat moving average as a dynamic support / resistance line
+
+Longer term moving averages (50 periods and up) frequently act as dynamic support and resistance lines. You will see that as price approaches the moving average it frequently rebounds off of it. You can trade this much the same as you do a support or resistance line.
+
+As you can see below marked by the arrows, when price rebounded off of the 50 SMA. This strategy by itself is not a strong trading signal; however, as we can see when price is approaching a long term moving average it is good to pay attention.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/indicators/movingAverageDynamicSupport.webp"
+    height={1396}
+    width={2660}
+    alt=""
+  />
+  <figcaption>
+    Using moving average as dynamic support and resistance
+  </figcaption>
+</figure>
+
+## Moving Average CrossOver
+
+A very basic trading strategy is called a moving average crossover. You have two moving averages with two different periods on the same chart. For example you could have a 9 period SMA and a 20 period SMA. Your trade signal triggers when these two moving averages cross.
+
+For example below. I have set up a 50 period SMA (blue) and a 200 period SMA (purple). The trade signal is when the 50 period SMA crosses the 200 period SMA which is marked by the green arrow.
+
+When the short-term moving average crosses the long-term moving average upwards this is a buy signal. You can see that prior to the cross-over both the 50 SMA and the 200 SMA are sloped downward indicating that both the 50 period term and the 200 period term are in a downtrend.
+
+However, you can see that the 50 SMA begins to curve upwards before the 200 SMA since it is only considering more recent price action. (Remember that the shorter the term of the moving average the more quickly it reacts to price). At this point you should be watching for a trend reversal.
+
+Finally the 50 SMA crossed the 200 SMA upwards and price shot up with the 200 SMA finally making a reversal. This updwards crossover is called trade confirmation. When you saw the 50 SMA start to reverse to a positive slope you should have been thinking price was going to change from a downtrend to an uptrend.
+
+But in order to not get faked out you wait for the moving average crossover as further confirmation that the trend is indeed reversing.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/indicators/longPeriodMACrossover.webp"
+    height={1390}
+    width={2666}
+    alt=""
+  />
+  <figcaption>Moving average crossover with long period</figcaption>
+</figure>
+
+When the short-term moving average crosses the long-term moving average downwards this is a sell signal. The same points discussed above hold true just in reverse. The advantage of this strategy is that you get additional confirmation that the trend is actually reversing.
+
+The disadvantage of this strategy is that you enter trends later than if you just relied on one moving average. This strategy can be done with moving averages of any period. However, the longer the periods the stronger the trading signal.
+
+For example here is the same chart but with a 9 SMA (blue) and a 20 SMA (purple). You can see that this setup provided nine trading signals while the previous setup only provided one. However, five of these trading signals would have been fakeouts or weak signals. The trading signal said the trend was going to reverse but it actually did not. These fakeouts are circuled in gray.
+
+Now just because this strategy provides a greater number of weak trading signals that does not mean it is useless. It merely means that you:
+
+- Need to include an additional trade confirmation such as news events or another indicator
+- Ensure that your winners are much larger than your losers (This leads into risk management and position sizing which will be discussed in depth)
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/indicators/shortPeriodMACrossover.webp"
+    height={1390}
+    width={2662}
+    alt=""
+  />
+  <figcaption>Moving average crossover with short period</figcaption>
+</figure>
+
+## Volume Weighted Average Price (VWAP)
+
+The other moving averages we have discussed so far only take price as an input. VWAP is a moving average that also takes volume into consideration. It looks at the change in price from period to period and the change in volume from period to period.
+
+If you have not heard the term volume yet it is simply the number of units traded for a given period. So a high volume period is a period where there was a lot of buying and selling activity. A low volume period is a period where there was not much buying and selling activity.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="indicators"
+    nextChapter="indicators"
+    prevLesson="indicators"
+    nextLesson="bollingerBands"
+    currentLessonId={32}
+  >
+    {children}
+  </LayoutLesson>
+);

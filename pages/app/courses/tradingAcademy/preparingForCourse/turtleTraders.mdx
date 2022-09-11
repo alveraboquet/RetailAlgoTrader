@@ -1,0 +1,22 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+
+# Turtle Traders
+
+If you have spent anytime in the trading ecosystem you most likely have heard of the Turtle Traders. This is a now famous experiment where two successful hedge fund managers took random people of the street with no trading experience and taught them to become vastly successful traders.
+
+This proved that trading is a skill that can be taught as long as one is willing to dedicate the necessary time and energy. Now before you get all excited and try to replicate the turtle strategy you should note that this strategy is much less profitable in today's market than when it was being traded back in the 80s.
+
+https://analyzingalpha.com/turtle-trading
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="preparingForCourse"
+    nextChapter="typesOfMarkets"
+    prevLesson="possibleToSucceed"
+    nextLesson="equities"
+    currentLessonId={8}
+  >
+    {children}
+  </LayoutLesson>
+);

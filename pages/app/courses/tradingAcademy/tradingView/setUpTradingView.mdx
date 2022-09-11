@@ -1,0 +1,50 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+# How to Setup TradingView
+
+- Head to https://www.tradingview.com
+- Click “Get started” in the top-right corner
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/tradingView/tradingViewHome.webp"
+    height={835}
+    width={1412}
+    alt=""
+  />
+  <figcaption>TradingView homepage</figcaption>
+</figure>
+
+- TradingView has a couple of memberships you can choose from
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/tradingView/tradingViewPlans.webp"
+    height={983}
+    width={1520}
+    alt=""
+  />
+  <figcaption>TradingView plans</figcaption>
+</figure>
+
+If you are not sold on TradingView yet feel free to create a free basic account which you can find further down the page. The free basic account will work for the purposes of learning how to use TradingView during the remainder of this chapter.
+
+Once you really begin using TradingView most likely you will want to upgrade to at least the Pro level. The free basic account is missing some key functionality that you will eventually need.
+
+Continue through the sign-up process and then continue to the next lesson once you are done.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="tradingView"
+    nextChapter="tradingView"
+    prevLesson="whyTradingView"
+    nextLesson="tradingViewFeatures"
+    currentLessonId={23}
+  >
+    {children}
+  </LayoutLesson>
+);
+
+;

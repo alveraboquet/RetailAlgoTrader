@@ -274,37 +274,37 @@ const coursesData: Courses = {
           {
             id: 37,
             title: 'Types of Candlesticks',
-            path: '/tradingAcademy/indicators/typesOfCandlesticks',
+            path: '/tradingAcademy/chartPatterns/typesOfCandlesticks',
           },
           {
             id: 38,
             title: 'Head and Shoulders',
-            path: '/tradingAcademy/indicators/headAndShoulders',
+            path: '/tradingAcademy/chartPatterns/headAndShoulders',
           },
           {
             id: 39,
             title: 'Double Top and Bottom',
-            path: '/tradingAcademy/indicators/doubleTopAndBottom',
+            path: '/tradingAcademy/chartPatterns/doubleTopAndBottom',
           },
           {
             id: 40,
             title: 'Rounding Bottom',
-            path: '/tradingAcademy/indicators/roundingBottom',
+            path: '/tradingAcademy/chartPatterns/roundingBottom',
           },
           {
             id: 41,
             title: 'Cup and Handle',
-            path: '/tradingAcademy/indicators/cupAndHandle',
+            path: '/tradingAcademy/chartPatterns/cupAndHandle',
           },
           {
             id: 42,
             title: 'Wedges',
-            path: '/tradingAcademy/indicators/wedges',
+            path: '/tradingAcademy/chartPatterns/wedges',
           },
           {
             id: 43,
             title: 'CheatSheet',
-            path: '/tradingAcademy/indicators/cheatSheet',
+            path: '/tradingAcademy/chartPatterns/cheatSheet',
           },
         ],
       },
@@ -368,7 +368,7 @@ const coursesData: Courses = {
           {
             id: 52,
             title: 'News Trading',
-            path: '/tradingAcademy/fundamentalAnalysis/newsTrading',
+            path: '/tradingAcademy/fundamentalAnalysisStrategies/newsTrading',
           },
         ],
       },
@@ -590,7 +590,7 @@ const coursesData: Courses = {
           {
             id: 88,
             title: 'Multiple Timeframes',
-            path: '/tradingAcademy/advancedStrategies/multipleTimeframes',
+            path: '/tradingAcademy/advancedStrategies/multipleTimeFrames',
           },
           {
             id: 89,
