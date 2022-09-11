@@ -1,4 +1,5 @@
 import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
 
 # What is Technical Analysis?
 
@@ -12,7 +13,15 @@ Technical analysis is the use of mathematical relationships and charting techniq
 
 When you see a chart with all kinds of lines and arrows drawn on it this is technical analysis. Below is an example chart of a technical analyst's EUR/USD chart. Don't worry about all those specific lines right now but just recognize what technical analysis looks like.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/technicalAnalysis/technicalAnalysisExample.webp"
+    height={1386}
+    width={2288}
+    alt=""
+  />
+  <figcaption>Technical analysis example</figcaption>
+</figure>
 
 Practitioners of technical analysis believe that past trends and price movements can give a hint to how future price will move. They believe that the markets consist of patterns that repeat themselves. They use technical analysis in an attempt to discover and understand these patterns.
 
@@ -32,7 +41,15 @@ Indicators take in price action, run it through a mathematical formula, and spit
 
 Below you will see two examples of indicators: Bollinger Bands and MACD. The lines and shading you see below are auto-generated based on price action.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/technicalAnalysis/indicatorExample.webp"
+    height={1386}
+    width={2310}
+    alt=""
+  />
+  <figcaption>Indicator example</figcaption>
+</figure>
 
 ### Charting
 
@@ -48,7 +65,15 @@ Charting can be broken up into a couple of smaller categories:
 
 These will all be explored in depth in two chapters from now. Below you can see two examples of charting: a support/resistance line and a trendline. As you can tell, these are physically drawn onto the charts by the trader.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/technicalAnalysis/chartExample.webp"
+    height={1376}
+    width={2200}
+    alt=""
+  />
+  <figcaption>Chart example</figcaption>
+</figure>
 
 export default ({ children }) => (
   <LayoutLesson

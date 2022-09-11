@@ -1,4 +1,5 @@
 import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
 
 # Bollinger Bands
 
@@ -12,7 +13,15 @@ Bollinger bands are one of the most popular indicators. This is because it provi
 
 Below is an example of Bollinger bands on the daily chart for TSLA. The orange line in the center is a 20 SMA. The blue lines on the top and bottom are the upper and lower bands. All of the area in blue contains roughly 95% of the trading action.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/indicators/bollingerBandExample.webp"
+    height={1384}
+    width={2664}
+    alt=""
+  />
+  <figcaption>Bollinger band example</figcaption>
+</figure>
 
 ## How to trade Bollinger Bands?
 
@@ -22,7 +31,15 @@ When price reaches or breaks the upper-band it can be considered to be overbough
 
 Below the two green arrows indicate times when price reached outside the lower band and then reversed back to the SMA. The two red arrows indicate times when price reached outside the upper band and then reversed back to the SMA.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/indicators/tradeBollingerBand.webp"
+    height={1384}
+    width={2664}
+    alt=""
+  />
+  <figcaption>Bollinger band example</figcaption>
+</figure>
 
 Some people prefer to enter a trade as soon as price breaks out of the upper or lower band. This will provide more trading signals and get you into your trade quicker; however, it also has a much higher risk of fake-outs. Many traders prefer to wait for price to break the upper or lower band and continue to wait until they get further confirmation price is changing direction.
 
@@ -44,13 +61,29 @@ Some more advanced techniques are placing multiple take profits so maybe half yo
 
 I know there were some topics here that we have not discussed in detail such as candlestick patterns, stoplosses, and takeprofits but we will discuss this in more detail. This is just a good introduction. After going through the lessons on chart patterns and stoplosses it is a good idea to review all of these indicators and see how you could use those techniques to increase your profitability.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/indicators/exampleTradeBollingerBand.webp"
+    height={1396}
+    width={2660}
+    alt=""
+  />
+  <figcaption>Example trade with Bollinger Bands</figcaption>
+</figure>
 
 The primary risk with this strategy is that price does not return to the center. If price is caught in a strong downtrend then price will continue down even after it has broken the lower band. And if price is caught in a strong uptrend then price will continue up even after it has broken the upper band.
 
 Below is the same chart but with two yellow arrows. These arrows indicate two instances when price broke the lower band but instead of return to the center it continued to drop. If you had submitted a buy order at either of these points without including a stoploss you would have lost a lot of money. This is why many people use the strategy discussed above of waiting for further trade confirmation in the form of a strong green (aka bullish) candlestick.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/indicators/losingTradesBollingerBands.webp"
+    height={1388}
+    width={2660}
+    alt=""
+  />
+  <figcaption>Losing trade signals with Bollinger Bands</figcaption>
+</figure>
 
 export default ({ children }) => (
   <LayoutLesson

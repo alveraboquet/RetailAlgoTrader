@@ -1,4 +1,5 @@
 import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
 
 # Types of Candlesticks
 
@@ -8,7 +9,15 @@ As previously discussed every candlestick has a high, low, open, and close. If t
 
 Every candlestick has a body and two wicks. The body is the area between the open and the close. The wicks are the area between the high and open/close and the low and open/close.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/chartPatterns/candlestickBasics.webp"
+    height={768}
+    width={514}
+    alt=""
+  />
+  <figcaption>Candlestick basics</figcaption>
+</figure>
 
 Below we will discuss a couple of the more common shapes that candlesticks can take. By themselves these candlestick shapes are not very useful; however, when combined to create chart patterns they can become very powerful.
 
@@ -16,31 +25,71 @@ Below we will discuss a couple of the more common shapes that candlesticks can t
 
 A doji has an equally sized wick on the top and the bottom with a very thin body. Dojis can be either green or red. Dojis are considered indecision candles. Buyers and sellers are waiting to see what will happen. Dojis frequently indicated a price reversal.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/chartPatterns/doji.webp"
+    height={307}
+    width={268}
+    alt=""
+  />
+  <figcaption>Doji candlestick</figcaption>
+</figure>
 
 ## Gravestone
 
 A gravestone has an almost entirely absent body at the very bottom of the candlestick with a large wick above the body. They indicate that buyers attempted to push the price higher but failed.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/chartPatterns/gravestone.webp"
+    height={230}
+    width={256}
+    alt=""
+  />
+  <figcaption>Gravestone candlestick</figcaption>
+</figure>
 
 ## Dragonfly
 
 A dragonfly is the opposite of a gravestone. It has a small body at the very top of the candlestick with a large wick below the body. They indicate that sellers attempted to push the price lower but failed.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/chartPatterns/dragonfly.webp"
+    height={804}
+    width={1429}
+    alt=""
+  />
+  <figcaption>Dragonfly candlestick</figcaption>
+</figure>
 
 ## Shooting Star
 
 A gravestone has a small body at the very bottom of the candlestick with a large wick above the body.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/chartPatterns/shootingStar.webp"
+    height={249}
+    width={244}
+    alt=""
+  />
+  <figcaption>Shooting star candlestick</figcaption>
+</figure>
 
 ## Hammer
 
 A hammer is the opposite of a shooting star. It has a small body at the very top of the candlestick with a large wick below the body.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/chartPatterns/hammer.webp"
+    height={252}
+    width={269}
+    alt=""
+  />
+  <figcaption>Hammer candlestick</figcaption>
+</figure>
 
 export default ({ children }) => (
   <LayoutLesson
@@ -54,5 +103,3 @@ export default ({ children }) => (
     {children}
   </LayoutLesson>
 );
-
-;

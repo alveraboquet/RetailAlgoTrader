@@ -1,4 +1,5 @@
 import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
 
 # Account Values
 
@@ -8,7 +9,15 @@ For this exercise we will be using MT4s interface as this is the program we will
 
 Deposit 100,000 USD. Your account balance is how much trading capital you have in your account. If you open a new account and deposit 100,000 USD your account balance is now 100,000 USD.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/marginTrading/accountBalance.webp"
+    height={21}
+    width={410}
+    alt=""
+  />
+  <figcaption>Account Balance</figcaption>
+</figure>
 
 ## Floating Profit / Loss
 
@@ -18,7 +27,15 @@ It is the profit / loss of your open orders. This value will constantly change a
 
 Floating P/L or unrealized P/L only become realized once you close out of your trade. When you close out of your trade the floating P/L is adjusted to cash and either added to or withdrawn from the Account Balance.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/marginTrading/floatingPL.webp"
+    height={15}
+    width={468}
+    alt=""
+  />
+  <figcaption>Floating P/L</figcaption>
+</figure>
 
 ## Account Equity
 
@@ -28,7 +45,15 @@ However account equity has decreased to 99,905.00 USD. Account equity shows what
 
 Account equity is the real-time value of your account; whereas, account balance lags as it only updates when orders are closed. If you have zero open orders then account equity will equal account balance. Account equity is account balance - floating P/L 100,000 - 95 = 99,905 USD.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/marginTrading/accountEquity.webp"
+    height={15}
+    width={468}
+    alt=""
+  />
+  <figcaption>Account Equity</figcaption>
+</figure>
 
 ## Margin
 
@@ -56,7 +81,15 @@ Essentially the larger this number the better as it means you have more than eno
 
 After closing out of the below trade Account Balance, Account Equity, and Free Margin will all equal 99,905.00 USD. This is because when you close a trade the unrealized P/L becomes realized and it is applied to the Account Balance.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/marginTrading/marginLevel.webp"
+    height={15}
+    width={468}
+    alt=""
+  />
+  <figcaption>Margin Level</figcaption>
+</figure>
 
 export default ({ children }) => (
   <LayoutLesson

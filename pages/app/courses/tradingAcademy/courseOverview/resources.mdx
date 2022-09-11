@@ -1,4 +1,5 @@
 import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
 
 # Additional Resources
 
@@ -10,11 +11,27 @@ A must have resource for any trader. TradingView is a feature-packed charting so
 
 If you are interested in mastering TradingView and all of its' features then check out our TradingView course here.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/courseOverview/tradingViewLogo.webp"
+    height={315}
+    width={468}
+    alt=""
+  />
+  <figcaption>TradingView</figcaption>
+</figure>
 
 ## Algorithmic trading books by Ernie Chan
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/courseOverview/algorithmicTradingLogo.webp"
+    height={296}
+    width={468}
+    alt=""
+  />
+  <figcaption>Algorithmic Trading</figcaption>
+</figure>
 
 export default ({ children }) => (
   <LayoutLesson

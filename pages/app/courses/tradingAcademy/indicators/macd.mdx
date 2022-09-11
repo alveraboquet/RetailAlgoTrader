@@ -1,4 +1,5 @@
 import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
 
 # MACD
 
@@ -14,7 +15,15 @@ The red and green bars are the MACD's histogram. The histogram is representative
 
 A green bar shows that the MACD line is above the signal line. A large bar indicates that there is a large difference between the signal line and the MACD line. While a small bar indicates that the signal line and the MACD line are very close together.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/indicators/macd.webp"
+    height={1474}
+    width={2670}
+    alt=""
+  />
+  <figcaption>MACD example</figcaption>
+</figure>
 
 ## How to trade MACD?
 
@@ -28,7 +37,15 @@ When the MACD crosses the signal line from below this is treated as a buy signal
 
 Below the yellow arrows and vertical lines indicate trading signals provided by the MACD indicator. A downward arrow indicates a sell signal and an upward arrow indicates a buy signal. You can see how the crossovers of the MACD reflect the upward and downward movements of the price pretty well.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/indicators/macdTradingSignals.webp"
+    height={1468}
+    width={2666}
+    alt=""
+  />
+  <figcaption>MACD trading signals</figcaption>
+</figure>
 
 ### Oscillator
 
@@ -44,17 +61,41 @@ Remember that using MACD as an oscillator means you are using it as a momentum i
 
 In the example below you can see that even after breaking the 40 threshold for the first time price continued to rise for a little bit before dropping down. This is why it is important to use leading and lagging indicators together to get trade confirmation.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/indicators/macdOverbought.webp"
+    height={1392}
+    width={2664}
+    alt=""
+  />
+  <figcaption>MACD overbought</figcaption>
+</figure>
 
 In the second example below the MACD line breaks -40. At this point we should be watching for price to reverse direction and jump up. You can see that immediately after breaking -40 there was a short price jump upwards.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/indicators/macdOversold.webp"
+    height={1396}
+    width={2670}
+    alt=""
+  />
+  <figcaption>MACD oversold</figcaption>
+</figure>
 
 Finally if price is not making any major moves the MACD line and the signal line will be hovering around 0. This can be seen in the example below. In this example you can see that multiple crossovers occur; however, these are not trading signals we would want to act on.
 
 When the MACD is hovering around 0 it is best to stay away from trading as there is not enough volatility to make any profit. You can see in this example while MACD is hovering around 0 price is just trading sideways.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/indicators/macdFlat.webp"
+    height={1460}
+    width={2658}
+    alt=""
+  />
+  <figcaption>MACD flat</figcaption>
+</figure>
 
 ### Divergence
 
@@ -62,11 +103,27 @@ Finally MACD can be used to trade divergences. A divergence occurs when the pric
 
 In the example below you can see that while price is trending downwards, MACD is actually trending upwards. This is an example of a bullish divergence. Shortly after this divergence price broke out of the downtrend and jumped upwards.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/indicators/macdBullishDivergence.webp"
+    height={1458}
+    width={2768}
+    alt=""
+  />
+  <figcaption>MACD bullish divergence</figcaption>
+</figure>
 
 In the second example below you can see that while price is trending upwards, MACD is actually trending downwards. This is an example of a bearish divergence. Shortly after this divergence price broke out of the uptrend and dropped.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/indicators/macdBearishDivergence.webp"
+    height={1460}
+    width={2666}
+    alt=""
+  />
+  <figcaption>MACD bearish divergence</figcaption>
+</figure>
 
 The primary risk with this strategy is that price does not return to the center. If price is caught in a strong downtrend then price will continue down even after it has broken the lower band. And if price is caught in a strong uptrend then price will continue up even after it has broken the upper band.
 

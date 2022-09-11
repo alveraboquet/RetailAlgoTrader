@@ -1,0 +1,109 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+# Mean Reverting
+
+## Bollinger Band Reversion with Engulfing Bar
+
+The strategy discussed below combines a chart pattern with a technical indicator. The Bollinger Band Reversion with Engulfing Bar consists of the Bollinger Band indicator and the engulfing bar chart pattern.
+
+This strategy aims to enter trades at the reversal of a trend. This strategy works well on really any timeframe but 4 hours and up provides the strongest signals.
+
+## Long Signal
+
+A long trading signal is triggered when the low of the previous candlestick breaks the lower Bollinger Band. The next candlestick must be a bullish engulfing bar.
+
+## Short Signal
+
+A short trading signal is triggered when the high of the previous candlestick breaks the upper Bollinger Band. The next candlestick must be a bearish engulfing bar.
+
+## Exit Conditions
+
+This strategy has a couple of exit conditions:
+
+1. The initial stoploss placed slightly below the low of the bar that broke out of the lower Bollinger Band before the engulfing bar (or slightly above the high of the bar that broke out of the upper Bollinger Band before the engulfing bar if it is a bearish signal)
+2. The take profit point at the moving average in the center of the Bollinger Band (sell 50% of your position)
+3. A second take profit at the upper Bollinger band (or lower Bollinger band if a bearish trade)
+4. After reaching the first take profit move the stop loss to your entry price to ensure the second half of your position does not wipe out the gains from your first half that you just sold.
+
+## When to Trade This Strategy
+
+This strategy is ideal to use when price is ranging. When price ranges it tends to stay around roughly the same price level which makes it ideal for a mean reversion strategy.
+
+## When not to Trade This Strategy
+
+This strategy does not perform well when price is in a strong trend. When price is trending it will frequently break the lower (or upper) Bollinger band without returning to the average price.
+
+In a strong trend it would be better to use a trend-following or pullback strategy.
+
+## Examples
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/technicalAnalysisStrategies/meanRevertingExample1.webp"
+    height={2160}
+    width={3840}
+    alt=""
+  />
+  <figcaption>Mean reverting example 1</figcaption>
+</figure>
+
+1. Bearish bars break the lower Bollinger Band.
+2. A strong bullish candlestick engulfs the previous bearish candlestick that broke the lower Bollinger Band.
+3. Enter at the close of the bullish engulfing candlestick.
+4. Set a take profit at the moving average
+5. Set a second take profit at the upper Bollinger Band
+6. Adjust these take profits to ensure they stay in line with the moving average and the upper Bollinger Band (If trading short time frames it may be easier to just manually close trades when price reaches the moving average or upper Bollinger Band)
+7. Wait until price reaches the moving average and close 50% of your position
+8. Move the stop loss up to your entry price to secure your profits
+9. Wait until price reaches the upper Bollinger Band to close the second 50% of your position
+10. In this case price did not quite reach there and returned back to the moving average.
+11. Close out the second 50% of your position when it returns back to the moving average.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/technicalAnalysisStrategies/meanRevertingExample2.webp"
+    height={1485}
+    width={2640}
+    alt=""
+  />
+  <figcaption>Mean reverting example 2</figcaption>
+</figure>
+
+While this technically meets the conditions of our trading strategy it is not a good trade because the engulfing bar closes so close to the moving average. The potential reward is very small for the risk.
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/technicalAnalysisStrategies/meanRevertingExample3.webp"
+    height={804}
+    width={1429}
+    alt=""
+  />
+  <figcaption>Mean reverting example 3</figcaption>
+</figure>
+
+In the example above we can see another trade broken down. Additional potential trades are shown in grey. As you can see in the span of 3 days there were four good trades. Three of which would have been profitable with one trade that is a loser. This is a fantastic return and shows how powerful this strategy can be.
+
+This strategy is performing so well because price is ranging and thus it is consistently returning to the moving average.
+
+## Potential Improvements
+
+Remember these rules can be tweaked to fit your trading methodology and also the market.
+
+- Do not enter trade if close of engulfing bar is too close to the moving average. This is due to your risk: reward ratio. If you enter too close to the moving average you will have a lot of potential risk for a little reward.
+- Add additional Bollinger bands at STD of 3. If price breaks the 3 STD Bollinger Band then enter the trade. This will provide less trading opportunities but the opportunities will be stronger.
+- Add a trailing stop instead of a hard stop loss.
+- Turn this into an algorithmic strategy that auto adjusts the take profits to track the Bollinger Bands so you do not have to sit there and watch the trade.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="courseOverview"
+    prevLesson="syllabus"
+    nextLesson="goals"
+    currentLessonId={1}
+  >
+    {children}
+  </LayoutLesson>
+);

@@ -1,14 +1,31 @@
 import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
 
 # Reading a Chart
 
 ## Basics of Candlestick Charts
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/tradingBasics/candleStickExample.webp"
+    height={584}
+    width={1499}
+    alt=""
+  />
+  <figcaption>Candlestick chart</figcaption>
+</figure>
 
 This is a screenshot of a candlestick chart from TradingView. Across the top you have the instrument being shown, the timeframe, the broker quoting the price, the bid and ask prices.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/tradingBasics/greenBar.webp"
+    height={121}
+    width={41}
+    alt=""
+  />
+  <figcaption>Green candlestick</figcaption>
+</figure>
 
 This is what is known as a candlestick (mark OHLC). A candlestick is representative of one period of trading. So if you have your timeframe set to 1 hour than the candlestick will represent 1 hour of trading. If you have your timeframe set to 1 day than the candlestick will represent 1 day of trading.
 
@@ -19,7 +36,15 @@ Since the candlestick is green that means price closed higher than it opened. Al
 - Low: This is the lowest price that is traded during the timeframe
 - Close: This is the price that the trading period ends at. Close price is typically considered the most significant
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/tradingBasics/redBar.webp"
+    height={86}
+    width={37}
+    alt=""
+  />
+  <figcaption>Red candlestick</figcaption>
+</figure>
 
 Since the candlestick is red that means price closed lower than it opened. Also known as a down or a red day.
 
@@ -35,8 +60,6 @@ The volume bar will be green if price closed higher than it opened. The volume b
 
 ## Bid vs Ask Spread
 
-{Insert picture of pricing from broker}
-
 All forex pairs are quoted at two prices: the bid price and the ask price. The bid price is the price that the broker is willing to pay for a certain pair. If you are selling then the broker will buy from you at the bid price.
 
 The ask price is the price that the broker is willing to sell for a certain pair. If you are buying then the broker will sell to you at the ask price. In summary if you buy a pair you pay the Ask price and if you sell the pair you receive the bid price.
@@ -44,8 +67,6 @@ The ask price is the price that the broker is willing to sell for a certain pair
 The Ask price - the bid price is what is known as the spread. The spread is how brokers make their money. They buy at a price slightly lower and sell at a price slightly higher. This is how they make profit off of no-commission trading.
 
 The spread is measured in pips. For a liquid pair such as EUR/USD it is usually only 2 or 3 pips. The existence of the spread actually means that when you initially open a position you will already be in the red.
-
-{Insert example proving above bulletpoint}
 
 Bid price of EUR/USD is 1.2453 and ask price of EUR/USD is 1.2457. This is a spread of 4 pips. If you were to place a buy order of 10,000 units (a mini lot) of EUR/USD your order would be fulfilled at 1.2457. And let's say immediately after opening the trade you decide you want to sell it.
 

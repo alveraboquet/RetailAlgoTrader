@@ -1,0 +1,93 @@
+import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
+
+# Breakouts
+
+## Trendline Breakouts
+
+The strategy discussed below combines trendlines with a chart pattern. The Trendline Breakout consists of a trendline in combination with the engulfing bar chart pattern.
+
+This strategy aims to enter the trade at the beginning of a breakout from a trend. This strategy works well on really any timeframe but 4 hours and up provides the strongest signals.
+
+Remember that a trendline should consist of at least three separate touch points to be a valid trendline. Do not force a trendline that should not be there.
+
+## Long Signal
+
+A long trading signal is triggered when price closes above a downward trendline and then is followed by a strong bullish engulfing bar.
+
+## Short Signal
+
+A short trading signal is triggered when price closes below an upward trendline and then is followed by a strong bearish engulfing bar.
+
+## Exit Conditions
+
+This strategy has a couple of exit conditions:
+
+## When to Trade This Strategy
+
+This strategy is ideal to use when price is trending. Breaking a strong trend frequently results in large price movements.
+
+## When not to Trade This Strategy
+
+This strategy does not perform well when price is ranging. When price is ranging it will form many weak trendlines that frequently break without resulting in a strong breakout move.
+
+In a ranging market it would be better to use a mean reversion strategy.
+
+## Examples
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/technicalAnalysisStrategies/trendlineBreakoutExample1.webp"
+    height={804}
+    width={1429}
+    alt=""
+  />
+  <figcaption>Trendline breakout example 1</figcaption>
+</figure>
+
+1. A strong downward trendline is drawn with three touchpoints
+2. A strong bullish engulfing bar breaks out of the trendline
+3. Enter the trade at the close of the engulfing bar that broke out of the trendline
+4. Set the stoploss just below the low of the engulfing bar
+5. Set the take profit at a 1:2 risk:reward ratio (The TP should be twice as far from the entry price as the SL) (This technique will be discussed in-depth.
+6. If you were to implement a trailing stop loss with this trade then your profit would have been massive
+
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/technicalAnalysisStrategies/trendlineBreakoutExample2.webp"
+    height={804}
+    width={1429}
+    alt=""
+  />
+  <figcaption>Trendline breakout example 2</figcaption>
+</figure>
+
+1. A strong upward trendline is drawn with four touch points
+2. A strong bearish engulfing bar breaks the trendline
+3. The trade is entered at the close of the engulfing candlestick
+4. The stoploss is placed just above the high of the engulfing candlestick
+5. The takeprofit is placed at a 1:2 risk:reward
+
+## Potential Improvements
+
+Remember these rules can be tweaked to fit your trading methodology and also the market.
+
+- Let price breakout of the trendline and then return to test the trendline as resistance. This ensures that the trend is truly over and that a reversal is likely.
+- Add RSI as an additional indicator to verify that the trend is likely to reverse.
+- Add a trailing stop instead of a hard stop loss. This allows you to take full advantage of strong trends.
+- Turn this into an algorithmic strategy that auto adjusts the take profits to track the Bollinger Bands so you do not have to sit there and watch the trade.
+
+export default ({ children }) => (
+  <LayoutLesson
+    course="tradingAcademy"
+    prevChapter="courseOverview"
+    nextChapter="courseOverview"
+    prevLesson="syllabus"
+    nextLesson="goals"
+    currentLessonId={1}
+  >
+    {children}
+  </LayoutLesson>
+);
+
+;

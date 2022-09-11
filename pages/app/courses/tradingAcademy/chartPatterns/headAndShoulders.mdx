@@ -1,4 +1,5 @@
 import LayoutLesson from '../../../../../components/layout/layoutLesson';
+import Image from 'next/image';
 
 # Head and Shoulders
 
@@ -10,13 +11,29 @@ The uptrend has lost momentum. Price has attempted to push higher three times bu
 
 After a head and shoulders price frequently makes a strong downward movement.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/chartPatterns/headAndShoulders.webp"
+    height={1153}
+    width={2050}
+    alt=""
+  />
+  <figcaption>Head and shoulders</figcaption>
+</figure>
 
 ## Inverted Head and Shoulders
 
 This is the same as a head and shoulders just opposite. An inverted head and shoulders will frequently result in the start of an upward movement.
 
-{image}
+<figure>
+  <Image
+    src="/images/courses/tradingAcademy/chartPatterns/invertedHeadAndShoulders.webp"
+    height={2160}
+    width={3840}
+    alt=""
+  />
+  <figcaption>Inverted head and shoulders</figcaption>
+</figure>
 
 export default ({ children }) => (
   <LayoutLesson
