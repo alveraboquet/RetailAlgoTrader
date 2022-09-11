@@ -76,10 +76,10 @@ describe('<Dashboard />', () => {
     expect(beginButtons).toHaveLength(4);
 
     // Progress bars display 50%, 25%, and 0% for remaining four
-    const twentyFivePercentComplete = await screen.findByText('25%');
+    const thirtyPercentComplete = await screen.findByText('30%');
     const fiftyPercentComplete = await screen.findByText('50%');
     const zeroPercentComplete = await screen.findAllByText('0%');
-    expect(twentyFivePercentComplete).toBeInTheDocument();
+    expect(thirtyPercentComplete).toBeInTheDocument();
     expect(fiftyPercentComplete).toBeInTheDocument();
     expect(zeroPercentComplete).toHaveLength(4);
   });

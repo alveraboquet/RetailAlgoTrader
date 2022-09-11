@@ -3,6 +3,7 @@
 import SimilarCourseCard from './similarCourseCard';
 import coursesData from './coursesData';
 import Image from 'next/image';
+import splitTextProp from '../../lib/splitTextProp';
 
 interface Lessons {
   id: number;
@@ -44,9 +45,15 @@ const QuizLandingPage = ({
   return (
     <article className="container p-3">
       <h1 className="mt-3 mb-3">{title}</h1>
-      <p>{description}</p>
-      <figure className="w-50 mx-auto">
-        <Image src={imagePath} height={1000} width={1500} alt={altText} />
+      {splitTextProp(description)}
+      <figure className="w-md-50 mx-auto">
+        <Image
+          src={imagePath}
+          height={1000}
+          width={1500}
+          alt={altText}
+          className="rounded"
+        />
       </figure>
       <p>Check out the curriculum for {title}</p>
       <div className="accordion" id="curriculumAccordion">

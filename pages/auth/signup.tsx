@@ -5,6 +5,7 @@ import MobileSignUpContent from '../../components/auth/signup/mobileSignUpConten
 import DesktopSignUpContent from '../../components/auth/signup/desktopSignUpContent';
 import { useState, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import MockSiteBanner from '../../components/mockSiteBanner';
 
 interface Provider {
   id: string;
@@ -55,6 +56,7 @@ const SignUp = ({ providers }: { [k: string]: Provider }) => {
         image="https://retailalgotrader.com/images/website/bulltrader.webp"
         keywords="RetailAlgoTrader signup, RetailAlgoTrader create account"
       />
+      <MockSiteBanner />
       {isMobile && <MobileSignUpContent error={error} providers={providers} />}
       {isDesktop && (
         <DesktopSignUpContent error={error} providers={providers} />

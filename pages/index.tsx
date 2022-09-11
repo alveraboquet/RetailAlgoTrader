@@ -41,16 +41,16 @@ const Home: NextPage = () => {
               <h2 className="fw-bold">Our Trading Philosophy</h2>
               <p>
                 Profitable trading is not limited to Hedge Funds and Market
-                Makers. There are an infinite number of opportunities everyday
-                to extract money from the markets.
+                Makers.
               </p>
               <p>
                 We focus on educating retail traders on how they can
-                intelligently and profitably trade the markets. Our specialty is
-                creating systems and algorithms to assist one&apos;s trading
-                strategies. This can range from fully automated technical
-                analysis strategies that fire their own trades to web scrapping
-                bots that text trade alerts.
+                intelligently and profitably trade the markets.
+              </p>
+              <p>
+                This can range from fully automated technical analysis
+                strategies that fire their own trades to web scrapping bots that
+                text trade alerts.
               </p>
             </div>
             <div className="d-md-none text-white mt-3 pb-3">
@@ -58,17 +58,8 @@ const Home: NextPage = () => {
               <p>Profitable trading is not limited to Hedge Funds.</p>
               <p>There are opportunities everyday for retail traders.</p>
               <p>
-                Our team focuses on educating retail traders on how they can
-                intelligently and profitably trade the markets.
-              </p>
-              <p>
-                Our specialty is creating systems and algorithms to assist
-                one&apos;s trading strategies.
-              </p>
-              <p>
-                This can range from fully automated technical analysis
-                strategies that fire their own trades to web scrapping bots that
-                text trade alerts.
+                Create fully automated strategies that fire their own trades or
+                web scrapping bots that text trade alerts.
               </p>
             </div>
           </div>
@@ -114,11 +105,11 @@ const Home: NextPage = () => {
                 <article className="card h-100 ms-3 me-3 bg-dark text-white">
                   <figure>
                     <Image
-                      src="/images/website/natureInvesting.webp"
+                      src="/images/website/improvedStrategies.webp"
                       className="card-img-top"
                       height={1306}
                       width={2295}
-                      alt="Investing nature themed"
+                      alt="Improve your strategies"
                     />
                   </figure>
                   <div className="card-body">
@@ -155,11 +146,11 @@ const Home: NextPage = () => {
                 <article className="card h-100 ms-3 me-3 bg-dark text-white">
                   <figure>
                     <Image
-                      src="/images/website/businessPlanning.webp"
+                      src="/images/website/upcomingResources.webp"
                       className="card-img-top"
                       height={1306}
                       width={2295}
-                      alt="Project management meeting"
+                      alt="Brainstorming for upcoming resources"
                     />
                   </figure>
                   <div className="card-body">
@@ -207,16 +198,16 @@ const Home: NextPage = () => {
               See how various strategies performed in recent markets
             </h2>
             <p>
-              These are three separate strategies across different markets that
+              These are two separate strategies across different markets that
               were run over the past two years.
             </p>
             <p>
-              Notice that two of the strategies performed very well, while one
-              strategy actually lost money.
+              Notice that the stategies complement each other. When one performs
+              poorly the other performs well.
             </p>
             <p>
-              However, the overall portfolio performance is very good. It is
-              able to diversify and smooth out the equity curve.
+              This results in a consistently positive portfolio performance. It
+              is able to diversify and smooth out the equity curve.
             </p>
             <p>
               In our program you will learn the importance of a smooth equity
@@ -239,7 +230,7 @@ const Home: NextPage = () => {
                 <div className="col-md-4">
                   <article className="card bg-dark text-white mb-3 mb-md-0">
                     <div className="card-body">
-                      <h5 className="card-title">Novice Traders</h5>
+                      <p className="card-title fw-bold">Novice Traders</p>
                       <p className="card-text">
                         If you have no experience with the markets that is fine.
                         Check out our recommended resources to get started.
@@ -255,7 +246,7 @@ const Home: NextPage = () => {
                 <div className="col-md-4">
                   <article className="card bg-dark text-white mb-3 mb-md-0">
                     <div className="card-body">
-                      <h5 className="card-title">Experienced Traders</h5>
+                      <p className="card-title fw-bold">Experienced Traders</p>
                       <p className="card-text">
                         Do you have experience trading already? Discover how you
                         can create tools to increase your profitability and
@@ -272,7 +263,7 @@ const Home: NextPage = () => {
                 <div className="col-md-4">
                   <article className="card bg-dark text-white">
                     <div className="card-body">
-                      <h5 className="card-title">Programmers</h5>
+                      <p className="card-title fw-bold">Programmers</p>
                       <p className="card-text">
                         Already know how to program? Discover how you can put
                         your programming skills to use to generate additional

@@ -58,52 +58,44 @@ const FooterApp = () => {
           </section>
           <section className="row mt-md-3 mb-md-3">
             <div className="col-3 p-0 d-flex justify-content-center">
-              <Link href="https://www.facebook.com/RetailAlgoTrading">
-                <a>
-                  <Image
-                    src="/images/svgs/facebook.svg"
-                    alt="Facebook Logo"
-                    width={144}
-                    height={32}
-                  />
-                </a>
-              </Link>
+              <a href="https://www.facebook.com/RetailAlgoTrading">
+                <Image
+                  src="/images/svgs/facebook.svg"
+                  alt="Facebook Logo"
+                  width={144}
+                  height={32}
+                />
+              </a>
             </div>
             <div className="col-3 p-0 d-flex justify-content-center">
-              <Link href="https://twitter.com/RetailAlgoTrade">
-                <a>
-                  <Image
-                    src="/images/svgs/twitter.svg"
-                    alt="Twitter Logo"
-                    width={144}
-                    height={32}
-                  />
-                </a>
-              </Link>
+              <a href="https://twitter.com/RetailAlgoTrade">
+                <Image
+                  src="/images/svgs/twitter.svg"
+                  alt="Twitter Logo"
+                  width={144}
+                  height={32}
+                />
+              </a>
             </div>
             <div className="col-3 p-0 d-flex justify-content-center">
-              <Link href="https://www.instagram.com/retailalgotrader/">
-                <a>
-                  <Image
-                    src="/images/svgs/instagram.svg"
-                    alt="Instagram Logo"
-                    width={144}
-                    height={32}
-                  />
-                </a>
-              </Link>
+              <a href="https://www.instagram.com/retailalgotrader/">
+                <Image
+                  src="/images/svgs/instagram.svg"
+                  alt="Instagram Logo"
+                  width={144}
+                  height={32}
+                />
+              </a>
             </div>
             <div className="col-3 p-0 d-flex justify-content-center">
-              <Link href="https://www.quora.com/profile/Matt-Laux">
-                <a>
-                  <Image
-                    src="/images/svgs/quora.svg"
-                    alt="Quora Logo"
-                    width={144}
-                    height={32}
-                  />
-                </a>
-              </Link>
+              <a href="https://www.quora.com/">
+                <Image
+                  src="/images/svgs/quora.svg"
+                  alt="Quora Logo"
+                  width={144}
+                  height={32}
+                />
+              </a>
             </div>
           </section>
           <section className="d-md-none">

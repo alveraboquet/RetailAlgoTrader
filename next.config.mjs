@@ -64,7 +64,7 @@ if (isProd) {
     default-src 'self' 'unsafe-eval' 'unsafe-inline';
     base-uri 'self';
     child-src 'self';
-    connect-src 'self' https://checkout.stripe.com https://api.stripe.com;
+    connect-src 'self' https://checkout.stripe.com https://api.stripe.com ws://localhost:3000/;
     font-src 'self' https: data:;
     form-action 
       'self' 
@@ -83,10 +83,10 @@ if (isProd) {
       'self' 
       'unsafe-eval' 'unsafe-inline'
       https://checkout.stripe.com  
-      https://js.stripe.com ;
+      https://js.stripe.com
+      https://khan.github.io/tota11y/dist/tota11y.min.js;
     script-src-attr 'none';
     style-src 'self' https: 'unsafe-inline';
-    upgrade-insecure-requests
   `;
 }
 

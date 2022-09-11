@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import splitTextProp from '../../lib/splitTextProp';
 
 interface Props {
   title: string;
@@ -15,7 +16,7 @@ const SimilarCourseCard = ({ title, description }: Props) => {
       <div className="card-header">Similar Resource</div>
       <div className="card-body">
         <h5 className="card-title">{title}</h5>
-        <p className="card-text">{description}</p>
+        <div className="card-text">{splitTextProp(description)}</div>
         <Link href="/auth/signup">
           <button className="btn btn-warning">Start {title}</button>
         </Link>

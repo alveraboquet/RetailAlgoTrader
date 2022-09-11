@@ -19,6 +19,9 @@ const Blog: NextPage = () => {
         keywords="RetailAlgoTrader guides, Algorithmic trading guides, Algorithmic trading articles"
       />
       <Layout>
+        <h1 className="text-center mt-3">
+          RetailAlgoTrader&apos;s Articles and Guides
+        </h1>
         <BlogContent />
       </Layout>
     </div>
