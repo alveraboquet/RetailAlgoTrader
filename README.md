@@ -11,7 +11,6 @@ A live demo of the application can be seen [here](https://www.retailalgotrader.c
 - [Introduction](#introduction)
 - [Technologies](#technologies)
 - [Features](#features)
-- [Demo](#demo)
 - [Running the app](#running-the-app)
 - [Project status](#project-status)
 - [Next steps](#next-steps)
@@ -58,10 +57,6 @@ Note that these are only the major packages and programs used. For a full list o
 - Hosted on Vercel
 - Styling done with Bootstrap
 - PostgreSQL database on DigitalOcean
-
-## Demo
-
-https://user-images.githubusercontent.com/86170323/182729404-5c62b87a-71eb-4505-9cec-9a3ade66fc8d.mp4
 
 ## Running the app
 
